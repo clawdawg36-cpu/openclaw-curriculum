@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ML Training Simulator — Module 4</title>
+  <style>
+    :root {
+      --bg: #f0f4ff;
+      --primary: #4361ee;
+      --secondary: #7209b7;
+      --success: #06d6a0;
+      --warning: #ffd166;
+      --danger: #ef476f;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 16px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+      color: var(--primary);
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+    .phase-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 2px solid var(--border);
+      background: var(--card);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      color: var(--muted);
+    }
+    .tab.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .tab.done {
+      border-color: var(--success);
+      color: var(--success);
+    }
+    .phase { display: none; }
+    .phase.active { display: block; }
+
+    /* ---- PHASE 1: LABEL ---- */
+    .label-instructions {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .label-instructions strong { color: var(--primary); }
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .data-item {
+      background: var(--card);
+      border: 3px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+      touch-action: manipulation;
+    }
+    .data-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .data-item .emoji { font-size: 2.5rem; display: block; margin-bottom: 6px; }
+    .data-item .label-select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px;
+      font-size: 0.8rem;
+      margin-top: 4px;
+    }
+    .data-item.labeled { border-color: var(--success); }
+    .label-progress {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .progress-bar-wrap {
+      flex: 1;
+      background: var(--border);
+      border-radius: 8px;
+      height: 12px;
+      min-width: 120px;
+    }
+    .progress-bar {
+      height: 100%;
+      border-radius: 8px;
+      background: var(--success);
+      transition: width 0.3s;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 24px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn-success { background: var(--success); color: #fff; }
+
+    /* ---- PHASE 2: TRAIN ---- */
+    .train-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 600px) { .train-panel { grid-template-columns: 1fr; } }
+    .panel-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .panel-card h3 { margin-bottom: 12px; color: var(--primary); font-size: 1rem; }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+    .stat-val { font-weight: 700; color: var(--secondary); }
+    .epoch-bar-wrap {
+      background: var(--border);
+      border-radius: 8px;
+      height: 20px;
+      margin: 8px 0;
+      overflow: hidden;
+    }
+    .epoch-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 8px;
+      transition: width 0.1s;
+    }
+    .log-box {
+      background: #1a1a2e;
+      color: #a8ff78;
+      border-radius: 8px;
+      padding: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      height: 150px;
+      overflow-y: auto;
+      line-height: 1.5;
+    }
+    .accuracy-chart {
+      margin-top: 12px;
+    }
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 80px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 4px;
+    }
+    .chart-bar {
+      flex: 1;
+      background: var(--primary);
+      border-radius: 4px 4px 0 0;
+      min-width: 6px;
+      transition: height 0.3s;
+      opacity: 0.8;
+    }
+    .chart-bar:last-child { opacity: 1; }
+
+    /* ---- PHASE 3: TEST ---- */
+    .test-arena {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 600px) { .test-arena { grid-template-columns: 1fr; } }
+    .test-item-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .test-item-card .emoji { font-size: 3rem; margin-bottom: 8px; display: block; }
+    .test-item-card h3 { font-size: 1rem; margin-bottom: 16px; color: var(--muted); }
+    .prediction-box {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+    .prediction-box .pred-label {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    .confidence-bar-wrap {
+      background: var(--border);
+      border-radius: 6px;
+      height: 10px;
+      margin-top: 6px;
+    }
+    .confidence-bar { height: 100%; border-radius: 6px; background: var(--success); }
+    .correct-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .correct-badge.correct { background: #d1fae5; color: #065f46; }
+    .correct-badge.wrong { background: #fee2e2; color: #991b1b; }
+    .results-panel {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .big-accuracy {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--primary);
+    }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .result-stat {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .result-stat .rs-val { font-size: 1.4rem; font-weight: 700; }
+    .result-stat .rs-label { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .confetti { font-size: 2rem; }
+
+    /* ---- Mobile drag fix ---- */
+    .data-item { -webkit-tap-highlight-color: transparent; }
+    .phase-tabs .tab:focus { outline: 3px solid var(--primary); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+
+<h1>🤖 ML Training Simulator</h1>
+<p class="subtitle">Label data → Train your model → Test it! | Module 4</p>
+
+<div class="phase-tabs">
+  <button class="tab active" id="tab-label" onclick="switchPhase('label')">① Label Data</button>
+  <button class="tab" id="tab-train" onclick="switchPhase('train')">② Train Model</button>
+  <button class="tab" id="tab-test" onclick="switchPhase('test')">③ Test Model</button>
+</div>
+
+<!-- =================== PHASE 1: LABEL =================== -->
+<div class="phase active" id="phase-label">
+  <div class="label-instructions">
+    <strong>🎯 Your Mission:</strong> Label each item below so the AI knows what it's looking at.
+    Select the correct category for each item. You need to label <strong>at least 10 items</strong> before you can train your model.
+    <br><br>
+    <em>These labeled examples become your <strong>training data</strong> — the teacher for your AI!</em>
+  </div>
+
+  <div class="label-progress">
+    <span id="label-count-text">0 / 16 labeled</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="label-progress-bar" style="width:0%"></div>
+    </div>
+    <button class="btn btn-primary" id="train-btn" disabled onclick="switchPhase('train')">Train Model →</button>
+  </div>
+
+  <div class="data-grid" id="data-grid"></div>
+</div>
+
+<!-- =================== PHASE 2: TRAIN =================== -->
+<div class="phase" id="phase-train">
+  <div class="train-panel">
+    <div class="panel-card">
+      <h3>📊 Training Stats</h3>
+      <div class="stat-row"><span>Epoch</span><span class="stat-val" id="epoch-display">0 / 20</span></div>
+      <div class="stat-row"><span>Training Accuracy</span><span class="stat-val" id="train-acc">0%</span></div>
+      <div class="stat-row"><span>Loss</span><span class="stat-val" id="train-loss">1.000</span></div>
+      <div class="stat-row"><span>Labeled Samples</span><span class="stat-val" id="sample-count">—</span></div>
+      <div class="epoch-bar-wrap">
+        <div class="epoch-bar" id="epoch-bar" style="width:0%"></div>
+      </div>
+      <div class="accuracy-chart">
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">Accuracy over epochs:</p>
+        <div class="chart-bars" id="chart-bars"></div>
+      </div>
+    </div>
+    <div class="panel-card">
+      <h3>🖥️ Training Log</h3>
+      <div class="log-box" id="log-box"></div>
+      <div style="margin-top:16px;text-align:center;">
+        <button class="btn btn-primary" id="start-train-btn" onclick="startTraining()">▶ Start Training</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== PHASE 3: TEST =================== -->
+<div class="phase" id="phase-test">
+  <div class="results-panel" id="results-panel" style="display:none">
+    <div class="confetti">🎉</div>
+    <div class="big-accuracy" id="final-accuracy">—</div>
+    <div style="color:var(--muted);margin-top:4px;">Test Accuracy</div>
+    <div class="results-grid">
+      <div class="result-stat"><div class="rs-val" id="r-correct">—</div><div class="rs-label">Correct</div></div>
+      <div class="result-stat"><div class="rs-val" id="r-wrong">—</div><div class="rs-label">Wrong</div></div>
+      <div class="result-stat"><div class="rs-val" id="r-total">—</div><div class="rs-label">Total Tested</div></div>
+    </div>
+    <p id="result-message" style="margin-top:16px;color:var(--muted);font-size:0.9rem;"></p>
+  </div>
+
+  <div class="test-arena" id="test-arena"></div>
+
+  <div style="text-align:center;margin-top:8px;">
+    <button class="btn btn-primary" onclick="runTests()">🧪 Run All Tests</button>
+    <button class="btn" style="margin-left:8px;background:var(--warning);" onclick="resetSim()">🔄 Reset Simulator</button>
+  </div>
+</div>
+
+<script>
+// ===================== DATA =====================
+const CATEGORIES = ['Animal 🐾', 'Vehicle 🚗', 'Food 🍕', 'Plant 🌿'];
+const TRAINING_DATA = [
+  { id: 1, emoji: '🐱', name: 'Cat',          answer: 'Animal 🐾' },
+  { id: 2, emoji: '🐶', name: 'Dog',          answer: 'Animal 🐾' },
+  { id: 3, emoji: '🚕', name: 'Taxi',         answer: 'Vehicle 🚗' },
+  { id: 4, emoji: '🍎', name: 'Apple',        answer: 'Food 🍕' },
+  { id: 5, emoji: '🌻', name: 'Sunflower',    answer: 'Plant 🌿' },
+  { id: 6, emoji: '🐦', name: 'Bird',         answer: 'Animal 🐾' },
+  { id: 7, emoji: '🚂', name: 'Train',        answer: 'Vehicle 🚗' },
+  { id: 8, emoji: '🍔', name: 'Burger',       answer: 'Food 🍕' },
+  { id: 9, emoji: '🌵', name: 'Cactus',       answer: 'Plant 🌿' },
+  { id:10, emoji: '✈️', name: 'Airplane',     answer: 'Vehicle 🚗' },
+  { id:11, emoji: '🐘', name: 'Elephant',     answer: 'Animal 🐾' },
+  { id:12, emoji: '🍣', name: 'Sushi',        answer: 'Food 🍕' },
+  { id:13, emoji: '🌲', name: 'Tree',         answer: 'Plant 🌿' },
+  { id:14, emoji: '🚲', name: 'Bicycle',      answer: 'Vehicle 🚗' },
+  { id:15, emoji: '🐠', name: 'Fish',         answer: 'Animal 🐾' },
+  { id:16, emoji: '🥑', name: 'Avocado',      answer: 'Food 🍕' },
+];
+const TEST_DATA = [
+  { id:'t1', emoji: '🦊', name: 'Fox',        answer: 'Animal 🐾' },
+  { id:'t2', emoji: '🚀', name: 'Rocket',     answer: 'Vehicle 🚗' },
+  { id:'t3', emoji: '🍰', name: 'Cake',       answer: 'Food 🍕' },
+  { id:'t4', emoji: '🌺', name: 'Hibiscus',   answer: 'Plant 🌿' },
+  { id:'t5', emoji: '🐰', name: 'Rabbit',     answer: 'Animal 🐾' },
+  { id:'t6', emoji: '🚁', name: 'Helicopter', answer: 'Vehicle 🚗' },
+  { id:'t7', emoji: '🫐', name: 'Blueberry',  answer: 'Food 🍕' },
+  { id:'t8', emoji: '🌴', name: 'Palm Tree',  answer: 'Plant 🌿' },
+];
+
+// ===================== STATE =====================
+let userLabels = {};  // id -> category
+let trainedAccuracy = 0;
+let modelTrained = false;
+
+// ===================== PHASE SWITCHING =====================
+function switchPhase(phase) {
+  document.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('phase-' + phase).classList.add('active');
+  document.getElementById('tab-' + phase).classList.add('active');
+  if (phase === 'test' && modelTrained) renderTests();
+}
+
+// ===================== PHASE 1: LABELING =====================
+function buildDataGrid() {
+  const grid = document.getElementById('data-grid');
+  grid.innerHTML = '';
+  TRAINING_DATA.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'data-item' + (userLabels[item.id] ? ' labeled' : '');
+    div.id = 'item-' + item.id;
+    div.innerHTML = `
+      <span class="emoji">${item.emoji}</span>
+      <div style="font-size:0.85rem;font-weight:600;margin-bottom:4px;">${item.name}</div>
+      <select class="label-select" onchange="labelItem(${item.id}, this.value)">
+        <option value="">— Pick label —</option>
+        ${CATEGORIES.map(c => `<option value="${c}" ${userLabels[item.id]===c?'selected':''}>${c}</option>`).join('')}
+      </select>
+    `;
+    grid.appendChild(div);
+  });
+  updateLabelProgress();
+}
+
+function labelItem(id, value) {
+  if (value) {
+    userLabels[id] = value;
+    document.getElementById('item-' + id).classList.add('labeled');
+  } else {
+    delete userLabels[id];
+    document.getElementById('item-' + id).classList.remove('labeled');
+  }
+  updateLabelProgress();
+}
+
+function updateLabelProgress() {
+  const count = Object.keys(userLabels).length;
+  const total = TRAINING_DATA.length;
+  document.getElementById('label-count-text').textContent = `${count} / ${total} labeled`;
+  document.getElementById('label-progress-bar').style.width = (count/total*100) + '%';
+  document.getElementById('train-btn').disabled = count < 10;
+}
+
+// ===================== PHASE 2: TRAINING =====================
+function log(msg) {
+  const box = document.getElementById('log-box');
+  box.innerHTML += `<div>> ${msg}</div>`;
+  box.scrollTop = box.scrollHeight;
+}
+
+function startTraining() {
+  if (modelTrained) { switchPhase('test'); return; }
+  document.getElementById('start-train-btn').disabled = true;
+  document.getElementById('start-train-btn').textContent = 'Training...';
+  document.getElementById('log-box').innerHTML = '';
+  document.getElementById('sample-count').textContent = Object.keys(userLabels).length;
+
+  const chartBars = document.getElementById('chart-bars');
+  chartBars.innerHTML = '';
+
+  const EPOCHS = 20;
+  let epoch = 0;
+  const accuracyHistory = [];
+
+  // Simulate accuracy growth (logistic curve)
+  function calcAccuracy(e) {
+    const labeled = Object.keys(userLabels).length;
+    const quality = Object.entries(userLabels).filter(([id, cat]) => {
+      const item = TRAINING_DATA.find(d => d.id == id);
+      return item && item.answer === cat;
+    }).length / labeled;
+    const maxAcc = 0.5 + (quality * 0.45) + (labeled / TRAINING_DATA.length) * 0.05;
+    return Math.min(maxAcc, 0.99) * (1 - Math.exp(-0.3 * e));
+  }
+
+  function epochStep() {
+    if (epoch >= EPOCHS) {
+      trainedAccuracy = calcAccuracy(EPOCHS);
+      modelTrained = true;
+      log(`Training complete! Final accuracy: ${(trainedAccuracy*100).toFixed(1)}%`);
+      log(`Model saved. Ready to test!`);
+      document.getElementById('start-train-btn').textContent = 'Go to Test →';
+      document.getElementById('start-train-btn').disabled = false;
+      document.getElementById('start-train-btn').onclick = () => switchPhase('test');
+      document.getElementById('tab-train').classList.add('done');
+      document.getElementById('tab-label').classList.add('done');
+      return;
+    }
+    epoch++;
+    const acc = calcAccuracy(epoch);
+    accuracyHistory.push(acc);
+    const loss = Math.max(0.01, 1 - acc + (Math.random() * 0.05 - 0.025));
+
+    document.getElementById('epoch-display').textContent = `${epoch} / ${EPOCHS}`;
+    document.getElementById('train-acc').textContent = (acc*100).toFixed(1) + '%';
+    document.getElementById('train-loss').textContent = loss.toFixed(3);
+    document.getElementById('epoch-bar').style.width = (epoch/EPOCHS*100) + '%';
+
+    if (epoch % 4 === 0 || epoch === 1) {
+      log(`Epoch ${epoch}: acc=${(acc*100).toFixed(1)}%, loss=${loss.toFixed(3)}`);
+    }
+
+    // Chart
+    const bar = document.createElement('div');
+    bar.className = 'chart-bar';
+    bar.style.height = (acc * 100) + '%';
+    bar.title = `Epoch ${epoch}: ${(acc*100).toFixed(0)}%`;
+    chartBars.appendChild(bar);
+
+    setTimeout(epochStep, 180);
+  }
+
+  log(`Starting training with ${Object.keys(userLabels).length} labeled samples...`);
+  setTimeout(epochStep, 300);
+}
+
+// ===================== PHASE 3: TESTING =====================
+function renderTests() {
+  const arena = document.getElementById('test-arena');
+  arena.innerHTML = '';
+  TEST_DATA.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'test-item-card';
+    div.id = 'test-' + item.id;
+    div.innerHTML = `
+      <span class="emoji">${item.emoji}</span>
+      <h3>${item.name}</h3>
+      <div class="prediction-box">
+        <div style="font-size:0.75rem;color:var(--muted);">Model Prediction</div>
+        <div class="pred-label" id="pred-${item.id}">Not tested yet</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:4px;">Confidence</div>
+        <div class="confidence-bar-wrap">
+          <div class="confidence-bar" id="conf-${item.id}" style="width:0%"></div>
+        </div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:2px;" id="conf-txt-${item.id}">—</div>
+      </div>
+      <div id="badge-${item.id}"></div>
+      <div style="font-size:0.8rem;color:var(--muted);margin-top:6px;">Correct answer: <strong>${item.answer}</strong></div>
+    `;
+    arena.appendChild(div);
+  });
+}
+
+function runTests() {
+  if (!modelTrained) {
+    alert('Please train your model first! Go back to Phase 2.');
+    return;
+  }
+  renderTests();
+  document.getElementById('results-panel').style.display = 'none';
+
+  let correct = 0;
+  let idx = 0;
+
+  function testOne() {
+    if (idx >= TEST_DATA.length) {
+      const acc = correct / TEST_DATA.length;
+      document.getElementById('final-accuracy').textContent = (acc*100).toFixed(0) + '%';
+      document.getElementById('r-correct').textContent = correct;
+      document.getElementById('r-wrong').textContent = TEST_DATA.length - correct;
+      document.getElementById('r-total').textContent = TEST_DATA.length;
+      const msg = acc >= 0.75 ? '🎉 Great model! High accuracy on unseen data — no overfitting!' :
+                  acc >= 0.5  ? '👍 Decent model! Try labeling more data correctly to improve.' :
+                                '📚 Keep practicing! Make sure your labels are accurate.';
+      document.getElementById('result-message').textContent = msg;
+      document.getElementById('results-panel').style.display = 'block';
+      document.getElementById('tab-test').classList.add('done');
+      return;
+    }
+
+    const item = TEST_DATA[idx];
+    // Simulate prediction: weighted random based on trained accuracy
+    const isCorrect = Math.random() < trainedAccuracy;
+    const pred = isCorrect ? item.answer : CATEGORIES.filter(c => c !== item.answer)[Math.floor(Math.random()*3)];
+    const confidence = isCorrect ?
+      0.65 + Math.random() * 0.30 :
+      0.30 + Math.random() * 0.30;
+
+    document.getElementById('pred-' + item.id).textContent = pred;
+    document.getElementById('conf-' + item.id).style.width = (confidence*100) + '%';
+    document.getElementById('conf-txt-' + item.id).textContent = (confidence*100).toFixed(0) + '%';
+
+    const badge = document.getElementById('badge-' + item.id);
+    if (isCorrect) {
+      badge.innerHTML = '<span class="correct-badge correct">✓ Correct</span>';
+      correct++;
+    } else {
+      badge.innerHTML = '<span class="correct-badge wrong">✗ Wrong</span>';
+    }
+
+    idx++;
+    setTimeout(testOne, 400);
+  }
+
+  setTimeout(testOne, 200);
+}
+
+function resetSim() {
+  userLabels = {};
+  trainedAccuracy = 0;
+  modelTrained = false;
+  document.getElementById('start-train-btn').disabled = false;
+  document.getElementById('start-train-btn').textContent = '▶ Start Training';
+  document.getElementById('start-train-btn').onclick = startTraining;
+  document.querySelectorAll('.tab').forEach(t => { t.classList.remove('done'); });
+  document.getElementById('epoch-bar').style.width = '0%';
+  document.getElementById('chart-bars').innerHTML = '';
+  document.getElementById('log-box').innerHTML = '';
+  document.getElementById('epoch-display').textContent = '0 / 20';
+  document.getElementById('train-acc').textContent = '0%';
+  document.getElementById('train-loss').textContent = '1.000';
+  buildDataGrid();
+  switchPhase('label');
+}
+
+// ===================== INIT =====================
+buildDataGrid();
+</script>
+</body>
+</html>
