@@ -1,0 +1,170 @@
+WEBVTT
+Kind: captions
+Language: en
+
+NOTE
+Machine Learning for Kids Walkthrough — Caption File
+Module 4 | Adjust timestamps to match final video render.
+
+00:00:00.000 --> 00:00:06.000
+Hey! In this walkthrough, I'm going to show you
+step-by-step how to use a free tool
+
+00:00:06.000 --> 00:00:11.000
+called Machine Learning for Kids
+to train your own AI model —
+
+00:00:11.000 --> 00:00:15.000
+and then test it out.
+
+00:00:15.000 --> 00:00:20.000
+It takes about 15 minutes
+and you don't need to install anything.
+
+00:00:20.000 --> 00:00:23.000
+Let's go!
+
+00:00:30.000 --> 00:00:36.000
+First, open your browser and go to:
+machinelearningforkids.co.uk
+
+00:00:36.000 --> 00:00:42.000
+You'll see this homepage.
+Click "Get started."
+
+00:00:42.000 --> 00:00:50.000
+You can log in with a school account,
+or use "Try it without registering" to jump straight in.
+
+00:01:00.000 --> 00:01:05.000
+Once you're in, click "Add a new project."
+
+00:01:05.000 --> 00:01:11.000
+Give your project a name.
+Let's call it "Animal Classifier."
+
+00:01:11.000 --> 00:01:17.000
+For the type, select "images" —
+we're going to train it to recognize images.
+
+00:01:17.000 --> 00:01:20.000
+Then click "Create."
+
+00:01:20.000 --> 00:01:26.000
+Boom — your project exists!
+Click on it to open it.
+
+00:02:00.000 --> 00:02:07.000
+You'll see three stages:
+Train, Learn & Test, and Make.
+
+00:02:07.000 --> 00:02:11.000
+We'll go through all three.
+Click "Train."
+
+00:02:11.000 --> 00:02:17.000
+This is where you add your training data.
+Click "Add new label"
+
+00:02:17.000 --> 00:02:21.000
+and type your first category.
+Let's do "cat."
+
+00:02:21.000 --> 00:02:25.000
+Now add another label: "dog."
+
+00:02:25.000 --> 00:02:31.000
+Now we need examples.
+Click "Add example" under cat.
+
+00:02:31.000 --> 00:02:37.000
+You can take a picture with your camera,
+or upload an image from your computer.
+
+00:02:37.000 --> 00:02:44.000
+Add at least 10 examples per category —
+the more the better!
+
+00:02:44.000 --> 00:02:50.000
+Mix up your angles, backgrounds, and lighting.
+The AI needs variety to learn well.
+
+00:03:30.000 --> 00:03:36.000
+Go back and click "Learn & Test."
+Then click the big "Train new machine learning model" button.
+
+00:03:36.000 --> 00:03:43.000
+This sends your labeled images to a cloud server
+that trains your model.
+
+00:03:43.000 --> 00:03:49.000
+It usually takes 1–3 minutes.
+You'll see a progress bar.
+
+00:03:49.000 --> 00:03:56.000
+While you're waiting — this is exactly what we talked about
+in the animated video!
+
+00:03:56.000 --> 00:04:04.000
+Data going in, model being trained, accuracy coming out.
+
+00:04:04.000 --> 00:04:10.000
+It's done! You can see your model's accuracy.
+Now let's test it.
+
+00:04:10.000 --> 00:04:15.000
+Click "Test your model."
+
+00:04:15.000 --> 00:04:21.000
+Show it a cat picture — or take a photo.
+Look at that —
+
+00:04:21.000 --> 00:04:27.000
+your AI made a prediction!
+It says "cat" with 87% confidence.
+
+00:04:27.000 --> 00:04:31.000
+Let's try a dog.
+
+00:04:35.000 --> 00:04:40.000
+Nice! It got that right too.
+Try a tricky one —
+
+00:04:40.000 --> 00:04:46.000
+a blurry photo, or one with weird lighting.
+See how confident it is.
+
+00:05:00.000 --> 00:05:06.000
+The third stage is Make —
+this is where you can take your model into a real project
+
+00:05:06.000 --> 00:05:12.000
+in Scratch or a web app.
+If you're doing the extension activity,
+
+00:05:12.000 --> 00:05:18.000
+click "Scratch 3" to open a Scratch editor
+with your AI model built right in!
+
+00:05:18.000 --> 00:05:25.000
+You can see there are special blocks just for your model.
+You could build a game where a sprite reacts differently
+
+00:05:25.000 --> 00:05:30.000
+when it sees a cat vs. a dog!
+
+00:05:40.000 --> 00:05:47.000
+That's it! You just trained and tested
+your own machine learning model.
+
+00:05:47.000 --> 00:05:53.000
+If you want to make it smarter,
+go back to Train and add more examples.
+
+00:05:53.000 --> 00:06:00.000
+More data, better model —
+that's the golden rule of machine learning.
+
+00:06:00.000 --> 00:06:07.000
+Now go take the Module 4 quiz
+and show off what you know. You've got this!
