@@ -1,115 +1,67 @@
 # Module 1 Vocabulary List
 
-**Keep this handy!** These are the key terms for Module 1. You can use this list during your reflection journal entries and the formative check.
+Use this list to study key AI terms. For each term, read the definition and try to think of your own example!
 
 ---
 
-## 1. Artificial Intelligence (AI)
-**Definition:** Technology that lets computers do things that normally require human thinking — like understanding language, recognizing faces, making decisions, or learning from experience.
-
-**In plain terms:** It's software that can "think" in limited ways. Not like a human brain, but smart enough to do specific tasks really well.
-
-**Example:** A spam filter that learns which emails are junk without you manually teaching it every rule.
+**Artificial Intelligence (AI)**
+AI is when computers are programmed to do things that normally require human thinking, like recognizing faces, understanding speech, or making decisions. For example, when your phone suggests the next word as you type a text message, that's AI at work.
 
 ---
 
-## 2. Machine Learning
-**Definition:** A way of building AI where the computer learns patterns from data instead of following rules that a programmer wrote out by hand.
-
-**In plain terms:** Instead of telling the computer *exactly* what to do, you give it thousands of examples and let it figure out the pattern.
-
-**Example:** Showing a program one million photos of cats and dogs until it can tell them apart on its own.
+**Machine Learning**
+Machine learning is a type of AI where a computer learns from examples instead of being told every rule. The more examples it sees, the better it gets — just like how you get better at a video game the more you play. For example, Netflix uses machine learning to figure out which shows you might like based on what you've watched before.
 
 ---
 
-## 3. Algorithm
-**Definition:** A step-by-step set of instructions that a computer follows to complete a task or solve a problem.
-
-**In plain terms:** A recipe. Every time the computer does something, it's following some kind of algorithm.
-
-**Example:** The algorithm that decides which posts appear at the top of your social media feed.
+**Algorithm**
+An algorithm is a step-by-step set of instructions that a computer follows to solve a problem or complete a task. Think of it like a recipe: follow the steps in order and you'll get the result you want. For example, Google Maps uses an algorithm to find the fastest route to your destination.
 
 ---
 
-## 4. Training Data
-**Definition:** The collection of examples, text, images, or other information used to teach a machine learning model.
-
-**In plain terms:** The "homework" an AI does before it's ready to work. The more (and better) data it trains on, the smarter it gets at that task.
-
-**Example:** Millions of sentences in different languages used to train a translation tool.
+**Training Data**
+Training data is the collection of examples that a machine learning system learns from. The bigger and more varied the training data, the smarter the AI can become. For example, to teach an AI to recognize cats, you'd show it thousands of photos of cats as training data.
 
 ---
 
-## 5. Neural Network
-**Definition:** A type of machine learning system loosely inspired by how neurons in a brain connect to each other. It processes information in layers, each one looking for more complex patterns than the last.
-
-**In plain terms:** Imagine a chain of filters — the first one notices basic things (like edges in a photo), and each later one notices more complex things (like a nose, then a face).
-
-**Example:** The system that recognizes your face to unlock your phone uses a neural network.
+**Neural Network**
+A neural network is a type of AI system loosely inspired by how the human brain works, using layers of connected "nodes" that pass information to each other. It's especially good at recognizing patterns like faces, voices, and handwriting. For example, the Face ID on modern phones uses a neural network to recognize your face and unlock your device.
 
 ---
 
-## 6. Natural Language Processing (NLP)
-**Definition:** The branch of AI focused on helping computers understand, interpret, and generate human language — written or spoken.
-
-**In plain terms:** The technology that lets a computer understand what you actually *mean* when you type or talk to it.
-
-**Example:** Virtual assistants like Siri, Alexa, or OpenClaw use NLP to understand your questions.
+**Natural Language Processing (NLP)**
+Natural language processing is the branch of AI that helps computers understand, interpret, and respond to human language — whether it's typed or spoken. It's what allows you to have a conversation with a virtual assistant. For example, when you ask Siri or Google Assistant a question, NLP is what lets them understand what you said.
 
 ---
 
-## 7. Computer Vision
-**Definition:** AI technology that enables computers to interpret and understand images and video, similar to how human eyes and brain work together.
-
-**In plain terms:** Teaching computers to "see." Instead of just storing a photo as pixels, the computer can figure out what's *in* the photo.
-
-**Example:** The self-checkout machine at a grocery store that scans your items by looking at them.
+**Computer Vision**
+Computer vision is the field of AI that teaches computers to "see" and make sense of images and videos, similar to how human eyes and brain work together. For example, self-driving cars use computer vision to detect pedestrians, traffic lights, and other vehicles on the road.
 
 ---
 
-## 8. Turing Test
-**Definition:** A test proposed by mathematician Alan Turing in 1950 to measure machine intelligence. If a human judge can't tell whether they're having a conversation with a human or a machine, the machine is said to have passed.
-
-**In plain terms:** Can a computer fool a person into thinking it's human during a conversation? If yes — it "passes."
-
-**Example:** When you chat with a customer service bot and aren't sure if it's a real person, you're experiencing a version of this in real life.
+**Turing Test**
+The Turing Test is a challenge proposed by scientist Alan Turing to determine whether a computer can think like a human: if a person can't tell whether they're chatting with a human or a machine, the machine passes the test. It's a famous benchmark for measuring how "human-like" an AI is. For example, some modern chatbots can fool people into thinking they're talking to a real person, which means they come close to passing the Turing Test.
 
 ---
 
-## 9. Automation
-**Definition:** Using technology to perform tasks with little or no human involvement once the system is set up.
-
-**In plain terms:** Getting a machine to do a job so a human doesn't have to do it manually every time.
-
-**Example:** A thermostat that automatically adjusts the temperature based on time of day. Or a factory robot that welds car parts.
+**Automation**
+Automation means using technology — often AI — to do tasks with little or no human effort once it's set up. It saves time and reduces repetitive work. For example, car factories use robotic automation to weld and assemble vehicles much faster than humans could by hand.
 
 ---
 
-## 10. Bias
-**Definition:** A tendency in an AI system to produce results that unfairly favor or disadvantage certain groups — usually because the training data reflected those same unfair patterns.
-
-**In plain terms:** AI can pick up bad habits from bad data. If the data was skewed, the AI's answers will be skewed too.
-
-**Example:** A hiring algorithm trained mostly on résumés from one type of person might unfairly rank other candidates lower — even if they're equally qualified.
+**Bias (in AI)**
+AI bias happens when an AI system produces unfair or skewed results because the training data it learned from wasn't balanced or representative. This can lead to the AI treating some groups of people differently than others. For example, a facial recognition AI trained mostly on photos of one group of people might do a poor job recognizing people from other groups.
 
 ---
 
-## 11. Dataset
-**Definition:** An organized collection of data — could be text, images, numbers, videos, etc. — used for training, testing, or improving a machine learning model.
-
-**In plain terms:** The pile of examples the AI learns from. A bigger, more varied dataset usually helps the model do a better job.
-
-**Example:** A dataset of 50,000 labeled medical images used to train an AI to spot tumors in X-rays.
+**Dataset**
+A dataset is an organized collection of data — like a big table, folder of images, or list of text — that is used to train, test, or evaluate an AI system. The quality and size of a dataset directly affects how well an AI performs. For example, a dataset for training a spam filter might include thousands of emails labeled "spam" or "not spam."
 
 ---
 
-## 12. Model
-**Definition:** The finished product of the machine learning training process — the system that has "learned" from data and can now make predictions or generate outputs when given new input.
-
-**In plain terms:** After an AI has trained on its dataset, the result is called a model. It's like the brain of the AI — trained and ready to work.
-
-**Example:** GPT-4, the model behind many AI chat tools, is a large language model trained on vast amounts of text.
+**Model**
+In AI, a model is the result of training a machine learning system — it's the "brain" the computer builds after learning from data, which it then uses to make predictions or decisions. For example, a weather prediction model has learned from years of historical weather data and can now forecast whether it will rain tomorrow.
 
 ---
 
-*Module 1 | openclaw-curriculum*
+*Tip: Try matching each term to a real app or technology you use every day!*
