@@ -146,9 +146,10 @@ Each module folder contains:
 
 ### For Teachers
 1. Read [`CURRICULUM_VISION.md`](./CURRICULUM_VISION.md) for the full arc rationale and pacing philosophy
-2. Start with `module1/teacher-guide/README.md` for the Module 1 pacing guide
-3. Each lesson folder has a `lesson-plan.md` with objectives, materials, and timing
-4. Labs require students to have access to OpenClaw (or the teacher's shared instance)
+2. Read [`journal-teacher-guide.md`](./journal-teacher-guide.md) for guidance on facilitating, assessing, and collecting the Agent Design Journal portfolio
+3. Start with `module1/teacher-guide/README.md` for the Module 1 pacing guide
+4. Each lesson folder has a `lesson-plan.md` with objectives, materials, and timing
+5. Labs require students to have access to OpenClaw (or the teacher's shared instance)
 
 ### For Students
 1. Start at `module1/tutorial-welcome-to-openclaw/` — this is Day 1 of your agent journey
