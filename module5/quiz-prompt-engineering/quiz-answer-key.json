@@ -1,0 +1,52 @@
+{
+  "quiz": "Module 5 — Prompt Engineering Concepts",
+  "totalPoints": 5,
+  "passingScore": 4,
+  "questions": [
+    {
+      "id": 1,
+      "topic": "What a token is",
+      "type": "multiple-choice",
+      "correctAnswer": "B",
+      "correctValue": "A chunk of text — such as a word, part of a word, or punctuation mark — that the model processes as a single unit",
+      "bloomsLevel": "Understanding",
+      "explanation": "Tokens are the atomic units LLMs use to process text. They are neither single characters nor full sentences — they are variable-length text chunks determined during tokenization. Understanding tokens helps students grasp context window limits and why models sometimes struggle with unusual words."
+    },
+    {
+      "id": 2,
+      "topic": "Why role context improves LLM responses",
+      "type": "multiple-choice",
+      "correctAnswer": "B",
+      "correctValue": "It helps the model select an appropriate vocabulary, depth, and tone for the intended audience",
+      "bloomsLevel": "Understanding",
+      "explanation": "Role context provides the model with a frame of reference for calibrating vocabulary, tone, and depth. It does not change the model's knowledge base, extend context limits, or prevent hallucination — it only shapes how information is communicated."
+    },
+    {
+      "id": 3,
+      "topic": "What a hallucination is and why it happens",
+      "type": "true-false",
+      "correctAnswer": "B",
+      "correctValue": "False",
+      "bloomsLevel": "Understanding",
+      "explanation": "Hallucination is not intentional deception. It is a byproduct of the next-token prediction mechanism — the model generates plausible-sounding text without a built-in fact-checking process. The model has no awareness that it has produced incorrect information."
+    },
+    {
+      "id": 4,
+      "topic": "Identifying the better prompt (specificity)",
+      "type": "multiple-choice",
+      "correctAnswer": "B",
+      "correctValue": "Prompt B, because it specifies the audience, length, topic focus, and format, reducing ambiguity",
+      "bloomsLevel": "Application",
+      "explanation": "Prompt B is superior because it constrains the output along four dimensions: audience, length, subject focus, and writing style. Specificity reduces the model's degrees of freedom and guides it toward a response that is actually useful. Prompt A's brevity is a weakness, not a feature."
+    },
+    {
+      "id": 5,
+      "topic": "Academic integrity scenario",
+      "type": "scenario",
+      "correctAnswer": "B",
+      "correctValue": "Option B, because he is using AI as a thinking and planning tool while doing the writing and verification work himself",
+      "bloomsLevel": "Evaluation",
+      "explanation": "Option B demonstrates appropriate AI use: the student employs AI as a scaffolding tool, verifies the output for accuracy, and does the intellectual work of writing independently. Option A constitutes academic dishonesty because it substitutes AI output for the student's own learning and effort."
+    }
+  ]
+}
