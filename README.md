@@ -9,7 +9,7 @@ A project-based, hands-on curriculum introducing AI concepts to middle school st
 | Module | Title | Description | Grade Level |
 |--------|-------|-------------|-------------|
 | **M1** | What Is AI? | Foundations: history, vocabulary, first contact with OpenClaw | 6–8 |
-| **M2** | How AI Thinks | Machine learning basics, pattern recognition, training data | 6–8 |
+| **M2** | How Computers Perceive the World | Image recognition, Teachable Machine, speech recognition, perception AI | 6–8 |
 | **M3** | AI in the Real World | Applications: healthcare, climate, art, bias & ethics | 6–8 |
 | **M4** | Talking to AI | Prompt engineering, conversation design, effective queries | 6–8 |
 | **M5** | AI as a Tool | Automation, productivity workflows, integrations | 7–8 |
@@ -37,7 +37,7 @@ openclaw-curriculum/
 │   ├── assessments/
 │   ├── teacher-guide/
 │   └── textbook-chapter-1/
-├── module2/            ← How AI Thinks (coming soon)
+├── module2/            ← How Computers Perceive the World (in development)
 ├── module3/            ← AI in the Real World (coming soon)
 ├── module4/            ← Talking to AI (coming soon)
 ├── module5/            ← AI as a Tool (coming soon)
