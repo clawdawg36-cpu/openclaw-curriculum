@@ -410,19 +410,19 @@ All materials for Module 7 are organized in the following folders:
 | [`demo-prep/`](./demo-prep/) | `capability-inventory-worksheet.md`, `demo-script-outline.md`, `demo-storyboard-template.md` | ✅ Exists |
 | [`expo-planning-guide/`](./expo-planning-guide/) | `ai-expo-planning-guide.md` — full logistics and planning guide for teachers | ✅ Exists |
 | [`lesson-7-1-demo-design/`](./lesson-7-1-demo-design/) | `lesson-plan.md`, `slides-outline.md` | ✅ Exists |
-| [`lesson-7-2-capability-inventory/`](./lesson-7-2-capability-inventory/) | Lesson plan for capability inventory session | 🔲 Needs content |
-| [`lesson-7-6-ai-expo/`](./lesson-7-6-ai-expo/) | Expo day teacher guide and student flow | 🔲 Needs content |
-| [`lesson-7-7-reflection/`](./lesson-7-7-reflection/) | Reflection session facilitation guide | 🔲 Needs content |
-| [`workshop-7-3-demo-script/`](./workshop-7-3-demo-script/) | Script writing workshop materials | 🔲 Needs content |
-| [`workshop-7-4-rehearsal/`](./workshop-7-4-rehearsal/) | Rehearsal workshop guide + feedback protocol | 🔲 Needs content |
-| [`workshop-7-5-dry-run/`](./workshop-7-5-dry-run/) | Dry run checklist and teacher observation form | 🔲 Needs content |
+| [`lesson-7-2-capability-inventory/`](./lesson-7-2-capability-inventory/) | Lesson plan for capability inventory session | ✅ Exists |
+| [`lesson-7-6-ai-expo/`](./lesson-7-6-ai-expo/) | Expo day teacher guide and student flow | ✅ Exists |
+| [`lesson-7-7-reflection/`](./lesson-7-7-reflection/) | Reflection session facilitation guide | ✅ Exists |
+| [`workshop-7-3-demo-script/`](./workshop-7-3-demo-script/) | Script writing workshop materials | ✅ Exists |
+| [`workshop-7-4-rehearsal/`](./workshop-7-4-rehearsal/) | Rehearsal workshop guide + feedback protocol | ✅ Exists |
+| [`workshop-7-5-dry-run/`](./workshop-7-5-dry-run/) | Dry run checklist and teacher observation form | ✅ Exists |
 | [`textbook-chapter-13/`](./textbook-chapter-13/) | `chapter-13.md` — textbook reading for this module | ✅ Exists |
 | [`textbook-chapter-14/`](./textbook-chapter-14/) | Textbook chapter 14 | ✅ Exists |
 | [`textbook-chapter-15/`](./textbook-chapter-15/) | Textbook chapter 15 | ✅ Exists |
 | [`tutorial-how-to-pitch/`](./tutorial-how-to-pitch/) | `script.md` — pitch tutorial for students | ✅ Exists |
-| [`teacher-guide/`](./teacher-guide/) | Full teacher guide for Module 7 | 🔲 Needs content |
-| [`careers-guide/`](./careers-guide/) | AI career pathways guide (6–8 accessible) | 🔲 Needs content |
-| [`expo/`](./expo/) | Expo day logistics, signage templates, voting materials | 🔲 Needs content |
+| [`teacher-guide/`](./teacher-guide/) | Full teacher guide for Module 7 | ✅ Exists |
+| [`careers-guide/`](./careers-guide/) | AI career pathways guide (6–8 accessible) | ✅ Exists |
+| [`expo/`](./expo/) | Expo day logistics, signage templates, voting materials | ✅ Exists |
 
 ---
 
