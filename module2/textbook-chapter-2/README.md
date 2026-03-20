@@ -1,4 +1,11 @@
-# Companion Textbook — Chapter 2: How AI Sees and Hears
+# Companion Textbook — Chapter 2: How AI Sees and Hears (ARCHIVED)
+
+> ⚠️ **ARCHIVED — March 2026**
+> This combined chapter has been split per the canonical chapter numbering plan:
+> - **Chapter 3: How Computers See** → `module2/textbook-chapter-3/`
+> - **Chapter 4: How Computers Hear** → `module2/textbook-chapter-4/`
+>
+> This folder is preserved for reference. For active content, see the chapters above.
 
 **Module:** 2 — Give Your Agent Vision
 **Reading Level:** Grades 6–8 (Flesch-Kincaid 6th–7th grade)

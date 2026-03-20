@@ -1,5 +1,12 @@
 # Chapter 2: How AI Sees and Hears
 
+> ⚠️ **ARCHIVED — March 2026**
+> This combined chapter has been split into two separate chapters per the canonical chapter plan:
+> - **Chapter 3: How Computers See — Pixels, Patterns, Perception** → `module2/textbook-chapter-3/chapter-3.md`
+> - **Chapter 4: How Computers Hear — Sound, Speech, Signals** → `module2/textbook-chapter-4/chapter-4.md`
+>
+> This file is preserved for reference. The authoritative content is in the two chapters above.
+
 > **Module 2 | Companion Textbook**
 > *Grades 6–8 | OpenClaw AI Literacy Curriculum*
 

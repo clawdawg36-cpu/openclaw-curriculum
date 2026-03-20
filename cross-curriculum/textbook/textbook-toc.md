@@ -32,45 +32,51 @@ Maya's Monday morning — full of AI she doesn't notice — opens the chapter. S
 ---
 
 ### Chapter 2: AI Through History — From Turing to Today
-**Source:** `module1/` ← **MISSING** (see fix task)
+**Source:** `module1/textbook-chapter-2/chapter-2.md` ✅
 
-**Chapter Summary (planned):**
-A deeper dive into AI's timeline — the Dartmouth Conference, the first AI winters, expert systems, the machine learning revolution, deep learning's rise, and the current generative AI era. Students explore not just *what* happened but *why* — the interplay of compute power, data availability, and scientific breakthroughs. Includes profiles of key figures: Alan Turing, Marvin Minsky, Geoffrey Hinton, and others.
+**Chapter Summary:**
+A deep-dive history of AI from Alan Turing's 1950 paper through the 2020s generative AI era. Opens with Turing's "Computing Machinery and Intelligence" and the Imitation Game, then traces AI through the Dartmouth Conference, the early optimism of expert systems and symbolic AI, two AI winters (1974 and 1987), the rise of machine learning and neural networks, the deep learning revolution triggered by ImageNet 2012, the emergence of the Transformer architecture, and the GPT/ChatGPT era. Closes with a section on what comes next and why history matters to students building AI tools today.
 
-**Key Concepts:** Dartmouth Conference, expert systems, symbolic AI, connectionism, deep learning, generative AI, foundation models
+**Key Concepts:** Turing Test, Dartmouth Conference, expert systems, symbolic AI, AI Winter, machine learning, neural network, backpropagation, deep learning, ImageNet, Transformer, large language model (LLM), ChatGPT
 
-**Status:** Chapter content is covered briefly in Chapter 1 Section 2 (AI history overview). A dedicated Chapter 2 with expanded historical depth is planned but not yet written.
+**Opening Story:** "The Question That Started Everything" — Alan Turing in 1950
+**Key Figures Profiled:** Alan Turing, John McCarthy, Geoffrey Hinton, Garry Kasparov (Deep Blue), Lee Sedol (AlphaGo)
+**AI in the Wild Sidebars:** Turing Test in Action (Eugene Goostman), Lessons From the Winter, AlphaGo and Move 37, The Researchers Who Worry (2023 open letter)
+**OpenClaw Challenges:** Timeline Detectives, Turing Test Experiment, AI Winters vs. AI Hype essay
 
 ---
 
 ## Module 2: How AI Perceives the World
 
-### Chapter 3: How AI Sees
-*(Previously labeled Chapter 2/Chapter 3-4 — see style-consistency-notes.md)*
-**Source:** `module2/textbook-chapter-2/chapter-2.md` (first half)
+### Chapter 3: How Computers See — Pixels, Patterns, Perception
+**Source:** `module2/textbook-chapter-3/chapter-3.md` ✅
 
 **Chapter Summary:**
-The chapter opens with a school camera that learns to recognize faces, then breaks down exactly how: pixels as RGB data grids, feature detection through neural network layers (edges → shapes → parts → objects), image classification with confidence scores, and the difference between classification, object detection, and image captioning. A major section covers training data: where it comes from, why diversity matters, and the "garbage in, garbage out" rule. Introduces Hugging Face as a platform for pre-trained models.
+The chapter opens with a school camera that learns to recognize faces, then breaks down exactly how: pixels as RGB data grids, feature detection through neural network layers (edges → shapes → parts → objects), image classification with confidence scores, and the difference between classification, object detection, and image captioning. A major section covers training data: where it comes from, why diversity matters, and the "garbage in, garbage out" rule. Introduces Hugging Face as a platform for pre-trained models. Closes with a bias section focused on the Gender Shades study and facial recognition inequality.
 
-**Key Concepts:** pixel, RGB, feature detection, image classification, object detection, image captioning, deep neural network, training data, pre-trained model, Hugging Face, Inference API
+**Key Concepts:** pixel, RGB, feature detection, image classification, object detection, image captioning, deep neural network, training data, pre-trained model, Hugging Face, Inference API, bias (in AI), Gender Shades
 
 **Opening Story:** The Camera That Learned Your Face
-**AI in the Wild Sidebars:** Instagram's Secret Layer, Self-Driving Cars and the Tractor Problem, The Open-Source AI Revolution
+**AI in the Wild Sidebars:** Instagram's Secret Layer, Self-Driving Cars and the Tractor Problem, The Open-Source AI Revolution, The Wrongful Arrest (Robert Williams)
+**OpenClaw Challenges:** Caption Safari, The Bias Test, Build a "What Do You See?" Game
+
+*Note: This is the vision-only chapter, split from the original combined `module2/textbook-chapter-2/chapter-2.md`. The original file is preserved.*
 
 ---
 
-### Chapter 4: How AI Hears
-*(Previously part of the combined Module 2 chapter — see style-consistency-notes.md)*
-**Source:** `module2/textbook-chapter-2/chapter-2.md` (second half — Sections 5–7)
+### Chapter 4: How Computers Hear — Sound, Speech, Signals
+**Source:** `module2/textbook-chapter-4/chapter-4.md` ✅
 
 **Chapter Summary:**
-Sound as waveform data (amplitude over time, 44,100 samples/second), conversion to spectrograms for pattern recognition, and the full speech recognition pipeline: capture → preprocessing → neural network → language model correction → output. Introduces OpenAI's Whisper model. A major ethics section examines systematic bias in facial recognition (Gender Shades study, 1% vs. 35% error rates) and speech recognition (2× error rates for Black speakers), with examples of real-world consequences including wrongful arrests.
+Opens with the origin story of OpenAI's Whisper (diversity-first training on 680,000 hours of internet audio). Covers sound as waveform data (amplitude over time, 44,100 samples/second), conversion to spectrograms for pattern recognition, and the full speech recognition pipeline: capture → preprocessing → neural network → language model correction → output. Draws explicit analogy between spectrograms and image processing (Chapter 3 connection). A major ethics section examines systematic bias in speech recognition (2× error rates for Black speakers, accent discrimination in hiring AI). Closes with the Module 2 Complete section and Module 3 preview.
 
-**Key Concepts:** waveform, spectrogram, speech recognition, Whisper, bias (in AI), Gender Shades, adversarial attack
+**Key Concepts:** waveform, sample rate, spectrogram, speech recognition, acoustic model, language model, Whisper, transcription, accent bias, multimodal
 
-**Opening Story (continued):** The Camera That Learned Your Face
-**AI in the Wild Sidebars:** Real-Time Captioning for Deaf Students, The Wrongful Arrest (Robert Williams)
-**OpenClaw Challenges:** Caption Safari, The Bias Test, Build a "What Do You See?" Game
+**Opening Story:** "The Voice That Taught a Machine to Listen" — the origin of Whisper
+**AI in the Wild Sidebars:** Real-Time Captioning for Deaf Students, Accent Discrimination in Hiring AI
+**OpenClaw Challenges:** Whisper Test, Spectrogram Explorer, Hearing Equality Audit
+
+*Note: This is the audio-only chapter, split from the original combined `module2/textbook-chapter-2/chapter-2.md`. The original file is preserved.*
 
 ---
 
@@ -243,9 +249,9 @@ A letter to the student opens the final chapter: a reflection on how far they've
 | Ch | Title | Module | Status |
 |----|-------|--------|--------|
 | 1 | What Is AI? | 1 | ✅ Complete |
-| 2 | AI Through History | 1 | ❌ Missing — see fix task |
-| 3 | How AI Sees | 2 | ✅ Built (first half of chapter-2.md) |
-| 4 | How AI Hears | 2 | ✅ Built (second half of chapter-2.md — needs split) |
+| 2 | AI Through History — From Turing to Today | 1 | ✅ Complete (added March 2026) |
+| 3 | How Computers See — Pixels, Patterns, Perception | 2 | ✅ Complete (split from chapter-2.md, March 2026) |
+| 4 | How Computers Hear — Sound, Speech, Signals | 2 | ✅ Complete (split from chapter-2.md, March 2026) |
 | 5 | The Logic of AI | 3 | ✅ Complete |
 | 6 | AI Detectives | 3 | ✅ Complete |
 | 7 | How AI Learns | 4 | ✅ Complete |
@@ -258,9 +264,9 @@ A letter to the student opens the final chapter: a reflection on how far they've
 | 14 | Careers in AI and Technology | 7 | ✅ Complete |
 | 15 | Your Agent and Your Future | 7 | ✅ Complete |
 
-**Chapters complete:** 14 of 15
-**Missing:** Chapter 2 (tracked in fix task)
-**Needs split:** Module 2 chapter-2.md covers both Ch 3 and Ch 4 in one file (tracked in fix task)
+**Chapters complete:** 15 of 15 ✅
+**Fixed March 2026:** Chapter 2 (AI Through History) created at `module1/textbook-chapter-2/chapter-2.md`
+**Fixed March 2026:** Module 2 chapter-2.md split — Chapter 3 at `module2/textbook-chapter-3/chapter-3.md`, Chapter 4 at `module2/textbook-chapter-4/chapter-4.md`. Original combined file preserved at `module2/textbook-chapter-2/chapter-2.md`.
 
 ---
 
