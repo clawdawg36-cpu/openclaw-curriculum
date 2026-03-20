@@ -172,3 +172,44 @@ Collect exit tickets. Review before next class to identify misconceptions and su
 - `reasoning-failure-audit.md` — Student self-audit tool
 - `exit-ticket.md` — 3-question exit assessment
 - `teacher-guide.md` — Facilitation notes, sensitive topic handling, deeper resources
+
+---
+
+## 📓 Module 3 Close — Agent Design Journal
+
+> *This closing ritual happens during the Module Wrap-Up session (Day 15 or the final period), not immediately after Lesson 3.5. Include it as the final structured activity before transitioning to Module 4.*
+
+**Tell students:**
+> *"You designed something that didn't exist before — a skill that gives your agent expertise in a domain you chose. Before we move to Module 4, let's document what we built, what we discovered, and what we'd improve."*
+
+**Step 1 — Add the M3 Row to the Module Notes Table (5 min)**
+
+Students open `AGENT_JOURNEY.md` and complete the M3 row:
+
+| Module | What I built | What surprised me | What I'd change |
+|--------|-------------|-------------------|-----------------|
+| M3 | | | |
+
+**Prompts:**
+
+1. **What I built:** What domain did you choose for your agent's expertise? Describe the knowledge base you curated and the reasoning logic you wrote. Be specific — what can your agent now answer that a generic AI couldn't?
+2. **What surprised me:** Where did your skill succeed unexpectedly? Where did it fail? What did today's Reasoning Failure Audit reveal about your own skill that you hadn't noticed before?
+3. **What I would change:** Knowing what you now know about how reasoning AI fails — GIGO, proxy variables, feedback loops — what would you design differently? What did you include that you'd cut, or leave out that you'd add?
+
+**Step 2 — Update the Agent Status Block (2 min)**
+
+Students find and update the **Agent Status After M3** block:
+
+```
+🤖 [YOUR AGENT NAME]
+   Can: Have a conversation, see images, identify audio, use custom knowledge
+   Can't yet: Learn from new data, speak out loud, or behave ethically by design
+```
+
+**Step 3 — Check the box (1 min)**
+
+```
+[x] Complete
+```
+
+**Teacher note:** The "What I would change" prompt is particularly powerful after Lesson 3.5's ethics content — students have just audited their own skill for failure modes, so they have concrete things to reflect on. Encourage them to connect the two. These journals are a living record of their growth as AI designers, not just builders.

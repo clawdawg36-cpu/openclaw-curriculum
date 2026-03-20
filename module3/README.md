@@ -166,7 +166,7 @@ This module contains five core lessons, one multi-day lab, and supporting activi
 | **Day 12** | Lab Day 2 | Build SKILL.md; test with 5 queries; document results; refine based on findings | Devices, text editor, OpenClaw |
 | **Day 13** | Lab Day 3 | Skill Showcases (2-min format: name → what it does → live demo → one design decision) | Working agent skills |
 | **Day 14** | Buffer / Extension | Catch-up, Stump the AI activity, Agent Journal writing, module assessments | `activity-stump-the-ai/`, journals |
-| **Day 15** | Module Wrap-Up | Update Agent Journey, whole-class reflection, preview Module 4 | [AGENT_JOURNEY.md](../AGENT_JOURNEY.md) |
+| **Day 15** | Module Wrap-Up | Update Agent Journey, whole-class reflection, preview Module 4; **Agent Design Journal close** | [AGENT_JOURNEY.md](../AGENT_JOURNEY.md) |
 
 ---
 
@@ -223,12 +223,32 @@ The lab project is graded on four dimensions:
 
 See full rubric: [`lab-build-your-first-skill/rubric.md`](./lab-build-your-first-skill/)
 
-### Agent Design Journal Prompt (Post-Lab)
-After the lab, update your Agent Design Journal:
-- What domain did you give your agent expertise in?
-- What was hardest to represent as knowledge?
-- What question did your agent answer that genuinely surprised you?
-- What's one thing your skill *can't* do — and why?
+### 📓 Agent Design Journal — Module Close Prompt
+
+At the end of the module (Day 14–15, after the showcase), students complete a structured journal update in `AGENT_JOURNEY.md`.
+
+**Step 1 — Add the M3 Row to the Module Notes Table:**
+
+| Module | What I built | What surprised me | What I'd change |
+|--------|-------------|-------------------|-----------------|
+| M3 | | | |
+
+**Prompts:**
+1. **What I built:** What domain did you give your agent expertise in? Describe the knowledge base you curated and the reasoning logic you wrote. What can your agent now do that it couldn't before?
+2. **What surprised me:** What was hardest to represent as knowledge? Did your agent answer a question in a way that genuinely surprised you — for better or worse? What did the Reasoning Failure Audit (Lesson 3.5) reveal about your own skill?
+3. **What I would change:** What's one thing your skill *can't* do — and why? If you had 2 more days, what would you change about your skill's scope, knowledge base, or reasoning logic?
+
+**Step 2 — Update the Agent Status After M3 block:**
+```
+🤖 [YOUR AGENT NAME]
+   Can: Have a conversation, see images, identify audio, use custom knowledge
+   Can't yet: Learn from new data, speak out loud, or behave ethically by design
+```
+
+**Step 3 — Check the box:**
+```
+[x] Complete
+```
 
 ---
 
@@ -296,9 +316,10 @@ Agent Journey Progress:
 **See the full tracker:** [AGENT_JOURNEY.md](../AGENT_JOURNEY.md)
 
 After the Lab, students should:
-1. Open their Agent Design Journal
-2. Write an entry: *"My agent now knows about [domain]. Here's a test I ran: [query + result]. Here's where it surprised me: [reflection]."*
-3. Check off **Unlock #3: Knowledge** in their journey tracker
+1. Open their `AGENT_JOURNEY.md` Agent Design Journal
+2. Complete the M3 row in the Module Notes table (see Assessment section for full prompts)
+3. Update the **Agent Status After M3** block with their agent's current capabilities
+4. Check off **Unlock #3: Knowledge** in their journey tracker
 
 ---
 
