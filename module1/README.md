@@ -14,6 +14,7 @@
 2. **How do machines learn from data?** What does it mean to train an AI, and what happens when the training goes wrong?
 3. **Who benefits — and who is harmed — when AI makes decisions?** How does bias get into AI systems, and whose responsibility is it to fix it?
 4. **What role do humans play in an AI-powered world?** As AI takes on more tasks, what uniquely human skills become more valuable?
+5. **What does it mean for AI to act autonomously?** How is an AI agent different from a chatbot, and what new possibilities — and risks — does that create?
 
 ---
 
@@ -29,6 +30,9 @@ By the end of this module, students will be able to say:
 - **I can** use domain vocabulary accurately when discussing AI (algorithm, model, dataset, NLP, computer vision, etc.).
 - **I can** evaluate an AI system by asking questions about fairness, accuracy, and purpose.
 - **I can** make and support a claim about AI using evidence from class activities and discussions.
+- **I can** define "AI agent" and describe the Perceive → Reason → Act loop with real-world examples.
+- **I can** identify the difference between a reactive chatbot and an autonomous AI agent on a spectrum.
+- **I can** reflect on my own deployed OpenClaw as an example of an agentic AI system.
 
 ---
 
@@ -85,9 +89,28 @@ By the end of this module, students will be able to say:
 
 ---
 
+## Module Structure
+
+This module contains four core lessons, one standalone deployment lab, and supporting labs/tutorials.
+
+| # | Type | Title | Duration | Notes |
+|---|---|---|---|---|
+| 1.1 | Lesson | What Is AI? | 2–3 days | Hook + definition + algorithms |
+| 1.2 | Lesson | AI in Your World | 2 days | Real-world AI exploration |
+| 1.3 | Lesson | First Contact with OpenClaw | 1–2 days | Students use OpenClaw for the first time |
+| **1.3b** | **Lab** | **Deploy Your Own OpenClaw** | **1–2 days** | **Students set up + personalize their own instance** |
+| 1.4 | Lesson | The Turing Test & AI Limits | 1 day | Can machines think? What are AI's limits? |
+| — | Lab | OpenClaw 101 | Flexible | Supplemental hands-on lab |
+| — | Tutorial | Welcome to OpenClaw | Flexible | Onboarding tutorial |
+| — | Tutorial | First Conversation | Flexible | Guided first conversation walkthrough |
+
+> **Lab 1.3b** is the keystone hands-on experience of Module 1. Every student leaves with a working, personalized OpenClaw instance they will use throughout all 7 modules. See [`lab-deploy-your-openclaw/README.md`](./lab-deploy-your-openclaw/README.md) for full details.
+
+---
+
 ## Day-by-Day Pacing Calendar
 
-> **Standard version: 3 weeks (15 days)**
+> **Standard version: 3 weeks (15 days) + 1–2 lab days**
 > Adjust using the flex options below for 1-week or 4-week implementations.
 
 ### Week 1 — What Is AI?
@@ -110,13 +133,19 @@ By the end of this module, students will be able to say:
 | **Day 9** | NLP + Computer Vision | Explore NLP demo tools; analyze how computer vision identifies objects | Online NLP demos, image classifier tools |
 | **Day 10** | Dataset Deep Dive | Students analyze a real dataset (e.g., Kaggle beginner set); identify gaps and potential bias | Laptop/tablet, dataset printout or link |
 
-### Week 3 — AI in Society
+> **📍 After Day 9 or Day 10 (teacher's choice), insert Lab 1.3b — Deploy Your Own OpenClaw (1–2 periods)**
+> This lab bridges Lesson 1.3 (First Contact) and Lesson 1.4 (The Turing Test). Students set up their personal OpenClaw instance, write their first system prompt, and complete the "introduce yourself" verification activity.
+> See [`lab-deploy-your-openclaw/`](./lab-deploy-your-openclaw/) for all lab materials.
+
+### Week 3 — AI in Society + Turing Test
 
 | Day | Focus | Activity | Materials |
 |---|---|---|---|
+| **Day 10b–11a** | *(Lab 1.3b)* Deploy Your Own OpenClaw | Students set up personal assistant, write system prompt, complete verification | Devices, `lab-deploy-your-openclaw/` |
 | **Day 11** | Bias in AI | Case study: Amazon hiring tool bias; facial recognition disparities; discuss causes and effects | Case study handouts |
 | **Day 12** | Automation + Future of Work | "Will a Robot Take My Job?" activity; research + discussion | Job cards, research time |
 | **Day 13** | Ethics Frameworks | Introduction to AI ethics principles; students apply them to a case study | Ethics framework handout |
+| **Day 13b** | Lesson 1.4 — The Turing Test | "Is It Human?" activity; discuss AI limits and what intelligence means | `lesson-1-4-turing-test/` materials |
 | **Day 14** | Socratic Seminar | Structured discussion: "Is AI more beneficial or harmful to society today?" | Discussion norms posted |
 | **Day 15** | Module Wrap-Up + Assessment | Written reflection; vocabulary post-test; module self-assessment | Assessment rubric |
 
