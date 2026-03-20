@@ -173,3 +173,5 @@ Students complete a short written reflection on their QuickDraw experience, conn
 - [Google Teachable Machine](https://teachablemachine.withgoogle.com/) — train your own image classifier in-browser
 - [Hugging Face Spaces — Image Classification demos](https://huggingface.co/spaces?pipeline_tag=image-classification)
 - [ImageNet large scale visual recognition challenge](https://image-net.org/)
+
+<!-- reviewed: 2026-03-20 -->
