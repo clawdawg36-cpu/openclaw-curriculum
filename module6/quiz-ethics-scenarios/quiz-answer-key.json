@@ -1,0 +1,79 @@
+{
+  "quiz": "Module 6: Ethics Scenarios",
+  "module": "module6",
+  "total_questions": 6,
+  "answers": [
+    {
+      "question_number": 1,
+      "topic": "Bias Identification",
+      "correct_answer": "B",
+      "correct_text": "The historical training data reflected past discriminatory hiring patterns, which the algorithm learned and replicated",
+      "why_correct": "This is the core concept of 'historical bias.' The algorithm didn't invent discrimination — it learned from data that already encoded it. If women and certain ethnic groups were historically hired at lower rates (due to conscious or unconscious bias in past decisions), the algorithm treats that as the 'correct' pattern to follow. Garbage in, garbage out — but in a systemic, hard-to-see way.",
+      "why_not_A": "Rewriting the algorithm from scratch wouldn't fix the problem if it's retrained on the same biased data. The architecture isn't the issue — the data is.",
+      "why_not_C": "This is an overgeneralization. AI *can* be designed to make fair decisions — but only with careful attention to training data, evaluation metrics, and ongoing auditing. Declaring AI inherently incapable would mean abandoning useful tools instead of fixing them.",
+      "why_not_D": "Algorithms absolutely can be biased — not because they have feelings, but because they replicate patterns in data. Saying 'algorithms can't be biased' is a dangerous misconception that has led to real-world harm.",
+      "key_concept": "Bias in AI is often inherited from historical data, not intentionally programmed. Auditing for bias requires examining outcomes, not just intentions.",
+      "discussion_angle": "Ask students: If the company kept using the algorithm but fixed the data going forward, would that be enough?"
+    },
+    {
+      "question_number": 2,
+      "topic": "Stakeholder Analysis",
+      "correct_answer": "B",
+      "correct_text": "The school administration benefits from efficiency and data, but students may be harmed through reduced privacy, potential misidentification, and the normalization of surveillance without consent",
+      "why_correct": "Stakeholder analysis requires looking at *who holds power* and *who bears risk* separately. Administrators get real benefits (speed, data, automation). But students — especially minors who cannot meaningfully consent — bear the risks: biometric data collection, potential misidentification (which can be worse for certain demographics), and living in an environment where surveillance is normalized. Benefits and harms rarely distribute equally.",
+      "why_not_A": "This ignores differential impact. 'Faster attendance' benefits operational efficiency at the administrative level. Students don't meaningfully benefit — they didn't experience slow roll-call as a burden worth solving with facial biometrics.",
+      "why_not_C": "This is too narrow. Administrators (principals, IT, district leadership) also benefit significantly, and students are affected in ways that go beyond just teachers' time.",
+      "why_not_D": "Secure storage addresses one risk (data breach) but not the others: misidentification, consent, chilling effects on behavior, or the power imbalance created by constant biometric monitoring.",
+      "key_concept": "Stakeholder analysis means identifying *everyone* affected, not just the people who made the decision. Power asymmetry matters — students can't opt out.",
+      "discussion_angle": "Ask students: What would you want to know before deciding if this system is okay? What if it misidentifies you as absent when you're actually there?"
+    },
+    {
+      "question_number": 3,
+      "topic": "Responsible Disclosure",
+      "correct_answer": "C",
+      "correct_text": "Tell Jordan privately about the issue so it can be fixed before the demo, and suggest they both report it to a teacher or administrator",
+      "why_correct": "This is the textbook 'responsible disclosure' approach: notify the person who can fix it, give them a chance to fix it before the vulnerability is public, and loop in appropriate authorities. It respects Jordan's work while prioritizing safety for everyone who might use the bot. Maya is acting as a responsible peer — not a bystander, not a saboteur.",
+      "why_not_A": "Ignoring a known safety vulnerability is a failure of responsibility. 'It's not my problem' doesn't hold up when you know people will be harmed. In professional security contexts, staying silent about a known vulnerability can have serious consequences.",
+      "why_not_B": "Public disclosure before the builder has a chance to fix it is generally irresponsible, especially for a school project. It could expose users to harm immediately and embarrass Jordan without solving anything. The goal is to get the problem *fixed*, not to get credit for finding it.",
+      "why_not_D": "Exploiting a vulnerability further increases exposure and harm. It also raises ethical and potentially legal issues. Finding the problem doesn't give you permission to use it.",
+      "key_concept": "Responsible disclosure = tell the right people privately, give them time to fix it, escalate to trusted adults if needed. Don't stay silent, don't go public immediately.",
+      "discussion_angle": "Ask students: What if Jordan gets defensive and refuses to fix it? What's the next step? This opens a conversation about when escalation becomes necessary."
+    },
+    {
+      "question_number": 4,
+      "topic": "Usage Policy",
+      "correct_answer": "B",
+      "correct_text": "A statement of what the agent is designed to do, what it should *not* be used for, how its outputs should be treated (verified, not blindly trusted), and who to contact if something goes wrong",
+      "why_correct": "A good usage policy sets scope (what it's for), limits (what it's NOT for), epistemic expectations (outputs need verification — AI makes mistakes), and accountability (who to contact). This is the minimum viable policy for responsible deployment. It protects users from misuse, misunderstanding, and over-reliance.",
+      "why_not_A": "A list of favorite tools is not a policy — it's trivia. It doesn't tell users anything about how to responsibly use this specific agent.",
+      "why_not_C": "No AI agent can guarantee correct answers. Including this claim would be dishonest and would expose the team to responsibility when (not if) the agent gets something wrong. Promising accuracy is a red flag in any AI deployment.",
+      "why_not_D": "A policy that restricts users from asking anything the agent might get wrong would make the agent useless — AI can be wrong about almost anything. The right approach is to explain *how* to use outputs responsibly, not ban questions.",
+      "key_concept": "Usage policies define scope, limits, expectations, and accountability. They're not about restricting users — they're about setting shared understanding.",
+      "discussion_angle": "Have students draft a one-paragraph usage policy for a real tool they use (Google, ChatGPT, etc.). What would it say?"
+    },
+    {
+      "question_number": 5,
+      "topic": "Guardrail Design",
+      "correct_answer": "B",
+      "correct_text": "An output filter that screens responses for harmful, inappropriate, or off-topic content before they are posted publicly",
+      "why_correct": "In a public-facing, multi-user environment like a school Discord server, the highest-risk failure mode is the agent saying something harmful, inappropriate, or embarrassing in front of hundreds of people. An output filter addresses this directly — it's the last line of defense before words reach real users. This is a foundational safety guardrail that applies to every possible misuse.",
+      "why_not_A": "Message length limits solve a formatting problem, not a safety problem. A harmful 50-character response is far worse than a harmless 500-character one.",
+      "why_not_C": "Access fees are a monetization mechanic, not a safety measure. They don't prevent the agent from producing harmful content.",
+      "why_not_D": "Time restrictions might reduce volume of use but don't prevent harm during allowed hours. A harmful response at 10am is just as problematic as one at midnight.",
+      "key_concept": "The most critical guardrail for a public agent is output safety — preventing harmful content from reaching users. Guardrails should address the highest-impact failure mode first.",
+      "discussion_angle": "Ask students: What other guardrails would you add *after* the output filter? Rate limits? Topic restrictions? User authentication? Rank them by priority."
+    },
+    {
+      "question_number": 6,
+      "topic": "Builder Responsibility",
+      "correct_answer": "B",
+      "correct_text": "Yes — once you build and deploy a tool, you have ongoing responsibility to monitor how it's being used and take action when misuse is discovered, even if the original intent was good",
+      "why_correct": "Good intent doesn't end responsibility. Once Sam deployed the agent publicly (or semi-publicly, where links could be shared), Sam became a *deployer* with ongoing obligations. Those obligations include: knowing your tool is being used, noticing when use patterns change, and taking action when harm is occurring. Sam discovering the misuse is the moment of responsibility — doing nothing at that point is a choice.",
+      "why_not_A": "This is the 'I just made the tool' defense — and it has limits. It might be valid if Sam had no way to know or intervene. But if Sam knows the misuse is happening and does nothing, that's a decision with ethical weight.",
+      "why_not_C": "Responsibility isn't zero-sum. Yes, the students submitting AI essays bear responsibility. But that doesn't eliminate Sam's responsibility as the builder whose tool made the harm possible. Multiple people can bear responsibility for the same outcome.",
+      "why_not_D": "This overcorrects. The quiz isn't asking about school rules — it's asking about ethical responsibility. Expulsion is a disproportionate consequence and misframes the lesson. Builders aren't punished for good-faith work that gets misused; they're responsible for *responding* when they find out.",
+      "key_concept": "Building and deploying a tool creates ongoing responsibility. Discovering misuse is not the end of your obligation — it's the beginning of it.",
+      "discussion_angle": "Ask students: What specifically should Sam *do* now? (Options: take down the tool, add restrictions, report to a teacher, reach out to students misusing it?) What are the tradeoffs of each?"
+    }
+  ]
+}
