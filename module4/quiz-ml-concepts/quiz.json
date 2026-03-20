@@ -1,0 +1,116 @@
+{
+  "quiz": {
+    "id": "module4-ml-concepts",
+    "title": "Module 4 Quiz: Machine Learning Concepts",
+    "description": "Test your understanding of how AI learns. 8 questions, auto-graded.",
+    "passingScore": 75,
+    "randomizeQuestions": false,
+    "randomizeOptions": true,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "question": "What is machine learning?",
+        "options": [
+          { "id": "a", "text": "Writing every rule manually in code", "correct": false },
+          { "id": "b", "text": "Teaching computers to learn from examples instead of explicit rules", "correct": true },
+          { "id": "c", "text": "A robot that can walk and talk", "correct": false },
+          { "id": "d", "text": "A type of computer memory", "correct": false }
+        ],
+        "explanation": "Machine learning is a type of AI where computers learn patterns from labeled examples rather than being given step-by-step rules.",
+        "points": 1
+      },
+      {
+        "id": "q2",
+        "type": "multiple-choice",
+        "question": "In supervised learning, what does 'labeled data' mean?",
+        "options": [
+          { "id": "a", "text": "Data that has been sorted alphabetically", "correct": false },
+          { "id": "b", "text": "Data stored in a folder with a name tag", "correct": false },
+          { "id": "c", "text": "Examples that have been tagged with the correct answers", "correct": true },
+          { "id": "d", "text": "Data compressed into a ZIP file", "correct": false }
+        ],
+        "explanation": "In supervised learning, labeled data means each example comes with its correct answer (label), like an image tagged 'cat' or 'dog'.",
+        "points": 1
+      },
+      {
+        "id": "q3",
+        "type": "multiple-choice",
+        "question": "Which type of machine learning uses rewards and penalties to improve over time?",
+        "options": [
+          { "id": "a", "text": "Supervised learning", "correct": false },
+          { "id": "b", "text": "Unsupervised learning", "correct": false },
+          { "id": "c", "text": "Reinforcement learning", "correct": true },
+          { "id": "d", "text": "Transfer learning", "correct": false }
+        ],
+        "explanation": "Reinforcement learning trains an agent through rewards and penalties — like training a puppy or teaching AI to play games.",
+        "points": 1
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "What is an 'epoch' in machine learning training?",
+        "options": [
+          { "id": "a", "text": "A single test example shown to the model", "correct": false },
+          { "id": "b", "text": "One complete pass through the entire training dataset", "correct": true },
+          { "id": "c", "text": "The final accuracy score of a model", "correct": false },
+          { "id": "d", "text": "A type of neural network layer", "correct": false }
+        ],
+        "explanation": "An epoch is one complete pass through all the training data. Models typically train for many epochs to improve accuracy.",
+        "points": 1
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "What is 'overfitting' in machine learning?",
+        "options": [
+          { "id": "a", "text": "When a model performs well on new, unseen data", "correct": false },
+          { "id": "b", "text": "When a model is too simple to learn any patterns", "correct": false },
+          { "id": "c", "text": "When a model memorizes training data but fails on new examples", "correct": true },
+          { "id": "d", "text": "When training takes too long", "correct": false }
+        ],
+        "explanation": "Overfitting is when a model learns the training data too specifically (like memorizing answers) and can't generalize to new examples.",
+        "points": 1
+      },
+      {
+        "id": "q6",
+        "type": "multiple-choice",
+        "question": "Why do we use a separate 'test set' when evaluating a model?",
+        "options": [
+          { "id": "a", "text": "To train the model faster", "correct": false },
+          { "id": "b", "text": "To measure how well the model works on data it has never seen before", "correct": true },
+          { "id": "c", "text": "To label new data more efficiently", "correct": false },
+          { "id": "d", "text": "To reduce the size of the training data", "correct": false }
+        ],
+        "explanation": "A test set contains examples the model hasn't seen during training. This gives an honest measure of real-world performance.",
+        "points": 1
+      },
+      {
+        "id": "q7",
+        "type": "multiple-choice",
+        "question": "In the four stages of supervised learning, what is the correct order?",
+        "options": [
+          { "id": "a", "text": "Test → Train → Label → Collect", "correct": false },
+          { "id": "b", "text": "Collect → Label → Train → Test", "correct": true },
+          { "id": "c", "text": "Label → Collect → Test → Train", "correct": false },
+          { "id": "d", "text": "Train → Label → Collect → Test", "correct": false }
+        ],
+        "explanation": "The correct pipeline is: (1) Collect data, (2) Label data, (3) Train the model, (4) Test the model on unseen examples.",
+        "points": 1
+      },
+      {
+        "id": "q8",
+        "type": "multiple-choice",
+        "question": "What does a neural network's 'hidden layer' do?",
+        "options": [
+          { "id": "a", "text": "Stores the raw input data", "correct": false },
+          { "id": "b", "text": "Outputs the final prediction", "correct": false },
+          { "id": "c", "text": "Detects increasingly complex patterns from the input", "correct": true },
+          { "id": "d", "text": "Downloads more training data from the internet", "correct": false }
+        ],
+        "explanation": "Hidden layers in a neural network detect progressively complex features — early layers find simple patterns (edges), later layers find complex ones (shapes, objects).",
+        "points": 1
+      }
+    ]
+  }
+}

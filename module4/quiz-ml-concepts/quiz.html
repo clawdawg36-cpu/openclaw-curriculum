@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 4 Quiz — ML Concepts</title>
+  <style>
+    :root {
+      --bg: #f0f4ff;
+      --primary: #4361ee;
+      --success: #06d6a0;
+      --danger: #ef476f;
+      --warning: #ffd166;
+      --card: #fff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e2e8f0;
+      --radius: 14px;
+      --shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px 16px 40px;
+    }
+    .quiz-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+    .quiz-subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+    .question-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      transition: border 0.2s;
+    }
+    .question-card.answered { border: 2px solid var(--success); }
+    .q-number {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .q-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .options { display: flex; flex-direction: column; gap: 10px; }
+    .option-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 0.95rem;
+      transition: all 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .option-btn:hover { border-color: var(--primary); background: #eef1ff; }
+    .option-btn .opt-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--border);
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .option-btn.selected { border-color: var(--primary); background: #eef1ff; }
+    .option-btn.selected .opt-letter { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .option-btn.correct { border-color: var(--success) !important; background: #d1fae5 !important; }
+    .option-btn.correct .opt-letter { background: var(--success); color: #fff; border-color: var(--success); }
+    .option-btn.wrong { border-color: var(--danger) !important; background: #fee2e2 !important; }
+    .option-btn.wrong .opt-letter { background: var(--danger); color: #fff; border-color: var(--danger); }
+    .option-btn:disabled { cursor: default; }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      background: #fffbea;
+      border-left: 4px solid var(--warning);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #5a4a00;
+    }
+    .explanation.show { display: block; }
+    .explanation strong { color: var(--text); }
+
+    .submit-row {
+      text-align: center;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      border-radius: 28px;
+      border: none;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .results-card {
+      display: none;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .results-card.show { display: block; }
+    .score-ring {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: conic-gradient(var(--primary) 0%, var(--border) 0%);
+      margin: 0 auto 16px;
+      position: relative;
+    }
+    .score-inner {
+      background: #fff;
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .score-pct { font-size: 1.8rem; font-weight: 900; color: var(--primary); }
+    .score-label { font-size: 0.7rem; color: var(--muted); }
+    .result-headline { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .result-msg { color: var(--muted); font-size: 0.95rem; margin-bottom: 20px; }
+    .result-stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .rs { text-align: center; }
+    .rs-val { font-size: 1.5rem; font-weight: 700; }
+    .rs-lab { font-size: 0.75rem; color: var(--muted); }
+    .badge-earned {
+      display: inline-block;
+      background: linear-gradient(135deg, #ffd700, #ff9f00);
+      color: #5a3800;
+      border-radius: 24px;
+      padding: 8px 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .progress-wrap {
+      background: var(--border);
+      border-radius: 8px;
+      height: 8px;
+      margin-bottom: 24px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 8px;
+      transition: width 0.3s;
+    }
+  </style>
+</head>
+<body>
+<div class="quiz-wrap">
+
+  <h1>🧠 Module 4 Quiz</h1>
+  <p class="quiz-subtitle">Machine Learning Concepts | 8 Questions | Pass: 6/8 (75%)</p>
+
+  <div class="results-card" id="results-card">
+    <div class="score-ring" id="score-ring">
+      <div class="score-inner">
+        <div class="score-pct" id="score-pct">—</div>
+        <div class="score-label">Score</div>
+      </div>
+    </div>
+    <div class="result-headline" id="result-headline">—</div>
+    <div class="result-msg" id="result-msg">—</div>
+    <div class="result-stats">
+      <div class="rs"><div class="rs-val" id="r-correct">—</div><div class="rs-lab">Correct</div></div>
+      <div class="rs"><div class="rs-val" id="r-wrong">—</div><div class="rs-lab">Wrong</div></div>
+      <div class="rs"><div class="rs-val">8</div><div class="rs-lab">Total</div></div>
+    </div>
+    <div id="badge-display"></div>
+    <button class="btn btn-primary" onclick="retakeQuiz()">🔄 Retake Quiz</button>
+  </div>
+
+  <div class="progress-header">
+    <span>Progress</span><span id="progress-label">0 / 8 answered</span>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+  </div>
+
+  <div id="questions-container"></div>
+
+  <div class="submit-row">
+    <button class="btn btn-primary" id="submit-btn" disabled onclick="submitQuiz()">Submit Quiz</button>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    id: 'q1',
+    text: 'What is machine learning?',
+    options: [
+      { id:'a', text:'Writing every rule manually in code', correct:false },
+      { id:'b', text:'Teaching computers to learn from examples instead of explicit rules', correct:true },
+      { id:'c', text:'A robot that can walk and talk', correct:false },
+      { id:'d', text:'A type of computer memory', correct:false }
+    ],
+    explanation: 'Machine learning is a type of AI where computers learn patterns from labeled examples rather than being given step-by-step rules.'
+  },
+  {
+    id: 'q2',
+    text: "In supervised learning, what does 'labeled data' mean?",
+    options: [
+      { id:'a', text:'Data that has been sorted alphabetically', correct:false },
+      { id:'b', text:'Data stored in a folder with a name tag', correct:false },
+      { id:'c', text:'Examples that have been tagged with the correct answers', correct:true },
+      { id:'d', text:'Data compressed into a ZIP file', correct:false }
+    ],
+    explanation: "In supervised learning, labeled data means each example comes with its correct answer (label), like an image tagged 'cat' or 'dog'."
+  },
+  {
+    id: 'q3',
+    text: 'Which type of machine learning uses rewards and penalties to improve over time?',
+    options: [
+      { id:'a', text:'Supervised learning', correct:false },
+      { id:'b', text:'Unsupervised learning', correct:false },
+      { id:'c', text:'Reinforcement learning', correct:true },
+      { id:'d', text:'Transfer learning', correct:false }
+    ],
+    explanation: 'Reinforcement learning trains an agent through rewards and penalties — like training a puppy or teaching AI to play games.'
+  },
+  {
+    id: 'q4',
+    text: "What is an 'epoch' in machine learning training?",
+    options: [
+      { id:'a', text:'A single test example shown to the model', correct:false },
+      { id:'b', text:'One complete pass through the entire training dataset', correct:true },
+      { id:'c', text:'The final accuracy score of a model', correct:false },
+      { id:'d', text:'A type of neural network layer', correct:false }
+    ],
+    explanation: 'An epoch is one complete pass through all the training data. Models typically train for many epochs to improve accuracy.'
+  },
+  {
+    id: 'q5',
+    text: "What is 'overfitting' in machine learning?",
+    options: [
+      { id:'a', text:'When a model performs well on new, unseen data', correct:false },
+      { id:'b', text:'When a model is too simple to learn any patterns', correct:false },
+      { id:'c', text:"When a model memorizes training data but fails on new examples", correct:true },
+      { id:'d', text:'When training takes too long', correct:false }
+    ],
+    explanation: "Overfitting is when a model learns the training data too specifically (like memorizing answers) and can't generalize to new examples."
+  },
+  {
+    id: 'q6',
+    text: "Why do we use a separate 'test set' when evaluating a model?",
+    options: [
+      { id:'a', text:'To train the model faster', correct:false },
+      { id:'b', text:"To measure how well the model works on data it has never seen before", correct:true },
+      { id:'c', text:'To label new data more efficiently', correct:false },
+      { id:'d', text:'To reduce the size of the training data', correct:false }
+    ],
+    explanation: "A test set contains examples the model hasn't seen during training. This gives an honest measure of real-world performance."
+  },
+  {
+    id: 'q7',
+    text: 'In the four stages of supervised learning, what is the correct order?',
+    options: [
+      { id:'a', text:'Test → Train → Label → Collect', correct:false },
+      { id:'b', text:'Collect → Label → Train → Test', correct:true },
+      { id:'c', text:'Label → Collect → Test → Train', correct:false },
+      { id:'d', text:'Train → Label → Collect → Test', correct:false }
+    ],
+    explanation: 'The correct pipeline is: (1) Collect data, (2) Label data, (3) Train the model, (4) Test the model on unseen examples.'
+  },
+  {
+    id: 'q8',
+    text: "What does a neural network's 'hidden layer' do?",
+    options: [
+      { id:'a', text:'Stores the raw input data', correct:false },
+      { id:'b', text:'Outputs the final prediction', correct:false },
+      { id:'c', text:'Detects increasingly complex patterns from the input', correct:true },
+      { id:'d', text:'Downloads more training data from the internet', correct:false }
+    ],
+    explanation: 'Hidden layers in a neural network detect progressively complex features — early layers find simple patterns (edges), later layers find complex ones (shapes, objects).'
+  }
+];
+
+const LETTERS = ['A','B','C','D'];
+let answers = {};
+let submitted = false;
+
+function buildQuiz() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  answers = {};
+  submitted = false;
+  updateProgress();
+  document.getElementById('submit-btn').disabled = true;
+  document.getElementById('results-card').classList.remove('show');
+
+  QUESTIONS.forEach((q, qi) => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = 'card-' + q.id;
+
+    const shuffled = [...q.options].sort(() => Math.random() - 0.5);
+
+    card.innerHTML = `
+      <div class="q-number">Question ${qi+1} of ${QUESTIONS.length}</div>
+      <div class="q-text">${q.text}</div>
+      <div class="options" id="opts-${q.id}">
+        ${shuffled.map((opt, oi) => `
+          <button class="option-btn" id="opt-${q.id}-${opt.id}"
+            onclick="selectAnswer('${q.id}', '${opt.id}')">
+            <span class="opt-letter">${LETTERS[oi]}</span>
+            <span>${opt.text}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="explanation" id="exp-${q.id}">
+        <strong>Explanation:</strong> ${q.explanation}
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function selectAnswer(qid, optId) {
+  if (submitted) return;
+  answers[qid] = optId;
+
+  const q = QUESTIONS.find(q => q.id === qid);
+  document.querySelectorAll(`#opts-${qid} .option-btn`).forEach(btn => {
+    btn.classList.remove('selected');
+  });
+  document.getElementById(`opt-${qid}-${optId}`).classList.add('selected');
+  document.getElementById('card-' + qid).classList.add('answered');
+  updateProgress();
+}
+
+function updateProgress() {
+  const count = Object.keys(answers).length;
+  document.getElementById('progress-label').textContent = `${count} / ${QUESTIONS.length} answered`;
+  document.getElementById('progress-fill').style.width = (count/QUESTIONS.length*100) + '%';
+  document.getElementById('submit-btn').disabled = count < QUESTIONS.length;
+}
+
+function submitQuiz() {
+  if (Object.keys(answers).length < QUESTIONS.length) return;
+  submitted = true;
+  document.getElementById('submit-btn').disabled = true;
+
+  let correct = 0;
+  QUESTIONS.forEach(q => {
+    const userOptId = answers[q.id];
+    const correctOpt = q.options.find(o => o.correct);
+    const isCorrect = userOptId === correctOpt.id;
+    if (isCorrect) correct++;
+
+    // Reveal correct/wrong
+    document.querySelectorAll(`#opts-${q.id} .option-btn`).forEach(btn => {
+      btn.disabled = true;
+    });
+    document.getElementById(`opt-${q.id}-${userOptId}`).classList.add(isCorrect ? 'correct' : 'wrong');
+    if (!isCorrect) {
+      document.getElementById(`opt-${q.id}-${correctOpt.id}`).classList.add('correct');
+    }
+    document.getElementById(`exp-${q.id}`).classList.add('show');
+  });
+
+  showResults(correct);
+}
+
+function showResults(correct) {
+  const total = QUESTIONS.length;
+  const pct = Math.round(correct/total*100);
+  const passed = pct >= 75;
+
+  document.getElementById('score-pct').textContent = pct + '%';
+  document.getElementById('r-correct').textContent = correct;
+  document.getElementById('r-wrong').textContent = total - correct;
+
+  // Conic gradient ring
+  const ring = document.getElementById('score-ring');
+  const color = passed ? '#4361ee' : '#ef476f';
+  ring.style.background = `conic-gradient(${color} ${pct}%, #e2e8f0 ${pct}%)`;
+  document.getElementById('score-pct').style.color = color;
+
+  document.getElementById('result-headline').textContent = passed ? '🎉 You Passed!' : '📚 Keep Practicing!';
+  document.getElementById('result-msg').textContent = passed
+    ? `Excellent work! You answered ${correct} out of ${total} correctly. You've earned the ML Engineer badge!`
+    : `You got ${correct} out of ${total}. Review the explanations below and try again — you've got this!`;
+
+  document.getElementById('badge-display').innerHTML = passed
+    ? '<div class="badge-earned">🏅 ML Engineer Badge Earned!</div><br>'
+    : '';
+
+  document.getElementById('results-card').classList.add('show');
+  document.getElementById('results-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function retakeQuiz() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(buildQuiz, 300);
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
