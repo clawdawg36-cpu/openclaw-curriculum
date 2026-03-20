@@ -25,7 +25,7 @@ The core insight students should leave with:
 | `activity-guide.md` | Student instructions for the full activity |
 | `pattern-cards.md` | Printable data pattern cards (8 card sets) |
 | `answer-key.md` | Teacher-only answer key with explanations |
-| `teacher-facilitation-guide.md` | Internal guide with timing, tips, and discussion prompts |
+| `teacher-guide.md` | Internal guide with timing, tips, and discussion prompts |
 
 ---
 
@@ -58,4 +58,4 @@ Supports:
 
 **Full activity mode (20–30 min):** Students work through 4–5 cards individually, then complete the reflection in `activity-guide.md`. Includes a "broken pattern" analysis and connection to AI.
 
-Teachers: see `teacher-facilitation-guide.md` for facilitation tips and answer explanations.
+Teachers: see `teacher-guide.md` for facilitation tips and answer explanations.

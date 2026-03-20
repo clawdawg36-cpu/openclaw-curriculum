@@ -21,7 +21,7 @@ This is the foundational hands-on complement to Lesson 3.2 (Decision Trees: How 
 | `activity-guide.md` | Step-by-step student instructions |
 | `tree-template.md` | Blank tree structure students fill in |
 | `example-trees.md` | 2–3 fully worked example trees for reference |
-| `teacher-facilitation-guide.md` | Internal guide for teachers |
+| `teacher-guide.md` | Internal guide for teachers |
 
 ---
 
@@ -50,4 +50,4 @@ It directly supports:
 
 Students should work through `activity-guide.md`. The `tree-template.md` is their worksheet. `example-trees.md` is available as a reference if they get stuck.
 
-Teachers: see `teacher-facilitation-guide.md` for timing, facilitation tips, and discussion prompts.
+Teachers: see `teacher-guide.md` for timing, facilitation tips, and discussion prompts.

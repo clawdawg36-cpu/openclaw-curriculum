@@ -154,4 +154,4 @@ Collect exit tickets or leave in journals for teacher review.
 - Students often confuse AI with *sci-fi robots*. Gently redirect early.
 - The ChatGPT milestone is a great hook — most students have used it or heard of it.
 - Leave time for the exit ticket; it informs Lesson 1.2 pacing.
-- See `teacher-facilitation-guide.md` for anticipated responses and debrief tips.
+- See `teacher-guide.md` for anticipated responses and debrief tips.

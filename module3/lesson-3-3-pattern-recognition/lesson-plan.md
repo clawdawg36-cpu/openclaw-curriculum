@@ -201,4 +201,4 @@ Collect exit tickets — use them to identify students ready to conceptualize cu
 
 ---
 
-*See also: `teacher-facilitation-guide.md` for detailed facilitation tips and common student questions.*
+*See also: `teacher-guide.md` for detailed facilitation tips and common student questions.*

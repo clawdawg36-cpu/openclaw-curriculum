@@ -137,7 +137,7 @@ No prior CS or AI experience is required. Before the module begins:
 | Resource | Location |
 |----------|----------|
 | Answer keys | assessments/answer-keys/ |
-| Facilitation guides per lesson | Each lesson's teacher-facilitation-guide.md |
+| Facilitation guides per lesson | Each lesson's teacher-guide.md |
 | This teacher guide | teacher-guide/teacher-guide.md |
 
 ---

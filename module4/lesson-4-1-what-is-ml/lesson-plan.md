@@ -198,5 +198,5 @@ Walk through: Where is ML running right now in the world?
 - Students often think ML is "magic" or "just AI knowing things." This lesson should demystify it: it's pattern-matching at scale.
 - The fruit game can be adapted: use images of handwritten letters, shapes, or even sounds (clap patterns) if you want a different modality.
 - Anticipate: students may conflate "training" with "programming." Keep returning to: *"Who wrote the rules? The programmer or the machine?"*
-- See `teacher-facilitation-guide.md` for anticipated misconceptions and debrief talking points.
+- See `teacher-guide.md` for anticipated misconceptions and debrief talking points.
 - Lesson 4.2 builds directly on the question: *"What if the training data is wrong?"* — plant that seed here.

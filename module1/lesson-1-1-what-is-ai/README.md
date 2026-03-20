@@ -22,7 +22,7 @@ By the end of this lesson, students will be able to:
 |------|-------------|
 | `lesson-plan.md` | Full lesson plan with objectives, timed sequence, discussion prompts, materials, and differentiation |
 | `slides-outline.md` | 18-slide deck outline with presenter notes for each slide |
-| `teacher-facilitation-guide.md` | Anticipated student responses, common misconceptions, debrief tips |
+| `teacher-guide.md` | Anticipated student responses, common misconceptions, debrief tips |
 
 ## Standards Alignment
 
