@@ -363,6 +363,8 @@ Use when: standalone elective unit, or when students need more scaffolding.
 
 ## 📓 Module Close — Agent Design Journal
 
+> **For teachers:** See [`journal-teacher-guide.md`](../journal-teacher-guide.md) for facilitation tips, formative check-in timing, and grading guidance for the Agent Design Journal.
+
 > Complete this section at the end of Day 15 (or the final class period of Module 5).
 
 **Open your `AGENT_JOURNEY.md` file now.** Find the **Agent Status After M5** block and fill it in:

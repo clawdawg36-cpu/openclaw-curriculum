@@ -303,6 +303,7 @@ By the end of this module, students will be able to say:
 - Internet connection (reliable; test on Session 5 dry run)
 - **Demo-prep resources:** `demo-prep/` folder (storyboard, script, capability inventory)
 - **Agent Design Journal:** `AGENT_JOURNEY.md` — primary source for reflection
+- **Journal Teacher Guide:** [`journal-teacher-guide.md`](../journal-teacher-guide.md) — grading rubric, portfolio collection, Expo facilitation guidance
 - **Capstone guide:** `capstone-guide/capstone-guide.md` — quick reference for students
 - Printer for rubrics, peer forms, and audience cards (or distribute digitally)
 
@@ -454,6 +455,7 @@ Students who finish early or want to go further can:
 
 **After the Expo:**
 - Collect Agent Design Journals as final summative artifacts
+- See [`journal-teacher-guide.md`](../journal-teacher-guide.md) for the full portfolio collection checklist, grading rubrics (completion-based and quality), and tips for using journal entries at parent-teacher conferences
 - Consider a debrief class: "What would Module 8 be?"
 - Share standout projects (with student permission) as examples for next year
 - The `full-year-portfolio-rubric.md` in `assessments/` can be used if you collect the whole Agent Design Journal as a portfolio
@@ -463,6 +465,8 @@ Students who finish early or want to go further can:
 ---
 
 ## 📓 Module Close — Agent Design Journal
+
+> **For teachers:** The Agent Design Journal is the **culminating portfolio artifact** for this module. See [`journal-teacher-guide.md`](../journal-teacher-guide.md) for the full grading rubric, collection guidance, portfolio submission checklist, and tips for using the journal at the AI Expo and parent-teacher conferences.
 
 > Complete this section at the end of Session 7 (Reflection day).
 

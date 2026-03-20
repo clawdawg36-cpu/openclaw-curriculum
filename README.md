@@ -46,6 +46,8 @@ See the full [Your Agent Journey](./AGENT_JOURNEY.md) progress tracker.
 openclaw-curriculum/
 ├── README.md                ← You are here
 ├── AGENT_JOURNEY.md         ← Student-facing progress tracker
+├── agent-design-journal.md  ← Student portfolio journal (fill in each module)
+├── journal-teacher-guide.md ← Teacher guide: formative use, grading, facilitation tips
 ├── CURRICULUM_VISION.md     ← Teacher/admin 1-pager on the arc
 ├── module1/                 ← What Is AI? + Deploy Your Agent
 │   ├── README.md

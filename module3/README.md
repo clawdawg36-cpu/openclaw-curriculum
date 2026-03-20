@@ -326,6 +326,8 @@ See full rubric: [`lab-build-your-first-skill/rubric.md`](./lab-build-your-first
 
 ### 📓 Agent Design Journal — Module Close Prompt
 
+> **For teachers:** See [`journal-teacher-guide.md`](../journal-teacher-guide.md) for facilitation tips, formative check-in timing, and grading guidance for the Agent Design Journal.
+
 At the end of the module (Day 14–15, after the showcase), students complete a structured journal update in `AGENT_JOURNEY.md`.
 
 **Step 1 — Add the M3 Row to the Module Notes Table:**

@@ -362,6 +362,8 @@ Use when: standalone elective unit, social studies integration, or class with si
 
 ## 📓 Module Close — Agent Design Journal
 
+> **For teachers:** See [`journal-teacher-guide.md`](../journal-teacher-guide.md) for facilitation tips, formative check-in timing, and grading guidance for the Agent Design Journal.
+
 > Complete this section at the end of Day 15 (or the final class period of Module 6).
 
 **Open your `AGENT_JOURNEY.md` file.** Find the **Module Notes** table and add your M6 row:
