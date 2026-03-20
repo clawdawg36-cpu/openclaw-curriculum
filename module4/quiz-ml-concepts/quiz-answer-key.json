@@ -1,0 +1,114 @@
+{
+  "quiz": "Module 4 — ML Concepts",
+  "totalPoints": 8,
+  "passingScore": 6,
+  "passingPercent": 75,
+  "questions": [
+    {
+      "id": 1,
+      "topic": "The ML training loop",
+      "type": "multiple-choice",
+      "correctAnswer": "C",
+      "correctValue": "Evaluate the model's performance on a separate validation set",
+      "bloomsLevel": "Understanding",
+      "explanation": "After training, you evaluate on a held-out validation set to measure whether the model generalizes. Deployment comes only after satisfactory evaluation results.",
+      "commonWrongAnswers": {
+        "B": "Students may assume the model goes straight to deployment — they underestimate the evaluation step's importance.",
+        "A": "Collecting more data is a possible next step if evaluation fails, but it is not the immediate next step in the loop."
+      }
+    },
+    {
+      "id": 2,
+      "topic": "Labeled data",
+      "type": "multiple-choice",
+      "correctAnswer": "B",
+      "correctValue": "An image or data point paired with the correct answer (e.g., a photo of a cat labeled 'cat')",
+      "bloomsLevel": "Knowledge",
+      "explanation": "A labeled example = input data + correct output/category. Labels are the feedback signal the model uses to learn during training.",
+      "commonWrongAnswers": {
+        "C": "Students may confuse 'clean' data with 'labeled' data. Cleaning and labeling are separate processes.",
+        "A": "Timestamps are metadata, not labels — they describe when, not what."
+      }
+    },
+    {
+      "id": 3,
+      "topic": "Overfitting — training vs. validation accuracy",
+      "type": "multiple-choice",
+      "correctAnswer": "C",
+      "correctValue": "The model has overfit — it memorized the training data instead of learning general patterns",
+      "bloomsLevel": "Understanding",
+      "explanation": "A large gap between training accuracy (98%) and validation accuracy (61%) is the classic signature of overfitting. The model learned the training set too well, including its noise, and fails to generalize.",
+      "commonWrongAnswers": {
+        "D": "Very common wrong answer. Students see 98% and think 'good model' without noticing the validation score. Emphasize the gap, not the training number.",
+        "B": "Possible but not the most likely explanation — the question implies a standard setup where the gap is the key signal."
+      }
+    },
+    {
+      "id": 4,
+      "topic": "Class imbalance",
+      "type": "multiple-choice",
+      "correctAnswer": "B",
+      "correctValue": "The model may have learned to always predict 'healthy,' since that guess is right 90% of the time",
+      "bloomsLevel": "Analysis",
+      "explanation": "When one class dominates, accuracy is a misleading metric. A model that always predicts the majority class achieves high accuracy without any real predictive power for the minority class.",
+      "commonWrongAnswers": {
+        "A": "The most common wrong answer. Students take 90% at face value. Stress that context matters — 90% accuracy on a 90/10 split is a red flag, not a success.",
+        "D": "Adding complexity doesn't fix a data distribution problem."
+      }
+    },
+    {
+      "id": 5,
+      "topic": "Data bias",
+      "type": "scenario",
+      "correctAnswer": "B",
+      "correctValue": "The system will perform worse on users with darker skin tones due to underrepresentation in training data",
+      "bloomsLevel": "Application",
+      "explanation": "AI systems reflect the data they were trained on. Underrepresentation of certain groups in training data leads to systematically worse performance on those groups — a well-documented real-world problem.",
+      "commonWrongAnswers": {
+        "A": "Students who haven't encountered AI bias research may assume models are neutral by default. This is a teachable misconception.",
+        "D": "Mathematical objectivity doesn't guarantee fairness — garbage in, garbage out applies to demographics too.",
+        "C": "Models don't automatically update from deployment data unless specifically designed to do so (and even then, this raises other concerns)."
+      }
+    },
+    {
+      "id": 6,
+      "topic": "Training vs. inference",
+      "type": "true-false",
+      "correctAnswer": "B",
+      "correctValue": "False",
+      "bloomsLevel": "Understanding",
+      "explanation": "Training = learning (weights update). Inference = applying what was learned (weights frozen). These are fundamentally different phases of a model's lifecycle.",
+      "commonWrongAnswers": {
+        "A": "Students who think models 'keep learning' from every interaction often pick True. Important to clarify that most deployed models do not update in real time."
+      }
+    },
+    {
+      "id": 7,
+      "topic": "What a model learns — weights / parameters",
+      "type": "multiple-choice",
+      "correctAnswer": "C",
+      "correctValue": "Internal numerical values called weights (or parameters) that determine how it processes inputs",
+      "bloomsLevel": "Understanding",
+      "explanation": "Model learning = adjusting weights. The developer writes the architecture/code; the training process fills in the weights. The weights encode the model's 'knowledge.'",
+      "commonWrongAnswers": {
+        "A": "The code/architecture is fixed by developers — learning doesn't change the source code.",
+        "B": "Labels in the training set are not modified during learning. The model's weights are.",
+        "D": "Hardware speed is irrelevant to what the model learns."
+      }
+    },
+    {
+      "id": 8,
+      "topic": "Model drift and when to retrain",
+      "type": "scenario",
+      "correctAnswer": "B",
+      "correctValue": "Model drift — the real world changed but the model did not; retrain on recent data",
+      "bloomsLevel": "Application",
+      "explanation": "Model drift occurs when the statistical relationship between inputs and outputs changes over time. The model was trained on outdated patterns and can no longer generalize well. Retraining on fresh, representative data is the correct response.",
+      "commonWrongAnswers": {
+        "A": "A software rollback doesn't fix a data/distribution problem — the model architecture isn't broken, its training data is stale.",
+        "C": "Past validation is not a guarantee of future performance. This is exactly why ongoing monitoring is essential.",
+        "D": "Infrastructure upgrades don't change what the model learned or its ability to handle new patterns."
+      }
+    }
+  ]
+}
