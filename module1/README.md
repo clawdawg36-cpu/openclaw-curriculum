@@ -1,5 +1,27 @@
 # Module 1: What Is AI? — Exploring the Minds We're Building
 
+---
+
+## 🤖 Your Agent Journey — Module 1 of 7
+
+> **Arc:** *Build Your AI Assistant, Piece by Piece*
+
+**This module's capability unlock: 🐣 Identity — Deploy your agent and give it a name and personality.**
+
+You're starting from zero. By the end of this module, you won't just know what AI is — you'll have your own AI agent, running, named, and ready to grow. Every module from here adds one more superpower to what you built today.
+
+| Before M1 | After M1 |
+|-----------|----------|
+| No agent | ✅ Deployed OpenClaw instance |
+| | ✅ Custom name and personality |
+| | ✅ Working conversation ability |
+
+**Next unlock → Module 2:** Give your agent vision (image + audio models)
+
+See your full progress: [Your Agent Journey](../AGENT_JOURNEY.md)
+
+---
+
 > *"Intelligence is not just about knowing answers — it's about asking better questions."*
 
 **Duration:** 2–3 weeks (10–15 class periods, ~50 min each)
