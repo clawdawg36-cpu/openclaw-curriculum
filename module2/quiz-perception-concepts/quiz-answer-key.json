@@ -1,0 +1,47 @@
+{
+  "quiz": "Module 2 — Perception Concepts",
+  "totalPoints": 5,
+  "passingScore": 4,
+  "questions": [
+    {
+      "id": 1,
+      "topic": "Pixels and RGB",
+      "type": "multiple-choice",
+      "correctAnswer": "B",
+      "correctValue": "1,440,000",
+      "bloomsLevel": "Understanding"
+    },
+    {
+      "id": 2,
+      "topic": "How classifiers learn",
+      "type": "true-false",
+      "correctAnswer": "B",
+      "correctValue": "False",
+      "bloomsLevel": "Understanding"
+    },
+    {
+      "id": 3,
+      "topic": "Training data quality and bias",
+      "type": "multiple-choice",
+      "correctAnswer": "B",
+      "correctValue": "Biased or incomplete data leads to biased or unreliable predictions",
+      "bloomsLevel": "Understanding"
+    },
+    {
+      "id": 4,
+      "topic": "Speech recognition challenges",
+      "type": "multiple-choice",
+      "correctAnswer": "A",
+      "correctValue": "Audio signals include accents, noise, speaking rate, and tone before language understanding begins",
+      "bloomsLevel": "Understanding"
+    },
+    {
+      "id": 5,
+      "topic": "Text vs. vision AI",
+      "type": "scenario",
+      "correctAnswer": "B",
+      "correctValue": "Text AI processes symbolic language; vision AI processes pixel data — different architectures and training data",
+      "bloomsLevel": "Application"
+    }
+  ]
+}
