@@ -64,22 +64,67 @@ openclaw-curriculum/
 │   ├── teacher-guide/
 │   └── textbook-chapter-1/
 ├── module2/                 ← Give Your Agent Vision
+│   ├── README.md
+│   ├── lesson-2-1-how-computers-see/
+│   ├── lesson-2-2-image-recognition/
+│   ├── lesson-2-3-teachable-machine-lab/
+│   ├── lesson-2-4-speech-recognition/
+│   ├── lesson-2-5-openclaw-sees-hears/
+│   ├── lesson-2-6-bias-in-perception/
+│   ├── activity-pixel-portrait/
+│   ├── activity-sound-sorter/
+│   ├── activity-teachable-machine-challenge/
+│   ├── lab-hugging-face-intro/
+│   ├── lab-image-classifier/
+│   ├── lab-sound-classifier/
+│   ├── tutorial-how-computers-see/
+│   ├── tutorial-teachable-machine/
+│   ├── quiz-perception-concepts/
+│   ├── assessments/
+│   ├── teacher-guide/
+│   └── textbook-chapter-2/
 ├── module3/                 ← Give Your Agent a Knowledge Base
 │   ├── README.md
 │   ├── lesson-3-1-data-to-knowledge/
 │   ├── lesson-3-2-decision-trees/
 │   ├── lesson-3-3-pattern-recognition/
 │   ├── lesson-3-4-openclaw-reasoning/
-│   ├── lab-build-your-first-skill/
+│   ├── lesson-3-5-limits-ethics-bridge/
 │   ├── activity-build-a-tree/
 │   ├── activity-pattern-detective/
 │   ├── activity-stump-the-ai/
+│   ├── lab-build-your-first-skill/
+│   ├── tutorial-decision-tree-builder/
+│   ├── tutorial-how-ai-thinks/
 │   ├── assessments/
-│   └── teacher-guide/
+│   ├── teacher-guide/
+│   ├── textbook-chapter-5/
+│   └── textbook-chapter-6/
 ├── module4/                 ← Give Your Agent the Ability to Learn
-├── module5/                 ← Give Your Agent a Voice
-├── module6/                 ← Make Your Agent Ethical
-└── module7/                 ← Capstone — AI Expo
+│   ├── README.md
+│   ├── lesson-4-1-what-is-ml/
+│   ├── lesson-4-2-training-data/
+│   ├── lesson-4-3-supervised-learning-lab/
+│   ├── lesson-4-4-overfitting/
+│   ├── lesson-4-5-bias-in-training-data/
+│   ├── lesson-4-6-comparing-models/
+│   ├── activities/
+│   ├── lab-sentiment-classifier/
+│   ├── lab-bias-testing/
+│   ├── lab-integrate-your-model/
+│   ├── tutorial-how-ai-learns/
+│   ├── tutorial-ml-for-kids/
+│   ├── quiz-ml-concepts/
+│   ├── assessments/
+│   ├── teacher-guide/
+│   ├── textbook-chapter-7/
+│   ├── textbook-chapter-8/
+│   ├── badge-ml-engineer/
+│   ├── interactive-training-simulator/
+│   └── discussion-forum/
+├── module5/                 ← Give Your Agent a Voice (🚧 in progress)
+├── module6/                 ← Make Your Agent Ethical (🚧 in progress)
+└── module7/                 ← Capstone — AI Expo (🚧 in progress)
 ```
 
 Each module folder contains:
@@ -91,6 +136,9 @@ Each module folder contains:
 - Quiz/assessment folders — formative and summative assessments
 - `teacher-guide/` — pacing guide, differentiation tips, answer keys
 - `textbook-chapter-X/` — readable chapter text for students
+- `badge-*/` — achievement badges for skill milestones *(new in M4)*
+- `interactive-*/` — interactive browser-based tools and simulators *(new in M4)*
+- `discussion-forum/` — structured discussion prompts and facilitation guides *(new in M4)*
 
 ---
 
@@ -99,7 +147,7 @@ Each module folder contains:
 ### For Teachers
 1. Read [`CURRICULUM_VISION.md`](./CURRICULUM_VISION.md) for the full arc rationale and pacing philosophy
 2. Start with `module1/teacher-guide/README.md` for the Module 1 pacing guide
-3. Each lesson folder has a `LESSON_PLAN.md` with objectives, materials, and timing
+3. Each lesson folder has a `lesson-plan.md` with objectives, materials, and timing
 4. Labs require students to have access to OpenClaw (or the teacher's shared instance)
 
 ### For Students
