@@ -129,7 +129,7 @@ By the end of this module, students will be able to say:
 | 12 | **Lesson 2.5:** Ethics of Computer Vision — surveillance, consent, bias, facial recognition | Socratic seminar | Strong discussion potential |
 | 13 | **Activity:** Teachable Machine Challenge — edge cases and failure modes | Hands-on | What breaks your model? |
 | 14 | **Assessment Day:** Capability unlock check-in + reflection writing | Assessment | |
-| 15 | **Module Wrap-Up:** Update Agent Journey, preview Module 3 | Celebration + transition | |
+| 15 | **Module Wrap-Up:** Update Agent Journey, preview Module 3 | Celebration + transition | **Agent Design Journal close** |
 
 > **Key:** ⭐ = KEY LAB (Lab 2.4) — this is the central deliverable
 
@@ -214,6 +214,28 @@ After Lab 2.4, students should:
 1. Open their Agent Design Journal
 2. Write an entry: *"My agent can now [describe capability]. Here's a test I ran: [image/sound + result]. Here's where it surprised me: [reflection]."*
 3. Check off **Unlock #2: Perception** in their journey tracker
+
+---
+
+## 📓 Module Close — Agent Design Journal
+
+> Complete this section at the end of Day 15 (Module Wrap-Up day).
+
+**Open your `AGENT_JOURNEY.md` file.** Find the **Module Notes** table and add your M2 row:
+
+| Module | What I built | What surprised me | What I'd change |
+|--------|-------------|-------------------|-----------------|
+| M2 | *(e.g., Connected a Hugging Face vision model, wrote an image-classifier skill)* | *(e.g., How badly the model failed on certain images)* | *(e.g., I'd test more edge cases before calling it done)* |
+
+**Journal Prompts:**
+
+1. **What I built:** Describe the perception capability you added to your agent. What Hugging Face model did you connect? What can your agent now see or hear?
+2. **What surprised me:** Where did your agent succeed when you didn't expect it to — or fail when you thought it would get it right? What does that tell you about how perception AI works?
+3. **What I would change:** If you were building this skill again, what would you do differently? Would you pick a different model, test differently, or approach the skill design another way?
+
+Then update the **Agent Status After M2** block to reflect your agent's current capabilities.
+
+> 💡 *Your agent just gained its first sensory capability. The journal is how you remember what you built and why — future you (at the AI Expo) will thank you.*
 
 ---
 

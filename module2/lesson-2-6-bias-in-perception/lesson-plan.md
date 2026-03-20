@@ -156,3 +156,44 @@ Use `exit-ticket.md`. Students complete individually — this is not graded but 
 | Module 6 | Direct seed — ethics guardrails, bias auditing, responsible deployment |
 | CS Principles | Abstractions, social impacts of computing |
 | Real world | Facial recognition in policing, hiring algorithms, content moderation |
+
+---
+
+## 📓 Module 2 Close — Agent Design Journal
+
+> *This closing ritual happens during the Module Wrap-Up session (Day 15), not immediately after Lesson 2.6. Include it as the final structured activity before transitioning to Module 3.*
+
+**Tell students:**
+> *"You've given your agent the ability to see and hear. Before we move to Module 3, let's document what we built — and what we learned about its limits."*
+
+**Step 1 — Add the M2 Row to the Module Notes Table (5 min)**
+
+Students open `AGENT_JOURNEY.md` and complete the M2 row of the Module Notes table using these prompts:
+
+| Module | What I built | What surprised me | What I'd change |
+|--------|-------------|-------------------|-----------------|
+| M2 | | | |
+
+**Prompts:**
+
+1. **What I built:** What Hugging Face model did you connect to your agent? Describe what it can now see or hear. What did you name the skill, and how does it work?
+2. **What surprised me:** Where did the perception model succeed unexpectedly? Where did it fail? What did the bias case studies in Lesson 2.6 make you think about your own agent's model?
+3. **What I would change:** Knowing what you know now about bias and training data, what would you do differently? Would you choose a different model? Test it differently before deploying?
+
+**Step 2 — Update the Agent Status Block (2 min)**
+
+Students find and update the **Agent Status After M2** block in `AGENT_JOURNEY.md`:
+
+```
+🤖 [YOUR AGENT NAME]
+   Can: Have a conversation, describe images, identify audio
+   Can't yet: Know custom things, learn, speak out loud, or behave ethically by design
+```
+
+**Step 3 — Check the box (1 min)**
+
+```
+[x] Complete
+```
+
+**Teacher note:** Encourage students to be honest about failures in their journal entries. The bias discussion in Lesson 2.6 surfaces uncomfortable truths about the models students just built with — the journal is a safe place to process that honestly. These reflections will be powerful when students revisit them at the AI Expo.

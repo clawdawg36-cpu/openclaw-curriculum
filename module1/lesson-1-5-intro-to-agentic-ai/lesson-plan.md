@@ -197,6 +197,50 @@ Students work individually (5–7 min) to fill in their 3 tasks, then pair-share
 
 ---
 
+### 📓 Module 1 Close — Agent Design Journal (Module Wrap-Up Day)
+
+> *This section is for the final wrap-up period (Day 16), not Lesson 1.5 itself. Include it as the closing ritual before students leave Module 1.*
+
+**Tell students:**
+> *"Before we move to Module 2, we're going to take 10 minutes to document what we built. Open your `AGENT_JOURNEY.md` file."*
+
+**Step 1 — Fill in the Agent Status Block (3 min)**
+
+Students locate the **Agent Status After M1** section in `AGENT_JOURNEY.md` and complete it with their actual agent's name and personality:
+
+```
+🤖 [YOUR AGENT NAME]
+   Personality: _______________
+   Can: Have a conversation
+   Can't yet: See, know things, learn, speak out loud, or behave ethically by design
+```
+
+**Step 2 — Add the M1 Row to the Module Notes Table (5 min)**
+
+Students respond to these three prompts and write their answers in the M1 row of the Module Notes table:
+
+| Module | What I built | What surprised me | What I'd change |
+|--------|-------------|-------------------|-----------------|
+| M1 | | | |
+
+**Prompts to guide the journal entry:**
+
+1. **What I built:** Your deployed OpenClaw agent — its name, personality, and what it can do right now. Be specific.
+2. **What surprised me:** What was unexpected? About AI, about building it, or about how it felt to have your own agent running?
+3. **What I would change:** If you redid Module 1 from scratch, what would you do differently — in the lab, in your system prompt, or in how you approached the lessons?
+
+**Step 3 — Check the box (1 min)**
+
+In `AGENT_JOURNEY.md`, find the Module 1 progress marker and check it:
+
+```
+[x] Complete
+```
+
+**Teacher note:** This ritual matters. Students are building a longitudinal record of their agent's growth. The journal will be a capstone artifact at the AI Expo in Module 7 — the more they invest in it now, the more meaningful it is later.
+
+---
+
 ## Differentiation Strategies
 
 ### For Students Who Need More Support
