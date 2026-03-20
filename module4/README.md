@@ -326,7 +326,6 @@ For classes with additional time or deeper CS integration:
 | [Quiz: ML Concepts](./quiz-ml-concepts/) | Formative/summative assessment on training loop and evaluation |
 | [Badge: ML Engineer](./badge-ml-engineer/) | Printable/digital badge awarded at capability unlock |
 | [Discussion Forum](./discussion-forum/) | Async discussion prompts for hybrid/online contexts |
-| [README Tutorial](./README-tutorial.md) | Additional setup and walkthrough notes |
 | [Teacher Guide](./teacher-guide/) | Facilitation notes, common bugs, differentiation strategies |
 | [Assessments](./assessments/) | Rubrics, reflection prompts, data audit checklist |
 
