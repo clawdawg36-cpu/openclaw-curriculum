@@ -39,9 +39,9 @@ Here's where Module 2 sits in that journey:
 | **2** | **Perception** | **Can see images and hear audio** |
 | 3 | Knowledge | Has a custom knowledge base |
 | 4 | Learning | Can train on new data |
-| 5 | Memory | Remembers past conversations |
-| 6 | Ethics | Has values and constraints |
-| 7 | Deployment | Lives in the real world |
+| 5 | Voice / Communication | Agent connects to a live channel |
+| 6 | Ethics | Agent has guardrails + usage policy |
+| 7 | Presentation | Agent demoed at AI Expo |
 
 **Why this matters for your teaching:** Students sometimes feel Module 2's early lessons (pixels, convolutions, training data) are slow. Remind them — and yourself — that every concept here feeds Lab 2.4. The student who understands *why* a model struggles with unusual lighting is the student who can debug their API integration later. The conceptual scaffolding is not filler; it's preparation.
 

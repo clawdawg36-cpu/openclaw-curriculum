@@ -285,6 +285,6 @@ Use when: standalone elective unit, or when students need more scaffolding.
 
 ---
 
-*Module 1 of 4 — Next: [Module 2: How AI Learns](../module2/README.md)*
+*Module 1 of 7 — Next: [Module 2: Give Your Agent Vision](../module2/README.md)*
 
 *Last updated: March 2026 — ClawDawg*

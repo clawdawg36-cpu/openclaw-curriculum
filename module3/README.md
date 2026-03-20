@@ -23,7 +23,7 @@ See your full progress: [Your Agent Journey](../AGENT_JOURNEY.md)
 
 ---
 
-**Status:** 🚧 Coming Soon
+**Status:** ✅ Complete — March 2026
 
 **Grade Level:** 6–8
 **Prerequisites:** Module 2 — Give Your Agent Vision
@@ -90,4 +90,4 @@ After this module, update your Agent Design Journal:
 
 *Module 3 of 7 — Previous: [Module 2: Give Your Agent Vision](../module2/README.md) | Next: [Module 4: Give Your Agent the Ability to Learn](../module4/README.md)*
 
-*Full lesson plans coming soon.*
+
