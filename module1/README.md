@@ -47,6 +47,7 @@ By the end of this module, students will be able to say:
 | **3. Learning** — Machines can learn from data | Lesson 2–3: Machine learning, training data, datasets |
 | **4. Natural Interaction** — AI interfaces with humans using natural language and gestures | Lesson 3: NLP, chatbots, virtual assistants |
 | **5. Societal Impact** — AI can impact society in both positive and negative ways | Lesson 4: Bias, fairness, ethics, automation |
+| **4. Natural Interaction + Acting** — AI perceives environment and takes actions | Lesson 1.5: Agentic AI — Perceive→Reason→Act loop, autonomous agents |
 
 ### CSTA K–12 CS Standards
 
@@ -147,7 +148,8 @@ This module contains four core lessons, one standalone deployment lab, and suppo
 | **Day 13** | Ethics Frameworks | Introduction to AI ethics principles; students apply them to a case study | Ethics framework handout |
 | **Day 13b** | Lesson 1.4 — The Turing Test | "Is It Human?" activity; discuss AI limits and what intelligence means | `lesson-1-4-turing-test/` materials |
 | **Day 14** | Socratic Seminar | Structured discussion: "Is AI more beneficial or harmful to society today?" | Discussion norms posted |
-| **Day 15** | Module Wrap-Up + Assessment | Written reflection; vocabulary post-test; module self-assessment | Assessment rubric |
+| **Day 15** | Lesson 1.5 — Intro to Agentic AI | Warm-up: tool vs. assistant; concept intro (Perceive→Reason→Act); real-world agent examples; wishlist activity; exit ticket | Handout, wishlist worksheet, exit ticket |
+| **Day 16** | Module Wrap-Up + Assessment | Written reflection; vocabulary post-test; module self-assessment | Assessment rubric |
 
 ---
 
@@ -191,7 +193,9 @@ With the core concept in place, we go deeper. Students explore how neural networ
 **Phase 3 (Lesson 4): The Human Dimension**
 The final stretch zooms out. Now that students understand *how* AI works, we ask *whether* it's working well — and for whom. Bias, automation, and ethics are introduced not as abstract concepts but through real cases that affect real people. The Socratic seminar on Day 14 asks students to synthesize everything they've learned and defend a position. The final reflection is the culminating assessment.
 
-**The through-line:** Every lesson returns to the same questions — What is intelligence? Who decides? Who benefits? This keeps the module coherent and ensures students leave with both technical literacy and ethical awareness.
+**Lesson 1.5 (Agentic AI — new): The module now closes with a forward-looking seed.** Coming right after Lab 1.3b where students deployed their personal OpenClaw, Lesson 1.5 reframes that assistant as an *agent* — a system that can perceive, reason, and act autonomously. Students are introduced to the Perceive→Reason→Act loop, the agent spectrum from chatbot to autonomous agent, and real-world agentic AI examples including the ClawDawg Kanban worker that created this curriculum. This lesson plants a seed that Module 6 will grow into a full agentic AI build.
+
+**The through-line:** Every lesson returns to the same questions — What is intelligence? Who decides? Who benefits? And now: *What does it mean to act autonomously?* This keeps the module coherent and ensures students leave with both technical literacy and ethical awareness.
 
 ---
 
@@ -206,7 +210,8 @@ The final stretch zooms out. Now that students understand *how* AI works, we ask
 | Socratic Seminar | Performance | Day 14 | Participation rubric |
 | Final Written Reflection | Summative | Day 15 | Full rubric (see `assessments/`) |
 | Vocabulary Post-Test (All 12 terms) | Summative | Day 15 | Quiz grade |
-| Module Self-Assessment | Reflection | Day 15 | Student-facing, ungraded |
+| Lesson 1.5 Exit Ticket | Formative | Day 15 | 3-question check; define agent, real-world example, 1 risk |
+| Module Self-Assessment | Reflection | Day 16 | Student-facing, ungraded |
 
 See [`assessments/`](./assessments/) for:
 - `vocabulary-list.md` — all 12 terms with student-friendly definitions
