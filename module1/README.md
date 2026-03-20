@@ -171,7 +171,7 @@ This module contains four core lessons, one standalone deployment lab, and suppo
 | **Day 13b** | Lesson 1.4 — The Turing Test | "Is It Human?" activity; discuss AI limits and what intelligence means | `lesson-1-4-turing-test/` materials |
 | **Day 14** | Socratic Seminar | Structured discussion: "Is AI more beneficial or harmful to society today?" | Discussion norms posted |
 | **Day 15** | Lesson 1.5 — Intro to Agentic AI | Warm-up: tool vs. assistant; concept intro (Perceive→Reason→Act); real-world agent examples; wishlist activity; exit ticket | Handout, wishlist worksheet, exit ticket |
-| **Day 16** | Module Wrap-Up + Assessment | Written reflection; vocabulary post-test; module self-assessment | Assessment rubric |
+| **Day 16** | Module Wrap-Up + Assessment | Written reflection; vocabulary post-test; module self-assessment; **Agent Design Journal close** | Assessment rubric, AGENT_JOURNEY.md |
 
 ---
 
@@ -282,6 +282,37 @@ Use when: standalone elective unit, or when students need more scaffolding.
 - Day 20: Gallery walk — student AI product pitches
 
 **Extended assessments:** Add a design document (product proposal) as a summative artifact alongside the written reflection.
+
+---
+
+---
+
+## 📓 Module Close — Agent Design Journal
+
+> Complete this section at the end of Day 16 (or the final class period of Module 1).
+
+**Open your `AGENT_JOURNEY.md` file now.** Find the **Agent Status After M1** block and fill it in:
+
+```
+🤖 [YOUR AGENT NAME]
+   Personality: _______________
+   Can: Have a conversation
+   Can't yet: See, know things, learn, speak out loud, or behave ethically by design
+```
+
+Then find the **Module Notes** table and add your M1 row:
+
+| Module | What I built | What surprised me | What I'd change |
+|--------|-------------|-------------------|-----------------|
+| M1 | *(e.g., Deployed OpenClaw, named it, wrote a system prompt)* | *(e.g., How different the personality felt with different prompts)* | *(e.g., I'd spend more time on the system prompt)* |
+
+**Journal Prompts:**
+
+1. **What I built:** Describe your deployed OpenClaw agent. What did you name it? What personality did you give it? What can it do right now?
+2. **What surprised me:** What was the most unexpected thing you discovered — about AI, about the tool, or about yourself as a builder?
+3. **What I would change:** If you were starting Module 1 over, what would you do differently? What would you want to spend more time on?
+
+> 💡 *Your Agent Status block is the living record of your agent's capabilities. Keep it up to date every module — by Module 7, you'll be able to see everything you built from scratch.*
 
 ---
 

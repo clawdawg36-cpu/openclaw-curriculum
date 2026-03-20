@@ -107,6 +107,9 @@ Draw a simple table on the board:
 2. Is "furriness" easy or hard to turn into a number? What scale would you use?
 3. What happens if two objects have the exact same feature vector?
 
+**Ethics Touchpoint:**
+> **Discussion question:** *"AI models are trained on internet data — but whose language, knowledge, and perspectives show up most online? Whose knowledge might be missing or underrepresented?"* Recognizing that training data reflects the people who created it is a foundational step toward understanding why AI systems can favor some groups over others.
+
 ---
 
 ### 🎮 Feature Extraction Game (15 min)

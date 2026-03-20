@@ -91,6 +91,9 @@ Break into small groups (3–4 students). Each group gets one prompt to discuss 
 - "Risky" doesn't mean bad, but it means we should pay attention
 - The goal isn't to fear AI or trust it blindly — it's to understand it
 
+**Ethics Touchpoint:**
+> **Discussion question:** *"Looking at the AI examples you found — who benefits most from each one? Are there groups of people who might be left out or even harmed by these systems?"* This introduces the idea that AI is designed with specific users in mind, and that thinking about who benefits (and who doesn't) is a core part of responsible AI literacy.
+
 ---
 
 ### 4. Wrap-Up & Preview (10 minutes)

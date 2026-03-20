@@ -81,6 +81,9 @@ Walk students through the setup together:
 
 **Tip for teachers:** Have a projected screen showing your own demo conversation. Model the behavior you want to see: thoughtful typing, reading the full response, not just mashing keys to see what happens.
 
+**Ethics Touchpoint:**
+> **Reflection prompt:** *"When you type something into OpenClaw, what information are you sharing — and who might have access to it?"* Before students dive into open-ended experimentation, take a moment to discuss data privacy: conversations may be logged, and sharing personal details with AI systems is a choice worth making consciously.
+
 ---
 
 ## Part 3 — Guided Exploration: 3 Question Types (20 min)

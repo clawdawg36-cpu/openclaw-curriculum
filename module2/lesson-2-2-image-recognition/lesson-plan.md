@@ -87,6 +87,9 @@ Key points to cover:
 - The quality of labels directly affects model quality. Garbage labels → garbage model.
 - Famous labeled datasets: **ImageNet** (14M+ images), **COCO**, **Open Images**.
 
+**Ethics Touchpoint:**
+> **Discussion question:** *"Facial recognition systems are often trained on photos scraped from the internet — photos of real people who never gave permission. Should companies be required to get consent before using your image to train AI?"* This question previews upcoming lessons on surveillance and consent, and plants the seed that data collection has ethical stakes.
+
 **Transition to Activity:**
 > "You're about to become a data annotator. Welcome to the job that makes AI possible."
 

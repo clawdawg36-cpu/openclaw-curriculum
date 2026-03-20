@@ -151,6 +151,9 @@ Return to the through-line:
 - What patterns does it NOT have? (Your personal knowledge, your domain expertise, your unique voice)
 - What if you could add patterns about your topic — basketball stats, local history, your school's culture — to a custom agent skill?
 
+**Ethics Touchpoint:**
+> **Reflection prompt:** *"Are there patterns about people — based on race, gender, or where someone comes from — that an AI should NOT learn, even if those patterns appear in training data?"* Push students to distinguish between patterns that are statistically real and patterns that are ethically harmful to reinforce.
+
 **Tease M4:** "In Module 4, we'll see exactly how AI *learns* patterns from data. And by Module 5, you'll be building skills that teach your agent patterns nobody else has."
 
 ---

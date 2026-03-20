@@ -101,6 +101,9 @@ Key discussion questions:
 3. *"What could a Hugging Face model do that yours couldn't?"* (Scale, robustness, no training needed)
 4. **The big one:** *"Which would YOU use for your agent? Why?"*
 
+**Ethics Touchpoint:**
+> **Reflection prompt:** *"If you only recorded training images of yourself and your friends, what kinds of people or situations might your model fail on?"* This question seeds the concept of training data bias — when our examples reflect a narrow slice of the world, our model inherits those blind spots.
+
 Guide students toward nuanced answers:
 - Pre-trained = fast, broad, no data needed → great for common tasks
 - Teachable Machine = custom, personal, specific → great for unique needs
