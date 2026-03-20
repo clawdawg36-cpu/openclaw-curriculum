@@ -78,32 +78,133 @@ By the end of this module, students will be able to say:
 
 ## Standards Alignment
 
+Module 3 is the curriculum's primary treatment of **AI4K12 Big Idea 2: Representation & Reasoning**. It also bridges from Big Idea 1 (Perception, primary focus of M2). This section maps Module 3 learning experiences to nationally recognized standards frameworks and is intended for curriculum administrators, school adoption reviewers, and instructional coaches evaluating alignment.
+
 ### AI4K12 — Five Big Ideas in AI
 
-| Big Idea | Module 3 Connection |
-|---|---|
-| **2. Representation & Reasoning** — AI systems use representations and logic to reason | *Primary focus:* feature vectors, decision trees, knowledge bases, reasoning patterns |
-| **1. Perception** — Bridging from M2 | Lesson 3.1: how perception produces data that must be *represented* before reasoning |
-| **5. Societal Impact** — AI impacts society in positive and negative ways | Lesson 3.5: algorithmic bias in real systems; responsible knowledge design |
-| **3. Learning** — Machines can learn from data | Lesson 3.5: preview of M4; where rule-based reasoning breaks down and ML takes over |
+#### Big Idea 2: Representation & Reasoning *(Primary)*
 
-### CSTA K–12 CS Standards
+> *Intelligent agents represent features of the world in order to reason about it.*
 
-| Code | Standard | Module Connection |
+| AI4K12 Competency (Grades 6–8) | Module 3 Coverage | Lesson/Activity |
 |---|---|---|
-| **2-AP-11** | Create clearly named variables storing data and using expressions | Lessons 3.1–3.3: feature variables, skill data structures |
-| **2-AP-13** | Decompose problems and subproblems into parts | Lab: breaking down domain knowledge into skill components |
-| **2-DA-07** | Represent data using multiple encoding schemes | Lesson 3.1: feature encoding workshop |
-| **2-IC-21** | Discuss issues of bias and accessibility in design of existing technologies | Lesson 3.5: case studies in algorithmic bias |
+| **2-AP-11** Represent data using multiple encoding schemes | Students encode real-world properties as feature vectors using numeric, categorical, and Boolean representations | Lesson 3.1, Feature Encoding Workshop |
+| **2-AP-12** Use computational representations to model and organize knowledge | Students design structured knowledge representations (feature tables, decision trees) to organize domain knowledge | Lessons 3.1–3.2, Lab |
+| **2-AP-13** Use flowcharts and pseudocode to design and illustrate algorithms | Students diagram their decision tree logic before implementing it; translate tree diagrams into conditional logic | Lesson 3.2, Lab |
+| **2-AP-14** Implement knowledge structures as code artifacts | Students implement their knowledge skill using the OpenClaw skill scaffold (conditional logic, data structures) | Lesson 3.4, Lab |
+| **2-IC-20** Evaluate the capabilities and limitations of computing systems | Students test their knowledge skill against edge cases and document where rule-based reasoning fails | Lesson 3.5, Stump the AI activity |
+
+#### Big Idea 1: Perception *(Bridging — from M2)*
+
+| AI4K12 Competency (Grades 6–8) | Module 3 Coverage |
+|---|---|
+| **1-AP-15** Describe how perception data is processed as input to AI systems | Lesson 3.1 explicitly connects M2 perception output (image classification results) to M3 representation input, tracing the pipeline from raw sensory data to structured features |
+
+#### Big Idea 4: Society *(Emerging — extended in M6)*
+
+| AI4K12 Competency (Grades 6–8) | Module 3 Coverage |
+|---|---|
+| **4-AP-16** Recognize that AI systems encode human choices about what to represent and how | Lesson 3.5 ethics discussion; students reflect on who decided which features to include in their knowledge skill and what that excludes |
+
+### CSTA K–12 CS Standards (2017)
+
+#### Strand: Algorithms & Programming (AP)
+
+| Standard | Description | Module 3 Coverage |
+|---|---|---|
+| **2-AP-11** | Create clearly named variables that represent different data types and perform operations on their values | Students create named data structures (feature vectors, lookup tables) in their knowledge skill implementation |
+| **2-AP-12** | Design and iteratively develop programs that combine control structures, including nested loops and compound conditionals | Knowledge skill logic uses nested conditionals; students iterate on their decision tree during lab testing |
+| **2-AP-13** | Decompose problems and subproblems into parts to facilitate the design, implementation, and review of programs | Students decompose their domain into sub-questions their decision tree addresses step by step |
+| **2-AP-14** | Create procedures with parameters to organize code and make it easier to reuse | Knowledge skills are written as callable procedures with input parameters (the query) and return values (the answer) |
+| **2-AP-17** | Systematically test and refine programs using a range of test cases | Students test their skill with ≥10 queries including edge cases; document failures and iterate |
+| **2-AP-19** | Document programs in order to make them easier to follow, test, and debug | Students document their knowledge skill with inline comments and a knowledge brief |
+
+#### Strand: Data & Analysis (DA)
+
+| Standard | Description | Module 3 Coverage |
+|---|---|---|
+| **2-DA-07** | Represent data using multiple encoding schemes | Feature vectors encode categorical, numeric, and Boolean properties; students compare representations for the same object |
+| **2-DA-08** | Collect data using computational tools and transform the data to make it more useful and reliable | Students collect domain facts, structure them as a feature table, and validate for completeness and accuracy |
+| **2-DA-09** | Refine computational models based on the data they have generated | After testing their knowledge skill, students revise their decision tree or data encoding based on observed failures |
+
+#### Strand: Impacts of Computing (IC)
+
+| Standard | Description | Module 3 Coverage |
+|---|---|---|
+| **2-IC-20** | Compare tradeoffs associated with computing technologies that affect people's everyday activities and career options | Lesson 3.5 discusses where rule-based AI fails vs. where it excels; career connections to knowledge engineering |
+| **2-IC-21** | Discuss issues of bias and accessibility in design of existing technologies | Lesson 3.5: case studies in algorithmic bias (COMPAS, hiring screeners, credit scoring) |
 | **3A-IC-24** | Evaluate ways computing impacts personal, ethical, social, economic, and cultural practices | Lesson 3.5: COMPAS, hiring screeners, credit scoring |
 
-### Common Core ELA Standards
+### ISTE Standards for Students (2016)
 
-| Standard | Application in Module 3 |
+| Standard | Module 3 Coverage | Evidence Artifact |
+|---|---|---|
+| **1. Empowered Learner** | Students choose their own domain for their knowledge skill, driving authentic ownership of learning; set personal learning goals in Agent Design Journal | Knowledge skill project and Agent Design Journal entry |
+| **3. Knowledge Constructor** | Students research and curate domain facts from multiple sources; evaluate for accuracy and relevance before encoding; construct structured knowledge from unstructured research | Knowledge brief (pre-lab research document) and feature table |
+| **5. Computational Thinker** | Students decompose a complex domain into discrete answerable questions; represent knowledge as structured data and decision logic; design, test, and debug algorithms; iterate based on test results | Decision tree diagram, knowledge skill code, test log |
+| **6. Creative Communicator** | Students write their knowledge skill to produce natural language responses appropriate for their intended audience; present capabilities and limitations to peers in Stump the AI | Skill output samples, Stump the AI debrief |
+
+### Common Core State Standards — Mathematics
+
+#### Functions (8.F) — Grade 8
+
+| Standard | Connection to Module 3 |
 |---|---|
-| **CCSS.ELA-LITERACY.W.7.1** — Write arguments to support claims | Lab design document: justify knowledge base decisions |
-| **CCSS.ELA-LITERACY.SL.7.1** — Engage effectively in collaborative discussions | Lesson 3.5 ethics discussion; showcase feedback |
-| **CCSS.ELA-LITERACY.RI.7.4** — Determine the meaning of domain-specific vocabulary | All lessons: AI vocabulary (feature, decision tree, knowledge base, etc.) |
+| **8.F.A.1** — Understand that a function is a rule that assigns to each input exactly one output | A knowledge skill is a function: for each input query, it produces exactly one output. Students map inputs to outputs when designing their decision tree. |
+| **8.F.B.4** — Construct a function to model a linear relationship between two quantities | Feature encoding introduces representing relationships between real-world quantities as numeric values; students reason about which numeric features best predict an outcome. |
+
+#### Expressions and Equations (7.EE) — Grade 7
+
+| Standard | Connection to Module 3 |
+|---|---|
+| **7.EE.B.4** — Use variables to represent quantities in a problem | Students use named variables to represent features in their knowledge skill; conditional expressions use these variables to determine outcomes. |
+
+#### Statistics and Probability (6.SP / 7.SP) — Grades 6–7
+
+| Standard | Connection to Module 3 |
+|---|---|
+| **6.SP.A.2** — Understand that a set of data has a distribution which can be described by its center, spread, and shape | In Pattern Detective (Lesson 3.3), students analyze the distribution of features across categories to identify patterns. |
+| **7.SP.A.2** — Use data from a random sample to draw inferences about a population | Students consider whether their 15–20 encoded facts are representative of their domain, and how gaps affect accuracy. |
+
+**Mathematical Practices engaged:** MP.1 (make sense of problems), MP.4 (model with mathematics), MP.6 (attend to precision), MP.7 (look for structure), MP.8 (look for regularity in repeated reasoning).
+
+### Common Core State Standards — English Language Arts
+
+| Standard | Connection to Module 3 |
+|---|---|
+| **CCSS.ELA-LITERACY.W.7.1** — Write arguments to support claims | Lesson 3.5 ethics discussion; journal reflection asks students to justify design choices; Lab design document |
+| **CCSS.ELA-LITERACY.W.7.2** — Write informative/explanatory texts | Students write a knowledge brief explaining their domain, the facts they'll encode, and the decision logic they'll use |
+| **CCSS.ELA-LITERACY.W.7.7** — Conduct short research projects | Students research domain facts from multiple sources and evaluate them for accuracy before encoding |
+| **CCSS.ELA-LITERACY.RI.7.4** — Determine the meaning of domain-specific vocabulary | All lessons: AI vocabulary (feature, decision tree, knowledge base, retrieval, etc.) |
+| **CCSS.ELA-LITERACY.RI.7.8** — Trace and evaluate arguments in a text | Students read and evaluate Lesson 3.5 case studies about AI systems that failed due to poor knowledge representation |
+| **CCSS.ELA-LITERACY.SL.7.1** — Engage effectively in collaborative discussions | Lesson 3.5 ethics discussion; Paper Tree Challenge; Stump the AI debrief |
+| **CCSS.ELA-LITERACY.SL.7.4** — Present claims and findings | Students present their knowledge skill's capabilities and failure cases to a partner or small group |
+
+### Summary Alignment Table
+
+| Framework | Standards Addressed | Depth |
+|---|---|---|
+| AI4K12 Big Ideas | Big Idea 2 (primary), Big Idea 1 (bridging), Big Idea 4 (emerging) | Deep |
+| CSTA K–12 (2017) | AP: 2-AP-11 through 2-AP-19; DA: 2-DA-07/08/09; IC: 2-IC-20/21/3A-IC-24 | Moderate–Deep |
+| ISTE for Students | Standards 1, 3, 5, 6 | Moderate |
+| Common Core Math | 6.SP, 7.EE, 7.SP, 8.F; Mathematical Practices 1, 4, 6, 7, 8 | Embedded |
+| Common Core ELA | W.7.1/2/7, RI.7.4/7.8, SL.7.1/4 | Embedded |
+
+> **Note for adoption reviewers:** This module is purpose-built around AI4K12 Big Idea 2 and represents one of the most comprehensive 6–8 grade implementations of Representation & Reasoning competencies available in an open curriculum. Math connections are embedded in learning activities rather than taught as separate math lessons. The knowledge brief and Agent Design Journal entry provide natural ELA co-teaching opportunities. Standards not addressed here (Big Ideas 3, 4 beyond intro, 5) are covered in later modules (M4, M6, M5 respectively).
+
+---
+
+## Connections to Other Modules
+
+### ← Module 2: Perception (Vision & Sound)
+Module 3 begins where Module 2 ends: perception produces data, and that data must be *represented* before reasoning can occur. The opening discussion of Lesson 3.1 explicitly revisits the M2 image classifier — "your agent can see this dog, but how does it *know* it's a dog?" This continuity helps students see the curriculum as a coherent build, not isolated units.
+
+Students who built image classifiers in M2 will recognize that feature extraction (M3) is what was happening inside those models — M3 makes the implicit explicit.
+
+### → Module 4: Learning (Machine Learning)
+Module 3 closes by establishing the problem that Module 4 solves. Rule-based knowledge skills are powerful but brittle: they can only handle what their creator explicitly anticipated. Module 4 introduces machine learning as the answer — systems that can *discover* patterns in data rather than having every rule hand-coded.
+
+Lesson 3.5 is written as a deliberate setup: students leave with a named frustration ("my skill can't handle this case") that ML will resolve. The knowledge skill they built in M3 also becomes a reference point for comparison in M4 ("what would it take to train a model to do what your skill does?").
 
 ---
 
@@ -197,7 +298,7 @@ This module contains five core lessons, one multi-day lab, and supporting activi
 ### Teacher Resources
 - [Teacher Guide](./teacher-guide/) — full facilitation notes, common misconceptions, ethics discussion guide, differentiation strategies
 - [Assessments](./assessments/) — rubrics, exit tickets, quiz
-- [Standards Alignment](./standards-alignment.md) — detailed AI4K12, CSTA, and CCSS mapping
+- [Standards Alignment](#standards-alignment) — detailed AI4K12, CSTA, and CCSS mapping (inline above)
 
 ---
 
@@ -342,7 +443,7 @@ After the Lab, students should:
 | [Tutorial: How AI Thinks](./tutorial-how-ai-thinks/) | OpenClaw reasoning architecture walkthrough |
 | [Textbook Chapter 5](./textbook-chapter-5/) | Student-facing reading: Representation |
 | [Textbook Chapter 6](./textbook-chapter-6/) | Student-facing reading: Reasoning |
-| [Standards Alignment](./standards-alignment.md) | Detailed AI4K12, CSTA, CCSS mapping |
+| [Standards Alignment](#standards-alignment) | Detailed AI4K12, CSTA, CCSS mapping (inline in this README) |
 | [Assessments](./assessments/) | Rubrics, exit tickets, quiz |
 | [Teacher Guide](./teacher-guide/) | Facilitation notes, ethics guide, differentiation, FAQ |
 
