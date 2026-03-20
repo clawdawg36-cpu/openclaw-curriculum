@@ -162,8 +162,8 @@ By the end of this module, students will be able to say:
 - [ ] ML4Kids Node.js/Python library *(optional)* — for programmatic model calls
 
 ### Classroom Materials
-- [ ] Data audit worksheet (provided in `/module4/activities/`)
-- [ ] Sample labeled image sets for fallback if students cannot collect their own (provided in `/module4/activities/`)
+- [ ] Data audit worksheet (provided in `/module4/activity-overfitting-demo/`)
+- [ ] Sample labeled image sets for fallback if students cannot collect their own (provided in `/module4/activity-labeling-sprint/`)
 - [ ] Printed or digital confusion matrix template
 
 ### Teacher Resources
@@ -318,8 +318,12 @@ For classes with additional time or deeper CS integration:
 | ⭐ [Lab M4.4 — KEY LAB](./lab-integrate-your-model/) | Train a Model and Integrate It Into Your Agent |
 | [Lab: Bias Testing](./lab-bias-testing/) | Construct a biased dataset and observe the effect |
 | [Lab: Sentiment Classifier](./lab-sentiment-classifier/) | Optional Python path — train a text classifier in a notebook |
-| [Activity: Data Collector](./activities/) | Define a problem, collect labeled training examples |
-| [Activity: Data Audit](./activities/) | Analyze your dataset for balance, gaps, and potential bias |
+| [Activity: Human Learning Machine](./activity-human-learning-machine/) | Whole-class simulation — experiential intro to training feedback loops |
+| [Activity: Labeling Sprint](./activity-labeling-sprint/) | Hands-on data annotation — 20 face images + recording sheet |
+| [Activity: Overfitting Demo](./activity-overfitting-demo/) | Teachable Machine 3 vs 30 images — empirical investigation |
+| [Activity: K-means Clustering](./activity-kmeans-clustering/) | Mystery data + hand-clustering — unsupervised learning |
+| [Activity: Lab Report](./activity-lab-report/) | Synthesis and evaluation of classifier performance |
+| [Activity: Ethics Essay](./activity-ethics-essay/) | Critical reflection on bias and representation |
 | [Interactive: Training Simulator](./interactive-training-simulator/) | Visualize how training loss decreases over epochs |
 | [Tutorial: How AI Learns](./tutorial-how-ai-learns/) | Student-facing guided reading on the training loop |
 | [Tutorial: ML4Kids Walkthrough](./tutorial-ml-for-kids/) | Step-by-step ML4Kids setup and first training run |
