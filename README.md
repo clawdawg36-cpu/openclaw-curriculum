@@ -65,6 +65,17 @@ openclaw-curriculum/
 │   └── textbook-chapter-1/
 ├── module2/                 ← Give Your Agent Vision
 ├── module3/                 ← Give Your Agent a Knowledge Base
+│   ├── README.md
+│   ├── lesson-3-1-data-to-knowledge/
+│   ├── lesson-3-2-decision-trees/
+│   ├── lesson-3-3-pattern-recognition/
+│   ├── lesson-3-4-openclaw-reasoning/
+│   ├── lab-build-your-first-skill/
+│   ├── activity-build-a-tree/
+│   ├── activity-pattern-detective/
+│   ├── activity-stump-the-ai/
+│   ├── assessments/
+│   └── teacher-guide/
 ├── module4/                 ← Give Your Agent the Ability to Learn
 ├── module5/                 ← Give Your Agent a Voice
 ├── module6/                 ← Make Your Agent Ethical
