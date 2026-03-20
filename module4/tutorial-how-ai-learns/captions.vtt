@@ -1,0 +1,238 @@
+WEBVTT
+Kind: captions
+Language: en
+
+NOTE
+"How AI Learns" — Module 4 Caption File
+Format: WebVTT (Web Video Text Tracks)
+Auto-sync timestamps approximate; adjust to final video render.
+
+00:00:00.000 --> 00:00:05.500
+Imagine you're trying to teach a robot
+to tell the difference between a cat and a dog.
+
+00:00:05.500 --> 00:00:09.000
+Easy for you, right?
+You've seen hundreds of cats and dogs.
+
+00:00:09.000 --> 00:00:14.500
+But how does a robot — who's never seen anything —
+figure it out?
+
+00:00:14.500 --> 00:00:20.000
+That, my friend, is the whole challenge
+of machine learning.
+
+00:00:20.000 --> 00:00:26.000
+And by the end of this video, you'll know
+exactly how it works.
+
+00:00:40.000 --> 00:00:47.000
+Machine learning is a type of artificial intelligence
+where computers learn from examples
+
+00:00:47.000 --> 00:00:51.000
+instead of being told exactly what to do
+with step-by-step rules.
+
+00:00:51.000 --> 00:00:57.000
+In traditional programming,
+a developer writes every rule.
+
+00:00:57.000 --> 00:01:04.000
+"If the animal has whiskers AND says meow,
+it's a cat."
+
+00:01:04.000 --> 00:01:11.000
+But machine learning flips that around.
+You feed the computer thousands of labeled examples —
+
+00:01:11.000 --> 00:01:17.000
+like pictures tagged "cat" or "dog" —
+and it figures out the rules itself.
+
+00:01:17.000 --> 00:01:22.000
+Pretty wild, right? Let's dig deeper.
+
+00:01:40.000 --> 00:01:45.000
+There are three main ways
+a machine can learn.
+
+00:01:45.000 --> 00:01:52.000
+First: Supervised Learning.
+This is like having a teacher.
+
+00:01:52.000 --> 00:02:00.000
+You give the computer data and the right answers.
+The model learns by comparing its guesses to the correct labels.
+
+00:02:00.000 --> 00:02:06.000
+Most of what you'll do in this course
+uses supervised learning.
+
+00:02:06.000 --> 00:02:13.000
+Second: Unsupervised Learning.
+No labels this time!
+
+00:02:13.000 --> 00:02:19.000
+The model looks for patterns on its own —
+grouping similar things together.
+
+00:02:19.000 --> 00:02:26.000
+This is how streaming apps figure out
+what kind of music you like without you telling them.
+
+00:02:26.000 --> 00:02:32.000
+Third: Reinforcement Learning.
+Think of training a puppy.
+
+00:02:32.000 --> 00:02:38.000
+The model tries something, gets a reward if it does well,
+gets nothing if it doesn't.
+
+00:02:38.000 --> 00:02:45.000
+Over time, it learns to make better decisions.
+This is how AI learns to play chess or video games.
+
+00:03:00.000 --> 00:03:07.000
+Let's zoom in on supervised learning —
+the most common type you'll encounter.
+
+00:03:07.000 --> 00:03:11.000
+It has four stages.
+
+00:03:11.000 --> 00:03:17.000
+Stage 1: Collect Data.
+Every AI model needs examples to learn from.
+
+00:03:17.000 --> 00:03:24.000
+If we want to recognize handwritten numbers,
+we need thousands of images of digits —
+
+00:03:24.000 --> 00:03:29.000
+written by real people,
+in all sorts of handwriting styles.
+
+00:03:29.000 --> 00:03:35.000
+More data usually means a smarter model.
+But the data also needs to be good.
+
+00:03:35.000 --> 00:03:41.000
+Stage 2: Label the Data.
+Each example needs a tag — the correct answer.
+
+00:03:41.000 --> 00:03:48.000
+For images of animals, a human labels each one:
+"cat," "dog," "rabbit."
+
+00:03:48.000 --> 00:03:53.000
+This labeled dataset
+is called training data.
+
+00:03:53.000 --> 00:04:00.000
+Stage 3: Train the Model.
+Now the magic happens.
+
+00:04:00.000 --> 00:04:07.000
+The model sees each labeled example and makes a guess.
+Then it checks: was I right?
+
+00:04:07.000 --> 00:04:14.000
+If not, it adjusts its internal settings —
+called parameters — to do better next time.
+
+00:04:14.000 --> 00:04:21.000
+This process repeats thousands or even millions of times.
+Each pass through the data is called an epoch.
+
+00:04:21.000 --> 00:04:27.000
+Gradually, the model gets smarter.
+
+00:04:27.000 --> 00:04:33.000
+Stage 4: Test the Model.
+Finally, we show the model examples it's never seen before —
+
+00:04:33.000 --> 00:04:39.000
+the test set. This tells us how well it actually learned,
+not just memorized.
+
+00:04:39.000 --> 00:04:45.000
+If accuracy is high on the test set,
+we have a solid model!
+
+00:05:30.000 --> 00:05:37.000
+So what exactly is the model learning?
+It's learning features —
+
+00:05:37.000 --> 00:05:42.000
+characteristics that help distinguish
+one thing from another.
+
+00:05:42.000 --> 00:05:49.000
+For a cat vs. dog classifier, features might include
+ear shape, snout length, fur texture.
+
+00:05:49.000 --> 00:05:57.000
+The model doesn't know what a "snout" is —
+but it learns that certain pixel patterns tend to appear in dogs.
+
+00:05:57.000 --> 00:06:05.000
+Inside many modern AI models,
+there's a structure called a neural network —
+
+00:06:05.000 --> 00:06:11.000
+loosely inspired by the brain.
+Information flows through layers of connections,
+
+00:06:11.000 --> 00:06:17.000
+each layer finding more complex patterns.
+The final layer recognizes objects.
+
+00:06:30.000 --> 00:06:37.000
+Sometimes a model gets too good at the training data —
+it basically memorizes it instead of learning general rules.
+
+00:06:37.000 --> 00:06:42.000
+This is called overfitting.
+
+00:06:42.000 --> 00:06:48.000
+Think of a student who memorizes every practice problem
+but can't solve a new one.
+
+00:06:48.000 --> 00:06:55.000
+The opposite problem is underfitting —
+the model doesn't learn enough and does badly on everything.
+
+00:06:55.000 --> 00:07:02.000
+The goal: find the sweet spot.
+A model that generalizes well to new data it's never seen.
+
+00:07:15.000 --> 00:07:22.000
+So here's the big picture:
+Machine learning is about teaching computers through examples
+
+00:07:22.000 --> 00:07:27.000
+instead of explicit rules.
+
+00:07:27.000 --> 00:07:34.000
+You collect and label data, train a model
+by letting it guess and adjust,
+
+00:07:34.000 --> 00:07:40.000
+then test it on new examples
+to see how well it learned.
+
+00:07:40.000 --> 00:07:47.000
+That confused robot from the beginning?
+With enough training data and the right model,
+
+00:07:47.000 --> 00:07:53.000
+it can now tell a cat from a dog
+with 95% accuracy!
+
+00:07:53.000 --> 00:08:00.000
+Now it's your turn. Jump into the interactive training simulator
+and train your own model.
+
+00:08:00.000 --> 00:08:05.000
+See you on the other side, ML Engineer.
