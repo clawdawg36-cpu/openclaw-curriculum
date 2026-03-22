@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Policy Brief: AI Explorers — Closing the AI Literacy Gap | AI Explorers</title>
+  <meta name="description" content="A policy brief for state and district education leaders on closing the AI literacy gap with the free, open-source AI Explorers K–12 curriculum.">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #1a1a2e;
+      background: #f8f7f4;
+      line-height: 1.7;
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      body { background: white; color: black; font-size: 11pt; }
+      .no-print, .download-bar, nav { display: none !important; }
+      .brief-wrapper { max-width: 100%; padding: 0; }
+      .cover-band { background: #1a3a5c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      h2 { page-break-before: auto; }
+      .rec-card { page-break-inside: avoid; }
+      a { color: inherit; text-decoration: none; }
+    }
+
+    /* ===== DOWNLOAD BAR ===== */
+    .download-bar {
+      background: #1a3a5c;
+      color: #fff;
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.85rem;
+    }
+    .download-bar .dbar-left { display: flex; align-items: center; gap: 0.75rem; }
+    .download-bar .pill {
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .download-bar .btn-print {
+      background: #e8a020;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background 0.2s;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .download-bar .btn-print:hover { background: #c98a10; }
+
+    /* ===== LAYOUT ===== */
+    .brief-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 2px 30px rgba(0,0,0,0.10);
+    }
+
+    /* ===== COVER ===== */
+    .cover-band {
+      background: #1a3a5c;
+      color: #fff;
+      padding: 3.5rem 3rem 2.5rem;
+    }
+    .cover-band .org-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cover-band .org-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: #e8a020;
+    }
+    .cover-band .brief-type {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #e8a020;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .cover-band h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .cover-band .subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.78);
+      font-style: italic;
+      margin-bottom: 1.8rem;
+    }
+    .cover-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 1.2rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .cover-meta span { display: flex; flex-direction: column; gap: 0.15rem; }
+    .cover-meta strong { color: rgba(255,255,255,0.9); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.07em; }
+
+    /* ===== EXEC SUMMARY BAND ===== */
+    .exec-summary {
+      background: #eef3f8;
+      border-left: 5px solid #1a3a5c;
+      padding: 2rem 3rem;
+    }
+    .exec-summary .es-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #1a3a5c;
+      margin-bottom: 0.75rem;
+    }
+    .exec-summary p {
+      font-size: 0.97rem;
+      color: #2d3748;
+      margin-bottom: 0.9rem;
+    }
+    .exec-summary p:last-child { margin-bottom: 0; }
+
+    /* ===== BODY CONTENT ===== */
+    .brief-body {
+      padding: 2.5rem 3rem;
+    }
+
+    h2 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #1a3a5c;
+      border-bottom: 2px solid #1a3a5c;
+      padding-bottom: 0.4rem;
+      margin: 2.5rem 0 1.1rem;
+    }
+    h2:first-of-type { margin-top: 0; }
+
+    h3 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    p { margin-bottom: 0.9rem; font-size: 0.97rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ===== STAT CALLOUTS ===== */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1rem;
+      margin: 1.4rem 0;
+    }
+    .stat-card {
+      background: #f0f4f9;
+      border-top: 3px solid #e8a020;
+      padding: 1rem 1.1rem 0.9rem;
+      border-radius: 4px;
+    }
+    .stat-card .stat-num {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #1a3a5c;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-card .stat-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.78rem;
+      color: #4a5568;
+      line-height: 1.35;
+    }
+
+    /* ===== TABLES ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      font-size: 0.88rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    thead { background: #1a3a5c; color: #fff; }
+    thead th { padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; letter-spacing: 0.03em; }
+    tbody tr:nth-child(even) { background: #f5f7fa; }
+    tbody td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+
+    /* ===== CALLOUT BOX ===== */
+    .callout {
+      background: #fffbeb;
+      border-left: 4px solid #e8a020;
+      padding: 1rem 1.3rem;
+      margin: 1.4rem 0;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.94rem;
+    }
+    .callout strong { color: #1a3a5c; }
+
+    /* ===== RECOMMENDATIONS ===== */
+    .rec-grid {
+      display: grid;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+    .rec-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 1.1rem 1.3rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .rec-num {
+      background: #1a3a5c;
+      color: #fff;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .rec-content h4 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1a3a5c;
+      margin-bottom: 0.35rem;
+    }
+    .rec-content p { font-size: 0.88rem; color: #4a5568; margin: 0; }
+
+    /* ===== EQUITY TWO-COL ===== */
+    .equity-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 1.2rem 0;
+    }
+    .eq-col { border-radius: 6px; padding: 1rem 1.2rem; }
+    .eq-col.have { background: #fef3cd; border-top: 3px solid #e8a020; }
+    .eq-col.havenot { background: #fde8e8; border-top: 3px solid #c0392b; }
+    .eq-col h4 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+    }
+    .eq-col.have h4 { color: #92640a; }
+    .eq-col.havenot h4 { color: #922b21; }
+    .eq-col ul { padding-left: 1.1rem; font-size: 0.88rem; color: #2d3748; }
+    .eq-col ul li { margin-bottom: 0.3rem; }
+
+    /* ===== CTA BAND ===== */
+    .cta-band {
+      background: #1a3a5c;
+      color: #fff;
+      padding: 2.5rem 3rem;
+      margin-top: 2.5rem;
+    }
+    .cta-band h2 {
+      color: #fff;
+      border-color: rgba(255,255,255,0.3);
+      font-size: 1.1rem;
+      margin-top: 0;
+    }
+    .cta-band p { color: rgba(255,255,255,0.82); font-size: 0.96rem; margin-bottom: 0.8rem; }
+    .cta-band ul { padding-left: 1.3rem; margin-bottom: 1rem; }
+    .cta-band ul li { color: rgba(255,255,255,0.8); font-size: 0.93rem; margin-bottom: 0.4rem; }
+    .cta-band .cta-btn {
+      display: inline-block;
+      background: #e8a020;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.65rem 1.6rem;
+      border-radius: 6px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
+      transition: background 0.2s;
+    }
+    .cta-band .cta-btn:hover { background: #c98a10; }
+
+    /* ===== FOOTER ===== */
+    .brief-footer {
+      background: #f0f4f9;
+      padding: 1.2rem 3rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      color: #718096;
+      border-top: 1px solid #e2e8f0;
+      line-height: 1.5;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .cover-band, .exec-summary, .brief-body, .cta-band { padding-left: 1.3rem; padding-right: 1.3rem; }
+      .cover-band h1 { font-size: 1.55rem; }
+      .equity-cols { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+      .download-bar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Download/Print Bar -->
+<div class="download-bar no-print">
+  <div class="dbar-left">
+    <span class="pill">Policy Brief</span>
+    <span>AI Explorers Initiative &mdash; March 2026</span>
+  </div>
+  <button class="btn-print" onclick="window.print()">⬇ Download / Print PDF</button>
+</div>
+
+<div class="brief-wrapper">
+
+  <!-- COVER -->
+  <div class="cover-band">
+    <div class="org-label">AI Explorers Initiative</div>
+    <div class="brief-type">Policy Brief &bull; K–12 AI Education</div>
+    <h1>Closing the AI Literacy Gap</h1>
+    <p class="subtitle">A Free, Equity-First Curriculum for Every K–12 Student</p>
+    <div class="cover-meta">
+      <span><strong>Published</strong> March 2026</span>
+      <span><strong>Audience</strong> State & District Education Leaders</span>
+      <span><strong>Topic</strong> AI Literacy &bull; Workforce Equity &bull; Open Source</span>
+    </div>
+  </div>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="exec-summary">
+    <div class="es-label">Executive Summary</div>
+    <p>Artificial intelligence is reshaping every sector of the American economy, yet fewer than 5% of U.S. K–12 students have access to structured AI literacy education. This gap falls hardest on students from low-income districts, rural communities, and communities of color — groups already underrepresented in technology careers.</p>
+    <p><strong>AI Explorers</strong> is a free, open-source K–12 curriculum built to close this gap. Aligned to the nationally recognized AI4K12 framework and fully COPPA-compliant, AI Explorers requires zero licensing fees, scales from a single classroom to an entire district, and is available for immediate adoption. This brief outlines the problem, the opportunity, our approach, and five concrete actions state and district leaders can take today.</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="brief-body">
+
+    <!-- PROBLEM -->
+    <h2>The Problem: A Widening AI Literacy Gap</h2>
+
+    <h3>The Stakes</h3>
+    <p>By 2030, the World Economic Forum projects that 85 million jobs will be displaced by automation, while 97 million new roles emerge — roles requiring fluency with AI tools, data systems, and human-machine collaboration. AI literacy is no longer a specialty skill; it is foundational workforce preparation and civic competency.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">&lt;5%</div>
+        <div class="stat-label">of U.S. school districts offer structured AI literacy programming<br><em>(AI4K12 Initiative, 2024)</em></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">&lt;2%</div>
+        <div class="stat-label">of rural and low-income districts have any AI education resources</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">72%</div>
+        <div class="stat-label">of teachers feel unprepared to teach AI concepts<br><em>(EdWeek Research Center, 2024)</em></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">97M</div>
+        <div class="stat-label">new AI-adjacent jobs projected by 2030, requiring AI-fluent workers<br><em>(WEF, 2023)</em></div>
+      </div>
+    </div>
+
+    <h3>Who Gets Left Behind</h3>
+    <p>Access to AI education today is almost entirely determined by zip code. Well-resourced suburban and private school districts are building AI electives and maker spaces. Meanwhile, under-resourced districts — which disproportionately serve Black, Latino, Indigenous, and low-income students — have no AI curriculum at all. This mirrors historical digital divides, but with a compressed timeline. Students who arrive at the workforce without AI fluency in the 2030s will face structural disadvantage that compounds over a lifetime.</p>
+
+    <div class="callout">
+      <strong>The Civic Dimension:</strong> AI literacy is not only a workforce issue. Citizens who cannot understand how algorithmic systems make decisions about loans, healthcare, criminal justice, and political advertising cannot meaningfully participate in democratic governance of those systems. AI literacy is civic literacy.
+    </div>
+
+    <!-- OPPORTUNITY -->
+    <h2>The Opportunity: AI Literacy as a Foundational Skill</h2>
+    <p>State education systems have successfully operationalized foundational skills before — reading, mathematics, digital literacy, and computer science each followed a path from niche to standard. AI literacy is ready for that same transition. The infrastructure now exists: established frameworks (AI4K12), policy momentum (30+ states with CS/AI legislation since 2022), surging educator demand, and rare bipartisan political support.</p>
+
+    <!-- OUR APPROACH -->
+    <h2>Our Approach: The AI Explorers Curriculum</h2>
+    <p>AI Explorers is a structured, project-based K–12 curriculum that teaches students how AI works, how to use AI tools responsibly, and how to think critically about AI's societal role. It is <strong>free and open source</strong> (CC BY 4.0), <strong>built on AI4K12</strong>, <strong>equity-first by design</strong>, <strong>COPPA-compliant</strong>, and <strong>device-agnostic</strong> — functional on Chromebooks, iPads, or any school hardware.</p>
+
+    <table>
+      <thead>
+        <tr><th>Grade Band</th><th>Focus</th><th>Sample Unit</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>K–2</strong></td><td>AI as a tool; what computers can and can't do</td><td>"Teaching a Computer to Sort"</td></tr>
+        <tr><td><strong>3–5</strong></td><td>Pattern recognition; data and training</td><td>"How Does a Music App Know What You Like?"</td></tr>
+        <tr><td><strong>6–8</strong></td><td>Machine learning; bias and fairness</td><td>"Building and Breaking a Classifier"</td></tr>
+        <tr><td><strong>9–12</strong></td><td>Generative AI; ethics; societal impact</td><td>"Who Decides What AI Decides?"</td></tr>
+      </tbody>
+    </table>
+
+    <!-- KEY FEATURES -->
+    <h2>Key Features for Policy Makers</h2>
+
+    <h3>Zero Cost to Taxpayers</h3>
+    <p>Released under Creative Commons (CC BY 4.0), AI Explorers has no licensing agreements, per-seat fees, or vendor contracts. Districts may optionally request free implementation support.</p>
+
+    <h3>Scales from Classroom to District</h3>
+    <p>The curriculum is modular — a single teacher can adopt one unit tomorrow; a district can roll out a full K–12 vertical alignment in a semester. State education agencies can embed it in statewide CS frameworks without procurement processes.</p>
+
+    <h3>COPPA Compliance &amp; Student Privacy</h3>
+    <p>All interactive components are designed to function without student data collection. COPPA-compliant alternatives and district guidance are included for every digital activity.</p>
+
+    <h3>AI4K12 Framework Alignment</h3>
+    <p>AI Explorers maps to all five Big Ideas in AI: Perception; Representation &amp; Reasoning; Learning; Natural Interaction; and Societal Impact — ensuring rigor, credibility, and compatibility with emerging state standards.</p>
+
+    <!-- OUTCOMES -->
+    <h2>Outcomes &amp; Metrics</h2>
+    <p>Upon completing grade-appropriate AI Explorers units, students will be able to: <strong>explain</strong> how ML systems are trained and their limitations; <strong>identify</strong> AI applications and evaluate their design choices; <strong>analyze</strong> algorithmic decision-making for bias; <strong>create</strong> simple AI-powered projects; and <strong>advocate</strong> for responsible AI design in civic contexts.</p>
+
+    <div class="callout">
+      <strong>Standards Alignment:</strong> AI Explorers maps to CSTA K–12 CS Framework, ISTE Standards for Students, Common Core ELA, and NGSS data analysis crosscutting concepts — covering standards used in over 40 states. District-specific crosswalk documents available on request.
+    </div>
+
+    <!-- EQUITY -->
+    <h2>The Equity Argument</h2>
+
+    <div class="equity-cols">
+      <div class="eq-col have">
+        <h4>Who Gets AI Education Today</h4>
+        <ul>
+          <li>Districts spending &gt;$15K per pupil</li>
+          <li>STEM magnet &amp; CS elective schools</li>
+          <li>Private &amp; well-funded suburban districts</li>
+          <li>Students with access to extracurricular coding programs</li>
+        </ul>
+      </div>
+      <div class="eq-col havenot">
+        <h4>Who Doesn't</h4>
+        <ul>
+          <li>Districts spending &lt;$10K per pupil (rural &amp; urban)</li>
+          <li>Title I schools</li>
+          <li>Black, Latino, Indigenous &amp; Pacific Islander students</li>
+          <li>English language learners &amp; students with disabilities</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Because AI Explorers is free, open-source, and device-agnostic, the only barrier to adoption is teacher time and district will. The curriculum was co-developed with Title I educators and tested in Chromebook-only environments. Translated units are available in Spanish, with additional languages in progress.</p>
+
+    <div class="callout">
+      <strong>The equity argument is simple:</strong> when the curriculum costs nothing, every district can afford it.
+    </div>
+
+    <!-- IMPLEMENTATION -->
+    <h2>Implementation: Zero Licensing Cost Adoption</h2>
+
+    <table>
+      <thead>
+        <tr><th>Month</th><th>Activity</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1–2</strong></td><td>Teacher orientation (free, 3-hour self-paced); select pilot classrooms</td></tr>
+        <tr><td><strong>3–6</strong></td><td>Semester pilot; collect student performance and engagement data</td></tr>
+        <tr><td><strong>7–8</strong></td><td>Evaluate pilot results; present findings to district administration</td></tr>
+        <tr><td><strong>9–12</strong></td><td>Plan district-wide rollout for following academic year</td></tr>
+      </tbody>
+    </table>
+
+    <p>All materials — lesson plans, rubrics, family communication templates, and the District Implementation Guide — are available for immediate download from the AI Explorers GitHub repository. No registration required.</p>
+
+    <!-- RECOMMENDATIONS -->
+    <h2>Policy Recommendations</h2>
+
+    <div class="rec-grid">
+      <div class="rec-card">
+        <div class="rec-num">1</div>
+        <div class="rec-content">
+          <h4>Launch a Funded AI Literacy Pilot Program</h4>
+          <p>Establish a competitive grant program ($500K–$2M at state level) with priority funding for Title I and rural districts. Fund teacher stipends, implementation support, and rigorous evaluation.</p>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-num">2</div>
+        <div class="rec-content">
+          <h4>Include AI Literacy in State CS/Digital Literacy Standards</h4>
+          <p>Formally incorporate AI literacy competencies using the AI4K12 Big Ideas as the organizing framework. A clear state mandate drives district adoption at scale.</p>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-num">3</div>
+        <div class="rec-content">
+          <h4>Fund AI-Focused Teacher Professional Development</h4>
+          <p>Allocate Title IV-A or state discretionary funds specifically for AI literacy PD. Partner with open-source providers to deliver training at no additional licensing cost, targeting under-credentialed districts first.</p>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-num">4</div>
+        <div class="rec-content">
+          <h4>Require AI Literacy in CS Teaching Endorsement Pathways</h4>
+          <p>Work with state certification bodies to include AI literacy content in new computer science teaching endorsements, building long-term human capital for sustainable programs.</p>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-num">5</div>
+        <div class="rec-content">
+          <h4>Establish an Equity Accountability Metric</h4>
+          <p>Require districts receiving state CS funding to report AI literacy enrollment data disaggregated by race, income, EL status, and disability status. Make equity in AI access a measurable goal, not an aspiration.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /brief-body -->
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2>Call to Action</h2>
+    <p>AI Explorers is ready to partner with forward-thinking state and district leaders. We offer:</p>
+    <ul>
+      <li>Policy briefings for state education agency staff and legislative education committees</li>
+      <li>Curriculum walkthroughs and live classroom demonstrations</li>
+      <li>Pilot design and implementation support — at no cost</li>
+    </ul>
+    <p>All curriculum materials are available now, at no cost. The question is not whether your district can afford AI literacy education — it's whether your students can afford to go without it.</p>
+    <a href="../policy.html" class="cta-btn">Visit Our Policy Page →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="brief-footer">
+    <p>AI Explorers is a nonprofit open-source initiative. All curriculum materials are released under Creative Commons CC BY 4.0 and may be freely reproduced and distributed with attribution. &copy; 2026 AI Explorers Initiative.</p>
+  </div>
+
+</div><!-- /brief-wrapper -->
+
+</body>
+</html>
