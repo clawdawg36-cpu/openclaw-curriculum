@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Module 1: Identity">
+  <defs>
+    <linearGradient id="m1-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F8FFF"/>
+      <stop offset="100%" stop-color="#7C5CFC"/>
+    </linearGradient>
+    <linearGradient id="m1-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F8FFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#7C5CFC" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#m1-glow)" stroke="url(#m1-grad)" stroke-width="1.5"/>
+  <!-- Robot face outline -->
+  <rect x="16" y="14" width="32" height="28" rx="6" ry="6" fill="none" stroke="url(#m1-grad)" stroke-width="2"/>
+  <!-- Eyes -->
+  <circle cx="24" cy="25" r="3.5" fill="none" stroke="#4F8FFF" stroke-width="1.5"/>
+  <circle cx="40" cy="25" r="3.5" fill="none" stroke="#4F8FFF" stroke-width="1.5"/>
+  <circle cx="24" cy="25" r="1.5" fill="#4F8FFF"/>
+  <circle cx="40" cy="25" r="1.5" fill="#4F8FFF"/>
+  <!-- Mouth / expression panel -->
+  <rect x="21" y="32" width="22" height="5" rx="2.5" fill="none" stroke="#7C5CFC" stroke-width="1.5"/>
+  <rect x="23" y="33.5" width="4" height="2" rx="1" fill="#7C5CFC"/>
+  <rect x="30" y="33.5" width="4" height="2" rx="1" fill="#7C5CFC"/>
+  <rect x="37" y="33.5" width="4" height="2" rx="1" fill="#7C5CFC"/>
+  <!-- Antenna -->
+  <line x1="32" y1="14" x2="32" y2="8" stroke="url(#m1-grad)" stroke-width="1.5"/>
+  <circle cx="32" cy="7" r="2" fill="#00D9B8"/>
+  <!-- Neck/body connector dots -->
+  <circle cx="26" cy="44" r="1.5" fill="#4F8FFF"/>
+  <circle cx="32" cy="44" r="1.5" fill="#7C5CFC"/>
+  <circle cx="38" cy="44" r="1.5" fill="#4F8FFF"/>
+</svg>

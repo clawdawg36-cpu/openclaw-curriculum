@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Module 7: Capstone">
+  <defs>
+    <linearGradient id="m7-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F8FFF"/>
+      <stop offset="50%" stop-color="#7C5CFC"/>
+      <stop offset="100%" stop-color="#00D9B8"/>
+    </linearGradient>
+    <linearGradient id="m7-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F8FFF" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00D9B8" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="m7-flame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD23F"/>
+      <stop offset="100%" stop-color="#FF6B35"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#m7-glow)" stroke="url(#m7-grad)" stroke-width="1.5"/>
+  <!-- Rocket body -->
+  <path d="M 32 8 L 40 24 L 40 42 Q 40 44 38 44 L 26 44 Q 24 44 24 42 L 24 24 Z"
+        fill="none" stroke="url(#m7-grad)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Rocket nose cone -->
+  <path d="M 24 24 L 32 8 L 40 24 Z" fill="none" stroke="url(#m7-grad)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Porthole -->
+  <circle cx="32" cy="30" r="4" fill="none" stroke="#4F8FFF" stroke-width="1.5"/>
+  <circle cx="32" cy="30" r="2" fill="#4F8FFF" opacity="0.4"/>
+  <!-- Rocket fins -->
+  <path d="M 24 38 L 18 46 L 24 44 Z" fill="none" stroke="#7C5CFC" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M 40 38 L 46 46 L 40 44 Z" fill="none" stroke="#7C5CFC" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Flame -->
+  <path d="M 27 44 Q 28 50 32 54 Q 36 50 37 44" fill="none" stroke="url(#m7-flame)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 29 44 Q 30 48 32 51 Q 34 48 35 44" fill="none" stroke="#FFD23F" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <!-- Stars -->
+  <circle cx="14" cy="16" r="1.5" fill="#FFD23F"/>
+  <circle cx="50" cy="14" r="1" fill="#FFD23F" opacity="0.8"/>
+  <circle cx="10" cy="34" r="1" fill="#F0F4FF" opacity="0.6"/>
+  <circle cx="52" cy="28" r="1.5" fill="#FFD23F" opacity="0.9"/>
+  <circle cx="18" cy="50" r="1" fill="#F0F4FF" opacity="0.5"/>
+  <circle cx="48" cy="48" r="1" fill="#4F8FFF" opacity="0.7"/>
+  <!-- 4-point star accent -->
+  <path d="M 50 14 L 51.5 12.5 L 50 11 L 48.5 12.5 Z" fill="#FFD23F"/>
+  <path d="M 14 16 L 15.5 14.5 L 14 13 L 12.5 14.5 Z" fill="#FFD23F" opacity="0.8"/>
+</svg>

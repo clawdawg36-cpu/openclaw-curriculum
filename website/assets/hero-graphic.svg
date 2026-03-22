@@ -1,0 +1,338 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="Hero graphic: A student's AI assistant growing across 7 modules">
+  <!--
+    HERO CONCEPT: "The Growing AI"
+    A student (silhouette) sits at a workstation on the left. Their AI companion "Patch"
+    grows from a simple blinking dot (M1) through increasingly complex forms across a
+    horizontal arc toward the right. Each stage connects via a glowing circuit-trace path.
+    The background is the brand dark (#0D0F14) with a gradient nebula behind the arc.
+    The rightmost state — the capstone rocket — launches upward from the arc.
+    
+    This SVG is intentionally layered for CSS animation:
+    - .hero-bg-nebula: ambient glow layer (CSS: animate opacity pulse)
+    - .arc-trace: the connecting circuit path (CSS: stroke-dashoffset reveal on load)
+    - .patch-stage-N: each AI state (CSS: fadeIn staggered on scroll)
+    - .student-silhouette: static anchor on left
+    - .rocket-launch: rightmost element (CSS: translateY up on complete)
+  -->
+
+  <defs>
+    <!-- Main brand gradient -->
+    <linearGradient id="hero-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8FFF"/>
+      <stop offset="50%" stop-color="#7C5CFC"/>
+      <stop offset="100%" stop-color="#00D9B8"/>
+    </linearGradient>
+    <!-- Vertical hero accent gradient -->
+    <linearGradient id="hero-vert" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7C5CFC" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#4F8FFF" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00D9B8" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Flame gradient -->
+    <linearGradient id="flame-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD23F"/>
+      <stop offset="100%" stop-color="#FF6B35"/>
+    </linearGradient>
+    <!-- Nebula radial glow -->
+    <radialGradient id="nebula-grad" cx="55%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#7C5CFC" stop-opacity="0.18"/>
+      <stop offset="50%" stop-color="#4F8FFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0D0F14" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Stage glow halos -->
+    <radialGradient id="glow-blue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4F8FFF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#4F8FFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-teal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00D9B8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00D9B8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-purple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C5CFC" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#7C5CFC" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft-blur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- BACKGROUND LAYER -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <rect width="960" height="540" fill="#0D0F14"/>
+
+  <!-- Star field -->
+  <g opacity="0.5">
+    <circle cx="80" cy="60" r="1" fill="#F0F4FF"/>
+    <circle cx="150" cy="30" r="1.5" fill="#4F8FFF" opacity="0.6"/>
+    <circle cx="220" cy="80" r="1" fill="#F0F4FF"/>
+    <circle cx="400" cy="20" r="1" fill="#FFD23F" opacity="0.7"/>
+    <circle cx="520" cy="50" r="1.5" fill="#F0F4FF"/>
+    <circle cx="680" cy="25" r="1" fill="#4F8FFF"/>
+    <circle cx="780" cy="70" r="1" fill="#F0F4FF"/>
+    <circle cx="860" cy="40" r="1.5" fill="#FFD23F" opacity="0.6"/>
+    <circle cx="920" cy="90" r="1" fill="#F0F4FF"/>
+    <circle cx="50" cy="480" r="1" fill="#4F8FFF" opacity="0.4"/>
+    <circle cx="900" cy="500" r="1.5" fill="#7C5CFC" opacity="0.5"/>
+    <circle cx="350" cy="510" r="1" fill="#F0F4FF" opacity="0.3"/>
+  </g>
+
+  <!-- Nebula glow behind the arc -->
+  <ellipse class="hero-bg-nebula" cx="560" cy="300" rx="380" ry="220" fill="url(#nebula-grad)"/>
+
+  <!-- Subtle grid lines in background -->
+  <g stroke="#252D40" stroke-width="0.5" opacity="0.4">
+    <line x1="0" y1="135" x2="960" y2="135"/>
+    <line x1="0" y1="270" x2="960" y2="270"/>
+    <line x1="0" y1="405" x2="960" y2="405"/>
+    <line x1="240" y1="0" x2="240" y2="540"/>
+    <line x1="480" y1="0" x2="480" y2="540"/>
+    <line x1="720" y1="0" x2="720" y2="540"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STUDENT SILHOUETTE (anchor left) -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <g class="student-silhouette">
+    <!-- Desk surface -->
+    <rect x="30" y="390" width="160" height="8" rx="2" fill="#252D40"/>
+    <!-- Monitor -->
+    <rect x="70" y="310" width="100" height="72" rx="4" fill="#161B27" stroke="#4F8FFF" stroke-width="1.5"/>
+    <!-- Monitor glow screen content (stylized terminal) -->
+    <rect x="76" y="316" width="88" height="60" rx="2" fill="#0D0F14"/>
+    <line x1="82" y1="328" x2="128" y2="328" stroke="#00D9B8" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="82" y1="336" x2="120" y2="336" stroke="#4F8FFF" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+    <line x1="82" y1="344" x2="134" y2="344" stroke="#7C5CFC" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+    <line x1="82" y1="352" x2="110" y2="352" stroke="#00D9B8" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+    <!-- Cursor blink -->
+    <rect x="82" y="360" width="8" height="8" rx="1" fill="#00D9B8" opacity="0.9"/>
+    <!-- Monitor stand -->
+    <rect x="115" y="382" width="10" height="10" rx="1" fill="#252D40"/>
+    <rect x="102" y="390" width="36" height="4" rx="2" fill="#252D40"/>
+    <!-- Student body silhouette (seated, facing screen) -->
+    <!-- Head -->
+    <circle cx="100" cy="285" r="20" fill="#161B27" stroke="#252D40" stroke-width="1.5"/>
+    <!-- Shoulders / torso -->
+    <path d="M 72 320 Q 78 300 100 295 Q 122 300 128 320 L 135 390 L 65 390 Z"
+          fill="#161B27" stroke="#252D40" stroke-width="1"/>
+    <!-- Arm reaching toward screen -->
+    <path d="M 120 330 Q 140 335 158 345" fill="none" stroke="#252D40" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 120 330 Q 140 335 158 345" fill="none" stroke="#161B27" stroke-width="9" stroke-linecap="round"/>
+    <!-- Hair detail -->
+    <path d="M 80 275 Q 85 260 100 262 Q 118 260 122 275" fill="#252D40" stroke="none"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- ARC TRACE (circuit path connecting all stages) -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 
+    Path: starts at student workstation (~200,380), arcs through 7 stages 
+    ending at rocket launch point (~870,120)
+  -->
+  <path class="arc-trace"
+    d="M 200 380 C 240 380 255 355 290 340 
+       C 330 322 350 310 390 295
+       C 430 278 460 268 500 255
+       C 545 240 575 228 620 210
+       C 668 190 705 175 750 155
+       C 795 134 830 118 870 100"
+    fill="none" stroke="url(#hero-grad)" stroke-width="2" stroke-dasharray="6 4"
+    opacity="0.7"/>
+
+  <!-- Circuit branch nodes on the path -->
+  <circle cx="200" cy="380" r="4" fill="#4F8FFF" opacity="0.8"/>
+  <circle cx="290" cy="340" r="3" fill="#4F8FFF" opacity="0.6"/>
+  <circle cx="390" cy="295" r="3" fill="#7C5CFC" opacity="0.6"/>
+  <circle cx="500" cy="255" r="3" fill="#7C5CFC" opacity="0.6"/>
+  <circle cx="620" cy="210" r="3" fill="#00D9B8" opacity="0.6"/>
+  <circle cx="750" cy="155" r="3" fill="#00D9B8" opacity="0.6"/>
+  <circle cx="870" cy="100" r="4" fill="#FFD23F" opacity="0.8"/>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STAGE 1 — Identity (simple dot with antenna, ~M1) -->
+  <!-- Position: ~240, 360 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <g class="patch-stage-1">
+    <circle cx="240" cy="370" r="18" fill="url(#glow-blue)" filter="url(#soft-blur)"/>
+    <circle cx="240" cy="370" r="12" fill="none" stroke="#4F8FFF" stroke-width="1.5"/>
+    <!-- Simple robot face -->
+    <circle cx="236" cy="368" r="2" fill="#4F8FFF"/>
+    <circle cx="244" cy="368" r="2" fill="#4F8FFF"/>
+    <line x1="237" y1="374" x2="243" y2="374" stroke="#4F8FFF" stroke-width="1" stroke-linecap="round"/>
+    <!-- Tiny antenna -->
+    <line x1="240" y1="358" x2="240" y2="352" stroke="#4F8FFF" stroke-width="1"/>
+    <circle cx="240" cy="351" r="1.5" fill="#00D9B8"/>
+    <!-- Label -->
+    <text x="240" y="395" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#8B9BC2">M1: Identity</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STAGE 2 — Vision (eye + camera lens) -->
+  <!-- Position: ~340, 330 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <g class="patch-stage-2">
+    <circle cx="340" cy="325" r="20" fill="url(#glow-blue)" filter="url(#soft-blur)"/>
+    <!-- Eye shape -->
+    <path d="M 324 325 Q 332 315 340 315 Q 348 315 356 325 Q 348 335 340 335 Q 332 335 324 325 Z"
+          fill="none" stroke="#4F8FFF" stroke-width="1.5"/>
+    <circle cx="340" cy="325" r="5" fill="none" stroke="#00D9B8" stroke-width="1.25"/>
+    <circle cx="340" cy="325" r="2" fill="#00D9B8"/>
+    <!-- Camera lens corners -->
+    <path d="M 328 318 L 324 318 L 324 322" fill="none" stroke="#7C5CFC" stroke-width="1" stroke-linecap="round"/>
+    <path d="M 352 318 L 356 318 L 356 322" fill="none" stroke="#7C5CFC" stroke-width="1" stroke-linecap="round"/>
+    <text x="340" y="350" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#8B9BC2">M2: Vision</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STAGE 3 — Knowledge (book + brain circuit) -->
+  <!-- Position: ~450, 280 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <g class="patch-stage-3">
+    <circle cx="450" cy="275" r="22" fill="url(#glow-purple)" filter="url(#soft-blur)"/>
+    <!-- Book pages -->
+    <path d="M 436 262 Q 436 260 438 260 L 450 262 L 450 290 Q 444 288 436 290 Z"
+          fill="none" stroke="#7C5CFC" stroke-width="1.5"/>
+    <path d="M 464 262 Q 464 260 462 260 L 450 262 L 450 290 Q 456 288 464 290 Z"
+          fill="none" stroke="#7C5CFC" stroke-width="1.5"/>
+    <!-- Brain circuit dot on top -->
+    <circle cx="450" cy="256" r="4" fill="none" stroke="#00D9B8" stroke-width="1.25"/>
+    <circle cx="450" cy="256" r="1.5" fill="#00D9B8"/>
+    <line x1="450" y1="260" x2="450" y2="262" stroke="#00D9B8" stroke-width="1"/>
+    <text x="450" y="306" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#8B9BC2">M3: Knowledge</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STAGE 4 — Learning (neural net, growing) -->
+  <!-- Position: ~560, 245 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <g class="patch-stage-4">
+    <circle cx="560" cy="240" r="24" fill="url(#glow-purple)" filter="url(#soft-blur)"/>
+    <!-- Neural nodes -->
+    <circle cx="548" cy="235" r="3" fill="none" stroke="#4F8FFF" stroke-width="1.25"/>
+    <circle cx="548" cy="245" r="3" fill="none" stroke="#4F8FFF" stroke-width="1.25"/>
+    <circle cx="560" cy="230" r="3" fill="none" stroke="#7C5CFC" stroke-width="1.25"/>
+    <circle cx="560" cy="240" r="3" fill="none" stroke="#7C5CFC" stroke-width="1.25"/>
+    <circle cx="560" cy="250" r="3" fill="none" stroke="#7C5CFC" stroke-width="1.25"/>
+    <circle cx="572" cy="235" r="3" fill="none" stroke="#00D9B8" stroke-width="1.25"/>
+    <circle cx="572" cy="245" r="3" fill="none" stroke="#00D9B8" stroke-width="1.25"/>
+    <!-- Connections -->
+    <line x1="551" y1="235" x2="557" y2="230" stroke="#4F8FFF" stroke-width="0.75" opacity="0.6"/>
+    <line x1="551" y1="235" x2="557" y2="240" stroke="#4F8FFF" stroke-width="0.75" opacity="0.6"/>
+    <line x1="551" y1="245" x2="557" y2="240" stroke="#4F8FFF" stroke-width="0.75" opacity="0.6"/>
+    <line x1="551" y1="245" x2="557" y2="250" stroke="#4F8FFF" stroke-width="0.75" opacity="0.6"/>
+    <line x1="563" y1="230" x2="569" y2="235" stroke="#00D9B8" stroke-width="0.75" opacity="0.6"/>
+    <line x1="563" y1="240" x2="569" y2="235" stroke="#00D9B8" stroke-width="0.75" opacity="0.6"/>
+    <line x1="563" y1="240" x2="569" y2="245" stroke="#00D9B8" stroke-width="0.75" opacity="0.6"/>
+    <line x1="563" y1="250" x2="569" y2="245" stroke="#00D9B8" stroke-width="0.75" opacity="0.6"/>
+    <!-- Upward trend arrow -->
+    <path d="M 545 258 L 555 250 L 565 244 L 575 238" fill="none" stroke="url(#hero-grad)" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="560" y="274" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#8B9BC2">M4: Learning</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STAGE 5 — Voice (speech bubble + waveform) -->
+  <!-- Position: ~670, 205 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <g class="patch-stage-5">
+    <circle cx="670" cy="198" r="24" fill="url(#glow-blue)" filter="url(#soft-blur)"/>
+    <!-- Speech bubble -->
+    <path d="M 652 185 Q 652 181 655 181 L 688 181 Q 691 181 691 185 L 691 200 Q 691 204 688 204 L 672 204 L 666 212 L 668 204 L 655 204 Q 652 204 652 200 Z"
+          fill="none" stroke="#FFD23F" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- Waveform bars -->
+    <line x1="659" y1="192" x2="659" y2="196" stroke="#FFD23F" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="663" y1="189" x2="663" y2="199" stroke="#FFD23F" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="667" y1="187" x2="667" y2="201" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+    <line x1="671" y1="189" x2="671" y2="199" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+    <line x1="675" y1="187" x2="675" y2="201" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+    <line x1="679" y1="190" x2="679" y2="198" stroke="#FFD23F" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="683" y1="192" x2="683" y2="196" stroke="#FFD23F" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="670" y="228" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#8B9BC2">M5: Voice</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STAGE 6 — Ethics (shield + balance) -->
+  <!-- Position: ~780, 155 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <g class="patch-stage-6">
+    <circle cx="780" cy="148" r="26" fill="url(#glow-teal)" filter="url(#soft-blur)"/>
+    <!-- Shield -->
+    <path d="M 780 128 L 796 133 L 796 146 Q 796 158 780 166 Q 764 158 764 146 L 764 133 Z"
+          fill="none" stroke="#00D9B8" stroke-width="1.75" stroke-linejoin="round"/>
+    <!-- Balance beam -->
+    <line x1="770" y1="148" x2="790" y2="148" stroke="#7C5CFC" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="780" y1="142" x2="780" y2="148" stroke="#7C5CFC" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="780" cy="142" r="1.5" fill="#7C5CFC"/>
+    <path d="M 767 149 Q 770 151 773 149" fill="none" stroke="#7C5CFC" stroke-width="1.25" stroke-linecap="round"/>
+    <path d="M 787 149 Q 790 151 793 149" fill="none" stroke="#7C5CFC" stroke-width="1.25" stroke-linecap="round"/>
+    <!-- Check inside shield -->
+    <path d="M 774 152 L 778 156 L 786 147" fill="none" stroke="#00D9B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="780" y="182" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#8B9BC2">M6: Ethics</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STAGE 7 — Capstone ROCKET LAUNCH (final, prominent) -->
+  <!-- Position: ~880, 90 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <g class="patch-stage-7 rocket-launch">
+    <!-- Large glow halo -->
+    <circle cx="882" cy="88" r="52" fill="url(#glow-purple)" filter="url(#soft-blur)" opacity="0.8"/>
+    <!-- Rocket body -->
+    <path d="M 882 46 L 894 64 L 894 96 Q 894 100 890 100 L 874 100 Q 870 100 870 96 L 870 64 Z"
+          fill="none" stroke="url(#hero-grad)" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Nose cone -->
+    <path d="M 870 64 L 882 46 L 894 64 Z"
+          fill="none" stroke="url(#hero-grad)" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Porthole -->
+    <circle cx="882" cy="76" r="6" fill="none" stroke="#4F8FFF" stroke-width="1.5"/>
+    <circle cx="882" cy="76" r="3" fill="#4F8FFF" opacity="0.4"/>
+    <!-- Fins -->
+    <path d="M 870 90 L 860 104 L 870 100 Z" fill="none" stroke="#7C5CFC" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M 894 90 L 904 104 L 894 100 Z" fill="none" stroke="#7C5CFC" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- Flame trail -->
+    <path d="M 875 100 Q 877 114 882 122 Q 887 114 889 100"
+          fill="none" stroke="url(#flame-grad)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 878 100 Q 880 110 882 118 Q 884 110 886 100"
+          fill="none" stroke="#FFD23F" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <!-- Launch trail particles -->
+    <circle cx="872" cy="118" r="1.5" fill="#FF6B35" opacity="0.8"/>
+    <circle cx="892" cy="124" r="1.5" fill="#FFD23F" opacity="0.6"/>
+    <circle cx="878" cy="130" r="1" fill="#FF6B35" opacity="0.5"/>
+    <circle cx="887" cy="136" r="1" fill="#FFD23F" opacity="0.4"/>
+    <!-- 4-point stars burst around rocket -->
+    <path d="M 858 60 L 860 56 L 862 60 L 866 62 L 862 64 L 860 68 L 858 64 L 854 62 Z" fill="#FFD23F" opacity="0.9"/>
+    <path d="M 906 55 L 907.5 52 L 909 55 L 912 56.5 L 909 58 L 907.5 61 L 906 58 L 903 56.5 Z" fill="#FFD23F" opacity="0.7"/>
+    <circle cx="845" cy="78" r="2" fill="#F0F4FF" opacity="0.6"/>
+    <circle cx="918" cy="72" r="1.5" fill="#F0F4FF" opacity="0.5"/>
+    <text x="882" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#8B9BC2">M7: Capstone</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- PATCH mascot mid-growth (center of arc, at M4 level) -->
+  <!-- Full robot form emerging — shows "Patch" at ~halfway point -->
+  <!-- Position: ~480, 440 (below the arc for reference callout) -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- HEADLINE TEXT AREA (left-center) -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <g class="hero-text">
+    <!-- Brand gradient headline background suggestion zone -->
+    <text x="200" y="440" text-anchor="middle"
+          font-family="'Clash Display', 'Inter', sans-serif"
+          font-size="14" font-weight="700" letter-spacing="2"
+          fill="#8B9BC2" opacity="0.6">UNLOCK 7 CAPABILITIES</text>
+    <text x="200" y="462" text-anchor="middle"
+          font-family="Inter, sans-serif"
+          font-size="11" fill="#4A5578" opacity="0.7">Your AI evolves with every module</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- PROGRESS ARC LABEL (top center) -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <text x="480" y="520" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="10" fill="#4A5578" opacity="0.5">
+    Hero graphic — AI Explorers © 2026 — ai-explorers.dev
+  </text>
+
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Module 3: Knowledge">
+  <defs>
+    <linearGradient id="m3-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C5CFC"/>
+      <stop offset="100%" stop-color="#4F8FFF"/>
+    </linearGradient>
+    <linearGradient id="m3-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C5CFC" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#4F8FFF" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#m3-glow)" stroke="url(#m3-grad)" stroke-width="1.5"/>
+  <!-- Open book base -->
+  <path d="M 10 40 L 10 20 Q 10 18 12 18 L 30 20 L 30 42 Q 20 40 10 40 Z"
+        fill="none" stroke="#4F8FFF" stroke-width="1.75" stroke-linejoin="round"/>
+  <path d="M 54 40 L 54 20 Q 54 18 52 18 L 34 20 L 34 42 Q 44 40 54 40 Z"
+        fill="none" stroke="#4F8FFF" stroke-width="1.75" stroke-linejoin="round"/>
+  <!-- Spine -->
+  <line x1="32" y1="20" x2="32" y2="42" stroke="url(#m3-grad)" stroke-width="2"/>
+  <!-- Text lines on left page -->
+  <line x1="14" y1="25" x2="28" y2="25.5" stroke="#7C5CFC" stroke-width="1" stroke-linecap="round" opacity="0.8"/>
+  <line x1="14" y1="29" x2="28" y2="29.5" stroke="#7C5CFC" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+  <line x1="14" y1="33" x2="26" y2="33.5" stroke="#7C5CFC" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  <!-- Text lines on right page -->
+  <line x1="36" y1="25" x2="50" y2="25.5" stroke="#7C5CFC" stroke-width="1" stroke-linecap="round" opacity="0.8"/>
+  <line x1="36" y1="29" x2="50" y2="29.5" stroke="#7C5CFC" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+  <line x1="36" y1="33" x2="48" y2="33.5" stroke="#7C5CFC" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  <!-- Brain circuit overlay at top -->
+  <circle cx="32" cy="13" r="5" fill="none" stroke="#00D9B8" stroke-width="1.5"/>
+  <path d="M 27 13 Q 25 10 27 8 Q 30 6 32 8" fill="none" stroke="#00D9B8" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 37 13 Q 39 10 37 8 Q 34 6 32 8" fill="none" stroke="#00D9B8" stroke-width="1" stroke-linecap="round"/>
+  <line x1="32" y1="8" x2="32" y2="6" stroke="#00D9B8" stroke-width="1" stroke-linecap="round"/>
+  <!-- Connection from brain to book -->
+  <line x1="32" y1="18" x2="32" y2="20" stroke="#00D9B8" stroke-width="1.5" stroke-dasharray="1.5 2"/>
+</svg>

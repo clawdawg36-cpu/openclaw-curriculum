@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Module 6: Ethics">
+  <defs>
+    <linearGradient id="m6-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D9B8"/>
+      <stop offset="100%" stop-color="#7C5CFC"/>
+    </linearGradient>
+    <linearGradient id="m6-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D9B8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#7C5CFC" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#m6-glow)" stroke="url(#m6-grad)" stroke-width="1.5"/>
+  <!-- Shield outline -->
+  <path d="M 32 8 L 50 14 L 50 30 Q 50 44 32 54 Q 14 44 14 30 L 14 14 Z"
+        fill="none" stroke="url(#m6-grad)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Balance scale beam -->
+  <line x1="22" y1="30" x2="42" y2="30" stroke="#00D9B8" stroke-width="1.75" stroke-linecap="round"/>
+  <line x1="32" y1="22" x2="32" y2="30" stroke="#00D9B8" stroke-width="1.75" stroke-linecap="round"/>
+  <!-- Pivot point -->
+  <circle cx="32" cy="22" r="2" fill="#00D9B8"/>
+  <!-- Left pan (slightly higher - balanced/fair) -->
+  <path d="M 19 31 Q 22 33 25 31" fill="none" stroke="#7C5CFC" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="22" y1="30" x2="22" y2="33" stroke="#7C5CFC" stroke-width="1.25"/>
+  <!-- Right pan (level) -->
+  <path d="M 39 31 Q 42 33 45 31" fill="none" stroke="#7C5CFC" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="42" y1="30" x2="42" y2="33" stroke="#7C5CFC" stroke-width="1.25"/>
+  <!-- Inner shield check mark -->
+  <path d="M 24 40 L 29 45 L 40 35" fill="none" stroke="#00D9B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Shield inner glow top -->
+  <path d="M 32 11 L 47 16.5" fill="none" stroke="#00D9B8" stroke-width="0.75" opacity="0.4"/>
+</svg>

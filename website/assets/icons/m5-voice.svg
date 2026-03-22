@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Module 5: Voice">
+  <defs>
+    <linearGradient id="m5-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD23F"/>
+      <stop offset="100%" stop-color="#FF6B35"/>
+    </linearGradient>
+    <linearGradient id="m5-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD23F" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FF6B35" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#m5-glow)" stroke="url(#m5-grad)" stroke-width="1.5"/>
+  <!-- Speech bubble shape -->
+  <path d="M 10 14 Q 10 10 14 10 L 50 10 Q 54 10 54 14 L 54 34 Q 54 38 50 38 L 26 38 L 18 48 L 20 38 L 14 38 Q 10 38 10 34 Z"
+        fill="none" stroke="url(#m5-grad)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Sound wave lines inside bubble (speech waveform) -->
+  <line x1="18" y1="24" x2="18" y2="24" stroke="#FFD23F" stroke-width="2" stroke-linecap="round"/>
+  <line x1="22" y1="20" x2="22" y2="28" stroke="#FFD23F" stroke-width="2" stroke-linecap="round"/>
+  <line x1="26" y1="17" x2="26" y2="31" stroke="#FFD23F" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="30" y1="19" x2="30" y2="29" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="34" y1="16" x2="34" y2="32" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="38" y1="19" x2="38" y2="29" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="42" y1="21" x2="42" y2="27" stroke="#FFD23F" stroke-width="2" stroke-linecap="round"/>
+  <line x1="46" y1="23" x2="46" y2="25" stroke="#FFD23F" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Channel/broadcast dots -->
+  <circle cx="52" cy="46" r="2" fill="#FFD23F"/>
+  <circle cx="44" cy="50" r="1.5" fill="#FF6B35"/>
+  <circle cx="56" cy="52" r="1.5" fill="#FF6B35"/>
+  <!-- Signal arcs from channel -->
+  <path d="M 48 42 Q 54 44 56 50" fill="none" stroke="#FFD23F" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+  <path d="M 45 45 Q 42 50 44 55" fill="none" stroke="#FF6B35" stroke-width="1" stroke-dasharray="2 2" opacity="0.5"/>
+</svg>
