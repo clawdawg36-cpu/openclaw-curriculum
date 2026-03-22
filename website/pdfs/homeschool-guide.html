@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Explorers: Homeschool Parent Guide</title>
+  <style>
+    /* Print-friendly base */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --primary: #1a1a2e;
+      --accent: #4f46e5;
+      --accent-light: #e0e7ff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg-alt: #f9fafb;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11pt;
+      line-height: 1.65;
+      color: var(--text);
+      max-width: 7.5in;
+      margin: 0 auto;
+      padding: 0.5in 0.75in;
+      background: #fff;
+    }
+
+    /* ─── Cover header ─── */
+    .cover {
+      text-align: center;
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 1.5em;
+      margin-bottom: 2em;
+    }
+    .cover .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3em 1em;
+      border-radius: 20px;
+      margin-bottom: 0.75em;
+    }
+    .cover h1 {
+      font-size: 26pt;
+      font-weight: 900;
+      color: var(--primary);
+      margin: 0.15em 0;
+      line-height: 1.15;
+    }
+    .cover .tagline {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 13pt;
+      margin: 0.25em 0;
+    }
+    .cover .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 10pt;
+      color: var(--muted);
+      margin-top: 0.75em;
+    }
+
+    /* ─── Section headings ─── */
+    h2 {
+      font-family: 'Arial', sans-serif;
+      font-size: 16pt;
+      font-weight: 800;
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.2em;
+      margin-top: 2em;
+      margin-bottom: 0.6em;
+    }
+    h3 {
+      font-family: 'Arial', sans-serif;
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 1.4em;
+      margin-bottom: 0.3em;
+    }
+    h4 {
+      font-family: 'Arial', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 1em;
+      margin-bottom: 0.2em;
+    }
+
+    /* ─── Body copy ─── */
+    p { margin: 0.5em 0; }
+    ul, ol { margin: 0.5em 0 0.5em 1.5em; padding: 0; }
+    li { margin-bottom: 0.25em; }
+    strong { font-weight: 700; }
+    em { font-style: italic; }
+
+    /* ─── Tables ─── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Arial', sans-serif;
+      font-size: 9.5pt;
+      margin: 0.75em 0 1em;
+    }
+    thead tr { background: var(--accent); color: #fff; }
+    thead th {
+      padding: 0.45em 0.6em;
+      text-align: left;
+      font-weight: 700;
+    }
+    tbody tr:nth-child(even) { background: var(--bg-alt); }
+    tbody td { padding: 0.4em 0.6em; border-bottom: 1px solid var(--border); }
+
+    /* ─── Module cards ─── */
+    .module-card {
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 0.9em 1em;
+      margin: 1.2em 0;
+      background: var(--bg-alt);
+      page-break-inside: avoid;
+    }
+    .module-card h3 { margin-top: 0; color: var(--primary); }
+    .module-card .meta {
+      font-family: 'Arial', sans-serif;
+      font-size: 8.5pt;
+      color: var(--muted);
+      margin-bottom: 0.5em;
+    }
+
+    /* ─── Callout boxes ─── */
+    .callout {
+      background: var(--accent-light);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 0.75em 1em;
+      margin: 1em 0;
+      font-family: 'Arial', sans-serif;
+      font-size: 10pt;
+      page-break-inside: avoid;
+    }
+    .callout strong { color: var(--accent); }
+
+    /* ─── Checklist ─── */
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li::before { content: "☐  "; font-size: 10pt; }
+
+    /* ─── Quick ref card ─── */
+    .quick-ref {
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: 1em 1.2em;
+      margin: 1.5em 0;
+      page-break-inside: avoid;
+    }
+    .quick-ref h3 { margin-top: 0; color: var(--accent); }
+
+    /* ─── Footer ─── */
+    footer {
+      margin-top: 2.5em;
+      padding-top: 1em;
+      border-top: 2px solid var(--border);
+      font-family: 'Arial', sans-serif;
+      font-size: 8.5pt;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ─── Print ─── */
+    @media print {
+      body { padding: 0; max-width: 100%; }
+      @page { margin: 0.75in 0.75in; }
+      h2 { page-break-after: avoid; }
+      .module-card, .callout, .quick-ref { page-break-inside: avoid; }
+      a { color: var(--text); text-decoration: none; }
+      a[href]::after { content: " (" attr(href) ")"; font-size: 8pt; color: var(--muted); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ COVER ══════════════ -->
+<div class="cover">
+  <div class="badge">Homeschool Parent Guide</div>
+  <h1>AI Explorers</h1>
+  <p class="tagline"><em>Build Your AI Assistant, Piece by Piece</em></p>
+  <p class="subtitle">A Complete Guide for Homeschool Families &nbsp;|&nbsp; Version 1.0 — March 2026</p>
+</div>
+
+<!-- ══════════════ WELCOME ══════════════ -->
+<h2>Welcome, Homeschool Parents!</h2>
+
+<p>You've found something genuinely different. AI Explorers isn't a slideshow about robots or a quiz on AI vocabulary — it's a <strong>project-based curriculum</strong> where your child builds a real, working AI assistant from scratch, one capability at a time, across seven modules.</p>
+
+<p>By the end, your child won't just know <em>about</em> AI. They'll own one. They built it. They named it. And that changes everything.</p>
+
+<h3>What Is AI Explorers?</h3>
+<p>AI Explorers is a 7-module curriculum designed for students in <strong>grades 6–8</strong> (bright 5th graders and motivated 9th graders thrive in it too). Each module adds one new "superpower" to the AI assistant your child is building:</p>
+
+<table>
+  <thead><tr><th>Module</th><th>What They Build</th><th>Superpower Gained</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1</strong></td><td>Deploy an agent, name it, write its personality</td><td>Identity</td></tr>
+    <tr><td><strong>2</strong></td><td>Connect image and audio models</td><td>Perception (Vision + Hearing)</td></tr>
+    <tr><td><strong>3</strong></td><td>Write a custom skill with domain knowledge</td><td>Knowledge</td></tr>
+    <tr><td><strong>4</strong></td><td>Train a real machine learning model</td><td>Learning</td></tr>
+    <tr><td><strong>5</strong></td><td>Connect the agent to a live channel</td><td>Voice / Communication</td></tr>
+    <tr><td><strong>6</strong></td><td>Add guardrails, bias checks, usage policies</td><td>Ethics &amp; Responsibility</td></tr>
+    <tr><td><strong>7</strong></td><td>Present the agent at an AI Expo</td><td>Synthesis &amp; Presentation</td></tr>
+  </tbody>
+</table>
+
+<p>The through-line is simple: <em>"What can your agent do now that it couldn't before?"</em> Every module answers that question with something your child actually built.</p>
+
+<h3>Who Is This For?</h3>
+<p>AI Explorers works best for students who are curious about technology but don't need to be coders, who learn by doing, and who are ready for a semester-long project with meaningful output. <strong>No prior coding experience is required</strong> for Modules 1–3. Python familiarity is helpful (not required) for Module 4.</p>
+
+<!-- ══════════════ PACING ══════════════ -->
+<h2>How to Use This Curriculum at Home</h2>
+
+<h3>Pacing Options</h3>
+
+<table>
+  <thead><tr><th>Approach</th><th>Total Weeks</th><th>Sessions/Week</th><th>Min/Session</th></tr></thead>
+  <tbody>
+    <tr><td>📅 <strong>Year-Long</strong> (Recommended)</td><td>~36</td><td>2–3</td><td>45–60</td></tr>
+    <tr><td>📚 <strong>Semester</strong> (Standard)</td><td>~18</td><td>3–4</td><td>45–60</td></tr>
+    <tr><td>☀️ <strong>Summer Intensive</strong></td><td>6–8</td><td>5 (daily)</td><td>60–90</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Year-long</strong> is the richest experience — time for deep exploration and optional extensions. <strong>Semester</strong> matches a traditional school term. <strong>Summer intensive</strong> works great for motivated students who want an immersive project.</p>
+
+<h3>Session Structure</h3>
+<p>Each session works well in three parts: <strong>Warm-up</strong> (5–10 min, review what was built last time), <strong>Core work</strong> (30–45 min, lesson/activity/lab), and <strong>Journal</strong> (5–10 min, update the Agent Design Journal).</p>
+
+<h3>Parent Involvement Level</h3>
+<table>
+  <thead><tr><th>Phase</th><th>Your Role</th></tr></thead>
+  <tbody>
+    <tr><td>Setup (once)</td><td>Moderate — help install software, create accounts</td></tr>
+    <tr><td>Modules 1–3</td><td>Light — available for questions, review journal entries</td></tr>
+    <tr><td>Module 4</td><td>Moderate — Python concepts may need discussion</td></tr>
+    <tr><td>Modules 5–6</td><td>Light — review ethics discussions, be a thought partner</td></tr>
+    <tr><td>Module 7</td><td>Active — help organize the AI Expo!</td></tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <strong>You don't need to understand AI</strong> to support this curriculum. Curiosity and willingness to ask "why?" alongside your child is enough.
+</div>
+
+<!-- ══════════════ MODULES ══════════════ -->
+<h2>Module-by-Module Overview</h2>
+
+<div class="module-card">
+  <h3>Module 1: What Is AI? — Identity</h3>
+  <p class="meta">Duration: 2–4 weeks &nbsp;|&nbsp; Prerequisite: None</p>
+  <p>Your child starts from zero and ends up with a running AI agent they named themselves. They explore what AI actually is (not the sci-fi version), set up OpenClaw, and write the personality file that defines who their agent is.</p>
+  <p><strong>What they do:</strong> Install and deploy OpenClaw · Name their agent and write its personality · Run their first real AI conversation</p>
+  <p><strong>What they learn:</strong> What an AI agent actually is · How AI systems are structured (models, tools, memory) · Introduction to computational thinking</p>
+  <p><strong>Key lab:</strong> "Deploy Your OpenClaw" — the moment their agent goes from zero to alive.</p>
+</div>
+
+<div class="module-card">
+  <h3>Module 2: Give Your Agent Senses — Perception</h3>
+  <p class="meta">Duration: 2–4 weeks &nbsp;|&nbsp; Prerequisite: Module 1</p>
+  <p>The agent can talk. Now it can <em>see and hear</em>. Your child connects their agent to image recognition and audio classification models from Hugging Face — a real ML model library used by professional engineers.</p>
+  <p><strong>What they do:</strong> Connect an image description model · Connect an audio classification model · Test perception with real photos and sounds</p>
+  <p><strong>What they learn:</strong> What multimodal AI means · How pre-trained models work · What an API is</p>
+  <p><strong>Key lab:</strong> Upload a photo, watch their agent describe it.</p>
+</div>
+
+<div class="module-card">
+  <h3>Module 3: Give Your Agent a Knowledge Base — Knowledge</h3>
+  <p class="meta">Duration: 2–4 weeks &nbsp;|&nbsp; Prerequisite: Module 2</p>
+  <p>Your child picks a topic they love — marine biology, Minecraft, basketball stats, local history — and teaches it to their agent. They write a custom OpenClaw "skill" with specialized knowledge and reasoning logic.</p>
+  <p><strong>What they do:</strong> Choose a domain (their choice!) · Write a custom skill file · Test their agent's expertise in that domain</p>
+  <p><strong>What they learn:</strong> How knowledge representation works in AI · Introduction to structured reasoning · What makes AI genuinely useful vs. just conversational</p>
+  <p><strong>Key lab:</strong> "Build Your Agent's Brain" — their agent becomes an expert in something they care about.</p>
+</div>
+
+<div class="module-card">
+  <h3>Module 4: Give Your Agent the Ability to Learn — Machine Learning</h3>
+  <p class="meta">Duration: 2–4 weeks &nbsp;|&nbsp; Prerequisite: Module 3</p>
+  <p>The technical heart of the curriculum. Your child trains a real machine learning model using ML for Kids (a visual interface) or Python, then integrates it into their agent. Abstract concepts become concrete when you see them in action.</p>
+  <p><strong>What they do:</strong> Label training data · Train a model and observe accuracy · Evaluate and improve the model · Integrate it into their agent</p>
+  <p><strong>What they learn:</strong> What machine learning actually is (math + data, not magic) · How training data quality affects outcomes · Basic model evaluation · Introduction to Python (optional)</p>
+  <p><strong>Key lab:</strong> "Train a Model and Integrate It" — their agent now includes something they trained themselves.</p>
+</div>
+
+<div class="module-card">
+  <h3>Module 5: Give Your Agent a Voice — Communication</h3>
+  <p class="meta">Duration: 2–4 weeks &nbsp;|&nbsp; Prerequisite: Module 4</p>
+  <p>The agent leaves the terminal and goes live. Your child connects their agent to a real communication channel (Discord is most common) so real people can actually talk to it. They also master prompt engineering.</p>
+  <p><strong>What they do:</strong> Learn how LLMs generate text · Practice prompt engineering · Connect their agent to Discord (or another channel) · Test with real users</p>
+  <p><strong>What they learn:</strong> How large language models work under the hood · Prompt engineering as a skill · What it means to deploy software to real users</p>
+  <p><strong>Key lab:</strong> Someone outside your household can now talk to the agent they built.</p>
+</div>
+
+<div class="module-card">
+  <h3>Module 6: Make Your Agent Ethical — Responsibility</h3>
+  <p class="meta">Duration: 2–4 weeks &nbsp;|&nbsp; Prerequisite: Module 5</p>
+  <p>Power requires responsibility. Your child becomes the policy-maker for their agent — auditing it for bias, writing guardrails, and creating a usage policy in their own words. This isn't a lecture; it's a design challenge.</p>
+  <p><strong>What they do:</strong> Conduct a bias audit · Write and deploy guardrail logic · Draft a usage policy · Participate in ethics debates</p>
+  <p><strong>What they learn:</strong> What algorithmic bias is · How ethical AI design works in practice · How to think about accountability · Their own values, reflected in a system they built</p>
+  <p><strong>Key lab:</strong> "Ethics Audit" — their agent gets a full review for bias, fairness, and responsible behavior.</p>
+</div>
+
+<div class="module-card">
+  <h3>Module 7: Capstone — AI Expo</h3>
+  <p class="meta">Duration: 1–2 weeks &nbsp;|&nbsp; Prerequisite: Modules 1–6</p>
+  <p>The finish line — and a celebration. Your child presents their completed AI assistant to a live audience. At home, that audience might be family, neighbors, homeschool co-op friends, or a virtual group. The presentation covers what they built, how it works, and what they'd do differently.</p>
+  <p><strong>The moment:</strong> They stand in front of people and say, "I built this. Let me show you what it does." That's not a test. That's a milestone.</p>
+</div>
+
+<!-- ══════════════ WHAT YOU NEED ══════════════ -->
+<h2>What You Need</h2>
+
+<h3>Hardware</h3>
+<ul>
+  <li><strong>Computer:</strong> Any modern laptop or desktop (Mac, Windows, or Linux)</li>
+  <li><strong>RAM:</strong> 8GB minimum; 16GB recommended</li>
+  <li><strong>Internet:</strong> Reliable broadband (most labs require internet access)</li>
+  <li>No special hardware required — no robotics kits, no cameras, no microphones</li>
+</ul>
+
+<h3>Software &amp; Accounts (All Free)</h3>
+<ul>
+  <li><strong>OpenClaw</strong> — free, open-source, self-hosted (installation guide in Module 1)</li>
+  <li><strong>Hugging Face account</strong> — free at huggingface.co</li>
+  <li><strong>ML for Kids</strong> — free at machinelearningforkids.co.uk (Module 4)</li>
+  <li><strong>Discord account</strong> — free (Module 5)</li>
+  <li><strong>Python</strong> — free, optional for Module 4 extended track</li>
+</ul>
+
+<h3>Time Commitment</h3>
+<ul>
+  <li><strong>Year-long:</strong> 3–5 hours per week (student) + 1–2 hours (parent)</li>
+  <li><strong>Semester:</strong> 5–8 hours per week (student) + 1–2 hours (parent)</li>
+  <li><strong>Summer intensive:</strong> 7–10 hours per week (student) + 2–3 hours (parent)</li>
+  <li><strong>Initial setup:</strong> 2–4 hours one-time (Module 1)</li>
+</ul>
+
+<!-- ══════════════ LABS AT HOME ══════════════ -->
+<h2>Handling Labs Without a Classroom</h2>
+
+<table>
+  <thead><tr><th>Module</th><th>Lab / Activity</th><th>Home Alternative</th></tr></thead>
+  <tbody>
+    <tr><td><strong>M1</strong></td><td>Sorting Cards debate</td><td>Do it together — parent + child. Invite a sibling. The debate is the point, not the team size.</td></tr>
+    <tr><td><strong>M2</strong></td><td>Pixel Portrait / Sound Sorter</td><td>Use household objects or family photos. Compare your descriptions vs. the AI's. Discuss differences.</td></tr>
+    <tr><td><strong>M3</strong></td><td>Stump the AI</td><td>Invite family members to try to stump the agent. Video call a grandparent. Make it a game night.</td></tr>
+    <tr><td><strong>M4</strong></td><td>Labeling Sprint</td><td>Set a timer. Parent and child label together. Disagreements are actually the most educational part.</td></tr>
+    <tr><td><strong>M5</strong></td><td>Prompt Olympics</td><td>Parent vs. child competition. Who writes the best prompt? Winner chooses dinner.</td></tr>
+    <tr><td><strong>M6</strong></td><td>AI Debate</td><td>Assign positions. Even a 2-person debate produces great thinking. Consider recording it.</td></tr>
+    <tr><td><strong>M7</strong></td><td>AI Expo</td><td>Organize in your co-op. Invite family via video call. Contact your local library. Even kitchen-table works!</td></tr>
+  </tbody>
+</table>
+
+<!-- ══════════════ ASSESSMENT ══════════════ -->
+<h2>Assessment Options</h2>
+
+<p>You don't need letter grades to know your child is learning. Here are several approaches:</p>
+
+<h3>Portfolio Approach (Recommended)</h3>
+<p>Each module produces artifacts — collect them into a portfolio:</p>
+<ul class="checklist">
+  <li>Agent Design Journal entries (written reflections per module)</li>
+  <li>Lab reports and worksheets</li>
+  <li>The agent itself (screenshots, demos, exported configs)</li>
+  <li>Ethics essay and usage policy (Module 6)</li>
+  <li>AI Expo presentation materials and photo/video (Module 7)</li>
+</ul>
+
+<h3>Competency Checklist</h3>
+<ul class="checklist">
+  <li>Module 1: Agent deployed, named, and conversational</li>
+  <li>Module 2: Agent describes images and classifies audio</li>
+  <li>Module 3: Agent has custom domain knowledge</li>
+  <li>Module 4: Agent includes student-trained model</li>
+  <li>Module 5: Agent connected to live channel</li>
+  <li>Module 6: Bias audit complete, usage policy written</li>
+  <li>Module 7: AI Expo presentation delivered</li>
+</ul>
+
+<h3>Other Options</h3>
+<ul>
+  <li><strong>Narrative assessment:</strong> Write a paragraph per module — what they did, what challenged them, what they figured out. Excellent for homeschool records.</li>
+  <li><strong>Self-assessment:</strong> The Agent Design Journal has built-in reflection prompts. Take these seriously — they're often more accurate than parent observation.</li>
+  <li><strong>Demonstration-based:</strong> Can they show what the agent does and explain <em>why</em> it works that way? The AI Expo is the ultimate version of this.</li>
+</ul>
+
+<!-- ══════════════ CREDIT ══════════════ -->
+<h2>How to Get Credit</h2>
+
+<h3>Transcript Suggestions</h3>
+<table>
+  <thead><tr><th>Course Title</th><th>Credits</th><th>Applicable Modules</th></tr></thead>
+  <tbody>
+    <tr><td>Introduction to Artificial Intelligence</td><td>0.5–1.0</td><td>All 7 modules</td></tr>
+    <tr><td>Computer Science Elective</td><td>0.5</td><td>Modules 1–4</td></tr>
+    <tr><td>Ethics in Technology</td><td>0.25</td><td>Module 6</td></tr>
+    <tr><td>Presentation / Public Speaking</td><td>0.25</td><td>Module 7</td></tr>
+  </tbody>
+</table>
+<p><em>Credit standards vary by state and homeschool association. Consult your local requirements.</em></p>
+
+<h3>Portfolio Documentation Checklist</h3>
+<ul class="checklist">
+  <li>Curriculum description (link to github.com/clawdawg36-cpu/openclaw-curriculum)</li>
+  <li>Module completion dates</li>
+  <li>Major work: lab reports, ethics essay, usage policy, presentation materials</li>
+  <li>AI Expo photo or video (if available)</li>
+  <li>Agent Design Journal (printed or PDF)</li>
+  <li>Parent narrative evaluation</li>
+</ul>
+
+<h3>Carnegie Unit Calculation</h3>
+<ul>
+  <li><strong>Year-long</strong> (36 wks × 3–5 hrs/wk = 108–180 hrs) → <strong>1.0 credit</strong></li>
+  <li><strong>Semester</strong> (18 wks × 5–8 hrs/wk = 90–144 hrs) → <strong>0.5–1.0 credit</strong></li>
+  <li><strong>Summer intensive</strong> (8 wks × 10 hrs/wk = 80 hrs) → <strong>0.5 credit</strong></li>
+</ul>
+
+<!-- ══════════════ COMMUNITY ══════════════ -->
+<h2>Community</h2>
+
+<p>You're not alone. AI Explorers has a growing homeschool community:</p>
+
+<ul>
+  <li><strong>GitHub Discussions:</strong> Open an issue or discussion at <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum">github.com/clawdawg36-cpu/openclaw-curriculum</a> — the primary hub for questions, feedback, and community</li>
+  <li><strong>Homeschool AI Network:</strong> Ask your local co-op if others are using AI Explorers — you may find a study group already forming</li>
+  <li><strong>Virtual AI Expo:</strong> Coordinate with another family for Module 7 — even over video call, two presenting students make a much richer event</li>
+  <li><strong>Agent playdates:</strong> Have your child's agent talk to another student's agent — it's exactly as fun as it sounds</li>
+  <li><strong>Contribute back:</strong> If your child builds something great, share it! Open a GitHub pull request. This curriculum gets better when families contribute.</li>
+</ul>
+
+<!-- ══════════════ FAQ ══════════════ -->
+<h2>Frequently Asked Questions</h2>
+
+<h4>1. Does my child need to know how to code?</h4>
+<p>No coding is required for Modules 1–3. Module 4 introduces Python gently through ML for Kids (a visual interface). We recommend trying the visual tools first, then introducing Python if your child is curious.</p>
+
+<h4>2. How much does it cost?</h4>
+<p>The curriculum is free and open-source. OpenClaw is free and self-hosted. All required tools have free tiers. <strong>No paid subscription is needed</strong> to complete any module.</p>
+
+<h4>3. My child is 5th grade (or 9th grade). Will this work?</h4>
+<p>The curriculum is designed for grades 6–8 but has been used successfully from 5th through 10th grade. Younger students may need more parent support during Module 4. Older students can go deeper on the Python track and ethics essay.</p>
+
+<h4>4. What if we get stuck on the tech setup?</h4>
+<p>Start with Module 1's lab guide — it has step-by-step setup instructions. If you hit a wall, open a GitHub issue with your question. The community is active and helpful.</p>
+
+<h4>5. Can we skip modules?</h4>
+<p>Each module builds on the previous one, so skipping isn't recommended. However, a 1-week sprint version of each module is available if you want to cover the concepts without full depth.</p>
+
+<h4>6. How do I organize an AI Expo at home?</h4>
+<p>Think small and real: kitchen table works. Invite grandparents via video call. Ask your co-op group. Contact your local library — many love hosting student tech demos. Document it with photos for your portfolio.</p>
+
+<h4>7. What is OpenClaw, and is it safe for kids?</h4>
+<p>OpenClaw is an open-source AI agent runtime. It runs locally on your home computer — no student data is sent to the cloud unless your child explicitly connects to a public channel in Module 5. It's the same platform used by adult developers, which is intentional: students learn real tools, not toys.</p>
+
+<h4>8. My child finished a module early. What next?</h4>
+<p>Each module has extension activities — look for "Extension Track" sections in the lesson materials. You can also let your child go deeper on their chosen domain from Module 3, or explore the Python track in Module 4.</p>
+
+<h4>9. How does this fit with other subjects?</h4>
+<p>AI Explorers integrates naturally with <strong>Math</strong> (probability, data analysis — Module 4), <strong>ELA</strong> (ethics essay — Module 6, presentation — Module 7), <strong>Science</strong> (how models work, data collection), and <strong>Social Studies</strong> (AI's societal impact — Module 6). It can run as a standalone course or alongside your other subjects.</p>
+
+<h4>10. What do I do when my child knows more than I do?</h4>
+<p>Celebrate it. Your job is not to be the AI expert — it's to ask good questions, review their journal, help them articulate their thinking, and organize the AI Expo. <em>"Can you explain how that works to me?"</em> is one of the most valuable things a homeschool parent can say.</p>
+
+<!-- ══════════════ QUICK REF ══════════════ -->
+<div class="quick-ref">
+  <h3>⚡ Quick Reference</h3>
+  <table>
+    <thead><tr><th></th><th>Year-Long</th><th>Semester</th><th>Summer</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Total weeks</strong></td><td>~36</td><td>~18</td><td>6–8</td></tr>
+      <tr><td><strong>Sessions/week</strong></td><td>2–3</td><td>3–4</td><td>5 (daily)</td></tr>
+      <tr><td><strong>Min/session</strong></td><td>45–60</td><td>45–60</td><td>60–90</td></tr>
+      <tr><td><strong>Parent time/week</strong></td><td>1–2 hrs</td><td>1–2 hrs</td><td>2–3 hrs</td></tr>
+      <tr><td><strong>Estimated credit</strong></td><td>1.0</td><td>0.5–1.0</td><td>0.5</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Curriculum repository:</strong> <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum">github.com/clawdawg36-cpu/openclaw-curriculum</a><br>
+  <strong>Questions?</strong> Open an issue on GitHub.</p>
+</div>
+
+<footer>
+  <p>AI Explorers Curriculum — Empowering the next generation of AI-literate humans.</p>
+  <p>Version 1.0 — March 2026 &nbsp;|&nbsp; Open-source under MIT License &nbsp;|&nbsp; <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum">github.com/clawdawg36-cpu/openclaw-curriculum</a></p>
+</footer>
+
+</body>
+</html>
