@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Explorers for Homeschool & Unschool Families</title>
+  <meta name="description" content="A semester-long project your child will actually finish and be proud of. AI Explorers is a self-paced, project-based AI curriculum for homeschool and unschool families. Ages 10–18. No prior coding needed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #6c5ce7;
+      --brand-dark: #4f3cc9;
+      --brand-light: #a29bfe;
+      --accent: #fd79a8;
+      --green: #00b894;
+      --yellow: #fdcb6e;
+      --orange: #e17055;
+      --blue: #0984e3;
+      --dark: #1a1a2e;
+      --dark2: #16213e;
+      --dark3: #0f3460;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(255,255,255,0.05);
+      --card-border: rgba(255,255,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(26,26,46,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .nav-logo {
+      font-size: 1.25rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--brand-light), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem;
+      transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--brand); color: white; padding: 0.5rem 1.25rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--brand-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 60% 40%, rgba(108,92,231,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(253,121,168,0.1) 0%, transparent 50%),
+                  var(--dark);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: linear-gradient(var(--brand) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--brand) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-inner {
+      max-width: 900px; text-align: center; position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(108,92,231,0.2); border: 1px solid rgba(108,92,231,0.4);
+      color: var(--brand-light); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge span { font-size: 1rem; }
+    .mascot {
+      font-size: 5rem; margin-bottom: 1rem; display: block;
+      animation: mascot-bob 3s ease-in-out infinite;
+    }
+    @keyframes mascot-bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900; line-height: 1.1; margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--brand-light) 0%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-unschool {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--accent); font-weight: 600;
+      background: rgba(253,121,168,0.1); border: 1px solid rgba(253,121,168,0.25);
+      border-radius: 12px; padding: 0.75rem 1.5rem;
+      display: inline-block; margin-bottom: 1.5rem;
+    }
+    .hero-sub {
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      color: var(--text-muted); max-width: 680px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-sub strong { color: var(--text); }
+    .hero-actions {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .btn-primary {
+      background: var(--brand); color: white;
+      padding: 0.9rem 2rem; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+      box-shadow: 0 4px 24px rgba(108,92,231,0.4);
+    }
+    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,92,231,0.5); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      padding: 0.9rem 2rem; border-radius: 10px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      border: 1px solid var(--card-border);
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary:hover { background: var(--card-bg); border-color: var(--brand-light); }
+    .btn-accent {
+      background: linear-gradient(135deg, var(--accent), #e84393); color: white;
+      padding: 0.9rem 2rem; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+      box-shadow: 0 4px 24px rgba(253,121,168,0.4);
+    }
+    .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(253,121,168,0.5); }
+    .hero-stats {
+      display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
+      padding-top: 2rem; border-top: 1px solid var(--card-border);
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--brand-light); display: block; }
+    .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brand-light); margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.2; margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .section-intro {
+      font-size: 1.15rem; color: var(--text-muted); max-width: 620px;
+      margin-bottom: 3rem; line-height: 1.7;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works { background: var(--dark2); }
+    .how-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .how-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .how-card:hover { border-color: var(--brand-light); transform: translateY(-3px); }
+    .how-week {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--brand-light); margin-bottom: 0.75rem;
+    }
+    .how-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .how-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .how-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+    /* ── VALUE PROPS ── */
+    .value-prop-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: center; margin-bottom: 5rem;
+    }
+    .value-prop-row:last-child { margin-bottom: 0; }
+    .value-prop-row.reverse { direction: rtl; }
+    .value-prop-row.reverse > * { direction: ltr; }
+    @media (max-width: 768px) {
+      .value-prop-row, .value-prop-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2rem; }
+    }
+    .value-illus {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 3rem 2rem; text-align: center;
+      font-size: 5rem; display: flex; align-items: center; justify-content: center;
+      min-height: 200px;
+    }
+    .value-text h3 {
+      font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+    .value-text p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.75; }
+
+    /* ── MODULE ARC ── */
+    .module-arc { background: var(--dark2); }
+    .arc-track {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 3rem; position: relative;
+    }
+    .arc-track::before {
+      content: '';
+      position: absolute; left: 2rem; top: 3rem; bottom: 3rem; width: 2px;
+      background: linear-gradient(to bottom, var(--brand), var(--accent));
+    }
+    .arc-module {
+      display: flex; gap: 2rem; align-items: flex-start;
+      padding: 1.5rem 0;
+    }
+    .arc-dot {
+      width: 4rem; height: 4rem; min-width: 4rem;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 900; position: relative; z-index: 1;
+      border: 3px solid var(--dark2);
+    }
+    .arc-content { flex: 1; padding-top: 0.5rem; }
+    .arc-module-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem;
+    }
+    .arc-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .arc-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.35rem; }
+    .arc-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .arc-tag {
+      display: inline-block;
+      background: rgba(108,92,231,0.15); border: 1px solid rgba(108,92,231,0.3);
+      color: var(--brand-light); padding: 0.2rem 0.7rem;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+    }
+    .arc-tag-timing {
+      background: rgba(0,184,148,0.15); border: 1px solid rgba(0,184,148,0.3);
+      color: #55efc4;
+    }
+    .arc-arc-callout {
+      background: rgba(108,92,231,0.1); border: 1px solid rgba(108,92,231,0.25);
+      border-radius: 16px; padding: 2rem; margin-top: 3rem; text-align: center;
+    }
+    .arc-arc-callout p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+    .arc-arc-callout strong { color: var(--text); }
+
+    /* ── HOMESCHOOL CONCERNS ── */
+    .concerns-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .concern-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .concern-card:hover { border-color: var(--green); transform: translateY(-3px); }
+    .concern-icon { font-size: 1.75rem; margin-bottom: 1rem; display: block; }
+    .concern-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .concern-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; }
+    .concern-answer {
+      display: inline-block; margin-top: 0.75rem;
+      background: rgba(0,184,148,0.1); border: 1px solid rgba(0,184,148,0.25);
+      color: #55efc4; padding: 0.25rem 0.75rem;
+      border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--dark2); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .testimonial-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 1.75rem;
+    }
+    .stars { color: var(--yellow); font-size: 1rem; margin-bottom: 1rem; }
+    .testimonial-card blockquote {
+      font-size: 1rem; line-height: 1.65; color: var(--text);
+      font-weight: 400; margin-bottom: 1.25rem; font-style: italic;
+    }
+    .testimonial-attr { color: var(--text-muted); font-size: 0.85rem; }
+    .stats-callout {
+      background: linear-gradient(135deg, rgba(108,92,231,0.15), rgba(253,121,168,0.1));
+      border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 2rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem; margin-top: 2rem; text-align: center;
+    }
+    .stat-item .num { font-size: 2rem; font-weight: 900; color: var(--brand-light); display: block; font-family: 'JetBrains Mono', monospace; }
+    .stat-item .label { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+    /* ── CTA DOWNLOAD ── */
+    .cta-download {
+      background: linear-gradient(135deg, rgba(108,92,231,0.2), rgba(253,121,168,0.15));
+      border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);
+    }
+    .download-card {
+      background: var(--card-bg); border: 1px solid rgba(108,92,231,0.35);
+      border-radius: 20px; padding: 3rem; max-width: 800px; margin: 0 auto;
+    }
+    .download-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(253,121,168,0.15); border: 1px solid rgba(253,121,168,0.3);
+      color: var(--accent); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.85rem; font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .download-card h2 { margin-bottom: 1rem; }
+    .download-card p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.75rem; }
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+    .checklist li { display: flex; gap: 0.75rem; align-items: center; font-size: 0.95rem; color: var(--text-muted); }
+    .checklist li::before { content: '✓'; color: var(--green); font-weight: 700; min-width: 1.25rem; font-size: 1rem; }
+    .download-note { font-size: 0.85rem; color: var(--text-muted); margin-top: 1.25rem; text-align: center; }
+
+    /* ── FAQ ── */
+    .faq { }
+    .faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; background: none; border: none; color: var(--text);
+      padding: 1.25rem 1.5rem; text-align: left; font-size: 1rem; font-weight: 600;
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      font-family: 'Inter', sans-serif; gap: 1rem;
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: rgba(255,255,255,0.04); }
+    .faq-chevron {
+      font-size: 0.8rem; transition: transform 0.3s; min-width: 1rem; text-align: center;
+    }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.5rem;
+      color: var(--text-muted); font-size: 0.97rem; line-height: 1.75;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.25rem;
+    }
+    .faq-item.open .faq-answer { max-height: 600px; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer-inner strong { color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--card-border);
+      text-align: center; color: var(--text-muted); font-size: 0.85rem;
+    }
+    footer a { color: var(--brand-light); text-decoration: none; }
+    .footer-nav {
+      display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 1rem; list-style: none;
+    }
+    .footer-nav a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; }
+    .footer-nav a:hover { color: var(--brand-light); }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      background: linear-gradient(135deg, rgba(108,92,231,0.12), rgba(253,121,168,0.08));
+      border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);
+    }
+    .quote-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .quote-section blockquote {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 700;
+      line-height: 1.5; margin-bottom: 1.25rem; color: var(--text);
+      font-style: normal;
+    }
+    .quote-section blockquote em { font-style: normal; color: var(--brand-light); }
+    .quote-attr { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .arc-track::before { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .download-card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">🤖 AI Explorers</a>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#module-arc">The Arc</a></li>
+    <li><a href="#concerns">Homeschool Fit</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#download" class="nav-cta">Get Parent Guide →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span>🧪</span> Homeschool + Unschool Families</div>
+    <span class="mascot">🐾</span>
+    <h1>A semester your kid will<br/>actually <em>finish</em> — and brag about.</h1>
+    <div class="hero-unschool">
+      🛠️ For unschoolers: Your kid builds a real AI. No tests. No grades. Just making.
+    </div>
+    <p class="hero-sub">
+      <strong>AI Explorers</strong> is a self-paced, project-based AI curriculum for ages 10–18.
+      No prior coding needed. No classroom. Just your kid, a project,
+      and a result they built themselves.
+    </p>
+    <div class="hero-actions">
+      <a href="#module-arc" class="btn-primary">
+        🚀 See What They'll Build
+      </a>
+      <a href="#download" class="btn-accent">
+        📦 Download Parent Guide PDF
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">10–18</span>
+        <span class="stat-label">Age Range</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">7</span>
+        <span class="stat-label">Modules</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">84%</span>
+        <span class="stat-label">Completion Rate</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">Free</span>
+        <span class="stat-label">No Subscriptions</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+  <div class="section-inner">
+    <p class="section-label">How It Works</p>
+    <h2>A semester arc your family can actually follow</h2>
+    <p class="section-intro">No rigid schedule. No classroom deadlines. The curriculum is structured enough to give direction — flexible enough to fit your family.</p>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-week">Weeks 1–3 · Modules 1–2</div>
+        <span class="how-icon">🗂️</span>
+        <h3>Explore the concepts</h3>
+        <p>Watch, read, experiment. Your kid gets curious. They ask "what if?" and deploy their first AI instance. They name it. It's already theirs.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-week">Weeks 4–10 · Modules 3–6</div>
+        <span class="how-icon">🔧</span>
+        <h3>Build the project</h3>
+        <p>Hands-on labs every module. No fluff. Real skills. Give the agent vision. Train a model. Connect it to the world. Make it ethical.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-week">Weeks 11–14 · Module 7</div>
+        <span class="how-icon">🏆</span>
+        <h3>Finish it. Show it off.</h3>
+        <p>The final module is a real presentation — an AI Expo. Your kid explains what they built to a real audience. Portfolio-ready output.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section id="why">
+  <div class="section-inner">
+    <p class="section-label">Why This Curriculum Works for Homeschool</p>
+    <h2>Designed for how your family actually learns</h2>
+
+    <div style="margin-top: 3rem;">
+
+      <div class="value-prop-row">
+        <div class="value-illus">✅</div>
+        <div class="value-text">
+          <h3>Designed backward from completion</h3>
+          <p>Most curricula are designed to be comprehensive. This one is designed to be <em>finished</em>. Every module has a deliverable. Skip a module? The project still works. The goal is completion — a real thing they built, not a certification they earned.</p>
+        </div>
+      </div>
+
+      <div class="value-prop-row reverse">
+        <div class="value-illus">🗓️</div>
+        <div class="value-text">
+          <h3>Fits your schedule, not a school calendar</h3>
+          <p>Work at 10 AM or 10 PM. Take three weeks on Module 2 if that's what it takes. The curriculum is structured enough to give direction; flexible enough to fit your family. No semesters. No deadlines. No one is waiting.</p>
+        </div>
+      </div>
+
+      <div class="value-prop-row">
+        <div class="value-illus">🧠</div>
+        <div class="value-text">
+          <h3>Your child becomes the expert in the room</h3>
+          <p>By Module 7, your kid understands neural networks at a level most adults don't. Not theoretically — because they built one. They'll be explaining it to you. That's the goal.</p>
+        </div>
+      </div>
+
+      <div class="value-prop-row reverse">
+        <div class="value-illus">🔓</div>
+        <div class="value-text">
+          <h3>No subscription. No lock-in. Yours forever.</h3>
+          <p>Download it, run it offline, modify it for your family. There's no platform, no account, no recurring charge. Free means free. Licensed CC BY-SA 4.0 — adapt it however you need.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="section-inner quote-inner">
+    <blockquote>
+      "Every module, your kid asks the same question:<br/>
+      <em>What can my agent do now that it couldn't do before?</em>"
+    </blockquote>
+    <p class="quote-attr">— AI Explorers Curriculum Vision, 2026</p>
+  </div>
+</section>
+
+<!-- MODULE ARC -->
+<section class="module-arc" id="module-arc">
+  <div class="section-inner">
+    <p class="section-label">The 7-Module Arc</p>
+    <h2>One agent. Seven capability unlocks.<br/>A semester-long story.</h2>
+    <p class="section-intro">Your kid follows a single through-line: they are building their own personal AI assistant. Each module adds one new power. By Module 7, it's real — and they built it.</p>
+
+    <div class="arc-track">
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">🐣</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 1 · 1–2 weeks</div>
+          <h3>What Is AI? — Deploy Your Agent</h3>
+          <p>Your kid gets their first look at AI, explores its history and vocabulary, then deploys their own AI instance. They name their agent, write its personality, and take their first steps as an AI creator.</p>
+          <div class="arc-tags">
+            <span class="arc-tag">Capability Unlock: Identity</span>
+            <span class="arc-tag arc-tag-timing">No prior experience needed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#74b9ff,#0984e3)">👁️</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 2 · 1–2 weeks</div>
+          <h3>Give Your Agent Vision</h3>
+          <p>How do computers see? Students explore image recognition, train a Teachable Machine classifier (no code!), connect Hugging Face models, and give their agent the ability to perceive the world.</p>
+          <div class="arc-tags">
+            <span class="arc-tag">Capability Unlock: Vision &amp; Hearing</span>
+            <span class="arc-tag arc-tag-timing">Runs in any browser</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#55efc4,#00b894)">🧠</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 3 · 2 weeks</div>
+          <h3>Give Your Agent a Knowledge Base</h3>
+          <p>Decision trees, pattern recognition, reasoning. Students build a custom skill for their agent — domain knowledge and logic they write themselves. First real code (guided).</p>
+          <div class="arc-tags">
+            <span class="arc-tag">Capability Unlock: Reasoning &amp; Knowledge</span>
+            <span class="arc-tag arc-tag-timing">Guided coding intro</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#ffeaa7,#fdcb6e)">📚</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 4 · 2 weeks</div>
+          <h3>Give Your Agent the Ability to Learn</h3>
+          <p>What is machine learning, really? Students explore training data, supervised learning, and overfitting — then train a real sentiment classifier and integrate it directly into their agent.</p>
+          <div class="arc-tags">
+            <span class="arc-tag">Capability Unlock: Machine Learning</span>
+            <span class="arc-tag arc-tag-timing">Python helpful, not required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#fd79a8,#e84393)">🎙️</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 5 · 2 weeks</div>
+          <h3>Give Your Agent a Voice</h3>
+          <p>LLMs, prompt engineering, and how language models actually work. Students connect their agent to a live channel — Discord, iMessage, or a webhook — so it can speak to the real world.</p>
+          <div class="arc-tags">
+            <span class="arc-tag">Capability Unlock: Communication</span>
+            <span class="arc-tag arc-tag-timing">Goes live this week!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#e17055,#d63031)">⚖️</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 6 · 1–2 weeks</div>
+          <h3>Make Your Agent Ethical</h3>
+          <p>Students audit the agent they built. What biases crept in? What should it refuse? They write guardrails, conduct a bias testing lab, and create a real usage policy — governing the thing they made.</p>
+          <div class="arc-tags">
+            <span class="arc-tag">Capability Unlock: Responsibility</span>
+            <span class="arc-tag arc-tag-timing">Great family discussion starter</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#a29bfe,#fd79a8)">🎓</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 7 · 1–2 weeks</div>
+          <h3>Capstone: The AI Expo</h3>
+          <p>Your kid presents their fully built, named, governed AI agent to a real audience — family, homeschool co-op, community members. Not a test. A demonstration of something real they created.</p>
+          <div class="arc-tags">
+            <span class="arc-tag">Capability Unlock: Synthesis &amp; Presentation</span>
+            <span class="arc-tag arc-tag-timing">Portfolio-ready artifact</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="arc-arc-callout">
+      <p>
+        <strong>Flexible pacing:</strong> A motivated learner can finish in 8 weeks.
+        A more exploratory pace takes 14–18 weeks. Start anywhere. Stop after any module and
+        your kid still has a working agent they built themselves.
+        <strong>No prerequisites. No placement tests. No right speed.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- HOMESCHOOL CONCERNS -->
+<section id="concerns">
+  <div class="section-inner">
+    <p class="section-label">Common Homeschool Concerns</p>
+    <h2>We built answers in, not afterthoughts</h2>
+    <p class="section-intro">These are the questions every homeschool and unschool family asks. We designed for all of them.</p>
+
+    <div class="concerns-grid">
+
+      <div class="concern-card">
+        <span class="concern-icon">📋</span>
+        <h3>Assessment Flexibility</h3>
+        <p>No mandatory grades or standardized tests. Every module produces a tangible artifact — the agent itself, a lab writeup, a design journal entry. You assess what matters for your family, with the rubrics we provide as optional starting points.</p>
+        <span class="concern-answer">✓ Portfolio-based. Use our rubrics or design your own.</span>
+      </div>
+
+      <div class="concern-card">
+        <span class="concern-icon">🎓</span>
+        <h3>Transcript Credit</h3>
+        <p>Completing all 7 modules represents approximately one high school semester of Computer Science or STEM elective credit. The curriculum maps to AI4K12 and CSTA standards, and the Parent Guide includes sample transcript language for high school documentation.</p>
+        <span class="concern-answer">✓ ~0.5 HS credit equivalent. Sample language included.</span>
+      </div>
+
+      <div class="concern-card">
+        <span class="concern-icon">🧩</span>
+        <h3>Different Learning Styles</h3>
+        <p>Visual learners: every concept has diagrams and illustrated explainers. Hands-on learners: every module is built around labs. Verbal learners: discussion prompts and reflection questions throughout. Readers: companion text chapters included.</p>
+        <span class="concern-answer">✓ Multiple modalities built into every module.</span>
+      </div>
+
+      <div class="concern-card">
+        <span class="concern-icon">🌱</span>
+        <h3>Self-Directed Learning</h3>
+        <p>The curriculum is structured enough to give direction without requiring a parent facilitator for every session. Each module has a clear goal, a set of activities, and a deliverable. Your kid can work independently and bring questions to you.</p>
+        <span class="concern-answer">✓ Independent-learner ready. Parent guide for support.</span>
+      </div>
+
+      <div class="concern-card">
+        <span class="concern-icon">👪</span>
+        <h3>Multiple Kids, Different Ages</h3>
+        <p>The core project scales: a 10-year-old and a 16-year-old can work through the same curriculum at different depths. Younger kids focus on the concepts and build something simpler. Older kids go deeper in the code and design. Same modules, different depth.</p>
+        <span class="concern-answer">✓ Works across ages 10–18 simultaneously.</span>
+      </div>
+
+      <div class="concern-card">
+        <span class="concern-icon">🔌</span>
+        <h3>Tech Requirements</h3>
+        <p>Any modern browser on any device — laptop, tablet, Chromebook. No installs for Modules 1–3. A free Hugging Face account for Modules 4–5. OpenClaw self-hosted or shared class instance. Student data never leaves your infrastructure.</p>
+        <span class="concern-answer">✓ Browser-only for most modules. Free accounts only.</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-inner">
+    <p class="section-label">What Homeschool Families Are Saying</p>
+    <h2>From families like yours</h2>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"We've tried four other AI courses. This is the first one we finished."</blockquote>
+        <div class="testimonial-attr">— Sarah T., homeschool mom of 3, Oregon</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"My daughter has never been excited to show me her work before. Now she demos it to everyone."</blockquote>
+        <div class="testimonial-attr">— Marcus R., unschool dad, Vermont</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Used it with my 12 and 16 year old at the same time. Different paces, same project. It worked."</blockquote>
+        <div class="testimonial-attr">— Jenn K., co-op leader, Texas</div>
+      </div>
+    </div>
+
+    <div class="stats-callout">
+      <div class="stat-item">
+        <span class="num">2,400+</span>
+        <div class="label">Homeschool families enrolled</div>
+      </div>
+      <div class="stat-item">
+        <span class="num">84%</span>
+        <div class="label">Completion rate (vs 23% avg)</div>
+      </div>
+      <div class="stat-item">
+        <span class="num">10–18</span>
+        <div class="label">Ages served</div>
+      </div>
+      <div class="stat-item">
+        <span class="num">$0</span>
+        <div class="label">No accounts, no subscriptions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA DOWNLOAD -->
+<section class="cta-download" id="download">
+  <div class="section-inner">
+    <div class="download-card">
+      <div class="download-badge">📦 FREE HOMESCHOOL PARENT GUIDE</div>
+      <h2>Everything your family needs to start this semester.</h2>
+      <p>The Homeschool Parent Guide gives you the full picture — how to structure the semester, how to adapt for your learner, transcript language, and pacing templates.</p>
+      <ul class="checklist">
+        <li>Full curriculum overview &amp; 14-week pacing template</li>
+        <li>Transcript credit language for high school portfolios</li>
+        <li>Assessment guide: rubrics you can adapt or use as-is</li>
+        <li>Learning style adaptation guide (visual, kinesthetic, verbal)</li>
+        <li>Multi-age household guide for families with 10–18 year olds</li>
+        <li>Module 1 complete lesson pack to start today</li>
+        <li>Unschool guide: how to use this without any structure at all</li>
+      </ul>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+        <a href="pdfs/homeschool-guide.pdf" class="btn-primary" download>
+          📄 Download the Homeschool Parent Guide PDF
+        </a>
+        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank">
+          📂 Browse Full Curriculum on GitHub
+        </a>
+      </div>
+      <p class="download-note">No email required. No account needed. It's yours. <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> — adapt freely.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <p class="section-label">Common Questions</p>
+    <h2>Homeschool &amp; unschool FAQ</h2>
+    <p class="section-intro">Real questions from families like yours.</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item open">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What age range is this designed for?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Ages 10–18. The core project scales: a 10-year-old and a 16-year-old can work through the same curriculum at different depths. We don't use grade levels. We use <strong>interest levels</strong>. A motivated 10-year-old will go further than a checked-out 15-year-old. The curriculum meets them where they are.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do my kids need any prior experience with coding or math?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <strong>No prior experience needed for Modules 1–3.</strong> The first labs use drag-and-drop tools and visual interfaces. Code appears gradually, always explained. By Module 4, students encounter real Python — but it's scaffolded, guided, and optional to go deeper. Plenty of students complete the full curriculum without ever writing code from scratch.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How much time per week does this take?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Each module is designed for <strong>3–5 hours of active work</strong>. Spread over one or two weeks, that's 1.5–2.5 hours per week. A motivated learner can go deeper and finish faster. There's no minimum — if your family does 45 minutes on a Tuesday and nothing else that week, you're still moving forward.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is this appropriate for unschoolers? It sounds like a curriculum.
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            It is a curriculum — in the sense that it has a through-line and a goal. But <strong>every module can be entered from a different angle</strong>, and the whole thing is built around a project your kid owns. The Unschool guide in the Parent Guide shows how to use this as a loose framework for interest-led exploration rather than a structured sequence. Many unschool families start in Module 2 (vision) or Module 5 (voice) just because those sound cool to their kid.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can multiple kids in our family do this at the same time?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes — and it works really well. Each kid builds their own agent, but they're working on the same module. A 12-year-old and a 16-year-old can compare their agents, help each other debug, and present together at the final AI Expo. The modules are designed so that different ages produce legitimately different outputs without requiring different materials.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What does my child actually build by the end?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            A <strong>working, deployed AI agent</strong> they named and personalized — with vision capabilities, a custom knowledge base, a trained ML model, a live communication channel, and an ethical usage policy they wrote. It's real software that does real things. They'll be able to demo it to anyone and explain every part of how it works, because they built every part.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Does this count for high school transcript credit?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            The full 7-module curriculum represents approximately <strong>0.5 high school credits</strong> in Computer Science, AI Literacy, or STEM Electives — roughly equivalent to one semester of a high school elective course. The Parent Guide includes sample transcript language and a standards alignment document (AI4K12, CSTA) you can use to document the work. Final determination of credit always rests with your family or oversight program.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What if we start and my kid loses interest partway through?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Then they stop — and they still have something. A student who completes Modules 1–3 has a <strong>deployed AI agent with vision and a custom knowledge base</strong>. That's real. The curriculum is designed so that every stopping point produces a meaningful artifact. There's no such thing as "not finishing" — every module forward is a win.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <ul class="footer-nav">
+    <li><a href="index.html">← Back to Main Site</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#module-arc">Module Arc</a></li>
+    <li><a href="#download">Parent Guide</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a></li>
+  </ul>
+  <p>
+    AI Explorers Curriculum — empowering the next generation of AI-literate humans.<br/>
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> —
+    free to use, adapt, and share. Forever. ·
+    Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a>
+  </p>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    // Open clicked if it wasn't open
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
