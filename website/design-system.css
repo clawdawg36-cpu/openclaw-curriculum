@@ -1,0 +1,757 @@
+/*
+ * ╔══════════════════════════════════════════════════════════════════╗
+ * ║  AI Explorers — Design System                                    ║
+ * ║  design-system.css  ·  v1.0.0                                    ║
+ * ║                                                                  ║
+ * ║  DARK / LIGHT MODE SUPPORT                                       ║
+ * ║  • Auto: respects prefers-color-scheme                           ║
+ * ║  • Manual: set data-theme="dark" | "light" on <html>            ║
+ * ║  • Toggle JS: included at the bottom of this file (comment)     ║
+ * ╚══════════════════════════════════════════════════════════════════╝
+ *
+ * TABLE OF CONTENTS
+ *  1. Brand (fixed) tokens
+ *  2. Dark theme tokens (default)
+ *  3. Light theme tokens
+ *  4. Semantic alias layer
+ *  5. Base reset & typography
+ *  6. Navbar
+ *  7. Buttons
+ *  8. Cards
+ *  9. Theme toggle button
+ * 10. Utility classes
+ * 11. Reduced-motion overrides
+ */
+
+/* ─────────────────────────────────────────────────────────────────
+   1. BRAND TOKENS  —  never change between modes
+   ───────────────────────────────────────────────────────────────── */
+:root {
+  /* Brand palette */
+  --brand:        #6c5ce7;
+  --brand-dark:   #4f3cc9;
+  --brand-light:  #a29bfe;
+  --accent:       #fd79a8;
+  --green:        #00b894;
+  --yellow:       #fdcb6e;
+  --orange:       #e17055;
+  --blue:         #0984e3;
+  --teal:         #00cec9;
+
+  /* Policy/district accent */
+  --policy:       #fd79a8;
+  --policy-dark:  #e84393;
+  --policy-light: #fda7c7;
+
+  /* Typography scale */
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing scale */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Radius scale */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transition */
+  --transition-fast:   0.15s ease;
+  --transition-base:   0.2s ease;
+  --transition-slow:   0.35s ease;
+
+  /* Z-index scale */
+  --z-below:   -1;
+  --z-base:     0;
+  --z-raised:  10;
+  --z-overlay: 50;
+  --z-nav:    100;
+  --z-modal:  200;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────
+   2. DARK THEME TOKENS  —  applied by default
+   ───────────────────────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --bg-base:       #1a1a2e;
+  --bg-surface:    #16213e;
+  --bg-elevated:   #0f3460;
+  --bg-overlay:    rgba(26, 26, 46, 0.9);
+
+  /* Foregrounds */
+  --fg-primary:    #e2e8f0;
+  --fg-secondary:  #94a3b8;
+  --fg-disabled:   #4a5578;
+  --fg-on-brand:   #ffffff;
+
+  /* Card surfaces */
+  --card-bg:       rgba(255, 255, 255, 0.05);
+  --card-bg-hover: rgba(255, 255, 255, 0.09);
+  --card-border:   rgba(255, 255, 255, 0.10);
+  --card-border-hover: rgba(255, 255, 255, 0.20);
+
+  /* Input / form */
+  --input-bg:      rgba(255, 255, 255, 0.06);
+  --input-border:  rgba(255, 255, 255, 0.15);
+  --input-focus:   var(--brand-light);
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-brand: 0 8px 32px rgba(108, 92, 231, 0.45);
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-track: transparent;
+
+  /* Theme toggle icon — show moon in dark mode */
+  --theme-icon-moon: inline;
+  --theme-icon-sun:  none;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────
+   3. LIGHT THEME TOKENS
+   Applied when:
+     a) OS prefers light  AND  no data-theme override, OR
+     b) data-theme="light" is explicitly set on <html>
+   ───────────────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+
+    /* Backgrounds */
+    --bg-base:       #F7F9FF;
+    --bg-surface:    #EEF2FF;
+    --bg-elevated:   #E4EAFF;
+    --bg-overlay:    rgba(247, 249, 255, 0.92);
+
+    /* Foregrounds */
+    --fg-primary:    #1a1a2e;
+    --fg-secondary:  #4a5578;
+    --fg-disabled:   #9aa5bf;
+    --fg-on-brand:   #ffffff;
+
+    /* Card surfaces */
+    --card-bg:       #ffffff;
+    --card-bg-hover: #f4f7ff;
+    --card-border:   #dde3f0;
+    --card-border-hover: #b3bddb;
+
+    /* Input / form */
+    --input-bg:      #ffffff;
+    --input-border:  #c8d0e8;
+    --input-focus:   var(--brand);
+
+    /* Shadows */
+    --shadow-sm:  0 1px 3px rgba(108, 92, 231, 0.08);
+    --shadow-md:  0 4px 16px rgba(108, 92, 231, 0.10);
+    --shadow-lg:  0 8px 32px rgba(108, 92, 231, 0.14);
+    --shadow-brand: 0 8px 28px rgba(108, 92, 231, 0.35);
+
+    /* Scrollbar */
+    --scrollbar-thumb: rgba(108, 92, 231, 0.25);
+    --scrollbar-track: transparent;
+
+    /* Theme toggle icon — show sun in light mode */
+    --theme-icon-moon: none;
+    --theme-icon-sun:  inline;
+  }
+}
+
+/* Explicit override: data-theme="light" (manual, wins over OS) */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-base:       #F7F9FF;
+  --bg-surface:    #EEF2FF;
+  --bg-elevated:   #E4EAFF;
+  --bg-overlay:    rgba(247, 249, 255, 0.92);
+
+  --fg-primary:    #1a1a2e;
+  --fg-secondary:  #4a5578;
+  --fg-disabled:   #9aa5bf;
+  --fg-on-brand:   #ffffff;
+
+  --card-bg:       #ffffff;
+  --card-bg-hover: #f4f7ff;
+  --card-border:   #dde3f0;
+  --card-border-hover: #b3bddb;
+
+  --input-bg:      #ffffff;
+  --input-border:  #c8d0e8;
+  --input-focus:   var(--brand);
+
+  --shadow-sm:  0 1px 3px rgba(108, 92, 231, 0.08);
+  --shadow-md:  0 4px 16px rgba(108, 92, 231, 0.10);
+  --shadow-lg:  0 8px 32px rgba(108, 92, 231, 0.14);
+  --shadow-brand: 0 8px 28px rgba(108, 92, 231, 0.35);
+
+  --scrollbar-thumb: rgba(108, 92, 231, 0.25);
+  --scrollbar-track: transparent;
+
+  --theme-icon-moon: none;
+  --theme-icon-sun:  inline;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────
+   4. SEMANTIC ALIAS LAYER
+   Convenience shorthands that map to theme tokens above.
+   Use these in component styles for automatic mode switching.
+   ───────────────────────────────────────────────────────────────── */
+:root,
+[data-theme="dark"],
+[data-theme="light"] {
+  /* Page-level */
+  --color-bg:       var(--bg-base);
+  --color-surface:  var(--bg-surface);
+  --color-text:     var(--fg-primary);
+  --color-muted:    var(--fg-secondary);
+
+  /* Interactive */
+  --color-link:           var(--brand-light);
+  --color-link-visited:   var(--brand);
+  --color-focus-ring:     var(--brand-light);
+}
+
+/* Re-apply light aliases under media query (they inherit from :root override above) */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-link:         var(--brand);
+    --color-link-visited: var(--brand-dark);
+    --color-focus-ring:   var(--brand);
+  }
+}
+
+[data-theme="light"] {
+  --color-link:         var(--brand);
+  --color-link-visited: var(--brand-dark);
+  --color-focus-ring:   var(--brand);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────
+   5. BASE RESET & TYPOGRAPHY
+   ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition:
+    background-color var(--transition-slow),
+    color var(--transition-slow);
+}
+
+/* Scrollbar theming (Chrome/Edge/Safari) */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+
+/* Focus ring (keyboard accessibility) */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Links */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover { opacity: 0.85; }
+
+/* Selection highlight */
+::selection {
+  background: rgba(108, 92, 231, 0.35);
+  color: var(--fg-primary);
+}
+
+/* Code */
+code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────
+   6. NAVBAR  (shared across all pages)
+   ───────────────────────────────────────────────────────────────── */
+.ds-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: var(--z-nav);
+  padding: var(--space-4) var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+  transition:
+    background var(--transition-slow),
+    border-color var(--transition-slow);
+}
+
+.ds-nav__logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--brand-light), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.ds-nav__links {
+  display: flex;
+  gap: var(--space-8);
+  list-style: none;
+}
+
+.ds-nav__links a {
+  color: var(--fg-secondary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color var(--transition-fast);
+}
+.ds-nav__links a:hover { color: var(--fg-primary); }
+
+.ds-nav__cta {
+  background: var(--brand);
+  color: white !important;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+.ds-nav__cta:hover {
+  background: var(--brand-dark);
+  transform: translateY(-1px);
+}
+
+/* Nav right-side group (CTA + theme toggle) */
+.ds-nav__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────
+   7. BUTTONS
+   ───────────────────────────────────────────────────────────────── */
+.ds-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+.ds-btn:hover { transform: translateY(-2px); }
+.ds-btn:active { transform: translateY(0); }
+
+/* Primary */
+.ds-btn--primary {
+  background: var(--brand);
+  color: white;
+}
+.ds-btn--primary:hover {
+  background: var(--brand-dark);
+  box-shadow: var(--shadow-brand);
+}
+
+/* Secondary / outline */
+.ds-btn--secondary {
+  background: var(--card-bg);
+  color: var(--fg-primary);
+  border: 1.5px solid var(--card-border);
+}
+.ds-btn--secondary:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--brand-light);
+}
+
+/* Ghost */
+.ds-btn--ghost {
+  background: transparent;
+  color: var(--fg-primary);
+  border: 1.5px solid var(--card-border);
+}
+.ds-btn--ghost:hover {
+  background: var(--card-bg);
+  border-color: var(--brand-light);
+  color: var(--brand-light);
+}
+
+/* Sizes */
+.ds-btn--sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.875rem;
+}
+.ds-btn--lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: 1.125rem;
+  border-radius: var(--radius-lg);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────
+   8. CARDS
+   ───────────────────────────────────────────────────────────────── */
+.ds-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+.ds-card:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--card-border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Elevated card (no border, uses shadow) */
+.ds-card--elevated {
+  background: var(--bg-surface);
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+.ds-card--elevated:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────
+   9. THEME TOGGLE BUTTON
+   Drop this element into the navbar:
+     <button class="ds-theme-toggle" id="ds-theme-toggle"
+             aria-label="Toggle dark/light mode">
+       <svg class="ds-theme-toggle__moon" ...><!-- moon icon --></svg>
+       <svg class="ds-theme-toggle__sun"  ...><!-- sun icon  --></svg>
+     </button>
+   ───────────────────────────────────────────────────────────────── */
+.ds-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-full);
+  background: var(--card-bg);
+  color: var(--fg-secondary);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+.ds-theme-toggle:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--brand-light);
+  color: var(--brand-light);
+  transform: rotate(15deg) scale(1.05);
+}
+.ds-theme-toggle:active { transform: scale(0.95); }
+
+/* Icon visibility — controlled by CSS vars set per theme */
+.ds-theme-toggle__moon { display: var(--theme-icon-moon, inline); }
+.ds-theme-toggle__sun  { display: var(--theme-icon-sun,  none);   }
+
+/* Inline SVG icons (copy these into your HTML or use the JS snippet below) */
+/*
+  Moon icon (shown in dark mode):
+  <svg class="ds-theme-toggle__moon" xmlns="http://www.w3.org/2000/svg"
+       width="16" height="16" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round"
+       stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+
+  Sun icon (shown in light mode):
+  <svg class="ds-theme-toggle__sun" xmlns="http://www.w3.org/2000/svg"
+       width="16" height="16" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round"
+       stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+*/
+
+
+/* ─────────────────────────────────────────────────────────────────
+   10. UTILITY CLASSES
+   ───────────────────────────────────────────────────────────────── */
+
+/* Container */
+.ds-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+}
+.ds-container--narrow { max-width: 720px; }
+.ds-container--wide   { max-width: 1400px; }
+
+/* Section spacing */
+.ds-section {
+  padding-block: var(--space-24);
+}
+.ds-section--sm { padding-block: var(--space-16); }
+.ds-section--lg { padding-block: calc(var(--space-24) * 1.5); }
+
+/* Typography */
+.ds-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-light);
+  padding: var(--space-1) var(--space-4);
+  border: 1px solid rgba(108, 92, 231, 0.3);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+}
+[data-theme="light"] .ds-label,
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .ds-label {
+    color: var(--brand);
+    border-color: rgba(108, 92, 231, 0.25);
+  }
+}
+
+.ds-heading-xl {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--fg-primary);
+}
+.ds-heading-lg {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--fg-primary);
+}
+.ds-heading-md {
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--fg-primary);
+}
+
+.ds-text-muted { color: var(--fg-secondary); }
+.ds-text-brand { color: var(--brand-light); }
+
+/* Gradient text */
+.ds-gradient-text {
+  background: linear-gradient(135deg, var(--brand-light) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Divider */
+.ds-divider {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin-block: var(--space-8);
+  transition: border-color var(--transition-slow);
+}
+
+/* Badge */
+.ds-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--fg-secondary);
+}
+.ds-badge--brand {
+  background: rgba(108, 92, 231, 0.15);
+  border-color: rgba(108, 92, 231, 0.3);
+  color: var(--brand-light);
+}
+.ds-badge--green {
+  background: rgba(0, 184, 148, 0.12);
+  border-color: rgba(0, 184, 148, 0.3);
+  color: var(--green);
+}
+.ds-badge--yellow {
+  background: rgba(253, 203, 110, 0.12);
+  border-color: rgba(253, 203, 110, 0.3);
+  color: var(--yellow);
+}
+
+/* Surface sections (alternating) */
+.ds-surface {
+  background: var(--bg-surface);
+  transition: background var(--transition-slow);
+}
+.ds-surface--elevated {
+  background: var(--bg-elevated);
+}
+
+/* Grid helpers */
+.ds-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); }
+.ds-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-6); }
+.ds-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-6); }
+
+
+/* ─────────────────────────────────────────────────────────────────
+   11. REDUCED-MOTION OVERRIDES
+   ───────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* SVG animation hooks from hero graphic */
+  .arc-trace,
+  .patch-stage-1,
+  .patch-stage-2,
+  .patch-stage-3,
+  .patch-stage-4,
+  .patch-stage-5,
+  .patch-stage-6,
+  .patch-stage-7,
+  .rocket-launch,
+  .hero-bg-nebula {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────
+   THEME TOGGLE — JAVASCRIPT SNIPPET
+   Add this to the end of each page's <body> or in a shared JS file.
+   Stores preference in localStorage as "theme" = "dark" | "light".
+
+   <script>
+   (function () {
+     const STORAGE_KEY = 'aie-theme';
+
+     // Immediately apply stored preference (before paint — prevents flash)
+     const stored = localStorage.getItem(STORAGE_KEY);
+     if (stored) document.documentElement.setAttribute('data-theme', stored);
+
+     function getEffectiveTheme() {
+       const attr = document.documentElement.getAttribute('data-theme');
+       if (attr) return attr;
+       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+     }
+
+     function applyTheme(theme) {
+       document.documentElement.setAttribute('data-theme', theme);
+       localStorage.setItem(STORAGE_KEY, theme);
+     }
+
+     document.addEventListener('DOMContentLoaded', function () {
+       const btn = document.getElementById('ds-theme-toggle');
+       if (!btn) return;
+
+       btn.addEventListener('click', function () {
+         const current = getEffectiveTheme();
+         applyTheme(current === 'dark' ? 'light' : 'dark');
+       });
+     });
+   })();
+   </script>
+
+   ─────────────────────────────────────────────────────────────────
+   FLASH-PREVENTION INLINE SCRIPT
+   Insert this as the FIRST child of <head> (before any stylesheet):
+
+   <script>
+   (function(){
+     try {
+       var t = localStorage.getItem('aie-theme');
+       if (t === 'dark' || t === 'light') {
+         document.documentElement.setAttribute('data-theme', t);
+       }
+     } catch(e) {}
+   })();
+   </script>
+   ───────────────────────────────────────────────────────────────── */
