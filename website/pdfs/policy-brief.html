@@ -346,6 +346,22 @@
       .stat-grid { grid-template-columns: 1fr 1fr; }
       .download-bar { flex-direction: column; align-items: flex-start; }
     }
+
+    /* ── SKIP NAV ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--brand); color: white;
+      padding: 0.6rem 1.25rem; border-radius: 0 0 8px 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      z-index: 9999; transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 3px solid var(--brand-light);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>

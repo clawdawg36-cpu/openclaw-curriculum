@@ -367,6 +367,22 @@
       .hero::after { display: none; }
       .help-row { grid-template-columns: 1fr; }
     }
+
+    /* ── SKIP NAV ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--brand); color: white;
+      padding: 0.6rem 1.25rem; border-radius: 0 0 8px 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      z-index: 9999; transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 3px solid var(--brand-light);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
@@ -436,7 +452,7 @@
       <h2>✅ Day 1 Checklist</h2>
       <p style="color: var(--muted); font-size:0.9rem; margin-bottom:1rem;">Do these 10 things before your first class.</p>
       <ul class="checklist">
-        <li><div class="num">1</div><div>⭐ <strong>Star the repo</strong> → <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">github.com/clawdawg36-cpu/openclaw-curriculum</a> so you can find it fast</div></li>
+        <li><div class="num">1</div><div>⭐ <strong>Star the repo</strong> → <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">github.com/clawdawg36-cpu/openclaw-curriculum</a> so you can find it fast</div></li>
         <li><div class="num">2</div><div>📁 <strong>Browse the file structure</strong> — open <code>modules/module-01/</code> and see what's there</div></li>
         <li><div class="num">3</div><div>📖 <strong>Read the Module 1 Teacher Guide</strong> — <code>modules/module-01/teacher-guide.md</code>, takes ~20 min</div></li>
         <li><div class="num">4</div><div>🤖 <strong>Log into OpenClaw</strong> — confirm your credentials work before class day</div></li>
@@ -569,7 +585,7 @@
       <div class="help-grid">
         <div class="help-row">
           <div class="help-label">📌 GitHub Issues</div>
-          <div>Report bugs, request clarifications, suggest improvements → <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/issues" target="_blank">github.com/clawdawg36-cpu/openclaw-curriculum/issues</a></div>
+          <div>Report bugs, request clarifications, suggest improvements → <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/issues" target="_blank" rel="noopener noreferrer">github.com/clawdawg36-cpu/openclaw-curriculum/issues</a></div>
         </div>
         <div class="help-row">
           <div class="help-label">💬 Discussions</div>
@@ -595,7 +611,7 @@
         <div class="cta-step">📖 Step 2 — Read the teacher guide</div>
         <div class="cta-step">✅ Step 3 — Complete your Day 1 checklist</div>
       </div>
-      <a class="cta-btn" href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">
+      <a class="cta-btn" href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">
         Open the Curriculum on GitHub →
       </a>
       <p style="margin-top:1.25rem; font-size:0.85rem; opacity:0.75;">

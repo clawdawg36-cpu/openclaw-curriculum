@@ -396,6 +396,22 @@
       .module-grid, .roadmap { grid-template-columns: 1fr; }
       .cover-cta { flex-direction: column; }
     }
+
+    /* ── SKIP NAV ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--brand); color: white;
+      padding: 0.6rem 1.25rem; border-radius: 0 0 8px 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      z-index: 9999; transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 3px solid var(--brand-light);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
@@ -430,7 +446,7 @@
       </div>
       <div class="cover-cta no-print">
         <a href="../educators.html" class="btn-primary">Visit Educator Hub</a>
-        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-outline" target="_blank">View on GitHub</a>
+        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-outline" target="_blank" rel="noopener noreferrer">View on GitHub</a>
       </div>
     </div>
   </div>
@@ -737,7 +753,7 @@
               </tr>
               <tr>
                 <td>💻 GitHub Repository</td>
-                <td><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">github.com/clawdawg36-cpu/openclaw-curriculum</a> — full source, lesson plans, all materials</td>
+                <td><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">github.com/clawdawg36-cpu/openclaw-curriculum</a> — full source, lesson plans, all materials</td>
               </tr>
               <tr>
                 <td>🎓 Start a pilot</td>
@@ -763,7 +779,7 @@
   <footer>
     <div class="container">
       <span>AI Explorers · <a href="../index.html">aiexplorers.dev</a> · Open source under MIT License</span>
-      <span>Questions? <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/discussions" target="_blank">GitHub Discussions</a> · <a href="../educators.html">Educator Hub</a></span>
+      <span>Questions? <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a> · <a href="../educators.html">Educator Hub</a></span>
     </div>
   </footer>
 

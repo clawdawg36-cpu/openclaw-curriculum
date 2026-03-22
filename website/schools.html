@@ -507,7 +507,7 @@
       padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem;
       font-family: 'Inter', sans-serif;
       transition: border-color 0.2s;
-      outline: none;
+
     }
     .form-control:focus { border-color: var(--green); }
     .form-control::placeholder { color: var(--text-muted); }
@@ -589,12 +589,30 @@
       .timeline-track::before { display: none; }
       section { padding: 4rem 1.25rem; }
     }
+
+    /* ── SKIP NAV ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--brand); color: white;
+      padding: 0.6rem 1.25rem; border-radius: 0 0 8px 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      z-index: 9999; transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 3px solid var(--brand-light);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo">🤖 AI Explorers</a>
   <ul class="nav-links">
     <li><a href="#concerns">Admin Concerns</a></li>
@@ -605,6 +623,8 @@
   </ul>
   <a href="#adoption-brief" class="nav-cta">Download Adoption Brief →</a>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -1530,18 +1550,20 @@
       </a>
     </div>
     <p class="license-note">
-      Curriculum licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> —
-      free to use, adapt, and share. Platform under <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
-      All materials on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a>.
+      Curriculum licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> —
+      free to use, adapt, and share. Platform under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a>.
+      All materials on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">GitHub</a>.
     </p>
   </div>
 </section>
 
+</main>
+
 <footer>
   <p>
     AI Explorers Curriculum — empowering the next generation of AI-literate humans.<br/>
-    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a> ·
-    Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> ·
+    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    Powered by <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer">OpenClaw</a> ·
     <a href="index.html">← Back to main site</a> ·
     Version 1.0 — March 2026
   </p>

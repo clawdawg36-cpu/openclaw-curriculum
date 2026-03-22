@@ -409,7 +409,7 @@
       background: rgba(0,0,0,0.25); border: 1px solid var(--card-border);
       color: var(--text); padding: 0.7rem 0.9rem;
       border-radius: 8px; font-size: 0.93rem; font-family: 'Inter', sans-serif;
-      transition: border-color 0.2s; outline: none; width: 100%;
+      transition: border-color 0.2s; width: 100%;
     }
     .form-group input:focus, .form-group select:focus { border-color: var(--brand-light); }
     .form-group select option { background: var(--dark2); }
@@ -452,12 +452,30 @@
       .nav-links { display: none; }
       section { padding: 4rem 1.25rem; }
     }
+
+    /* ── SKIP NAV ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--brand); color: white;
+      padding: 0.6rem 1.25rem; border-radius: 0 0 8px 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      z-index: 9999; transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 3px solid var(--brand-light);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo">🤖 AI Explorers</a>
   <ul class="nav-links">
     <li><a href="#concerns">Is It Right?</a></li>
@@ -468,6 +486,8 @@
   </ul>
   <a href="#share" class="nav-cta" onclick="document.querySelector('#share').scrollIntoView({behavior:'smooth'}); return false;">Share with Teacher →</a>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -1094,12 +1114,14 @@
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <p>
     AI Explorers Curriculum — empowering the next generation of AI-literate humans.<br/>
-    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a> ·
-    Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> ·
-    Licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> ·
+    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    Powered by <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer">OpenClaw</a> ·
+    Licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> ·
     <a href="index.html">Home</a> · Version 1.0 — March 2026
   </p>
 </footer>

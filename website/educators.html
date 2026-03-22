@@ -462,12 +462,30 @@
       .hero { padding: 6rem 1.25rem 3.5rem; }
       .download-box { padding: 2rem 1.5rem; }
     }
+
+    /* ── SKIP NAV ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--brand); color: white;
+      padding: 0.6rem 1.25rem; border-radius: 0 0 8px 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      z-index: 9999; transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 3px solid var(--brand-light);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo">🤖 AI Explorers</a>
   <ul class="nav-links">
     <li><a href="#included">What's Included</a></li>
@@ -477,6 +495,8 @@
   </ul>
   <a href="#download" class="nav-cta">Download Unit 1 Free →</a>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -833,7 +853,7 @@
         <div class="dl-item">Differentiation guide for mixed-ability classrooms</div>
       </div>
       <div class="download-btns">
-        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary-white" target="_blank">
+        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary-white" target="_blank" rel="noopener noreferrer">
           📦 Download Unit 1 Teacher Pack →
         </a>
         <a href="#standards" class="btn-outline-white">
@@ -843,7 +863,7 @@
       <p class="download-note">
         Your school email unlocks the full 7-unit curriculum guide and teacher community access.
         The starter pack is free with no email required. Open license —
-        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">CC BY-SA 4.0</a>.
+        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.
         Download, adapt, redistribute.
       </p>
     </div>
@@ -926,6 +946,8 @@
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">🤖 AI Explorers</div>
@@ -934,7 +956,7 @@
       <li><a href="educators.html">For Educators</a></li>
       <li><a href="#standards">Standards</a></li>
       <li><a href="index.html#why">For Districts</a></li>
-      <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a></li>
+      <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">GitHub</a></li>
       <li><a href="index.html#faq">FAQ</a></li>
     </ul>
     <p class="footer-copy">

@@ -418,13 +418,31 @@
       .steps-list::before { display: none; }
       section { padding: 4rem 1.25rem; }
     }
+
+    /* ── SKIP NAV ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--brand); color: white;
+      padding: 0.6rem 1.25rem; border-radius: 0 0 8px 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      z-index: 9999; transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 3px solid var(--brand-light);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">🤖 AI Explorers</div>
+<nav aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="AI Explorers — Home">🤖 AI Explorers</a>
   <ul class="nav-links">
     <li><a href="#built-online">Built Online-First</a></li>
     <li><a href="#how-it-works">How It Works</a></li>
@@ -432,8 +450,10 @@
     <li><a href="#compatible">Compatibility</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/curriculum/module-01" class="nav-cta" target="_blank">Start Module 1 →</a>
+  <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/curriculum/module-01" class="nav-cta" target="_blank" rel="noopener noreferrer">Start Module 1 →</a>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -452,10 +472,10 @@
     </div>
 
     <div class="hero-ctas">
-      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/curriculum/module-01" class="btn-primary" target="_blank">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/curriculum/module-01" class="btn-primary" target="_blank" rel="noopener noreferrer">
         🚀 Start Module 1 Today
       </a>
-      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/guides/homeschool-guide.pdf" class="btn-secondary" target="_blank">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/guides/homeschool-guide.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">
         📥 Download the Homeschool Guide
       </a>
     </div>
@@ -934,26 +954,28 @@
     <h2>Your student could be building<br/>their AI agent this week.</h2>
     <p>Everything is free, fully online, and ready to go. Open Module 1, follow the setup guide, and your student will have a deployed AI agent before the week is out — no classroom, no waiting, no cost.</p>
     <div class="cta-btns">
-      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/curriculum/module-01" class="btn-primary" target="_blank">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/curriculum/module-01" class="btn-primary" target="_blank" rel="noopener noreferrer">
         🚀 Start Module 1 Today
       </a>
-      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/guides/homeschool-guide.pdf" class="btn-secondary" target="_blank">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/guides/homeschool-guide.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">
         📥 Download the Homeschool Guide
       </a>
     </div>
     <p class="license-note">
-      Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> —
+      Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> —
       free to use, adapt, and share. Forever. ·
       <a href="index.html">Back to main site</a>
     </p>
   </div>
 </section>
 
+</main>
+
 <footer>
   <p>
     AI Explorers Curriculum — built for every learner, everywhere.<br/>
-    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a> ·
-    Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> ·
+    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    Powered by <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer">OpenClaw</a> ·
     Version 1.0 — March 2026
   </p>
 </footer>

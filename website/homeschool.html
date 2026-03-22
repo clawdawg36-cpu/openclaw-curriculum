@@ -405,12 +405,30 @@
       .hero-cta-row { justify-content: center; }
       .hero-proof { justify-content: center; }
     }
+
+    /* ── SKIP NAV ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--brand); color: white;
+      padding: 0.6rem 1.25rem; border-radius: 0 0 8px 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      z-index: 9999; transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 3px solid var(--brand-light);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo">🤖 AI Explorers</a>
   <ul class="nav-links">
     <li><a href="#how-it-works">How It Works</a></li>
@@ -418,8 +436,10 @@
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="nav-cta" target="_blank">View on GitHub →</a>
+  <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="nav-cta" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -439,7 +459,7 @@
 
     <div class="hero-cta-row">
       <a href="#download" class="btn-primary">📥 Download the Homeschool Guide</a>
-      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank" rel="noopener noreferrer">
         ⭐ View on GitHub
       </a>
     </div>
@@ -729,10 +749,10 @@
       </ul>
 
       <div class="cta-buttons">
-        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary" target="_blank">
+        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary" target="_blank" rel="noopener noreferrer">
           📥 Download the Homeschool Guide
         </a>
-        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank">
+        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank" rel="noopener noreferrer">
           ⭐ View Full Curriculum on GitHub
         </a>
       </div>
@@ -919,15 +939,15 @@
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="homeschool.html">For Homeschoolers</a></li>
-    <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">Curriculum</a></li>
-    <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/LICENSE" target="_blank">Open License</a></li>
-    <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a></li>
+    <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">Curriculum</a></li>
+    <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Open License</a></li>
+    <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">GitHub</a></li>
   </ul>
   <p class="footer-copy">
     AI Explorers Curriculum — empowering the next generation of AI-literate humans.<br/>
-    Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> —
+    Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> —
     free to use, adapt, and share. Forever. ·
-    Built on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a>
+    Built on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">GitHub</a>
   </p>
 </footer>
 

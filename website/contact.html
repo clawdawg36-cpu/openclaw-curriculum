@@ -184,7 +184,6 @@
       font-family: inherit;
       font-size: 0.92rem;
       padding: 0.65rem 0.9rem;
-      outline: none;
       transition: border-color 0.2s;
       width: 100%;
     }
@@ -311,6 +310,29 @@
     footer a { color: var(--brand-light); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
+    /* ── SKIP NAV ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--brand); color: white;
+      padding: 0.6rem 1.25rem; border-radius: 0 0 8px 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      z-index: 9999; transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── FOCUS STYLES ── */
+    :focus-visible {
+      outline: 3px solid var(--brand-light);
+      outline-offset: 3px;
+    }
+    .form-group input:focus-visible,
+    .form-group select:focus-visible,
+    .form-group textarea:focus-visible {
+      outline: 3px solid var(--brand-light);
+      outline-offset: 0;
+      border-color: var(--brand-light);
+    }
+
     /* ── RESPONSIVE NAV ── */
     @media (max-width: 700px) {
       .nav-links { display: none; }
@@ -319,9 +341,11 @@
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">🤖 AI Explorers</a>
+<nav aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="AI Explorers — Home">🤖 AI Explorers</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="educators.html">Educators</a></li>
@@ -331,6 +355,8 @@
   </ul>
   <a href="#interest-form" class="nav-cta" onclick="document.getElementById('interest-form').scrollIntoView({behavior:'smooth'}); return false;">Join the List →</a>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -635,12 +661,14 @@
 </div>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <p>
     AI Explorers Curriculum — empowering the next generation of AI-literate humans.<br/>
-    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a> ·
-    Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> ·
-    Licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> ·
+    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    Powered by <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer">OpenClaw</a> ·
+    Licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> ·
     <a href="index.html">Home</a> · Version 1.0 — March 2026
   </p>
 </footer>
