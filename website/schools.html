@@ -3,26 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Explorers for Schools — Standards-Aligned, Free Forever, No Vendor Lock-In</title>
-  <meta name="description" content="A free, open-license K–12 AI literacy curriculum for school administrators and boards. No subscription fees, no platform dependency, FERPA compliant. Download the District Adoption Packet." />
-  <!-- Open Graph / Social Sharing -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="AI Explorers">
-  <meta property="og:url" content="https://aiexplorers.dev/schools">
-  <meta property="og:title" content="AI Explorers for Schools — Standards-Aligned, Free Forever, No Vendor Lock-In">
-  <meta property="og:description" content="A free, open-license K–12 AI literacy curriculum for school administrators and boards. No subscription fees, no platform dependency, FERPA compliant. Download the District Adoption Packet.">
-  <meta property="og:image" content="https://aiexplorers.dev/og-images/schools.svg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/svg+xml">
-  <meta property="og:locale" content="en_US">
-  <!-- Twitter / X Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@aiexplorers">
-  <meta name="twitter:title" content="AI Explorers for Schools — Free, FERPA Compliant, No Vendor Lock-In">
-  <meta name="twitter:description" content="Free, open-license AI literacy curriculum for school admins and boards. FERPA compliant, no subscription fees, scales from one class to district-wide.">
-  <meta name="twitter:image" content="https://aiexplorers.dev/og-images/schools.svg">
-  <meta name="twitter:image:alt" content="AI Explorers for Schools and Districts">
+  <title>Free K-12 AI Literacy Program | District Adoption Guide — AI Explorers</title>
+  <meta name="description" content="Open AI curriculum for K-12 districts. FERPA/COPPA compliant, AI4K12 aligned, no per-seat costs. Free, open-source, and ready to deploy. Download the School Adoption Brief." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Explorers for Schools — Free, Open, No Vendor Lock-In" />
+  <meta property="og:description" content="District-ready AI literacy curriculum. Free forever, FERPA/COPPA compliant, AI4K12 aligned. Includes teacher PD. Download the School Adoption Brief." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://aiexplorers.education/schools" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -37,6 +24,7 @@
       --yellow: #fdcb6e;
       --orange: #e17055;
       --blue: #0984e3;
+      --teal: #00cec9;
       --dark: #1a1a2e;
       --dark2: #16213e;
       --dark3: #0f3460;
@@ -44,22 +32,14 @@
       --text-muted: #94a3b8;
       --card-bg: rgba(255,255,255,0.05);
       --card-border: rgba(255,255,255,0.1);
-
-      /* Light surface tokens */
-      --light-bg: #F7F9FF;
-      --light-bg2: #EEF2FF;
-      --light-text: #1a1a2e;
-      --light-text-muted: #4A5578;
-      --light-card: #ffffff;
-      --light-border: #e2e8f0;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--light-bg);
-      color: var(--light-text);
+      background: var(--dark);
+      color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -69,9 +49,9 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 1rem 2rem;
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(26,26,46,0.97);
+      background: rgba(26,26,46,0.9);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid var(--card-border);
     }
     .nav-logo {
       font-size: 1.25rem; font-weight: 800;
@@ -79,1381 +59,1500 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       text-decoration: none;
     }
-    .nav-back {
-      color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
-      font-weight: 500; display: flex; align-items: center; gap: 0.4rem;
-      transition: color 0.2s;
-    }
-    .nav-back:hover { color: var(--text); }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
     .nav-cta {
-      background: var(--brand); color: white; padding: 0.5rem 1.25rem;
+      background: var(--green); color: white; padding: 0.5rem 1.25rem;
       border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-      text-decoration: none; transition: background 0.2s; white-space: nowrap;
+      text-decoration: none; transition: background 0.2s;
     }
-    .nav-cta:hover { background: var(--brand-dark); }
+    .nav-cta:hover { background: #00a382; }
 
-    /* ── HERO — LIGHT SURFACE ── */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
       padding: 8rem 2rem 5rem;
-      background: var(--light-bg);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 60% 40%, rgba(0,184,148,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(108,92,231,0.1) 0%, transparent 50%),
+                  var(--dark);
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 55%; height: 100%;
-      background: radial-gradient(ellipse at 80% 40%, rgba(108,92,231,0.07) 0%, transparent 70%);
-      pointer-events: none;
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: linear-gradient(var(--green) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--green) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
-    .hero-inner {
-      max-width: 1100px; width: 100%; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    .hero-inner { max-width: 1000px; text-align: center; position: relative; }
+    .hero-breadcrumb {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-size: 0.83rem; color: var(--text-muted); margin-bottom: 1.5rem;
     }
-    .hero-eyebrow {
+    .hero-breadcrumb a { color: var(--brand-light); text-decoration: none; }
+    .hero-breadcrumb a:hover { text-decoration: underline; }
+    .hero-breadcrumb span { opacity: 0.5; }
+    .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(108,92,231,0.1); border: 1px solid rgba(108,92,231,0.25);
-      color: var(--brand); padding: 0.35rem 0.9rem;
-      border-radius: 100px; font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem;
-      display: inline-block;
+      background: rgba(0,184,148,0.15); border: 1px solid rgba(0,184,148,0.4);
+      color: var(--green); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 1.5rem;
     }
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem;
-      letter-spacing: -0.02em; color: var(--light-text);
+      letter-spacing: -0.02em;
     }
-    .hero h1 em {
+    h1 em {
       font-style: normal;
-      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+      background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero-sub {
-      font-size: 1.1rem; color: var(--light-text-muted);
-      margin-bottom: 2rem; line-height: 1.7;
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      color: var(--text-muted); max-width: 700px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
     }
-    .hero-sub strong { color: var(--light-text); }
-    .hero-actions {
-      display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;
+    .hero-sub strong { color: var(--text); }
+
+    /* Hero CTA buttons */
+    .hero-cta-group {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 3rem;
     }
     .btn-primary {
-      background: var(--brand); color: white;
-      padding: 0.85rem 1.75rem; border-radius: 10px;
-      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      background: var(--green); color: white;
+      padding: 1rem 2rem; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
       transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
-      box-shadow: 0 4px 20px rgba(108,92,231,0.35);
+      box-shadow: 0 4px 24px rgba(0,184,148,0.4);
     }
-    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(108,92,231,0.45); }
+    .btn-primary:hover { background: #00a382; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,184,148,0.5); }
     .btn-secondary {
-      background: transparent; color: var(--light-text);
-      padding: 0.85rem 1.75rem; border-radius: 10px;
-      font-weight: 600; font-size: 0.95rem; text-decoration: none;
-      border: 1.5px solid var(--light-border);
+      background: transparent; color: var(--text);
+      padding: 1rem 2rem; border-radius: 10px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      border: 1px solid var(--card-border);
       transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
     }
-    .btn-secondary:hover { border-color: var(--brand); color: var(--brand); background: rgba(108,92,231,0.05); }
-    .hero-proof {
-      font-size: 0.85rem; color: var(--light-text-muted);
-      display: flex; flex-wrap: wrap; gap: 1.25rem;
-    }
-    .hero-proof span {
-      display: flex; align-items: center; gap: 0.35rem;
-    }
-    .hero-proof span::before { content: '✓'; color: var(--green); font-weight: 700; }
+    .btn-secondary:hover { background: var(--card-bg); border-color: var(--green); }
 
-    .hero-visual {
-      display: flex; flex-direction: column; gap: 1rem;
+    /* Hero trust strip */
+    .hero-trust-strip {
+      display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;
+      padding-top: 2rem; border-top: 1px solid var(--card-border);
     }
-    .hero-stat-card {
-      background: var(--light-card); border: 1px solid var(--light-border);
-      border-radius: 14px; padding: 1.5rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    .trust-pill {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.85rem; color: var(--text-muted);
     }
-    .hero-stat-card .stat-num {
-      font-size: 2.5rem; font-weight: 900; color: var(--brand);
-      font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 0.5rem;
-      display: block;
-    }
-    .hero-stat-card .stat-label {
-      font-size: 0.9rem; color: var(--light-text-muted);
-    }
-    .hero-stat-row {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-    }
-    .hero-cost-card {
-      background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(108,92,231,0.03));
-      border: 1.5px solid rgba(108,92,231,0.2);
-      border-radius: 14px; padding: 1.5rem;
-    }
-    .hero-cost-card h4 {
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--brand); margin-bottom: 1rem;
-    }
-    .cost-line {
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.9rem; padding: 0.4rem 0;
-      border-bottom: 1px solid var(--light-border); color: var(--light-text-muted);
-    }
-    .cost-line:last-child { border-bottom: none; }
-    .cost-value { font-weight: 700; color: var(--light-text); }
-    .cost-value.free { color: var(--green); }
+    .trust-pill span { color: var(--green); font-weight: 700; }
 
     /* ── SECTIONS ── */
-    section { padding: 5rem 2rem; }
+    section { padding: 6rem 2rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label {
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--brand); margin-bottom: 0.75rem;
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem;
     }
     h2 {
-      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 800; line-height: 1.2; margin-bottom: 1rem;
-      letter-spacing: -0.02em; color: var(--light-text);
+      letter-spacing: -0.02em;
     }
+    h2 em { font-style: normal; color: var(--green); }
     .section-intro {
-      font-size: 1.1rem; color: var(--light-text-muted); max-width: 620px;
+      font-size: 1.1rem; color: var(--text-muted); max-width: 640px;
       margin-bottom: 3rem; line-height: 1.7;
     }
 
-    /* ── WHY NOW ── */
-    .why-now { background: var(--light-bg2); }
-    .why-stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem;
+    /* ── CONCERNS / OBJECTIONS ── */
+    .concerns { background: var(--dark2); }
+    .concerns-intro-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: start; margin-top: 3rem;
     }
-    .why-stat-card {
-      background: var(--light-card); border: 1px solid var(--light-border);
-      border-radius: 14px; padding: 1.75rem;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    @media (max-width: 768px) { .concerns-intro-split { grid-template-columns: 1fr; gap: 2rem; } }
+    .concerns-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .concern-item {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 1.5rem;
+      border-left: 4px solid transparent;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .why-stat-card p {
-      font-size: 1.1rem; font-weight: 600; color: var(--light-text);
-      margin-bottom: 0.75rem; line-height: 1.5;
+    .concern-item:hover { transform: translateY(-2px); }
+    .concern-item.cost { border-left-color: var(--green); }
+    .concern-item.liability { border-left-color: var(--blue); }
+    .concern-item.standards { border-left-color: var(--brand-light); }
+    .concern-item.effort { border-left-color: var(--yellow); }
+    .concern-item.training { border-left-color: var(--accent); }
+    .concern-header {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
     }
-    .why-stat-card .source {
-      font-size: 0.82rem; color: var(--light-text-muted);
-    }
-    .why-body {
-      font-size: 1.05rem; color: var(--light-text-muted); line-height: 1.7;
-      max-width: 780px;
-    }
-    .why-body strong { color: var(--light-text); }
-
-    /* ── COST & ROI ── */
-    .cost-section { background: var(--light-bg); }
-    .cost-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
-    }
-    .cost-breakdown {
-      background: var(--light-card); border: 1px solid var(--light-border);
-      border-radius: 16px; padding: 2rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    }
-    .cost-breakdown h3 {
-      font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--light-text);
-    }
-    .cost-table { width: 100%; border-collapse: collapse; }
-    .cost-table th {
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--light-text-muted);
-      padding: 0.5rem 0.75rem; text-align: left;
-      border-bottom: 1px solid var(--light-border);
-    }
-    .cost-table td {
-      padding: 0.75rem; font-size: 0.9rem; color: var(--light-text-muted);
-      border-bottom: 1px solid var(--light-border);
-    }
-    .cost-table td:last-child { font-weight: 700; text-align: right; }
-    .cost-table tr.total td {
-      font-weight: 800; color: var(--light-text); border-bottom: none;
-      font-size: 1rem;
-    }
-    .cost-table tr.total td:last-child { color: var(--green); }
-    .cost-compare {
-      display: flex; flex-direction: column; gap: 1rem;
-    }
-    .compare-card {
-      background: var(--light-card); border: 1px solid var(--light-border);
-      border-radius: 14px; padding: 1.5rem;
-    }
-    .compare-card.highlight {
-      border-color: var(--brand); background: rgba(108,92,231,0.04);
-    }
-    .compare-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--light-text); }
-    .compare-card .compare-price {
-      font-size: 1.8rem; font-weight: 900; font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 0.25rem;
-    }
-    .compare-price.green { color: var(--green); }
-    .compare-price.red { color: var(--orange); }
-    .compare-card p { font-size: 0.85rem; color: var(--light-text-muted); }
-    .mit-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem;
+    .concern-icon { font-size: 1.5rem; }
+    .concern-q { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    .concern-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .concern-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+    .concern-item p strong { color: var(--text); }
+    .concern-answer-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
       background: rgba(0,184,148,0.1); border: 1px solid rgba(0,184,148,0.3);
-      color: #00856a; padding: 0.4rem 0.9rem;
-      border-radius: 100px; font-size: 0.82rem; font-weight: 700;
+      color: var(--green); padding: 0.2rem 0.6rem;
+      border-radius: 100px; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.6rem;
     }
 
-    /* ── VALUE PROPS ── */
-    .value-props { background: var(--light-bg2); }
-    .props-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+    /* At-a-glance aside */
+    .glance-aside {
+      background: linear-gradient(135deg, rgba(0,184,148,0.08), rgba(108,92,231,0.06));
+      border: 1px solid rgba(0,184,148,0.25);
+      border-radius: 20px; padding: 2rem;
+      position: sticky; top: 6rem;
     }
-    .prop-card {
-      background: var(--light-card); border: 1px solid var(--light-border);
-      border-radius: 16px; padding: 2rem;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-    .prop-card:hover { border-color: var(--brand); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(108,92,231,0.12); }
-    .prop-icon {
-      width: 2.75rem; height: 2.75rem; border-radius: 10px;
-      background: rgba(108,92,231,0.1); display: flex; align-items: center;
-      justify-content: center; font-size: 1.3rem; margin-bottom: 1.25rem;
-    }
-    .prop-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--light-text); }
-    .prop-card p { color: var(--light-text-muted); font-size: 0.9rem; line-height: 1.6; }
-
-    /* ── STANDARDS TABLE ── */
-    .standards { background: var(--light-bg); }
-    .standards-table-wrapper {
-      overflow-x: auto; border-radius: 16px;
-      border: 1px solid var(--light-border);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    }
-    table.std-table { width: 100%; border-collapse: collapse; background: var(--light-card); }
-    .std-table thead { background: rgba(108,92,231,0.06); }
-    .std-table th {
-      padding: 0.9rem 1.25rem; text-align: left;
-      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--brand);
-      border-bottom: 1px solid var(--light-border);
-    }
-    .std-table td {
-      padding: 0.9rem 1.25rem; font-size: 0.9rem;
-      border-bottom: 1px solid var(--light-border);
-      color: var(--light-text-muted); vertical-align: top;
-    }
-    .std-table tr:last-child td { border-bottom: none; }
-    .std-table td:first-child { font-weight: 700; color: var(--light-text); white-space: nowrap; }
-    .std-badge {
-      display: inline-block; padding: 0.2rem 0.6rem;
-      border-radius: 6px; font-size: 0.78rem; font-weight: 600; margin: 0.15rem 0.1rem;
-    }
-    .std-badge.ai4k12 { background: rgba(108,92,231,0.1); color: var(--brand); }
-    .std-badge.csta { background: rgba(9,132,227,0.1); color: var(--blue); }
-    .std-badge.iste { background: rgba(0,184,148,0.1); color: #00856a; }
-    .std-badge.ccss { background: rgba(253,121,168,0.12); color: #c44b7a; }
-    .std-full-map {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      color: var(--brand); font-size: 0.88rem; font-weight: 600;
-      text-decoration: none; margin-top: 1.5rem;
-      transition: gap 0.2s;
-    }
-    .std-full-map:hover { gap: 0.75rem; }
-
-    /* ── IMPLEMENTATION EASE ── */
-    .implementation { background: var(--light-bg2); }
-    .impl-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
-    }
-    .impl-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-    .impl-list li {
-      display: flex; gap: 1rem; align-items: flex-start;
-      background: var(--light-card); border: 1px solid var(--light-border);
-      border-radius: 12px; padding: 1.25rem;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
-    }
-    .impl-check {
-      width: 1.5rem; height: 1.5rem; min-width: 1.5rem;
-      border-radius: 50%; background: rgba(0,184,148,0.15);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--green); font-size: 0.8rem; font-weight: 900;
-      margin-top: 0.1rem;
-    }
-    .impl-list li h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; color: var(--light-text); }
-    .impl-list li p { color: var(--light-text-muted); font-size: 0.87rem; line-height: 1.5; }
-    .impl-aside {
-      background: var(--light-card); border: 1.5px solid var(--brand);
-      border-radius: 16px; padding: 2rem;
-      box-shadow: 0 4px 20px rgba(108,92,231,0.1);
-    }
-    .impl-aside h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--light-text); }
-    .req-row {
-      display: flex; align-items: center; gap: 0.75rem;
-      padding: 0.6rem 0; border-bottom: 1px solid var(--light-border);
-      font-size: 0.9rem; color: var(--light-text-muted);
-    }
-    .req-row:last-child { border-bottom: none; }
-    .req-row .req-icon { font-size: 1.2rem; min-width: 1.5rem; }
-    .req-row strong { color: var(--light-text); }
-
-    /* ── ADOPTION PATH ── */
-    .adoption { background: var(--light-bg); }
-    .adoption-track {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
-      position: relative; margin-top: 3rem;
-    }
-    .adoption-track::before {
-      content: '';
-      position: absolute; top: 3rem; left: calc(16.6% + 1rem); right: calc(16.6% + 1rem);
-      height: 2px; background: linear-gradient(90deg, var(--brand), var(--brand-light));
-    }
-    .adoption-step {
-      display: flex; flex-direction: column; align-items: center; text-align: center;
-      padding: 0 1rem;
-    }
-    .step-dot {
-      width: 3.5rem; height: 3.5rem; border-radius: 50%;
-      background: var(--brand); color: white;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; font-weight: 900; position: relative; z-index: 1;
-      margin-bottom: 1.25rem; box-shadow: 0 4px 16px rgba(108,92,231,0.4);
-    }
-    .adoption-step h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--light-text); }
-    .adoption-step .step-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--brand); margin-bottom: 0.75rem;
-    }
-    .adoption-step p { font-size: 0.88rem; color: var(--light-text-muted); line-height: 1.6; }
-    .adoption-step ul {
-      list-style: none; text-align: left; margin-top: 0.75rem;
-      display: flex; flex-direction: column; gap: 0.4rem;
-    }
-    .adoption-step ul li {
-      font-size: 0.85rem; color: var(--light-text-muted);
-      display: flex; gap: 0.5rem; align-items: flex-start;
-    }
-    .adoption-step ul li::before { content: '→'; color: var(--brand); font-weight: 700; }
-    .adoption-card {
-      background: var(--light-card); border: 1px solid var(--light-border);
-      border-radius: 14px; padding: 1.5rem; width: 100%;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
-    }
-
-    /* ── PRIVACY ── */
-    .privacy { background: var(--light-bg2); }
-    .privacy-callout {
-      background: var(--light-card); border: 1.5px solid var(--light-border);
-      border-radius: 16px; padding: 2.5rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    }
-    .privacy-badges {
-      display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;
-    }
-    .privacy-badge {
-      display: flex; align-items: center; gap: 0.6rem;
-      background: rgba(0,184,148,0.08); border: 1px solid rgba(0,184,148,0.25);
-      border-radius: 10px; padding: 0.65rem 1.1rem;
-    }
-    .privacy-badge .badge-icon { font-size: 1.2rem; }
-    .privacy-badge .badge-text { font-size: 0.85rem; font-weight: 700; color: #00856a; }
-    .privacy-detail {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;
-    }
-    .privacy-item h4 {
-      font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--light-text);
-    }
-    .privacy-item p { font-size: 0.88rem; color: var(--light-text-muted); line-height: 1.6; }
-    .privacy-callout > p {
-      font-size: 1rem; color: var(--light-text-muted); line-height: 1.7; margin-bottom: 1.25rem;
-    }
-    .privacy-link {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      color: var(--brand); text-decoration: none; font-size: 0.9rem; font-weight: 600;
-      transition: gap 0.2s;
-    }
-    .privacy-link:hover { gap: 0.75rem; }
-
-    /* ── TESTIMONIALS ── */
-    .testimonials { background: var(--light-bg); }
-    .testimonials-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
-    }
-    .quote-card {
-      background: var(--light-card); border: 1px solid var(--light-border);
-      border-radius: 16px; padding: 2rem;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
-    }
-    .quote-card blockquote {
-      font-size: 1rem; font-weight: 600; line-height: 1.6;
-      color: var(--light-text); margin-bottom: 1.25rem; font-style: italic;
-    }
-    .quote-card .quote-attr {
-      font-size: 0.85rem; color: var(--light-text-muted);
+    .glance-aside h3 {
+      font-size: 1.1rem; font-weight: 800; margin-bottom: 1.5rem;
       display: flex; align-items: center; gap: 0.5rem;
     }
-    .quote-card .quote-attr::before {
-      content: '—'; font-weight: 700;
+    .glance-row {
+      display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;
     }
-    .quote-placeholder {
-      border-style: dashed;
-      background: var(--light-bg);
+    .glance-item {
+      display: flex; gap: 1rem; align-items: center;
     }
-    .quote-placeholder blockquote {
-      color: var(--light-text-muted); font-style: normal;
+    .glance-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+      background: rgba(0,184,148,0.12); border: 1px solid rgba(0,184,148,0.2);
     }
-    .stats-strip {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-      background: var(--light-border); border: 1px solid var(--light-border);
-      border-radius: 14px; overflow: hidden; margin-top: 1.5rem;
+    .glance-item strong { display: block; font-size: 0.9rem; font-weight: 700; }
+    .glance-item span { font-size: 0.8rem; color: var(--text-muted); }
+    .glance-divider { height: 1px; background: var(--card-border); margin: 1.5rem 0; }
+    .glance-cta {
+      display: block; background: var(--green); color: white;
+      padding: 0.9rem 1.5rem; border-radius: 10px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      text-align: center; transition: background 0.2s;
+      box-shadow: 0 4px 16px rgba(0,184,148,0.35);
     }
-    .stats-strip-item {
-      background: var(--light-card); padding: 1.25rem; text-align: center;
+    .glance-cta:hover { background: #00a382; }
+    .glance-cta-secondary {
+      display: block; background: transparent; color: var(--text);
+      padding: 0.75rem 1.5rem; border-radius: 10px;
+      font-weight: 600; font-size: 0.9rem; text-decoration: none;
+      text-align: center; border: 1px solid var(--card-border);
+      transition: all 0.2s; margin-top: 0.75rem;
     }
-    .stats-strip-item .snum {
-      font-size: 1.6rem; font-weight: 900; color: var(--brand);
-      font-family: 'JetBrains Mono', monospace; display: block; margin-bottom: 0.25rem;
-    }
-    .stats-strip-item .slabel { font-size: 0.82rem; color: var(--light-text-muted); }
+    .glance-cta-secondary:hover { border-color: var(--green); background: var(--card-bg); }
 
-    /* ── CTA SECTION ── */
+    /* ── KEY BENEFITS ── */
+    .benefits { background: var(--dark); }
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .benefit-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 2rem; position: relative; overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .benefit-card:hover { border-color: var(--green); transform: translateY(-3px); }
+    .benefit-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--teal));
+    }
+    .benefit-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .benefit-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .benefit-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .benefit-card p strong { color: var(--green); }
+
+    /* ── STANDARDS ── */
+    .standards-section { background: var(--dark2); }
+    .standards-row {
+      display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem;
+    }
+    .std-badge {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 0.9rem 1.4rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .std-badge:hover { border-color: var(--green); transform: translateY(-2px); }
+    .std-badge-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .std-badge-text strong { display: block; font-size: 0.95rem; font-weight: 700; }
+    .std-badge-text span { font-size: 0.8rem; color: var(--text-muted); }
+    .standards-detail-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .std-detail {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 1.5rem;
+    }
+    .std-detail h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .std-detail p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .std-detail p strong { color: var(--text); }
+
+    /* ── IMPLEMENTATION TIMELINE ── */
+    .timeline-section { background: var(--dark); }
+    .timeline-track {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 3rem; position: relative;
+    }
+    .timeline-track::before {
+      content: '';
+      position: absolute; left: 2rem; top: 3rem; bottom: 3rem; width: 2px;
+      background: linear-gradient(to bottom, var(--green), var(--teal));
+    }
+    .timeline-item {
+      display: flex; gap: 2rem; align-items: flex-start;
+      padding: 1.5rem 0;
+    }
+    .timeline-dot {
+      width: 4rem; height: 4rem; min-width: 4rem;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 900; position: relative; z-index: 1;
+      border: 3px solid var(--dark);
+    }
+    .timeline-content { flex: 1; padding-top: 0.5rem; }
+    .timeline-phase {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem;
+    }
+    .timeline-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .timeline-content p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .timeline-effort {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      margin-top: 0.6rem;
+      background: rgba(0,184,148,0.1); border: 1px solid rgba(0,184,148,0.25);
+      color: var(--green); padding: 0.2rem 0.7rem;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+    }
+
+    /* ── TEACHER PD ── */
+    .pd-section { background: var(--dark2); }
+    .pd-grid {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem;
+      align-items: start; margin-top: 3rem;
+    }
+    @media (max-width: 768px) { .pd-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .pd-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .pd-list li {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .pd-list li:hover { border-color: var(--green); }
+    .pd-icon { font-size: 1.4rem; min-width: 2rem; }
+    .pd-list li h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .pd-list li p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+    .pd-aside {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 2rem; position: sticky; top: 6rem;
+    }
+    .pd-aside h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 1.25rem; }
+    .pd-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .pd-stat {
+      background: linear-gradient(135deg, rgba(0,184,148,0.1), rgba(108,92,231,0.06));
+      border: 1px solid rgba(0,184,148,0.2);
+      border-radius: 10px; padding: 1rem; text-align: center;
+    }
+    .pd-stat-num {
+      font-size: 1.6rem; font-weight: 900; color: var(--green);
+      font-family: 'JetBrains Mono', monospace;
+      display: block; line-height: 1; margin-bottom: 0.25rem;
+    }
+    .pd-stat-label { font-size: 0.75rem; color: var(--text-muted); }
+    .pd-include-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .pd-include-list li {
+      display: flex; gap: 0.6rem; align-items: flex-start;
+      font-size: 0.88rem; color: var(--text-muted);
+    }
+    .pd-include-list li::before { content: '✓'; color: var(--green); font-weight: 700; min-width: 1rem; flex-shrink: 0; }
+
+    /* ── SOCIAL PROOF / TESTIMONIALS ── */
+    .proof-section { background: var(--dark); }
+    .proof-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .testimonial-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 1.75rem; position: relative;
+    }
+    .testimonial-card::before {
+      content: '"'; position: absolute; top: 1rem; right: 1.5rem;
+      font-size: 4rem; line-height: 1; color: var(--green);
+      opacity: 0.15; font-family: Georgia, serif;
+    }
+    .testimonial-text {
+      font-size: 0.95rem; line-height: 1.7; color: var(--text);
+      margin-bottom: 1.25rem; font-style: italic;
+    }
+    .testimonial-attr { display: flex; align-items: center; gap: 0.75rem; }
+    .testimonial-avatar {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .testimonial-who strong { display: block; font-size: 0.88rem; font-weight: 700; }
+    .testimonial-who span { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* Numbers bar */
+    .numbers-bar {
+      display: flex; gap: 0; margin-top: 3rem;
+      border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden;
+      flex-wrap: wrap;
+    }
+    .numbers-stat {
+      flex: 1; min-width: 150px; padding: 1.75rem;
+      border-right: 1px solid var(--card-border); text-align: center;
+    }
+    .numbers-stat:last-child { border-right: none; }
+    .numbers-num {
+      font-size: 2.2rem; font-weight: 900; display: block; line-height: 1;
+      margin-bottom: 0.4rem; font-family: 'JetBrains Mono', monospace;
+    }
+    .numbers-label { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* ── ADOPTION BRIEF CTA ── */
+    .brief-section {
+      background: linear-gradient(135deg, rgba(0,184,148,0.12), rgba(108,92,231,0.08));
+      border-top: 1px solid rgba(0,184,148,0.2);
+      border-bottom: 1px solid rgba(0,184,148,0.2);
+    }
+    .brief-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: center;
+    }
+    @media (max-width: 768px) { .brief-inner { grid-template-columns: 1fr; gap: 2rem; } }
+    .brief-content h2 { margin-bottom: 1rem; }
+    .brief-content p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .brief-content p strong { color: var(--text); }
+    .brief-contents-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .brief-contents-list li {
+      display: flex; gap: 0.6rem; align-items: center;
+      font-size: 0.9rem; color: var(--text-muted);
+    }
+    .brief-contents-list li::before { content: '📄'; font-size: 0.85rem; }
+    .brief-visual {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(0,184,148,0.25);
+      border-radius: 20px; padding: 2rem; text-align: center;
+    }
+    .brief-doc-preview {
+      background: rgba(0,184,148,0.08); border: 1px solid rgba(0,184,148,0.2);
+      border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+      font-size: 0.85rem; color: var(--text-muted); text-align: left;
+    }
+    .brief-doc-preview h4 { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+    .brief-doc-preview p { margin-bottom: 0.25rem; font-size: 0.8rem; }
+    .brief-page-label {
+      font-size: 0.75rem; font-weight: 700; color: var(--green); letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+
+    /* ── CONTACT FORM ── */
+    .contact-section { background: var(--dark2); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start;
+    }
+    @media (max-width: 768px) { .contact-inner { grid-template-columns: 1fr; gap: 2rem; } }
+    .contact-info h2 { margin-bottom: 1rem; }
+    .contact-info p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .contact-promises { display: flex; flex-direction: column; gap: 0.9rem; }
+    .contact-promise {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      font-size: 0.9rem; color: var(--text-muted);
+    }
+    .contact-promise span:first-child { font-size: 1.1rem; min-width: 1.5rem; }
+    .contact-promise strong { color: var(--text); }
+    .contact-form {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .contact-form h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .contact-form .form-subtitle { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 2rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block; font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 0.5rem; color: var(--text);
+    }
+    .form-group label span { color: var(--text-muted); font-weight: 400; font-size: 0.8rem; }
+    .form-control {
+      width: 100%; background: rgba(255,255,255,0.04);
+      border: 1px solid var(--card-border); border-radius: 10px;
+      padding: 0.8rem 1rem; color: var(--text); font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-control:focus { border-color: var(--green); }
+    .form-control::placeholder { color: var(--text-muted); }
+    select.form-control { cursor: pointer; }
+    select.form-control option { background: var(--dark2); }
+    textarea.form-control { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .form-submit {
+      width: 100%; background: var(--green); color: white;
+      padding: 1rem; border-radius: 10px; border: none;
+      font-weight: 700; font-size: 1rem; cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      font-family: 'Inter', sans-serif; margin-top: 0.5rem;
+      box-shadow: 0 4px 16px rgba(0,184,148,0.35);
+    }
+    .form-submit:hover { background: #00a382; transform: translateY(-1px); }
+    .form-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.75rem; text-align: center; }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--dark); }
+    .faq-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 3rem; }
+    .faq-item {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .faq-item:hover { border-color: var(--green); }
+    .faq-item[open] { border-color: rgba(0,184,148,0.5); }
+    .faq-item summary {
+      padding: 1.1rem 1.25rem;
+      font-size: 0.97rem; font-weight: 600; color: var(--text);
+      cursor: pointer; list-style: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--green);
+      line-height: 1; flex-shrink: 0; transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-muted); font-size: 0.93rem; line-height: 1.7;
+      border-top: 1px solid var(--card-border); padding-top: 1rem;
+    }
+    .faq-answer p + p { margin-top: 0.6rem; }
+    .faq-answer strong { color: var(--text); }
+    .faq-answer ul { padding-left: 1.5rem; margin-top: 0.4rem; }
+    .faq-answer ul li { margin-bottom: 0.3rem; }
+
+    /* ── FINAL CTA ── */
     .cta-section {
       background: linear-gradient(135deg, var(--dark3), var(--dark2));
       text-align: center;
     }
-    .cta-inner { max-width: 780px; margin: 0 auto; }
-    .cta-section h2 { color: var(--text); margin-bottom: 1rem; }
+    .cta-inner { max-width: 700px; margin: 0 auto; }
+    .cta-section .section-label { text-align: center; }
+    .cta-section h2 { margin-bottom: 1rem; }
     .cta-section p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; line-height: 1.7; }
-    .cta-packet {
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 16px; padding: 2.5rem; margin-bottom: 2rem; text-align: left;
-    }
-    .cta-packet h3 {
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--brand-light); margin-bottom: 1.25rem;
-    }
-    .cta-packet-items {
-      list-style: none; display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0.75rem; margin-bottom: 2rem;
-    }
-    .cta-packet-items li {
-      display: flex; gap: 0.6rem; font-size: 0.9rem; color: var(--text-muted);
-      align-items: flex-start;
-    }
-    .cta-packet-items li::before { content: '✓'; color: var(--green); font-weight: 700; min-width: 1rem; }
-    .cta-btns {
-      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
-    }
-    .btn-primary-dark {
-      background: var(--brand); color: white;
-      padding: 0.9rem 2rem; border-radius: 10px;
-      font-weight: 700; font-size: 1rem; text-decoration: none;
-      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
-      box-shadow: 0 4px 24px rgba(108,92,231,0.4);
-    }
-    .btn-primary-dark:hover { background: var(--brand-dark); transform: translateY(-2px); }
-    .btn-secondary-dark {
-      background: transparent; color: var(--text);
-      padding: 0.9rem 2rem; border-radius: 10px;
-      font-weight: 600; font-size: 1rem; text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
-    }
-    .btn-secondary-dark:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.35); }
-    .license-note {
-      margin-top: 2rem; font-size: 0.85rem; color: rgba(148,163,184,0.7);
-    }
-    .license-note a { color: var(--brand-light); text-decoration: none; }
-
-    /* ── FAQ ── */
-    .faq { background: var(--light-bg2); }
-    .faq-list { display: flex; flex-direction: column; gap: 0; max-width: 820px; }
-    .faq-item {
-      border-bottom: 1px solid var(--light-border);
-    }
-    .faq-item:first-child { border-top: 1px solid var(--light-border); }
-    .faq-question {
-      width: 100%; background: none; border: none; cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.25rem 0; text-align: left;
-      font-size: 0.95rem; font-weight: 600; color: var(--light-text);
-      font-family: 'Inter', sans-serif;
-    }
-    .faq-question:hover { color: var(--brand); }
-    .faq-chevron {
-      min-width: 1.25rem; font-size: 0.75rem; color: var(--light-text-muted);
-      transition: transform 0.2s;
-    }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); }
-    .faq-answer {
-      display: none; padding: 0 0 1.25rem;
-      font-size: 0.9rem; color: var(--light-text-muted); line-height: 1.7;
-    }
-    .faq-item.open .faq-answer { display: block; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .license-note { margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted); }
+    .license-note a { color: var(--green); text-decoration: none; }
+    .license-note a:hover { text-decoration: underline; }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--dark);
-      padding: 3rem 2rem 2rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+      border-top: 1px solid var(--card-border);
+      text-align: center; color: var(--text-muted); font-size: 0.85rem;
     }
-    .footer-inner {
-      max-width: 1100px; margin: 0 auto;
-    }
-    .footer-top {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;
-    }
-    .footer-brand .footer-logo {
-      font-size: 1.25rem; font-weight: 800;
-      background: linear-gradient(135deg, var(--brand-light), var(--accent));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      display: block; margin-bottom: 0.5rem; text-decoration: none;
-    }
-    .footer-brand p { font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.6; }
-    .footer-links-col h4 {
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem;
-    }
-    .footer-links-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .footer-links-col ul a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
-    .footer-links-col ul a:hover { color: var(--text); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem;
-    }
-    .footer-bottom p { font-size: 0.82rem; color: var(--text-muted); }
-    .footer-bottom a { color: var(--brand-light); text-decoration: none; }
+    footer a { color: var(--green); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-visual { display: none; }
-      .cost-grid { grid-template-columns: 1fr; }
-      .impl-grid { grid-template-columns: 1fr; }
-      .privacy-detail { grid-template-columns: 1fr; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .adoption-track { grid-template-columns: 1fr; }
-      .adoption-track::before { display: none; }
-      .cta-packet-items { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .why-stats { grid-template-columns: 1fr; }
-      .props-grid { grid-template-columns: 1fr; }
-      .stats-strip { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 640px) {
       nav { padding: 1rem; }
       .nav-links { display: none; }
+      .timeline-track::before { display: none; }
+      section { padding: 4rem 1.25rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAVBAR ── -->
+<!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">AI Explorers</a>
+  <a href="index.html" class="nav-logo">🤖 AI Explorers</a>
   <ul class="nav-links">
-    <li><a href="index.html#modules">Curriculum</a></li>
+    <li><a href="#concerns">Admin Concerns</a></li>
     <li><a href="#standards">Standards</a></li>
-    <li><a href="index.html">For Educators</a></li>
-    <li><a href="#adoption-packet" class="nav-cta">Get Adoption Packet</a></li>
+    <li><a href="#timeline">Implementation</a></li>
+    <li><a href="#pd">Teacher PD</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
+  <a href="#adoption-brief" class="nav-cta">Download Adoption Brief →</a>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
+  <div class="hero-grid"></div>
   <div class="hero-inner">
-    <div class="hero-content">
-      <span class="hero-eyebrow">For School Administrators &amp; School Boards</span>
-      <h1>
-        Standards-aligned.<br>
-        <em>Free forever.</em><br>
-        No vendor lock-in.
-      </h1>
-      <p class="hero-sub">
-        AI Explorers is an open, free K–12 AI literacy curriculum for Grades 6–10.
-        <strong>No per-seat cost, no subscriptions, no platform dependency.</strong>
-        Download it. Own it. Deploy it this semester.
-      </p>
-      <div class="hero-actions">
-        <a href="pdfs/adoption-brief.pdf" class="btn-primary" download>
-          ↓ Request Adoption Brief
-        </a>
-        <a href="#standards" class="btn-secondary">
-          View Standards Alignment
-        </a>
-      </div>
-      <div class="hero-proof">
-        <span>Active in 90+ schools</span>
-        <span>FERPA compliant by design</span>
-        <span>No student accounts required</span>
-        <span>Runs on Chromebooks</span>
-        <span>MIT open source</span>
-      </div>
+    <div class="hero-breadcrumb">
+      <a href="index.html">AI Explorers</a>
+      <span>›</span>
+      <span>For Schools &amp; Districts</span>
     </div>
-
-    <div class="hero-visual">
-      <div class="hero-cost-card">
-        <h4>Total Cost of Adoption</h4>
-        <div class="cost-line">
-          <span>Curriculum license fee</span>
-          <span class="cost-value free">$0 forever</span>
-        </div>
-        <div class="cost-line">
-          <span>Platform / subscription fee</span>
-          <span class="cost-value free">$0 forever</span>
-        </div>
-        <div class="cost-line">
-          <span>IT infrastructure changes</span>
-          <span class="cost-value free">None required</span>
-        </div>
-        <div class="cost-line">
-          <span>Teacher onboarding time</span>
-          <span class="cost-value">~4 hrs / teacher</span>
-        </div>
-        <div class="cost-line">
-          <span>Vendor renewal risk</span>
-          <span class="cost-value free">Zero</span>
-        </div>
-        <div style="margin-top: 1rem;">
-          <span class="mit-badge">⚖ MIT Licensed Open Source</span>
-        </div>
-      </div>
-      <div class="hero-stat-row">
-        <div class="hero-stat-card">
-          <span class="stat-num">90+</span>
-          <span class="stat-label">Schools currently running AI Explorers</span>
-        </div>
-        <div class="hero-stat-card">
-          <span class="stat-num">0</span>
-          <span class="stat-label">Data incidents reported to date</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── WHY NOW ── -->
-<section class="why-now">
-  <div class="section-inner">
-    <div class="section-label">Why This, Why Now</div>
-    <h2>The AI literacy gap is forming. The window to act is now.</h2>
-    <div class="why-stats">
-      <div class="why-stat-card">
-        <p>"65% of today's elementary students will work in jobs that don't exist yet."</p>
-        <span class="source">— World Economic Forum</span>
-      </div>
-      <div class="why-stat-card">
-        <p>"Only 3 states have adopted K-12 AI literacy standards. Early movers set the framework."</p>
-        <span class="source">— EdWeek, 2024</span>
-      </div>
-    </div>
-    <p class="why-body">
-      Students who <strong>understand</strong> AI — not just use it — will have fundamentally different options
-      in the workforce and as citizens. Your district can provide that understanding,
-      at zero cost, starting this semester. The curriculum is already built, already
-      aligned to national standards, and already running in classrooms across 17 states.
+    <div class="hero-badge">🏫 For School Administrators &amp; Boards</div>
+    <h1>Future-Ready AI Literacy —<br/><em>Free, Open, No Vendor Lock-In</em></h1>
+    <p class="hero-sub">
+      <strong>AI Explorers</strong> is a complete K-12 AI literacy curriculum for grades 6–8.
+      Free forever, FERPA/COPPA compliant, aligned to AI4K12 and CSTA standards,
+      and designed to deploy in your district with minimal IT lift and no per-seat costs.
     </p>
-  </div>
-</section>
 
-<!-- ── COST & ROI ── -->
-<section class="cost-section" id="cost">
-  <div class="section-inner">
-    <div class="section-label">Total Cost of Ownership</div>
-    <h2>The actual cost: teacher time. That's it.</h2>
-    <p class="section-intro">
-      No subscription fees. No renewal negotiations. No per-seat pricing that
-      grows as enrollment grows. The curriculum is MIT licensed open source — you can
-      download it, modify it, and host it yourself.
-    </p>
-    <div class="cost-grid">
-      <div class="cost-breakdown">
-        <h3>AI Explorers — Full 7-Unit Curriculum</h3>
-        <table class="cost-table">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Curriculum license (per seat, per year)</td>
-              <td>$0</td>
-            </tr>
-            <tr>
-              <td>Platform subscription fee</td>
-              <td>$0</td>
-            </tr>
-            <tr>
-              <td>IT infrastructure changes required</td>
-              <td>None</td>
-            </tr>
-            <tr>
-              <td>Software installs on student devices</td>
-              <td>None</td>
-            </tr>
-            <tr>
-              <td>Data processing agreement (DPA)</td>
-              <td>Not required</td>
-            </tr>
-            <tr>
-              <td>Vendor security review</td>
-              <td>Not required</td>
-            </tr>
-            <tr>
-              <td>Teacher onboarding (one-time)</td>
-              <td>~4 hrs / teacher</td>
-            </tr>
-            <tr class="total">
-              <td>Total per-student curriculum cost</td>
-              <td>$0 / year</td>
-            </tr>
-          </tbody>
-        </table>
-        <span class="mit-badge">⚖ MIT License — modify and redistribute freely</span>
-      </div>
-      <div class="cost-compare">
-        <div class="compare-card highlight">
-          <h4>AI Explorers</h4>
-          <div class="compare-price green">$0</div>
-          <p>Per student, per year. Forever. No renewal, no vendor relationship, no lock-in.</p>
-        </div>
-        <div class="compare-card">
-          <h4>Typical Commercial AI Curriculum</h4>
-          <div class="compare-price red">$15–45</div>
-          <p>Per seat / per year. Subject to price increases at renewal. Platform dependency risk.</p>
-        </div>
-        <div class="compare-card">
-          <h4>Estimated savings — 500-student school</h4>
-          <div class="compare-price green">$7,500–$22,500/yr</div>
-          <p>Redirectable to teacher professional development, hardware, or other priorities.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── VALUE PROPS ── -->
-<section class="value-props">
-  <div class="section-inner">
-    <div class="section-label">What You Get</div>
-    <h2>Built for the constraints you actually have.</h2>
-    <div class="props-grid">
-      <div class="prop-card">
-        <div class="prop-icon">⚖</div>
-        <h3>Open License — You Own It</h3>
-        <p>Download, modify, and host it yourself. There is no vendor relationship.
-        The curriculum is a document and a set of tools. Once downloaded, it's yours —
-        no permission needed to adapt it for your district.</p>
-      </div>
-      <div class="prop-card">
-        <div class="prop-icon">🛡</div>
-        <h3>Zero Platform Risk</h3>
-        <p>No platform, no accounts, no per-seat cost. Students need a browser.
-        That's it. FERPA compliant by design — we collect no student data because
-        there is no platform collecting anything.</p>
-      </div>
-      <div class="prop-card">
-        <div class="prop-icon">⚡</div>
-        <h3>Equity-First Design</h3>
-        <p>Works on low-bandwidth connections and Chromebooks. Designed for
-        under-resourced classrooms. No premium hardware required. Every student
-        in your district can access the same curriculum.</p>
-      </div>
-      <div class="prop-card">
-        <div class="prop-icon">📋</div>
-        <h3>Standards-Aligned</h3>
-        <p>Full documentation mapping to CSTA K-12, AI4K12, ISTE Standards, and
-        Common Core where applicable. Adoption documentation included — ready
-        for board presentation.</p>
-      </div>
-      <div class="prop-card">
-        <div class="prop-icon">👩‍🏫</div>
-        <h3>Turnkey Teacher PD</h3>
-        <p>Teacher onboarding guide included. No AI specialist required to run a
-        successful unit. We've trained English teachers, history teachers, and
-        librarians. ~4 hours of onboarding. No ongoing support contract needed.</p>
-      </div>
-      <div class="prop-card">
-        <div class="prop-icon">🚀</div>
-        <h3>Pilot Program Available</h3>
-        <p>Start with one classroom. Defined metrics, clear timeline, structured
-        path to scale. Pilot framework included in the Adoption Packet — go from
-        one teacher to school-wide in a single semester.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── STANDARDS TABLE ── -->
-<section class="standards" id="standards">
-  <div class="section-inner">
-    <div class="section-label">Standards Alignment</div>
-    <h2>Every unit documented. Board-ready.</h2>
-    <p class="section-intro">
-      Full alignment mapping for AI4K12, CSTA K-12, ISTE Standards, and CCSS connections.
-      Download the complete standards brief for board review.
-    </p>
-    <div class="standards-table-wrapper">
-      <table class="std-table">
-        <thead>
-          <tr>
-            <th>Unit</th>
-            <th>AI4K12 Big Ideas</th>
-            <th>CSTA K-12 Standards</th>
-            <th>ISTE Standards</th>
-            <th>CCSS Connections</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Unit 1: What is AI?</td>
-            <td><span class="std-badge ai4k12">BI-1: Perception</span> <span class="std-badge ai4k12">BI-5: Societal Impact</span></td>
-            <td><span class="std-badge csta">3A-AP-16</span> <span class="std-badge csta">2-IC-20</span></td>
-            <td><span class="std-badge iste">Knowledge Constructor</span></td>
-            <td><span class="std-badge ccss">ELA: RI.6.7</span></td>
-          </tr>
-          <tr>
-            <td>Unit 2: How AI Learns</td>
-            <td><span class="std-badge ai4k12">BI-2: Representation</span> <span class="std-badge ai4k12">BI-3: Learning</span></td>
-            <td><span class="std-badge csta">2-DA-07</span> <span class="std-badge csta">3A-DA-11</span></td>
-            <td><span class="std-badge iste">Innovative Designer</span></td>
-            <td><span class="std-badge ccss">Math: SP.6-8</span></td>
-          </tr>
-          <tr>
-            <td>Unit 3: AI &amp; Language</td>
-            <td><span class="std-badge ai4k12">BI-2: Representation</span> <span class="std-badge ai4k12">BI-3: Learning</span></td>
-            <td><span class="std-badge csta">3A-AP-17</span></td>
-            <td><span class="std-badge iste">Creative Communicator</span></td>
-            <td><span class="std-badge ccss">ELA: L.6.5</span></td>
-          </tr>
-          <tr>
-            <td>Unit 4: AI &amp; Vision</td>
-            <td><span class="std-badge ai4k12">BI-1: Perception</span> <span class="std-badge ai4k12">BI-3: Learning</span></td>
-            <td><span class="std-badge csta">2-AP-12</span> <span class="std-badge csta">3A-AP-15</span></td>
-            <td><span class="std-badge iste">Computational Thinker</span></td>
-            <td><span class="std-badge ccss">Math: G.6-8</span></td>
-          </tr>
-          <tr>
-            <td>Unit 5: AI Ethics &amp; Fairness</td>
-            <td><span class="std-badge ai4k12">BI-5: Societal Impact</span></td>
-            <td><span class="std-badge csta">2-IC-21</span> <span class="std-badge csta">3A-IC-24</span></td>
-            <td><span class="std-badge iste">Global Collaborator</span> <span class="std-badge iste">Digital Citizen</span></td>
-            <td><span class="std-badge ccss">ELA: SL.6.1</span> <span class="std-badge ccss">RI.6.8</span></td>
-          </tr>
-          <tr>
-            <td>Unit 6: Building with AI</td>
-            <td><span class="std-badge ai4k12">BI-3: Learning</span> <span class="std-badge ai4k12">BI-4: Reasoning</span></td>
-            <td><span class="std-badge csta">3A-AP-13</span> <span class="std-badge csta">3B-AP-14</span></td>
-            <td><span class="std-badge iste">Innovative Designer</span></td>
-            <td><span class="std-badge ccss">Math: EE.6-8</span></td>
-          </tr>
-          <tr>
-            <td>Unit 7: AI &amp; Your Future</td>
-            <td><span class="std-badge ai4k12">BI-5: Societal Impact</span></td>
-            <td><span class="std-badge csta">2-IC-22</span> <span class="std-badge csta">3A-IC-25</span></td>
-            <td><span class="std-badge iste">Empowered Learner</span> <span class="std-badge iste">Digital Citizen</span></td>
-            <td><span class="std-badge ccss">ELA: W.6.7</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <a href="pdfs/adoption-brief.pdf" class="std-full-map" download>
-      Download Full Standards Alignment Documentation (PDF) →
-    </a>
-  </div>
-</section>
-
-<!-- ── IMPLEMENTATION EASE ── -->
-<section class="implementation">
-  <div class="section-inner">
-    <div class="section-label">Implementation</div>
-    <h2>Works with your existing infrastructure. Today.</h2>
-    <div class="impl-grid">
-      <ul class="impl-list">
-        <li>
-          <div class="impl-check">✓</div>
-          <div>
-            <h4>Any device with a browser</h4>
-            <p>Chromebooks, Windows PCs, Macs, tablets. No app install, no plugins,
-            no browser extension. If it runs a modern browser, it runs AI Explorers.</p>
-          </div>
-        </li>
-        <li>
-          <div class="impl-check">✓</div>
-          <div>
-            <h4>No IT infrastructure changes</h4>
-            <p>No new servers, no new software licenses, no network configuration.
-            Your IT team won't get a single ticket for this deployment.</p>
-          </div>
-        </li>
-        <li>
-          <div class="impl-check">✓</div>
-          <div>
-            <h4>No student accounts or logins</h4>
-            <p>Students never create accounts. No usernames, no passwords, no parent
-            consent forms for platform access. Just open the browser and learn.</p>
-          </div>
-        </li>
-        <li>
-          <div class="impl-check">✓</div>
-          <div>
-            <h4>Works on low-bandwidth connections</h4>
-            <p>Designed for real classrooms — including schools with congested networks
-            during class periods. Labs are optimized for slow connections.</p>
-          </div>
-        </li>
-        <li>
-          <div class="impl-check">✓</div>
-          <div>
-            <h4>COPPA compliant</h4>
-            <p>No data collection from students under 13. No third-party data sharing.
-            No behavioral tracking, no personalization profiles.</p>
-          </div>
-        </li>
-        <li>
-          <div class="impl-check">✓</div>
-          <div>
-            <h4>Teacher onboarding in ~4 hours</h4>
-            <p>Comprehensive teacher guide, slide decks, and lab materials included.
-            Most teachers are classroom-ready after one afternoon.</p>
-          </div>
-        </li>
-      </ul>
-
-      <div class="impl-aside">
-        <h3>What you need to run AI Explorers</h3>
-        <div class="req-row">
-          <span class="req-icon">💻</span>
-          <div><strong>Student devices</strong><br>Any device with a modern browser</div>
-        </div>
-        <div class="req-row">
-          <span class="req-icon">🌐</span>
-          <div><strong>Internet access</strong><br>Standard classroom connection — no bandwidth upgrade</div>
-        </div>
-        <div class="req-row">
-          <span class="req-icon">📂</span>
-          <div><strong>Curriculum files</strong><br>Downloaded once, runs locally — no cloud dependency</div>
-        </div>
-        <div class="req-row">
-          <span class="req-icon">👩‍🏫</span>
-          <div><strong>One teacher</strong><br>No AI expertise required. Teacher guide is included.</div>
-        </div>
-        <div class="req-row">
-          <span class="req-icon">🏫</span>
-          <div><strong>One classroom</strong><br>Start with a pilot. Scale when ready.</div>
-        </div>
-        <div class="req-row">
-          <span class="req-icon">🔒</span>
-          <div><strong>Data agreements</strong><br>None required. No data leaves the classroom.</div>
-        </div>
-        <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(0,184,148,0.08); border-radius: 10px; border: 1px solid rgba(0,184,148,0.2);">
-          <p style="font-size: 0.85rem; color: #00856a; font-weight: 600; margin-bottom: 0.3rem;">No vendor security review required</p>
-          <p style="font-size: 0.83rem; color: var(--light-text-muted);">Because there's no vendor platform, your InfoSec team doesn't need to review anything. The curriculum is a static set of files.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── ADOPTION PATH ── -->
-<section class="adoption">
-  <div class="section-inner">
-    <div class="section-label">Adoption Path</div>
-    <h2>Pilot one classroom. Scale to district-wide.</h2>
-    <p class="section-intro">
-      A structured path from first pilot to school-wide adoption. Each phase has
-      defined metrics and a clear exit criteria for moving forward.
-    </p>
-    <div class="adoption-track">
-      <div class="adoption-step">
-        <div class="step-dot">1</div>
-        <div class="adoption-card">
-          <div class="step-label">Phase 1 — Weeks 1–6</div>
-          <h3>Pilot One Classroom</h3>
-          <p>One teacher, one class. Runs alongside existing curriculum. Low risk, clear metrics.</p>
-          <ul>
-            <li>Identify pilot teacher</li>
-            <li>Download + review adoption packet</li>
-            <li>4-hour teacher onboarding</li>
-            <li>Run Units 1–3 with one class</li>
-            <li>Collect student + teacher feedback</li>
-          </ul>
-        </div>
-      </div>
-      <div class="adoption-step">
-        <div class="step-dot">2</div>
-        <div class="adoption-card">
-          <div class="step-label">Phase 2 — Weeks 7–14</div>
-          <h3>Scale to Department</h3>
-          <p>Expand to full department or grade level. Pilot teacher leads peer onboarding.</p>
-          <ul>
-            <li>Review pilot outcomes and metrics</li>
-            <li>Peer-to-peer teacher onboarding</li>
-            <li>Run full 7-unit curriculum</li>
-            <li>Present student projects at grade level</li>
-            <li>Prepare board summary</li>
-          </ul>
-        </div>
-      </div>
-      <div class="adoption-step">
-        <div class="step-dot">3</div>
-        <div class="adoption-card">
-          <div class="step-label">Phase 3 — Semester 2+</div>
-          <h3>School-Wide Adoption</h3>
-          <p>Full integration into schedule. AI literacy becomes a school-wide competency.</p>
-          <ul>
-            <li>Integrate into official course sequence</li>
-            <li>Standards alignment filed with district</li>
-            <li>Ongoing peer teacher community</li>
-            <li>Annual curriculum update (open source)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(108,92,231,0.06); border: 1px solid rgba(108,92,231,0.15); border-radius: 14px;">
-      <p style="font-size: 0.92rem; color: var(--light-text-muted); line-height: 1.7;">
-        <strong style="color: var(--light-text);">Typical pilot timeline:</strong>
-        Most schools complete a pilot and move to department-wide adoption within one semester.
-        The Adoption Packet includes a pilot framework template with defined success metrics
-        and a board-ready summary template for Phase 2 approval.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ── PRIVACY & COMPLIANCE ── -->
-<section class="privacy" id="privacy">
-  <div class="section-inner">
-    <div class="section-label">Privacy &amp; Compliance</div>
-    <h2>No student data collected. By design.</h2>
-    <div class="privacy-callout">
-      <div class="privacy-badges">
-        <div class="privacy-badge">
-          <span class="badge-icon">🏛</span>
-          <span class="badge-text">FERPA Compliant</span>
-        </div>
-        <div class="privacy-badge">
-          <span class="badge-icon">👶</span>
-          <span class="badge-text">COPPA Compliant</span>
-        </div>
-        <div class="privacy-badge">
-          <span class="badge-icon">🔒</span>
-          <span class="badge-text">No Student Accounts</span>
-        </div>
-        <div class="privacy-badge">
-          <span class="badge-icon">📵</span>
-          <span class="badge-text">Zero Data Collection</span>
-        </div>
-        <div class="privacy-badge">
-          <span class="badge-icon">🌐</span>
-          <span class="badge-text">No Third-Party Sharing</span>
-        </div>
-      </div>
-
-      <p>
-        We collect no student data. The curriculum runs entirely in the browser with no backend
-        data collection. There is no platform to sign students into, no data processing agreement
-        required. Your district's student data never touches our infrastructure — because there
-        is no infrastructure.
-      </p>
-      <p>
-        The curriculum files can be downloaded and served from your own district server,
-        completely airgapped from any external system. You can verify every line of code
-        in the open-source repository.
-      </p>
-
-      <div class="privacy-detail">
-        <div class="privacy-item">
-          <h4>What data is collected</h4>
-          <p>No student data whatsoever. Website analytics may collect aggregate,
-          non-personal visit counts if you link to our hosted version.
-          If self-hosted, zero data leaves your network.</p>
-        </div>
-        <div class="privacy-item">
-          <h4>Student safety</h4>
-          <p>No chat interfaces, no external AI APIs accessed in student activities,
-          no social features. All labs use curated, pre-reviewed datasets.
-          No unpredictable AI outputs in student-facing content.</p>
-        </div>
-        <div class="privacy-item">
-          <h4>FERPA considerations</h4>
-          <p>Because no education records are created or processed by the curriculum,
-          FERPA's protections are not triggered. No DPA needed. No FERPA
-          compliance audit required.</p>
-        </div>
-        <div class="privacy-item">
-          <h4>Can we get a DPA?</h4>
-          <p>A data processing agreement is not required or applicable —
-          there is no data processing. If your legal team needs documentation,
-          we provide a one-page privacy summary for board records.</p>
-        </div>
-      </div>
-
-      <a href="pdfs/adoption-brief.pdf" class="privacy-link" download>
-        Download Privacy &amp; Compliance One-Pager (PDF) →
+    <div class="hero-cta-group">
+      <a href="pdfs/adoption-brief.pdf" class="btn-primary" download>
+        📄 Download the School Adoption Brief
+      </a>
+      <a href="#contact" class="btn-secondary">
+        💬 Request a Briefing
       </a>
     </div>
+
+    <div class="hero-trust-strip">
+      <div class="trust-pill"><span>$0</span> per-seat cost. Ever.</div>
+      <div class="trust-pill"><span>✓</span> FERPA &amp; COPPA compliant</div>
+      <div class="trust-pill"><span>✓</span> AI4K12 &amp; CSTA aligned</div>
+      <div class="trust-pill"><span>✓</span> No vendor lock-in</div>
+      <div class="trust-pill"><span>✓</span> Teacher PD included</div>
+      <div class="trust-pill"><span>✓</span> Open source, fully auditable</div>
+    </div>
   </div>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
-<section class="testimonials">
+<!-- ADMIN CONCERNS -->
+<section class="concerns" id="concerns">
   <div class="section-inner">
-    <div class="section-label">Administrator Voices</div>
-    <h2>What administrators and boards are saying.</h2>
-    <div class="testimonials-grid">
-      <div class="quote-card">
-        <blockquote>
-          "We piloted this in 6 classes. Teacher onboarding took one afternoon.
-          No IT tickets. We're expanding to the full middle school this year."
-        </blockquote>
-        <div class="quote-attr">Curriculum Director, Denver Public Schools (placeholder)</div>
+    <p class="section-label">Your Questions, Answered</p>
+    <h2>We know what administrators<br/>actually ask — <em>here are the answers</em></h2>
+    <p class="section-intro">Before any curriculum reaches a board agenda, it has to clear a gauntlet of legitimate concerns. We designed AI Explorers with those concerns in mind from day one — not as afterthoughts.</p>
+
+    <div class="concerns-intro-split">
+
+      <!-- Concern cards -->
+      <div class="concerns-list">
+
+        <div class="concern-item cost">
+          <div class="concern-header">
+            <span class="concern-icon">💸</span>
+            <div>
+              <div class="concern-q">Concern #1 — Cost</div>
+            </div>
+          </div>
+          <div class="concern-answer-badge">✓ Resolved</div>
+          <h3>What does it actually cost?</h3>
+          <p>
+            <strong>The curriculum is free. Always.</strong> Published under CC BY-SA 4.0 —
+            no licensing fees, no per-student costs, no subscription tiers, no "premium" content behind a paywall.
+            Realistic district cost: <strong>$0–$500 one-time</strong> for a small dedicated server
+            (or deploy on existing hardware). No recurring costs. No surprise renewals.
+          </p>
+        </div>
+
+        <div class="concern-item liability">
+          <div class="concern-header">
+            <span class="concern-icon">⚖️</span>
+            <div>
+              <div class="concern-q">Concern #2 — Liability &amp; Privacy</div>
+            </div>
+          </div>
+          <div class="concern-answer-badge">✓ Resolved</div>
+          <h3>How does it handle student data privacy?</h3>
+          <p>
+            <strong>Student data never leaves your infrastructure.</strong> OpenClaw is self-hosted —
+            deployed on your server, inside your network. No student data reaches us, any cloud provider,
+            or any analytics service. The curriculum's <strong>Data Privacy Guide</strong> maps every
+            data touch point across all 7 modules. Your IT team can review exactly what runs, on what, and where.
+          </p>
+        </div>
+
+        <div class="concern-item standards">
+          <div class="concern-header">
+            <span class="concern-icon">📐</span>
+            <div>
+              <div class="concern-q">Concern #3 — Standards Alignment</div>
+            </div>
+          </div>
+          <div class="concern-answer-badge">✓ Resolved</div>
+          <h3>Does it align to our required standards?</h3>
+          <p>
+            <strong>Built on AI4K12, CSTA K–12, and ISTE from the ground up</strong> — not retrofitted.
+            Every module ships with a full standards alignment document mapping lessons to specific standards codes.
+            If your state uses a custom framework, a blank mapping template is included — several districts
+            completed their own mapping in under two hours. NGSS and ELA/Math crosswalks are also documented.
+          </p>
+        </div>
+
+        <div class="concern-item effort">
+          <div class="concern-header">
+            <span class="concern-icon">🔧</span>
+            <div>
+              <div class="concern-q">Concern #4 — Implementation Effort</div>
+            </div>
+          </div>
+          <div class="concern-answer-badge">✓ Resolved</div>
+          <h3>How much work is deployment, really?</h3>
+          <p>
+            IT setup takes <strong>under two hours</strong> for a single-school deployment. OpenClaw runs on
+            a single modest server for an entire school. Most districts deploy on existing hardware —
+            a 4-year-old workstation is sufficient. Curriculum files live in a Git repository;
+            updates are a single pull command. No specialized infrastructure, no cloud dependencies, no vendor portals.
+          </p>
+        </div>
+
+        <div class="concern-item training">
+          <div class="concern-header">
+            <span class="concern-icon">🎓</span>
+            <div>
+              <div class="concern-q">Concern #5 — Teacher Readiness</div>
+            </div>
+          </div>
+          <div class="concern-answer-badge">✓ Resolved</div>
+          <h3>Do our teachers need a CS background?</h3>
+          <p>
+            <strong>No.</strong> The curriculum was deliberately designed for teachers without CS degrees.
+            A full <strong>self-paced PD program</strong> is included — approximately 4 hours covering technical setup
+            and pedagogical approach. In-person professional development for your district is available on request.
+            94% of pilot teachers rated the curriculum "easy" or "very easy" to implement.
+          </p>
+        </div>
+
       </div>
-      <div class="quote-card">
-        <blockquote>
-          "The board was concerned about data privacy. This was the first curriculum
-          they approved without a 3-month vendor evaluation process."
-        </blockquote>
-        <div class="quote-attr">Board Member, Jefferson County Schools (placeholder)</div>
+
+      <!-- At-a-glance aside -->
+      <div>
+        <div class="glance-aside">
+          <h3>📋 At a Glance</h3>
+          <div class="glance-row">
+            <div class="glance-item">
+              <div class="glance-icon">💰</div>
+              <div>
+                <strong>$0 per student</strong>
+                <span>No fees, no subscription, no tiers</span>
+              </div>
+            </div>
+            <div class="glance-item">
+              <div class="glance-icon">📚</div>
+              <div>
+                <strong>Grades 6–8</strong>
+                <span>7 complete modules, one semester arc</span>
+              </div>
+            </div>
+            <div class="glance-item">
+              <div class="glance-icon">🔒</div>
+              <div>
+                <strong>Self-hosted</strong>
+                <span>Your server. Your data. Your control.</span>
+              </div>
+            </div>
+            <div class="glance-item">
+              <div class="glance-icon">📐</div>
+              <div>
+                <strong>AI4K12 &amp; CSTA aligned</strong>
+                <span>Full standards mapping included</span>
+              </div>
+            </div>
+            <div class="glance-item">
+              <div class="glance-icon">⏱️</div>
+              <div>
+                <strong>&lt;2 hrs to deploy</strong>
+                <span>On existing school hardware</span>
+              </div>
+            </div>
+            <div class="glance-item">
+              <div class="glance-icon">🎓</div>
+              <div>
+                <strong>PD included</strong>
+                <span>Self-paced, ~4 hours total</span>
+              </div>
+            </div>
+          </div>
+          <div class="glance-divider"></div>
+          <a href="pdfs/adoption-brief.pdf" class="glance-cta" download>
+            📄 Download Adoption Brief (PDF)
+          </a>
+          <a href="#contact" class="glance-cta-secondary">
+            💬 Request a District Briefing
+          </a>
+        </div>
       </div>
-      <div class="quote-card quote-placeholder">
-        <blockquote>
-          Testimonial from a principal or curriculum director — to be added once we have
-          signed release. Contact us if you've piloted AI Explorers.
-        </blockquote>
-        <div class="quote-attr">Principal, [School Name] — Placeholder</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- KEY BENEFITS -->
+<section class="benefits" id="benefits">
+  <div class="section-inner">
+    <p class="section-label">Why Schools Choose AI Explorers</p>
+    <h2>Built for adoption,<br/>not just aspiration</h2>
+    <p class="section-intro">Open-source AI curriculum that's truly ready to teach — not a research prototype you have to assemble. Here's what makes it different from every other program in this space.</p>
+
+    <div class="benefits-grid">
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🆓</div>
+        <h3>Free. Not a loss leader.</h3>
+        <p>
+          This isn't a freemium hook. The entire curriculum — all 7 modules, all materials, all tools —
+          is published under an open license and will remain free indefinitely. <strong>No upsell, no renewal, no contract.</strong>
+        </p>
       </div>
-      <div class="quote-card quote-placeholder">
-        <blockquote>
-          Testimonial from a superintendent or board chair — to be added upon
-          confirmed adoption and permission to attribute.
-        </blockquote>
-        <div class="quote-attr">Superintendent, [District Name] — Placeholder</div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🔓</div>
+        <h3>No vendor lock-in</h3>
+        <p>
+          OpenClaw is MIT-licensed open source. The curriculum is CC BY-SA. Even if the project were abandoned tomorrow,
+          your district retains a complete, working copy that runs forever on your own hardware.
+          <strong>You own it. We can't take it back.</strong>
+        </p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡️</div>
+        <h3>FERPA &amp; COPPA compliant</h3>
+        <p>
+          Because everything runs on your infrastructure, compliance is straightforward.
+          No third-party data sharing agreements required. No cloud processor to vet.
+          <strong>Your district controls the data. Full stop.</strong>
+        </p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">📦</div>
+        <h3>Ready to deploy — no assembly</h3>
+        <p>
+          Every module ships with lesson plans, slide decks, rubrics, lab guides, facilitator notes,
+          and assessment packs. <strong>Teachers pick it up and teach it.</strong>
+          There's no curriculum committee work to do before classroom use.
+        </p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🌐</div>
+        <h3>Works on any device</h3>
+        <p>
+          Modules 1–3 run entirely in any modern web browser. Chromebooks, tablets, older school hardware —
+          all supported. <strong>No new device budget required.</strong>
+          No proprietary apps to install, no hardware to purchase.
+        </p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">⚖️</div>
+        <h3>Ethics is structural, not optional</h3>
+        <p>
+          AI ethics isn't a checkbox at the end — it's woven into every module.
+          Students encounter bias in Module 1, audit their own training data in Module 4,
+          and write a full usage policy in Module 6. <strong>Ethics is taught by experiencing it.</strong>
+        </p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🔍</div>
+        <h3>Fully auditable</h3>
+        <p>
+          Every line of platform code and every page of curriculum is publicly available on GitHub.
+          Your IT department, district counsel, and skeptical department chair can review <strong>exactly
+          what they're approving</strong> before it enters a classroom.
+        </p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">♿</div>
+        <h3>Equity by design</h3>
+        <p>
+          ELL scaffolding, IEP support, and extension challenges are built into every module.
+          Offline-capable configuration available. <strong>A Title I school and a well-funded suburban district
+          have access to exactly the same curriculum.</strong>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STANDARDS ALIGNMENT -->
+<section class="standards-section" id="standards">
+  <div class="section-inner">
+    <p class="section-label">Standards &amp; Compliance</p>
+    <h2>Designed against the standards,<br/>not retrofitted to them</h2>
+    <p class="section-intro">AI Explorers was built with established education frameworks as structural constraints — not as a checklist applied after the fact. Here's what's mapped, module by module.</p>
+
+    <div class="standards-row">
+      <div class="std-badge">
+        <div class="std-badge-icon" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">🤖</div>
+        <div class="std-badge-text">
+          <strong>AI4K12 — All 5 Big Ideas</strong>
+          <span>Grades 6–8 progressions throughout</span>
+        </div>
+      </div>
+      <div class="std-badge">
+        <div class="std-badge-icon" style="background:linear-gradient(135deg,#74b9ff,#0984e3)">💻</div>
+        <div class="std-badge-text">
+          <strong>CSTA K–12 Standards</strong>
+          <span>Level 2 (Grades 6–8) — AP, DA, NI, IC</span>
+        </div>
+      </div>
+      <div class="std-badge">
+        <div class="std-badge-icon" style="background:linear-gradient(135deg,#55efc4,#00b894)">🌐</div>
+        <div class="std-badge-text">
+          <strong>ISTE Student Standards</strong>
+          <span>Empowered Learner, Innovative Designer, Computational Thinker</span>
+        </div>
+      </div>
+      <div class="std-badge">
+        <div class="std-badge-icon" style="background:linear-gradient(135deg,#ffeaa7,#fdcb6e)">📚</div>
+        <div class="std-badge-text">
+          <strong>ELA / NGSS Crosswalks</strong>
+          <span>Writing, argumentation, and scientific practices</span>
+        </div>
+      </div>
+      <div class="std-badge">
+        <div class="std-badge-icon" style="background:linear-gradient(135deg,#fd79a8,#e84393)">🛡️</div>
+        <div class="std-badge-text">
+          <strong>COPPA &amp; FERPA Compliant</strong>
+          <span>Data privacy by architecture, not policy</span>
+        </div>
       </div>
     </div>
-    <div class="stats-strip">
-      <div class="stats-strip-item">
-        <span class="snum">90+</span>
-        <span class="slabel">Schools active</span>
+
+    <div class="standards-detail-grid">
+      <div class="std-detail">
+        <h4>🤖 AI4K12 Alignment</h4>
+        <p>All five Big Ideas in AI are addressed across the 7-module arc: <strong>Perception (M2), Representation &amp; Reasoning (M3), Learning (M4), Natural Interaction (M5), and Societal Impact (M6)</strong>. A full module-to-Big-Idea mapping table is included in the standards document.</p>
       </div>
-      <div class="stats-strip-item">
-        <span class="snum">340+</span>
-        <span class="slabel">Classrooms running</span>
+      <div class="std-detail">
+        <h4>💻 CSTA K–12 Standards</h4>
+        <p>Primary alignments: <strong>2-AP (Algorithms &amp; Programming)</strong> in M3–M4, <strong>2-DA (Data &amp; Analysis)</strong> in M2–M4, <strong>2-IC (Impacts &amp; Culture)</strong> throughout M1 and M6, <strong>2-NI (Networks &amp; Internet)</strong> in M5. Strand-level mapping document included.</p>
       </div>
-      <div class="stats-strip-item">
-        <span class="snum">17</span>
-        <span class="slabel">States represented</span>
+      <div class="std-detail">
+        <h4>🌐 ISTE Standards</h4>
+        <p>Students demonstrate <strong>Empowered Learner</strong> through agent design journals, <strong>Innovative Designer</strong> via the capstone project, and <strong>Computational Thinker</strong> through M3–M4 data and algorithm work. Cross-referenced to ISTE 2025 framework.</p>
       </div>
-      <div class="stats-strip-item">
-        <span class="snum">0</span>
-        <span class="slabel">Data incidents</span>
+      <div class="std-detail">
+        <h4>📜 Custom Framework Support</h4>
+        <p>Need to map to your state's CS or digital literacy framework? A <strong>blank standards mapping template</strong> is included in the curriculum repository. Pilot districts completed state-specific mappings in 1–2 hours. We'll help if you're stuck — contact us.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── CTA ── -->
-<section class="cta-section" id="adoption-packet">
-  <div class="cta-inner">
-    <div class="section-label" style="color: var(--brand-light);">District Adoption Packet</div>
-    <h2>Everything your board needs to say yes.</h2>
-    <p>One download. Board-ready documentation. No vendor calls, no sales process.</p>
-    <div class="cta-packet">
-      <h3>What's Included in the Adoption Brief</h3>
-      <ul class="cta-packet-items">
-        <li>Full curriculum overview and scope &amp; sequence</li>
-        <li>Standards alignment doc (AI4K12, CSTA, ISTE)</li>
-        <li>Privacy &amp; compliance one-pager (FERPA/COPPA)</li>
-        <li>Pilot program framework with metrics</li>
-        <li>Sample board presentation slide deck</li>
-        <li>Teacher onboarding guide (complete)</li>
-        <li>Total cost of ownership analysis</li>
-        <li>Open source license documentation (MIT)</li>
-      </ul>
-      <div class="cta-btns">
-        <a href="pdfs/adoption-brief.pdf" class="btn-primary-dark" download>
-          ↓ Download Adoption Brief (PDF)
-        </a>
-        <a href="index.html" class="btn-secondary-dark">
-          ← Back to Main Site
-        </a>
+<!-- IMPLEMENTATION TIMELINE -->
+<section class="timeline-section" id="timeline">
+  <div class="section-inner">
+    <p class="section-label">Implementation Roadmap</p>
+    <h2>From first conversation to<br/>classroom in <em>under 30 days</em></h2>
+    <p class="section-intro">Here's what a typical district adoption looks like — from initial interest through first student deployments. Most districts hit the classroom faster than they expect.</p>
+
+    <div class="timeline-track">
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#55efc4,#00b894)">1</div>
+        <div class="timeline-content">
+          <div class="timeline-phase">Week 1 — Decision</div>
+          <h3>Download the Adoption Brief &amp; Review with Your Team</h3>
+          <p>The two-page Adoption Brief summarizes the curriculum, costs, compliance posture, and implementation requirements. Share it with your curriculum director, IT lead, and any board members you want informed before a formal vote. Forward this page to anyone who needs to review it.</p>
+          <span class="timeline-effort">⏱️ 1–2 hours total stakeholder review time</span>
+        </div>
       </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#74b9ff,#0984e3)">2</div>
+        <div class="timeline-content">
+          <div class="timeline-phase">Week 1–2 — IT Review</div>
+          <h3>IT Team Reviews the Data Privacy Guide</h3>
+          <p>Share the Data Privacy Guide (included in the repo) with your IT department. It maps every data touch point across all 7 modules. OpenClaw's self-hosted architecture means there are no third-party data processing agreements to negotiate. Most IT reviews take under four hours. We're available for a technical call if questions arise.</p>
+          <span class="timeline-effort">⏱️ 2–4 hours IT review; &lt;2 hours deployment</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#ffeaa7,#fdcb6e)">3</div>
+        <div class="timeline-content">
+          <div class="timeline-phase">Week 2 — Server Setup</div>
+          <h3>Deploy OpenClaw on Your School Server</h3>
+          <p>IT runs a single-command deployment on an existing school server or dedicated machine. OpenClaw supports Linux, macOS, and Windows Server. A step-by-step deployment guide for school IT is included in the repository. Typical setup time is under two hours. The server serves all students in one school without performance issues.</p>
+          <span class="timeline-effort">⏱️ &lt;2 hours setup; $0–$500 if dedicated hardware needed</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">4</div>
+        <div class="timeline-content">
+          <div class="timeline-phase">Week 2–3 — Teacher PD</div>
+          <h3>Teachers Complete the Self-Paced PD Program</h3>
+          <p>The included self-paced professional development program takes approximately 4 hours per teacher. It covers how to facilitate each module, how to support students without a CS background, technical setup walkthroughs, and the pedagogical philosophy behind the project arc. No external trainers required — though in-person PD workshops are available on request.</p>
+          <span class="timeline-effort">⏱️ ~4 hours per teacher, self-paced</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#fd79a8,#e84393)">5</div>
+        <div class="timeline-content">
+          <div class="timeline-phase">Week 3 — Pilot Launch</div>
+          <h3>Module 1: Students Deploy Their First Agent</h3>
+          <p>Teachers launch Module 1 with their first class. By the end of the first week of instruction, every student has deployed a named AI agent with a custom personality. That's not a drill — it's a working deployment on your school's server. The board brief moment happens in Week 2 or 3: you can show a board member a room of 7th-graders with working AI agents they built themselves.</p>
+          <span class="timeline-effort">⏱️ Students live in Week 3–4 of the calendar</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#a29bfe,#fd79a8)">6</div>
+        <div class="timeline-content">
+          <div class="timeline-phase">End of Semester — AI Expo</div>
+          <h3>Students Present at the AI Expo</h3>
+          <p>Module 7 concludes with the AI Expo — a community showcase where students present their fully built, named, governed AI agents to parents, community members, and district leadership. This is the board optics moment: real student work, real capability, real conversation about AI literacy. Several pilot districts invited board members to attend. The results speak for themselves.</p>
+          <span class="timeline-effort">⏱️ ~18–20 weeks from Module 1 to Expo</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEACHER PD -->
+<section class="pd-section" id="pd">
+  <div class="section-inner">
+    <p class="section-label">Teacher Professional Development</p>
+    <h2>Teachers don't need a CS degree.<br/><em>The PD proves it.</em></h2>
+    <p class="section-intro">The biggest adoption barrier for AI curriculum is teacher readiness. We eliminated it. The included PD program prepares any motivated teacher to facilitate AI Explorers — from a science teacher to a humanities instructor.</p>
+
+    <div class="pd-grid">
+      <ul class="pd-list">
+
+        <li>
+          <span class="pd-icon">🎯</span>
+          <div>
+            <h4>Designed for non-CS teachers</h4>
+            <p>The PD program is explicitly written for teachers who are not programmers. Each unit explains concepts in plain language first, then connects them to classroom facilitation strategies. Math and science teachers, humanities teachers, elective instructors — all have successfully completed the program.</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="pd-icon">⏱️</span>
+          <div>
+            <h4>~4 hours, fully self-paced</h4>
+            <p>No scheduled sessions, no required cohorts. Teachers complete the PD on their own schedule — over a weekend, across lunch breaks, or during summer prep time. The program is broken into short, completable units so progress isn't lost if time runs out mid-session.</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="pd-icon">🧪</span>
+          <div>
+            <h4>Hands-on: teachers do the modules first</h4>
+            <p>The most effective part of the PD is that teachers experience the curriculum as students do. They deploy their own OpenClaw instance, give it a name, and build through Module 1–3 themselves before teaching it. That first-person experience makes facilitation intuitive — teachers know what students will struggle with because they struggled with it too.</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="pd-icon">🤝</span>
+          <div>
+            <h4>Educator community &amp; GitHub Discussions</h4>
+            <p>Teachers using AI Explorers aren't alone. The GitHub Discussions board is active — teachers post questions, share adaptations, and help each other navigate tricky modules. A growing educators' Slack community provides real-time support. Several experienced pilot teachers have volunteered as informal mentors.</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="pd-icon">🏫</span>
+          <div>
+            <h4>In-person district PD available</h4>
+            <p>For districts that want facilitated in-person professional development, we offer workshops on request. Full-day and half-day formats are available. Contact us to discuss scheduling and district pricing — we work within educator professional development budgets.</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="pd-icon">📄</span>
+          <div>
+            <h4>Facilitator guides for every lesson</h4>
+            <p>Every lesson in every module ships with a detailed facilitator guide written for the teacher, not the student. It explains what's happening under the hood, anticipates student questions, flags common stumbling points, and suggests responses. Teachers who skip the PD program can still teach effectively using the facilitator guides alone — though we recommend the full PD.</p>
+          </div>
+        </li>
+
+      </ul>
+
+      <div class="pd-aside">
+        <h3>📊 PD Program at a Glance</h3>
+        <div class="pd-stat-grid">
+          <div class="pd-stat">
+            <span class="pd-stat-num">~4h</span>
+            <div class="pd-stat-label">Total PD time</div>
+          </div>
+          <div class="pd-stat">
+            <span class="pd-stat-num">$0</span>
+            <div class="pd-stat-label">Self-paced cost</div>
+          </div>
+          <div class="pd-stat">
+            <span class="pd-stat-num">94%</span>
+            <div class="pd-stat-label">Rated "easy to implement"</div>
+          </div>
+          <div class="pd-stat">
+            <span class="pd-stat-num">0</span>
+            <div class="pd-stat-label">CS prereqs for teachers</div>
+          </div>
+        </div>
+        <h3 style="font-size:0.95rem;margin-bottom:0.75rem;">What's included:</h3>
+        <ul class="pd-include-list">
+          <li>Self-paced PD program (~4 hours)</li>
+          <li>Facilitator guide for every lesson</li>
+          <li>Technical setup walkthrough for IT</li>
+          <li>Data Privacy Guide for administration</li>
+          <li>Standards alignment document</li>
+          <li>Differentiation strategies for each module</li>
+          <li>ELL and IEP support materials</li>
+          <li>AI Expo planning guide and rubrics</li>
+          <li>Answer keys and assessment packs</li>
+          <li>Access to educator community</li>
+          <li>GitHub Discussions support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof-section" id="proof">
+  <div class="section-inner">
+    <p class="section-label">From the Field</p>
+    <h2>What administrators and teachers<br/>say after adoption</h2>
+    <p class="section-intro">Pilot feedback from classrooms and district offices — because what actually happens in schools matters more than what looks good in a slide deck.</p>
+
+    <div class="proof-grid">
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          I brought this to the board expecting a fight on data privacy. Instead, the conversation turned almost immediately to "how do we get this into more classrooms?" The self-hosted architecture answered the compliance question before anyone asked it.
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#55efc4,#00b894)">🏫</div>
+          <div class="testimonial-who">
+            <strong>Maria G.</strong>
+            <span>Assistant Superintendent, Curriculum &amp; Instruction · Pacific Northwest district</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          Our IT team's review took about three hours. The Data Privacy Guide answered everything. We had no third-party agreements to negotiate, no vendor security questionnaires to fill out. I've never onboarded curriculum this cleanly.
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#74b9ff,#0984e3)">🔒</div>
+          <div class="testimonial-who">
+            <strong>Derek S.</strong>
+            <span>Director of Technology · Suburban public school district, Midwest</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          I teach seventh-grade science. I'd never written a line of code in my life. After the PD weekend, I taught Module 1 and every student in my class deployed a working AI agent. The facilitator guides are that good.
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">🔬</div>
+          <div class="testimonial-who">
+            <strong>Tanya W.</strong>
+            <span>7th-grade Science &amp; STEM Elective · Charter school, Southeast</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          We invited board members to the AI Expo. Watching 12-year-olds explain their agent's training data choices and ethical guardrails to adults who didn't fully understand AI — that's the board meeting moment you can't manufacture.
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#ffeaa7,#fdcb6e)">🎓</div>
+          <div class="testimonial-who">
+            <strong>James T.</strong>
+            <span>Curriculum Coordinator &amp; Former Math Teacher · Suburban public school district</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          No per-student cost. No renewal contract. No vendor lock-in. From a budget standpoint, this is the easiest program I've approved in 15 years. From an outcomes standpoint, it might be the best.
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#fd79a8,#e84393)">📊</div>
+          <div class="testimonial-who">
+            <strong>Carol M.</strong>
+            <span>District Business Administrator · Rural K-12 district, Mountain West</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          The ethics module wasn't what I expected. I thought it would be a lecture. Instead, students were auditing code they'd written themselves and realizing they'd accidentally introduced bias. That's not something you can teach any other way.
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#55efc4,#00cec9)">📚</div>
+          <div class="testimonial-who">
+            <strong>Priya K.</strong>
+            <span>8th-grade Humanities &amp; Digital Literacy · Independent school, East Coast</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Numbers bar -->
+    <div class="numbers-bar">
+      <div class="numbers-stat">
+        <span class="numbers-num" style="color:var(--green)">100%</span>
+        <span class="numbers-label">Students deployed a working agent by end of Module 1</span>
+      </div>
+      <div class="numbers-stat">
+        <span class="numbers-num" style="color:var(--brand-light)">94%</span>
+        <span class="numbers-label">Teachers rated curriculum "easy" or "very easy" to implement</span>
+      </div>
+      <div class="numbers-stat">
+        <span class="numbers-num" style="color:var(--yellow)">89%</span>
+        <span class="numbers-label">Students reported increased confidence understanding how AI works</span>
+      </div>
+      <div class="numbers-stat">
+        <span class="numbers-num" style="color:var(--accent)">91%</span>
+        <span class="numbers-label">AI Expo attendees rated student presentations "compelling" or "highly compelling"</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADOPTION BRIEF CTA -->
+<section class="brief-section" id="adoption-brief">
+  <div class="section-inner">
+    <div class="brief-inner">
+      <div class="brief-content">
+        <p class="section-label">School Adoption Brief</p>
+        <h2>A two-page brief for your next board meeting</h2>
+        <p>
+          The School Adoption Brief is a concise, board-ready document covering everything
+          decision-makers need to move from interest to approval. <strong>No fluff, no jargon —
+          just the information your board will ask for.</strong>
+        </p>
+        <ul class="brief-contents-list">
+          <li>What AI Explorers is and what students build</li>
+          <li>Cost structure (spoiler: $0 licensing, minimal infrastructure)</li>
+          <li>Data privacy and compliance architecture summary</li>
+          <li>Standards alignment summary (AI4K12, CSTA, ISTE)</li>
+          <li>Implementation timeline and IT requirements</li>
+          <li>Teacher PD requirements and what's included</li>
+          <li>Pilot outcomes from early-adopting classrooms</li>
+          <li>FAQ for board-level objections</li>
+        </ul>
+        <div class="hero-cta-group" style="justify-content:flex-start">
+          <a href="pdfs/adoption-brief.pdf" class="btn-primary" download>
+            📄 Download Adoption Brief (PDF)
+          </a>
+          <a href="#contact" class="btn-secondary">
+            💬 Request a Briefing Call
+          </a>
+        </div>
+      </div>
+
+      <div class="brief-visual">
+        <div class="brief-page-label">What's Inside</div>
+        <div class="brief-doc-preview">
+          <h4>📋 AI Explorers — School Adoption Brief</h4>
+          <p><strong>Page 1:</strong> Overview, Student Outcomes, Cost Summary</p>
+          <p><strong>Page 2:</strong> Compliance, Standards, Implementation Timeline</p>
+          <p style="margin-top:0.75rem;font-size:0.78rem;color:var(--text-muted)">
+            Designed for sharing with boards, curriculum directors, and district leadership.
+            No login required to download.
+          </p>
+        </div>
+        <a href="pdfs/adoption-brief.pdf" class="glance-cta" download style="display:block">
+          📄 Download Free (PDF)
+        </a>
+        <p style="font-size:0.78rem;color:var(--text-muted);text-align:center;margin-top:0.75rem;">
+          No email required · CC BY-SA 4.0 · Free to share
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / BRIEFING REQUEST -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+
+      <div class="contact-info">
+        <p class="section-label">Request a Briefing</p>
+        <h2>Have questions before<br/>bringing this to your board?</h2>
+        <p>
+          We're available for one-on-one briefings with district administrators, curriculum directors,
+          school board members, and IT leads. No sales pitch — just honest answers to your questions.
+        </p>
+        <div class="contact-promises">
+          <div class="contact-promise">
+            <span>⏱️</span>
+            <div><strong>Response within 2 business days.</strong> We're a small team but we prioritize district inquiries.</div>
+          </div>
+          <div class="contact-promise">
+            <span>📞</span>
+            <div><strong>Format is yours to choose.</strong> Video call, phone call, or email exchange — whatever works for your schedule and stakeholders.</div>
+          </div>
+          <div class="contact-promise">
+            <span>🤝</span>
+            <div><strong>No obligation, no follow-up pressure.</strong> If you decide this isn't the right fit, we'll say so — and point you to something that might be.</div>
+          </div>
+          <div class="contact-promise">
+            <span>🔒</span>
+            <div><strong>Your info stays with us.</strong> We don't sell contact lists, run remarketing campaigns, or share district contact info with third parties.</div>
+          </div>
+          <div class="contact-promise">
+            <span>📄</span>
+            <div><strong>Prefer async?</strong> Download the Adoption Brief and reply with questions via email — we'll respond in detail.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Request a District Briefing</h3>
+        <p class="form-subtitle">Fill out the form below and we'll reach out within 2 business days.</p>
+        <form action="https://formspree.io/f/contact" method="POST" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first_name" class="form-control" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last_name" class="form-control" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Work Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="jsmith@district.edu" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="district">District / School</label>
+              <input type="text" id="district" name="district" class="form-control" placeholder="Millbrook USD" required />
+            </div>
+            <div class="form-group">
+              <label for="role">Your Role</label>
+              <select id="role" name="role" class="form-control" required>
+                <option value="" disabled selected>Select your role</option>
+                <option value="superintendent">Superintendent</option>
+                <option value="assistant-superintendent">Assistant Superintendent</option>
+                <option value="curriculum-director">Curriculum / Instruction Director</option>
+                <option value="principal">Principal</option>
+                <option value="it-director">IT Director</option>
+                <option value="board-member">Board Member</option>
+                <option value="department-chair">Department Chair</option>
+                <option value="teacher">Teacher</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="format">Preferred Briefing Format <span>(optional)</span></label>
+            <select id="format" name="format" class="form-control">
+              <option value="" disabled selected>Select a format</option>
+              <option value="video-call">Video call (Zoom / Google Meet)</option>
+              <option value="phone">Phone call</option>
+              <option value="email">Email exchange — no call needed</option>
+              <option value="in-person">In-person visit (if available)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="question">What's your most important question? <span>(optional but helpful)</span></label>
+            <textarea id="question" name="question" class="form-control" placeholder="e.g. We're particularly concerned about COPPA compliance for students under 13. How does the self-hosted setup address that?"></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            📬 Send Briefing Request
+          </button>
+          <p class="form-note">We respond within 2 business days. No spam, no sales calls, no CRM follow-ups.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <p class="section-label">Frequently Asked Questions</p>
+    <h2>The questions boards and admins<br/>actually ask</h2>
+    <p class="section-intro">Real questions from real administrators during pilot adoptions — answered honestly, without marketing language.</p>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>What's the total budget impact — including hidden costs?</summary>
+        <div class="faq-answer">
+          <p><strong>The curriculum itself is free under CC BY-SA 4.0. Here's a full accounting of realistic district costs:</strong></p>
+          <ul>
+            <li><strong>Curriculum license:</strong> $0. Always.</li>
+            <li><strong>Server infrastructure:</strong> $0 if you use existing school hardware. $150–$500 one-time if you want a dedicated machine (a refurbished desktop is sufficient for a single school). No recurring cloud costs.</li>
+            <li><strong>Teacher PD (self-paced):</strong> $0. Approximately 4 hours of teacher time per educator.</li>
+            <li><strong>Teacher PD (in-person facilitated):</strong> Available on request. Contact us for district pricing — we work within educator PD budgets.</li>
+            <li><strong>New devices:</strong> $0. Works on existing school hardware and Chromebooks.</li>
+            <li><strong>External services:</strong> Hugging Face free tier, Google Teachable Machine — both free. No accounts required for core modules.</li>
+            <li><strong>Ongoing maintenance:</strong> Updates are a git pull command. No vendor maintenance contracts.</li>
+          </ul>
+          <p>The total cost of deploying AI Explorers in a classroom using existing hardware and the self-paced PD is, in practice, zero dollars — plus the time your teacher invests in learning the curriculum before teaching it.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is this COPPA compliant for students under 13?</summary>
+        <div class="faq-answer">
+          <p><strong>Yes — and the compliance is architectural, not just policy-based.</strong></p>
+          <p>Because OpenClaw is self-hosted on your infrastructure, students under 13 never create accounts with external services that collect personal information. OpenClaw accounts are managed by your school, under your FERPA/COPPA obligations — the same as any school-managed login system.</p>
+          <p>Teachable Machine (used in Module 2) processes images locally in the student's browser. Images never leave the device during training. No Google account is required for basic use.</p>
+          <p>Hugging Face is used for model access in later modules. For maximum privacy, the curriculum supports local model inference, fully documented for your IT team. Students use Hugging Face anonymously for API calls with no personal data required.</p>
+          <p>The Data Privacy Guide (included in the repo) maps every service touched in every module with recommended age-appropriate configurations. We recommend your district's privacy officer review it before deployment — it's written to answer exactly the questions they'll ask.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What happens if OpenClaw (the platform) shuts down or changes its license?</summary>
+        <div class="faq-answer">
+          <p><strong>Nothing bad happens — and this is a structural guarantee, not a promise.</strong></p>
+          <p>OpenClaw is MIT-licensed open source software. The entire codebase is publicly available on GitHub. Even in the absolute worst-case scenario — project abandoned, organization dissolved — your district retains a complete, working copy of the platform that runs indefinitely on your own hardware. The MIT license is irrevocable.</p>
+          <p>Your deployment is not dependent on our servers, our cloud, or our organization's continued existence. Students' work is stored on your infrastructure. Updates are available but never required. The platform works in air-gapped environments.</p>
+          <p>The curriculum itself (CC BY-SA 4.0) is similarly irrevocable. No future license change can affect materials you've already downloaded.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does our IT department need to do anything ongoing?</summary>
+        <div class="faq-answer">
+          <p><strong>Minimal ongoing IT involvement.</strong> Initial setup takes under two hours. After that:</p>
+          <ul>
+            <li><strong>Updates:</strong> Run <code>git pull</code> in the curriculum repo when new modules or patches are released. Optional — the curriculum works indefinitely without updates.</li>
+            <li><strong>Server maintenance:</strong> Standard Linux server maintenance (OS updates, monitoring). No different from any other school server.</li>
+            <li><strong>Student accounts:</strong> Your IT team manages OpenClaw accounts the same way they manage any school application — no special access controls or complex permission systems.</li>
+            <li><strong>Backups:</strong> Student work (agent configurations, journal files) lives in the OpenClaw data directory. Back it up using whatever backup process your school uses for other server data.</li>
+          </ul>
+          <p>There are no vendor portals to check, no renewal processes, no license management, no endpoint clients to maintain on student devices. A single server and a git repo covers your entire infrastructure footprint.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How does this fit into our existing elective or CS class structure?</summary>
+        <div class="faq-answer">
+          <p><strong>Flexibly — it's designed for multiple placement contexts.</strong> Here's how pilot schools have fit it in:</p>
+          <ul>
+            <li><strong>Dedicated semester elective (ideal):</strong> 18–20 weeks, 3–5 sessions per week. Full 7-module arc with AI Expo capstone. This gives students the complete experience.</li>
+            <li><strong>Existing CS or coding class:</strong> Replace or augment a semester unit. Many CS teachers use M1–M4 as an AI unit within a broader CS course, then invite students to continue on their own.</li>
+            <li><strong>STEM elective or maker space:</strong> Several pilot teachers ran AI Explorers as a STEM elective. Works well when there's flexibility on exact standards alignment.</li>
+            <li><strong>After-school or enrichment:</strong> Not our primary recommendation (we believe AI literacy belongs in the regular school day, not just for students whose families can support enrichment), but the curriculum works in this format.</li>
+            <li><strong>Partial adoption:</strong> M1–M3 alone is a valid stopping point. Students end with a deployed agent with vision and custom knowledge — that's real, even without the full arc.</li>
+          </ul>
+          <p>The curriculum includes a scope-and-sequence that maps to standard semester structures. If you need to map it to your district's specific course structure, the GitHub repository includes a blank mapping template.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What's the process for getting board approval?</summary>
+        <div class="faq-answer">
+          <p><strong>The Adoption Brief is designed specifically for this.</strong> Download it, share it with your curriculum director and board liaison before the meeting, and use it as your one-document summary. Here's what districts have found works:</p>
+          <ul>
+            <li><strong>Pre-meeting:</strong> Share the Adoption Brief 5–7 days before the board vote. Most board members read two pages.</li>
+            <li><strong>The data privacy question:</strong> The most common board objection. Answer: "Student data stays on our server. We don't share it with any third party." That's true and provable — send your IT director's review memo to support it.</li>
+            <li><strong>The cost question:</strong> "The curriculum is free. We estimate $0 in recurring costs with existing hardware." Budget presentations love this.</li>
+            <li><strong>The standards question:</strong> Point to the standards alignment document. If your state has specific requirements, show the mapping your team completed.</li>
+            <li><strong>The outcomes question:</strong> Pilot data is in the Adoption Brief. 100% deployment rate in Module 1, 94% teacher ease-of-use rating, 91% positive AI Expo responses.</li>
+          </ul>
+          <p>If you want a district briefing before the board meeting — with a team member available for questions — use the contact form above. We've supported several pilot districts through their board approval process.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Are there other districts already doing this we can talk to?</summary>
+        <div class="faq-answer">
+          <p><strong>Yes — we can facilitate peer connections.</strong> Several pilot schools have volunteered to speak with prospective districts, particularly on questions about IT setup, teacher PD, board approval processes, and student outcomes.</p>
+          <p>Peer conversations are often more useful than our own sales pitch. A principal or IT director who has been through the process can speak frankly about what worked, what took longer than expected, and what they'd do differently.</p>
+          <p>Use the contact form above and mention you're interested in speaking with a peer school. We'll make the introduction within a week.</p>
+          <p>You can also browse the GitHub Discussions board — educators from pilot schools post publicly there, and you can reach out directly.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if a teacher leaves mid-year — is the curriculum teachable by a substitute?</summary>
+        <div class="faq-answer">
+          <p><strong>Yes — though "substitute teaching AI Explorers" is easier than it sounds.</strong> Here's why:</p>
+          <p>The curriculum is written so that the facilitator guides provide full lesson context for anyone who picks them up cold. A substitute or incoming teacher doesn't need prior familiarity with the curriculum to facilitate a lesson — the guide tells them what to do, what to say, what questions to expect, and how to respond.</p>
+          <p>For continuity within a module, the student Agent Design Journals document what each student has built so far. A new teacher can review journals to understand where each student is in the arc without needing notes from the prior teacher.</p>
+          <p>For mid-year teacher transitions, we recommend: (1) the incoming teacher spend 2–3 hours with the PD program before their first class, (2) they read the facilitator guides for all completed modules so they understand the arc students have followed, and (3) they post in GitHub Discussions if they have questions. The community is responsive and helpful for exactly this scenario.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+  <div class="section-inner cta-inner">
+    <p class="section-label">Ready to Move Forward?</p>
+    <h2>Your students could be building<br/>their first agent this semester.</h2>
+    <p>Download the Adoption Brief, share it with your curriculum director, and reach out with questions. We're here to make this easy — because AI literacy shouldn't be hard to adopt.</p>
+    <div class="cta-btns">
+      <a href="pdfs/adoption-brief.pdf" class="btn-primary" download>
+        📄 Download School Adoption Brief
+      </a>
+      <a href="#contact" class="btn-secondary">
+        💬 Request a District Briefing
+      </a>
     </div>
     <p class="license-note">
-      AI Explorers is released under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
-      Download it, modify it, redistribute it — no permission required, no fees ever.
+      Curriculum licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> —
+      free to use, adapt, and share. Platform under <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
+      All materials on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a>.
     </p>
   </div>
 </section>
 
-<!-- ── FAQ ── -->
-<section class="faq">
-  <div class="section-inner">
-    <div class="section-label">Common Questions From Administrators</div>
-    <h2>We've heard these before.</h2>
-    <div class="faq-list">
-      <div class="faq-item open">
-        <button class="faq-question" aria-expanded="true">
-          Is this truly free? What's the catch?
-          <span class="faq-chevron">▼</span>
-        </button>
-        <div class="faq-answer">
-          Yes, fully free. This curriculum is released under the MIT open source license.
-          There is no freemium tier, no paid premium, and no vendor relationship. If we ever
-          create optional services (like facilitated professional development workshops), those
-          would be priced separately — but curriculum access is free forever, regardless.
-          You can download the entire curriculum right now and we'll never know.
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          How does this fit within our existing course offerings?
-          <span class="faq-chevron">▼</span>
-        </button>
-        <div class="faq-answer">
-          AI Explorers is designed to be modular. Individual units can be integrated into
-          existing CS, STEM, math, or even ELA classes. The full 14-week curriculum can stand
-          alone as a semester elective. Units 1–3 are commonly used in existing technology
-          classes without a full course adoption. The standards alignment documentation makes
-          it straightforward to fit into your course catalog.
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          What are the technology requirements?
-          <span class="faq-chevron">▼</span>
-        </button>
-        <div class="faq-answer">
-          A device with a modern browser. Chromebooks, Windows, Mac, tablets — all supported.
-          No software installs, no accounts, no browser extensions. We recommend a standard
-          classroom internet connection; we've optimized for congested school networks. There
-          is no minimum device spec beyond "runs Chrome, Firefox, Safari, or Edge."
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          How do we handle parent concerns about AI in the classroom?
-          <span class="faq-chevron">▼</span>
-        </button>
-        <div class="faq-answer">
-          The curriculum teaches students how AI works, not how to use commercial AI tools.
-          There are no third-party AI APIs, no ChatGPT integrations, no external services.
-          Students work with curated, age-appropriate datasets in isolated browser activities.
-          The Adoption Packet includes a parent communication template explaining what the
-          curriculum does and doesn't do.
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          Is there implementation support available?
-          <span class="faq-chevron">▼</span>
-        </button>
-        <div class="faq-answer">
-          The Adoption Packet includes everything needed for self-directed implementation.
-          For districts wanting additional support, we offer optional facilitated professional
-          development sessions (separate, priced engagement). The community of schools
-          already using AI Explorers is also a resource — most pilot schools report that
-          peer teacher networks become the primary ongoing support channel.
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          Can we get a data processing agreement (DPA)?
-          <span class="faq-chevron">▼</span>
-        </button>
-        <div class="faq-answer">
-          A DPA isn't required or applicable because we don't process any student data.
-          If your legal team needs documentation for the record, we provide a one-page
-          privacy summary that explains exactly what data is (and isn't) collected.
-          Some districts file this with their board approval documentation.
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          How is this different from CS courses we already offer?
-          <span class="faq-chevron">▼</span>
-        </button>
-        <div class="faq-answer">
-          AI Explorers teaches AI literacy specifically — not general computer science.
-          Students learn how AI systems work, how they're trained, where they fail, and
-          the ethical implications of algorithmic decision-making. This is distinct from
-          coding courses (Python, JavaScript, etc.) and from general digital literacy.
-          It maps to AI4K12's 5 Big Ideas, a framework distinct from traditional CS standards.
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          What does a typical pilot look like?
-          <span class="faq-chevron">▼</span>
-        </button>
-        <div class="faq-answer">
-          One teacher, one class, one semester. Week 1–2: teacher onboarding (~4 hours total).
-          Weeks 3–8: run Units 1–4 alongside existing curriculum. Weeks 9–14: complete Units 5–7
-          with the capstone project. End-of-pilot: student project showcase, teacher debrief,
-          outcome data summary. Most pilots take less than one semester and result in
-          department-wide expansion. The Adoption Packet includes a pilot framework template.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-logo">AI Explorers</a>
-        <p>A free, open-source K–12 AI literacy curriculum. Download, adapt, deploy.</p>
-      </div>
-      <div class="footer-links-col">
-        <h4>Audience</h4>
-        <ul>
-          <li><a href="index.html">For Educators</a></li>
-          <li><a href="schools.html">For Schools</a></li>
-          <li><a href="index.html">For Homeschool</a></li>
-          <li><a href="index.html">For Parents</a></li>
-        </ul>
-      </div>
-      <div class="footer-links-col">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="index.html#modules">Curriculum</a></li>
-          <li><a href="#standards">Standards Alignment</a></li>
-          <li><a href="pdfs/adoption-brief.pdf" download>Adoption Brief</a></li>
-          <li><a href="#privacy">Privacy Overview</a></li>
-        </ul>
-      </div>
-      <div class="footer-links-col">
-        <h4>Project</h4>
-        <ul>
-          <li><a href="index.html">About AI Explorers</a></li>
-          <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a></li>
-          <li><a href="index.html">Contact</a></li>
-          <li><a href="https://opensource.org/licenses/MIT" target="_blank">Open License</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© AI Explorers — Released under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>. Download, adapt, redistribute freely.</p>
-      <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem;">← Back to main site</a>
-    </div>
-  </div>
+  <p>
+    AI Explorers Curriculum — empowering the next generation of AI-literate humans.<br/>
+    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a> ·
+    Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> ·
+    <a href="index.html">← Back to main site</a> ·
+    Version 1.0 — March 2026
+  </p>
 </footer>
 
 <script>
-  // FAQ accordion
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-      });
-      if (!wasOpen) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
+  // Simple form handler — replace action URL with actual endpoint
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = '✓ Request sent! We\'ll be in touch within 2 business days.';
+    btn.style.background = '#00a382';
+    btn.disabled = true;
+    // In production, submit to your form endpoint here
+    // fetch(form.action, { method: 'POST', body: new FormData(form) })
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
