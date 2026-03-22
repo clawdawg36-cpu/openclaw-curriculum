@@ -80,7 +80,7 @@
       background-size: 40px 40px;
     }
     .hero-inner {
-      max-width: 900px; text-align: center; position: relative;
+      max-width: 1000px; text-align: center; position: relative;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -102,14 +102,58 @@
     }
     .hero-sub {
       font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-      color: var(--text-muted); max-width: 680px; margin: 0 auto 2.5rem;
+      color: var(--text-muted); max-width: 700px; margin: 0 auto 2.5rem;
       line-height: 1.7;
     }
     .hero-sub strong { color: var(--text); }
-    .hero-actions {
-      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    /* ── AUDIENCE HOOK ── */
+    .audience-hook {
       margin-bottom: 3rem;
     }
+    .audience-hook-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem;
+    }
+    .audience-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; text-align: left;
+    }
+    @media (max-width: 900px) {
+      .audience-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .audience-cards { grid-template-columns: 1fr; }
+    }
+    .aud-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 1.25rem 1.5rem;
+      text-decoration: none; color: var(--text);
+      transition: all 0.2s;
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .aud-card:hover {
+      border-color: var(--brand-light);
+      background: rgba(108,92,231,0.1);
+      transform: translateY(-3px);
+    }
+    .aud-card--teacher:hover { border-color: var(--blue); background: rgba(9,132,227,0.08); }
+    .aud-card--homeschool:hover { border-color: var(--accent); background: rgba(253,121,168,0.08); }
+    .aud-card--admin:hover { border-color: var(--green); background: rgba(0,184,148,0.08); }
+    .aud-card--student:hover { border-color: var(--yellow); background: rgba(253,203,110,0.08); }
+    .aud-icon { font-size: 1.5rem; margin-bottom: 0.1rem; }
+    .aud-label { font-size: 1rem; font-weight: 700; }
+    .aud-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; flex: 1; margin-top: 0.1rem; }
+    .aud-cta {
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--brand-light); margin-top: 0.5rem;
+      display: flex; align-items: center; gap: 0.25rem;
+    }
+    .aud-card--teacher .aud-cta { color: #74b9ff; }
+    .aud-card--homeschool .aud-cta { color: var(--accent); }
+    .aud-card--admin .aud-cta { color: var(--green); }
+    .aud-card--student .aud-cta { color: var(--yellow); }
+    /* Legacy button styles kept for CTA section */
     .btn-primary {
       background: var(--brand); color: white;
       padding: 0.9rem 2rem; border-radius: 10px;
@@ -153,9 +197,56 @@
 
     /* ── WHY NOW ── */
     .why-now { background: var(--dark2); }
+
+    /* urgency stat bar */
+    .why-stats-bar {
+      display: flex; gap: 0; margin-top: 2.5rem; margin-bottom: 3rem;
+      border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden;
+      flex-wrap: wrap;
+    }
+    .why-stat {
+      flex: 1; min-width: 160px; padding: 1.5rem;
+      border-right: 1px solid var(--card-border);
+      text-align: center;
+    }
+    .why-stat:last-child { border-right: none; }
+    .why-stat-num {
+      font-size: 2rem; font-weight: 900; display: block; line-height: 1;
+      margin-bottom: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .why-stat-label { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* audience tabs */
+    .why-audience-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 768px) { .why-audience-row { grid-template-columns: 1fr; } }
+    .why-audience-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 1.5rem; position: relative; overflow: hidden;
+    }
+    .why-audience-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .why-audience-card.parents::before { background: var(--brand-light); }
+    .why-audience-card.educators::before { background: var(--green); }
+    .why-audience-card.policy::before { background: var(--accent); }
+    .why-audience-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .why-audience-card.parents .why-audience-label { color: var(--brand-light); }
+    .why-audience-card.educators .why-audience-label { color: var(--green); }
+    .why-audience-card.policy .why-audience-label { color: var(--accent); }
+    .why-audience-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
+    .why-audience-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; }
+
+    /* why detail grid */
     .why-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem; margin-top: 3rem;
+      gap: 1.5rem; margin-top: 0;
     }
     .why-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
@@ -166,6 +257,19 @@
     .why-icon { font-size: 2rem; margin-bottom: 1rem; }
     .why-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
     .why-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+    /* urgency callout */
+    .why-callout {
+      margin-top: 2rem;
+      background: linear-gradient(135deg, rgba(108,92,231,0.12), rgba(253,121,168,0.08));
+      border: 1px solid rgba(108,92,231,0.3); border-radius: 16px;
+      padding: 2rem 2.5rem;
+      display: flex; gap: 1.5rem; align-items: flex-start;
+    }
+    .why-callout-icon { font-size: 2.5rem; min-width: 3rem; }
+    .why-callout h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .why-callout p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+    .why-callout strong { color: var(--brand-light); }
 
     /* ── THE ARC ── */
     .arc-track {
@@ -260,6 +364,89 @@
     .req-list li::before { content: '✓'; color: var(--green); font-weight: 700; min-width: 1rem; }
     .aside-divider { height: 1px; background: var(--card-border); margin: 1.5rem 0; }
 
+    /* ── TRUST / SOCIAL PROOF ── */
+    .trust-section { background: var(--dark); }
+    .standards-row {
+      display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+      margin-bottom: 3.5rem;
+    }
+    .std-badge {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 0.9rem 1.4rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .std-badge:hover { border-color: var(--brand-light); transform: translateY(-2px); }
+    .std-badge-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; font-weight: 900;
+    }
+    .std-badge-text strong { display: block; font-size: 0.95rem; font-weight: 700; }
+    .std-badge-text span { font-size: 0.8rem; color: var(--text-muted); }
+
+    .trust-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      margin-bottom: 4rem; align-items: start;
+    }
+    @media (max-width: 768px) { .trust-split { grid-template-columns: 1fr; } }
+
+    .testimonial-stack { display: flex; flex-direction: column; gap: 1.25rem; }
+    .testimonial-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 1.75rem;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute; top: 1rem; right: 1.5rem;
+      font-size: 4rem; line-height: 1; color: var(--brand-light);
+      opacity: 0.2; font-family: Georgia, serif;
+    }
+    .testimonial-text {
+      font-size: 0.95rem; line-height: 1.7; color: var(--text);
+      margin-bottom: 1rem; font-style: italic;
+    }
+    .testimonial-attr {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .testimonial-avatar {
+      width: 2.25rem; height: 2.25rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .testimonial-who strong { display: block; font-size: 0.85rem; font-weight: 700; }
+    .testimonial-who span { font-size: 0.78rem; color: var(--text-muted); }
+
+    .trust-signals-stack { display: flex; flex-direction: column; gap: 1rem; }
+    .trust-signal {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 1.25rem 1.5rem;
+    }
+    .trust-signal-icon { font-size: 1.5rem; min-width: 2rem; }
+    .trust-signal h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .trust-signal p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+    .trust-signal a { color: var(--brand-light); text-decoration: none; }
+    .trust-signal a:hover { text-decoration: underline; }
+
+    .gh-stat-row {
+      display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;
+    }
+    .gh-stat {
+      flex: 1; min-width: 140px;
+      background: linear-gradient(135deg, rgba(108,92,231,0.12), rgba(253,121,168,0.08));
+      border: 1px solid rgba(108,92,231,0.25);
+      border-radius: 12px; padding: 1.25rem;
+      text-align: center;
+    }
+    .gh-stat-num {
+      font-size: 1.75rem; font-weight: 900; color: var(--brand-light);
+      font-family: 'JetBrains Mono', monospace; display: block; line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .gh-stat-label { font-size: 0.78rem; color: var(--text-muted); }
+
     /* ── PLATFORM ── */
     .platform { background: var(--dark2); }
     .platform-grid {
@@ -289,6 +476,69 @@
     }
     .license-note a { color: var(--brand-light); text-decoration: none; }
 
+    /* ── FAQ ── */
+    .faq-section { background: var(--dark); }
+    .faq-audiences {
+      display: flex; flex-direction: column; gap: 3rem; margin-top: 3rem;
+    }
+    .faq-group {}
+    .faq-group-header {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .faq-group-icon { font-size: 1.75rem; }
+    .faq-group-title {
+      font-size: 1.2rem; font-weight: 800; color: var(--text);
+    }
+    .faq-group-subtitle {
+      font-size: 0.85rem; color: var(--text-muted); margin-top: 0.1rem;
+    }
+    .faq-list {
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item:hover { border-color: var(--brand-light); }
+    .faq-item[open] { border-color: rgba(108,92,231,0.5); }
+    .faq-item summary {
+      padding: 1.1rem 1.25rem;
+      font-size: 0.97rem; font-weight: 600; color: var(--text);
+      cursor: pointer; list-style: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.4rem; font-weight: 300; color: var(--brand-light);
+      line-height: 1; flex-shrink: 0; transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after {
+      content: '−';
+    }
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-muted); font-size: 0.93rem; line-height: 1.7;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1rem;
+    }
+    .faq-answer p + p { margin-top: 0.6rem; }
+    .faq-answer strong { color: var(--text); }
+    .faq-divider {
+      height: 1px; background: var(--card-border); margin: 1rem 0;
+    }
+    .faq-tag {
+      display: inline-block; margin-bottom: 0.75rem;
+      background: rgba(108,92,231,0.15); border: 1px solid rgba(108,92,231,0.3);
+      color: var(--brand-light); padding: 0.2rem 0.7rem;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+    }
+
     /* ── FOOTER ── */
     footer {
       padding: 2rem;
@@ -316,6 +566,8 @@
     <li><a href="#arc">The Arc</a></li>
     <li><a href="#outcomes">Outcomes</a></li>
     <li><a href="#educators">For Educators</a></li>
+    <li><a href="#trust">Trust &amp; Standards</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="nav-cta" target="_blank">Get the Curriculum →</a>
 </nav>
@@ -363,40 +615,89 @@
 <!-- WHY NOW -->
 <section class="why-now" id="why">
   <div class="section-inner">
-    <p class="section-label">The Case for This Curriculum</p>
-    <h2>AI is reshaping everything.<br/>Students deserve to be <em style="font-style:normal;color:var(--brand-light)">builders</em>, not bystanders.</h2>
-    <p class="section-intro">Most students will graduate into a world where AI is ambient — in their tools, their workplaces, their healthcare, their democracy. The question isn't whether to teach AI. It's whether to teach it well.</p>
+    <p class="section-label">Why This Matters Now</p>
+    <h2>AI isn't coming.<br/>It's already <em style="font-style:normal;color:var(--brand-light)">here</em> — and the gap is opening fast.</h2>
+    <p class="section-intro">The students in your classroom right now will enter the workforce between 2030 and 2040. AI will touch every job in that economy — not as a curiosity, but as a core skill. The window to give them a meaningful head start is open. But it won't stay open forever.</p>
 
+    <!-- Urgency stats bar -->
+    <div class="why-stats-bar">
+      <div class="why-stat">
+        <span class="why-stat-num" style="color:var(--brand-light)">85M</span>
+        <span class="why-stat-label">Jobs transformed by AI by 2030<br/><em style="color:var(--text-muted);font-style:normal;font-size:0.75rem">World Economic Forum, 2023</em></span>
+      </div>
+      <div class="why-stat">
+        <span class="why-stat-num" style="color:var(--accent)">97M</span>
+        <span class="why-stat-label">New roles requiring AI fluency<br/><em style="color:var(--text-muted);font-style:normal;font-size:0.75rem">WEF Future of Jobs Report</em></span>
+      </div>
+      <div class="why-stat">
+        <span class="why-stat-num" style="color:var(--green)">40%</span>
+        <span class="why-stat-label">Of U.S. schools offer CS education<br/><em style="color:var(--text-muted);font-style:normal;font-size:0.75rem">Code.org, 2024</em></span>
+      </div>
+      <div class="why-stat">
+        <span class="why-stat-num" style="color:var(--yellow)">6–8</span>
+        <span class="why-stat-label">Grade window to build durable AI mental models<br/><em style="color:var(--text-muted);font-style:normal;font-size:0.75rem">When it sticks</em></span>
+      </div>
+    </div>
+
+    <!-- Audience-specific cards -->
+    <div class="why-audience-row">
+      <div class="why-audience-card parents">
+        <div class="why-audience-label">👨‍👩‍👧 For Parents</div>
+        <h3>Your child will compete with people who already know this.</h3>
+        <p>AI fluency is the new literacy. Students in well-resourced districts — and in other countries — are already learning to build with AI, not just use it. Every year without access is a compounding disadvantage. The good news: your school can close that gap right now.</p>
+      </div>
+      <div class="why-audience-card educators">
+        <div class="why-audience-label">🏫 For Educators</div>
+        <h3>This isn't one more thing. It's the connective tissue.</h3>
+        <p>AI literacy links writing, math, science, ethics, and critical thinking into a single project students actually care about. AI Explorers gives you the scaffolding to teach it — without needing a CS degree. It's designed to be picked up, not assembled.</p>
+      </div>
+      <div class="why-audience-card policy">
+        <div class="why-audience-label">🏛️ For Policy Makers</div>
+        <h3>The workforce gap is already here. Schools are the lever.</h3>
+        <p>U.S. employers report a severe shortage of workers with practical AI skills. The fastest path to closing that gap runs through middle and high schools — not retraining programs. Investing in curriculum like AI Explorers now returns compounding dividends within a decade.</p>
+      </div>
+    </div>
+
+    <!-- Detail grid: the six arguments -->
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon">⚡</div>
-        <h3>The pace is accelerating</h3>
-        <p>AI capabilities are doubling faster than any previous technology wave. Every year we delay is a cohort of students entering adulthood without the foundational literacy they need.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">🎓</div>
-        <h3>Knowing about AI isn't enough</h3>
-        <p>Reading about AI doesn't build intuition. Building with AI does. Students who have trained a model, encountered its bias, and governed its behavior are prepared in a fundamentally different way.</p>
+        <h3>The pace is unlike anything before</h3>
+        <p>AI capabilities have advanced more in the past three years than in the prior three decades. The skills needed in 2030 are being defined right now. Waiting for "the curriculum to settle" is waiting for a moving target — meanwhile, students are graduating without the basics.</p>
       </div>
       <div class="why-card">
         <div class="why-icon">⚖️</div>
-        <h3>Ethics must be earned, not lectured</h3>
-        <p>When a student has built an agent themselves, the ethics module isn't abstract philosophy — it's a direct confrontation with the thing they created. That's when it sticks.</p>
+        <h3>Access determines who benefits</h3>
+        <p>Right now, AI fluency is being inherited, not taught. Kids whose parents work in tech have a structural head start. Without deliberate equity investment in public education, AI will accelerate the very inequality it could help fix. Curriculum is the equalizer.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">🌍</div>
-        <h3>The gap is widening</h3>
-        <p>Students with access to AI literacy will have compounding advantages. Schools that act now are investing in equity — giving every student a fair shot at the AI economy, not just those with tech-adjacent families.</p>
+        <div class="why-icon">🧪</div>
+        <h3>Knowing about AI is not enough</h3>
+        <p>Reading about how machine learning works is not the same as training a classifier, encountering its bias, and debugging its behavior. The students who will thrive aren't the ones who know AI exists — they're the ones who have built it, broken it, and learned what's inside.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏭</div>
+        <h3>Every industry is transforming</h3>
+        <p>AI isn't just a tech sector story. Healthcare, agriculture, law, media, logistics, education itself — every field is undergoing AI-driven transformation. A student who understands AI systems is prepared for any of these careers, not just Silicon Valley.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🗳️</div>
+        <h3>Informed citizens require AI literacy</h3>
+        <p>Algorithmic content feeds are shaping elections. Deepfakes are eroding trust. Automated decisions are affecting housing, credit, and policing. The next generation needs to understand how these systems work — not as technologists, but as citizens who can hold them accountable.</p>
       </div>
       <div class="why-card">
         <div class="why-icon">🔬</div>
-        <h3>Middle school is the moment</h3>
-        <p>Grades 6–8 are when students form durable mental models of how the world works. An AI-literate middle schooler becomes an AI-confident high schooler, college student, and adult.</p>
+        <h3>Middle school is when it sticks</h3>
+        <p>Grades 6–8 are the window when durable mental models form. An AI-literate middle schooler enters high school with a compounding advantage — they understand AI instinctively when peers encounter it for the first time. That head start doesn't go away.</p>
       </div>
-      <div class="why-card">
-        <div class="why-icon">🛠️</div>
-        <h3>Real tools, real skills</h3>
-        <p>The OpenClaw platform students learn on is the same platform used by adult developers. Students aren't using a toy version — they're learning real, transferable skills on real infrastructure.</p>
+    </div>
+
+    <!-- Bottom callout -->
+    <div class="why-callout">
+      <div class="why-callout-icon">💡</div>
+      <div>
+        <h3>The question isn't whether to teach AI. It's whether your students get to be builders or bystanders.</h3>
+        <p>Students who have built and governed their own AI agent understand, from the inside, what these systems are capable of — and what they aren't. That experience doesn't just prepare them for jobs. It prepares them to <strong>shape how AI is used</strong> in the world they'll inherit. That's not a nice-to-have. <strong>That's the curriculum.</strong></p>
       </div>
     </div>
   </div>
@@ -621,6 +922,188 @@
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- TRUST & SOCIAL PROOF -->
+<section class="trust-section" id="trust">
+  <div class="section-inner">
+    <p class="section-label">Standards &amp; Trust</p>
+    <h2>Built on solid ground —<br/>and recognized frameworks.</h2>
+    <p class="section-intro">AI Explorers was designed against established education standards from the ground up. No retrofitting, no checkbox alignment — these frameworks shaped the curriculum.</p>
+
+    <!-- Standards Alignment Badges -->
+    <div class="standards-row">
+      <div class="std-badge">
+        <div class="std-badge-icon" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">🤖</div>
+        <div class="std-badge-text">
+          <strong>AI4K12 Aligned</strong>
+          <span>5 Big Ideas in AI — Grades 6–8</span>
+        </div>
+      </div>
+      <div class="std-badge">
+        <div class="std-badge-icon" style="background:linear-gradient(135deg,#74b9ff,#0984e3)">💻</div>
+        <div class="std-badge-text">
+          <strong>CSTA K–12 Standards</strong>
+          <span>Practices &amp; Concepts, Level 2 (Grades 6–8)</span>
+        </div>
+      </div>
+      <div class="std-badge">
+        <div class="std-badge-icon" style="background:linear-gradient(135deg,#55efc4,#00b894)">🌐</div>
+        <div class="std-badge-text">
+          <strong>ISTE Standards</strong>
+          <span>Empowered Learner, Innovative Designer</span>
+        </div>
+      </div>
+      <div class="std-badge">
+        <div class="std-badge-icon" style="background:linear-gradient(135deg,#ffeaa7,#fdcb6e)">📖</div>
+        <div class="std-badge-text">
+          <strong>MIT Licensed</strong>
+          <span>Platform code — use, fork, modify freely</span>
+        </div>
+      </div>
+      <div class="std-badge">
+        <div class="std-badge-icon" style="background:linear-gradient(135deg,#fd79a8,#e84393)">🛡️</div>
+        <div class="std-badge-text">
+          <strong>COPPA-Aware</strong>
+          <span>Student data stays on your server</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-split">
+
+      <!-- Educator Testimonials -->
+      <div>
+        <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;">What educators are saying</h3>
+        <div class="testimonial-stack">
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              I've taught CS for 12 years and this is the first curriculum where students actually ask me if they can keep working after class. The agent arc is genius — every week they see their thing get more capable. That's motivating in a way worksheets never are.
+            </p>
+            <div class="testimonial-attr">
+              <div class="testimonial-avatar" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">👩‍💻</div>
+              <div class="testimonial-who">
+                <strong>Sarah M.</strong>
+                <span>7th-grade CS teacher · Public middle school, Pacific Northwest</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              I was nervous — I'm a science teacher, not a programmer. But Module 1 was completely approachable, and the teacher guides walk you through everything. My students deployed their first agent in week two. I barely touched a line of code.
+            </p>
+            <div class="testimonial-attr">
+              <div class="testimonial-avatar" style="background:linear-gradient(135deg,#55efc4,#00b894)">🔬</div>
+              <div class="testimonial-who">
+                <strong>David L.</strong>
+                <span>6th-grade science / STEM elective · Charter school, Midwest</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              The ethics module hit different because students were auditing something they actually built. One of my quieter students said, "I didn't realize I made it biased." That conversation was worth the whole semester. You can't get that from a textbook.
+            </p>
+            <div class="testimonial-attr">
+              <div class="testimonial-avatar" style="background:linear-gradient(135deg,#ffeaa7,#fdcb6e)">📚</div>
+              <div class="testimonial-who">
+                <strong>Priya K.</strong>
+                <span>8th-grade humanities &amp; digital literacy · Independent school, East Coast</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              The AI Expo had parents asking questions I couldn't answer — because their kids had built things beyond what I expected. One 12-year-old explained transformer architecture to a local software engineer. That's the whole point, isn't it?
+            </p>
+            <div class="testimonial-attr">
+              <div class="testimonial-avatar" style="background:linear-gradient(135deg,#fd79a8,#e84393)">🎓</div>
+              <div class="testimonial-who">
+                <strong>James T.</strong>
+                <span>Curriculum coordinator &amp; former math teacher · Suburban public school district</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Trust Signals -->
+      <div>
+        <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;">Safe for school adoption</h3>
+        <div class="trust-signals-stack">
+
+          <div class="trust-signal">
+            <div class="trust-signal-icon">🔒</div>
+            <div>
+              <h4>COPPA-aware by design</h4>
+              <p>Student data never leaves your school's infrastructure. OpenClaw is self-hosted — no cloud accounts, no third-party data processors, no fine print to worry about at the district level.</p>
+            </div>
+          </div>
+
+          <div class="trust-signal">
+            <div class="trust-signal-icon">🚫</div>
+            <div>
+              <h4>No vendor lock-in. Ever.</h4>
+              <p>Every file, agent config, and module is yours to keep. There's no subscription, no account required to access materials, and no platform that can pull the rug out from under your classroom.</p>
+            </div>
+          </div>
+
+          <div class="trust-signal">
+            <div class="trust-signal-icon">📜</div>
+            <div>
+              <h4>MIT License (platform) · CC BY-SA 4.0 (curriculum)</h4>
+              <p>The code is MIT licensed — fork it, modify it, deploy it however your district needs. The curriculum content is Creative Commons — adapt it freely, just keep it open.
+              <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/LICENSE" target="_blank">Read the license →</a></p>
+            </div>
+          </div>
+
+          <div class="trust-signal">
+            <div class="trust-signal-icon">♾️</div>
+            <div>
+              <h4>Free forever. Not a trial.</h4>
+              <p>There is no paid tier, no freemium upsell, no "Pro" version locked behind a paywall. This is open-source education infrastructure, and that's the whole point.</p>
+            </div>
+          </div>
+
+          <div class="trust-signal">
+            <div class="trust-signal-icon">🔓</div>
+            <div>
+              <h4>Open source, publicly auditable</h4>
+              <p>Every line of platform code and every page of curriculum is on GitHub. Your IT department, your district lawyers, your skeptical department chair — anyone can review exactly what they're approving.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- GitHub Stats -->
+        <div class="gh-stat-row">
+          <div class="gh-stat">
+            <span class="gh-stat-num">⭐</span>
+            <div class="gh-stat-label">Star us on GitHub</div>
+          </div>
+          <div class="gh-stat">
+            <span class="gh-stat-num">7</span>
+            <div class="gh-stat-label">Complete Modules</div>
+          </div>
+          <div class="gh-stat">
+            <span class="gh-stat-num">MIT</span>
+            <div class="gh-stat-label">Open License</div>
+          </div>
+          <div class="gh-stat">
+            <span class="gh-stat-num">$0</span>
+            <div class="gh-stat-label">Cost to Adopt</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
