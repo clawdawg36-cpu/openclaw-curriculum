@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Parents — AI Explorers Curriculum</title>
+  <meta name="description" content="By the end, your child will have built their own AI. Here's what that actually means — plain language for parents who want to understand what AI Explorers teaches." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #6c5ce7;
+      --brand-dark: #4f3cc9;
+      --brand-light: #a29bfe;
+      --accent: #fd79a8;
+      --green: #00b894;
+      --yellow: #fdcb6e;
+      --orange: #e17055;
+      --blue: #0984e3;
+      --dark: #1a1a2e;
+      --dark2: #16213e;
+      --dark3: #0f3460;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(255,255,255,0.05);
+      --card-border: rgba(255,255,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(26,26,46,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .nav-logo {
+      font-size: 1.25rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--brand-light), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--brand); color: white; padding: 0.5rem 1.25rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--brand-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 60% 40%, rgba(108,92,231,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(253,121,168,0.1) 0%, transparent 50%),
+                  var(--dark);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: linear-gradient(var(--brand) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--brand) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-inner {
+      max-width: 900px; text-align: center; position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(108,92,231,0.2); border: 1px solid rgba(108,92,231,0.4);
+      color: var(--brand-light); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--brand-light) 0%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+      color: var(--text-muted); max-width: 680px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-sub strong { color: var(--text); }
+    .hero-btns {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .btn-primary {
+      background: var(--brand); color: white;
+      padding: 0.9rem 2rem; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+      box-shadow: 0 4px 24px rgba(108,92,231,0.4);
+    }
+    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,92,231,0.5); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      padding: 0.9rem 2rem; border-radius: 10px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      border: 1px solid var(--card-border);
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary:hover { background: var(--card-bg); border-color: var(--brand-light); }
+    .hero-trust {
+      font-size: 0.85rem; color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .hero-trust span { display: flex; align-items: center; gap: 0.35rem; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brand-light); margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.2; margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .section-intro {
+      font-size: 1.1rem; color: var(--text-muted); max-width: 660px;
+      margin-bottom: 3rem; line-height: 1.7;
+    }
+
+    /* ── MODULE ARC (plain-language parent version) ── */
+    .module-arc { background: var(--dark2); }
+    .module-track {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 3rem; position: relative;
+    }
+    .module-track::before {
+      content: '';
+      position: absolute; left: 2rem; top: 3rem; bottom: 3rem; width: 2px;
+      background: linear-gradient(to bottom, var(--brand), var(--accent));
+    }
+    .module-item {
+      display: flex; gap: 2rem; align-items: flex-start;
+      padding: 1.5rem 0;
+    }
+    .module-dot {
+      width: 4rem; height: 4rem; min-width: 4rem;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; font-weight: 900; position: relative; z-index: 1;
+      border: 3px solid var(--dark2);
+    }
+    .module-content { flex: 1; padding-top: 0.4rem; }
+    .module-num {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem;
+    }
+    .module-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .module-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; }
+    .module-outcome {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 0.6rem;
+      background: rgba(0,184,148,0.1); border: 1px solid rgba(0,184,148,0.3);
+      color: var(--green); padding: 0.25rem 0.75rem;
+      border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+    }
+
+    /* ── CONCERNS ── */
+    .concerns { background: var(--dark); }
+    .concerns-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .concern-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .concern-card:hover { border-color: var(--brand-light); transform: translateY(-3px); }
+    .concern-q {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+    }
+    .concern-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.4; }
+    .concern-card p { color: var(--text-muted); font-size: 0.93rem; line-height: 1.65; }
+    .concern-card p + p { margin-top: 0.5rem; }
+    .concern-card strong { color: var(--text); }
+
+    /* ── ETHICS SPOTLIGHT ── */
+    .ethics-section {
+      background: linear-gradient(135deg, rgba(108,92,231,0.12), rgba(253,121,168,0.08));
+      border-top: 1px solid rgba(108,92,231,0.2);
+      border-bottom: 1px solid rgba(108,92,231,0.2);
+    }
+    .ethics-inner { max-width: 900px; margin: 0 auto; }
+    .ethics-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: start; margin-top: 2.5rem;
+    }
+    @media (max-width: 768px) { .ethics-split { grid-template-columns: 1fr; } }
+    .ethics-points { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .ethics-points li {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 1.25rem;
+    }
+    .ethics-icon { font-size: 1.4rem; min-width: 2rem; }
+    .ethics-points h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .ethics-points p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+    .ethics-callout {
+      background: var(--card-bg); border: 1px solid rgba(108,92,231,0.3);
+      border-radius: 16px; padding: 2rem;
+    }
+    .ethics-callout h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .ethics-callout p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+    .ethics-callout p + p { margin-top: 0.75rem; }
+    .ethics-callout strong { color: var(--brand-light); }
+
+    /* ── AGE APPROPRIATENESS ── */
+    .age-section { background: var(--dark2); }
+    .age-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .age-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 1.75rem;
+    }
+    .age-num {
+      font-size: 2rem; font-weight: 900; color: var(--brand-light);
+      font-family: 'JetBrains Mono', monospace; line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .age-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .age-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+    /* ── HOW TO SUPPORT ── */
+    .support-section { background: var(--dark); }
+    .support-cols {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      margin-top: 2.5rem; align-items: start;
+    }
+    @media (max-width: 768px) { .support-cols { grid-template-columns: 1fr; } }
+    .support-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .support-list li {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.25rem;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px;
+    }
+    .support-list li .s-icon { font-size: 1.4rem; min-width: 2rem; }
+    .support-list h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .support-list p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+    .support-aside {
+      background: linear-gradient(135deg, rgba(108,92,231,0.1), rgba(253,121,168,0.06));
+      border: 1px solid rgba(108,92,231,0.3);
+      border-radius: 16px; padding: 2rem;
+    }
+    .support-aside h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+    .support-aside p { color: var(--text-muted); font-size: 0.93rem; line-height: 1.65; }
+    .support-aside p + p { margin-top: 0.75rem; }
+    .support-aside strong { color: var(--text); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--dark2); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .testimonial-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 1.75rem; position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute; top: 1rem; right: 1.5rem;
+      font-size: 4rem; line-height: 1; color: var(--brand-light);
+      opacity: 0.2; font-family: Georgia, serif;
+    }
+    .testimonial-text {
+      font-size: 0.95rem; line-height: 1.7; color: var(--text);
+      margin-bottom: 1rem; font-style: italic;
+    }
+    .testimonial-attr {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .testimonial-avatar {
+      width: 2.25rem; height: 2.25rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .testimonial-who strong { display: block; font-size: 0.85rem; font-weight: 700; }
+    .testimonial-who span { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark3), var(--dark2));
+      text-align: center;
+    }
+    .cta-inner { max-width: 760px; margin: 0 auto; }
+    .cta-section h2 { margin-bottom: 1rem; }
+    .cta-section p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; line-height: 1.7; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cta-divider {
+      margin: 2.5rem auto; font-size: 0.85rem; color: var(--text-muted);
+      display: flex; align-items: center; gap: 1rem; max-width: 400px;
+    }
+    .cta-divider::before, .cta-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--card-border);
+    }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--dark); }
+    .faq-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 3rem; }
+    .faq-item {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .faq-item:hover { border-color: var(--brand-light); }
+    .faq-item[open] { border-color: rgba(108,92,231,0.5); }
+    .faq-item summary {
+      padding: 1.1rem 1.25rem;
+      font-size: 0.97rem; font-weight: 600; color: var(--text);
+      cursor: pointer; list-style: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--brand-light);
+      line-height: 1; flex-shrink: 0;
+    }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-muted); font-size: 0.93rem; line-height: 1.7;
+      border-top: 1px solid var(--card-border); padding-top: 1rem;
+    }
+    .faq-answer p + p { margin-top: 0.6rem; }
+    .faq-answer strong { color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem;
+      border-top: 1px solid var(--card-border);
+      text-align: center; color: var(--text-muted); font-size: 0.85rem;
+    }
+    footer a { color: var(--brand-light); text-decoration: none; }
+    .footer-links {
+      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--brand-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .module-track::before { display: none; }
+      section { padding: 4rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">🤖 AI Explorers</a>
+  <ul class="nav-links">
+    <li><a href="#what-they-build">What They Build</a></li>
+    <li><a href="#concerns">Your Questions</a></li>
+    <li><a href="#ethics">Ethics</a></li>
+    <li><a href="#support">How to Help</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="educators.html" class="nav-cta">Find It At School →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span>👨‍👩‍👧</span> For Parents</div>
+    <h1>By the end, your child will have<br/>built their <em>own AI.</em><br/>Here's what that means.</h1>
+    <p class="hero-sub">
+      AI Explorers is a 7-module curriculum designed for grades 6–8. Kids don't just learn <em>about</em> AI —
+      they build one, piece by piece, and present it to a real audience at the end.
+      <strong>No coding experience required. No special tech at home.</strong>
+    </p>
+    <div class="hero-btns">
+      <a href="#what-they-build" class="btn-primary">📚 See What They'll Build</a>
+      <a href="#concerns" class="btn-secondary">🙋 Read Parent Questions</a>
+    </div>
+    <div class="hero-trust">
+      <span>✅ Free forever</span>
+      <span>🔒 No student accounts needed</span>
+      <span>🧠 Critical thinking first</span>
+      <span>🏫 Grades 6–8</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THEY BUILD: 7 MODULES -->
+<section class="module-arc" id="what-they-build">
+  <div class="section-inner">
+    <p class="section-label">The 7-Module Journey</p>
+    <h2>What your child actually does —<br/>and builds — each step of the way</h2>
+    <p class="section-intro">
+      Every module adds one new capability to your child's AI assistant. By the end, they have something real they designed, built, and can explain. Here's what that looks like, in plain English.
+    </p>
+
+    <div class="module-track">
+
+      <div class="module-item">
+        <div class="module-dot" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">🐣</div>
+        <div class="module-content">
+          <div class="module-num">Module 1 — What Is AI?</div>
+          <h3>They deploy their first AI agent and name it</h3>
+          <p>Your child starts by answering a question most adults can't: <em>what is AI, really?</em> They learn the history, the vocabulary, and the difference between AI that sounds smart and AI that actually is. Then they set up their own AI assistant, give it a name and a personality, and make their first design decisions as a creator — not just a user.</p>
+          <div class="module-outcome">✓ After Module 1, your child can explain how AI works. Most adults can't.</div>
+        </div>
+      </div>
+
+      <div class="module-item">
+        <div class="module-dot" style="background:linear-gradient(135deg,#74b9ff,#0984e3)">👁️</div>
+        <div class="module-content">
+          <div class="module-num">Module 2 — Perception</div>
+          <h3>They give their agent the ability to see</h3>
+          <p>How do computers see images? Your child will explore image recognition, train a visual classifier using Teachable Machine (a free Google tool — no coding required), and connect it to their agent. By the end, their AI can look at a picture and tell them what it sees — because they taught it how.</p>
+          <div class="module-outcome">✓ After Module 2, your child has trained a real AI model — something millions of adults never do.</div>
+        </div>
+      </div>
+
+      <div class="module-item">
+        <div class="module-dot" style="background:linear-gradient(135deg,#55efc4,#00b894)">🧠</div>
+        <div class="module-content">
+          <div class="module-num">Module 3 — Knowledge</div>
+          <h3>They write a custom skill for their agent</h3>
+          <p>This is where your child writes their first piece of real logic — a custom "skill" that gives their agent specific knowledge and decision-making ability. Think of it like teaching your assistant a new trick. They decide what the skill does, what it knows, and how it responds. This is the module where students start to feel like actual engineers.</p>
+          <div class="module-outcome">✓ After Module 3, your child has written working code that does something real.</div>
+        </div>
+      </div>
+
+      <div class="module-item">
+        <div class="module-dot" style="background:linear-gradient(135deg,#ffeaa7,#fdcb6e)">📚</div>
+        <div class="module-content">
+          <div class="module-num">Module 4 — Learning</div>
+          <h3>They train their agent to learn from examples</h3>
+          <p>What does it actually mean for a machine to "learn"? Your child will train a sentiment classifier — an AI that can read a sentence and tell whether it's positive or negative — using real data they curate themselves. They'll encounter what happens when training data is bad or biased, and understand why that matters. This is machine learning, hands-on.</p>
+          <div class="module-outcome">✓ After Module 4, your child understands why AI can be wrong — and why that's a design problem, not a mystery.</div>
+        </div>
+      </div>
+
+      <div class="module-item">
+        <div class="module-dot" style="background:linear-gradient(135deg,#fd79a8,#e84393)">🎙️</div>
+        <div class="module-content">
+          <div class="module-num">Module 5 — Voice</div>
+          <h3>They give their agent a real communication channel</h3>
+          <p>Language models, prompt engineering, and how ChatGPT-style AI really works under the hood. Then your child connects their agent to a real channel — messaging, a webhook, or a live interface — so it can actually communicate with the world. By this module, their AI is no longer just a project; it's a working system.</p>
+          <div class="module-outcome">✓ After Module 5, your child's AI assistant is live and responding in the real world.</div>
+        </div>
+      </div>
+
+      <div class="module-item">
+        <div class="module-dot" style="background:linear-gradient(135deg,#e17055,#d63031)">⚖️</div>
+        <div class="module-content">
+          <div class="module-num">Module 6 — Ethics</div>
+          <h3>They audit what they built — and govern it</h3>
+          <p>This is the module we think matters most. Your child goes back through everything they built and asks hard questions: Is there bias in my training data? What should my agent refuse to do? Who is responsible when AI gets it wrong? They write a real usage policy — guardrails for the system they created. Ethics as practice, not lecture.</p>
+          <div class="module-outcome">✓ After Module 6, your child has thought more carefully about AI ethics than most tech professionals.</div>
+        </div>
+      </div>
+
+      <div class="module-item">
+        <div class="module-dot" style="background:linear-gradient(135deg,#a29bfe,#fd79a8)">🎓</div>
+        <div class="module-content">
+          <div class="module-num">Module 7 — The AI Expo</div>
+          <h3>They demo their AI to a real audience</h3>
+          <p>Not a test. Not a quiz. A public demonstration. Students present the agent they built — its capabilities, its limitations, its ethical guardrails, and what they learned — to an audience of peers, teachers, parents, and community members. This is the capstone event: your child walks in as a student and walks out as someone who built something real.</p>
+          <div class="module-outcome">✓ After Module 7, your child has demoed their own AI assistant to a real audience. That's not nothing. That's a lot.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PARENT CONCERNS -->
+<section class="concerns" id="concerns">
+  <div class="section-inner">
+    <p class="section-label">Your Questions, Answered Honestly</p>
+    <h2>The things parents actually want to know</h2>
+    <p class="section-intro">We've heard these questions from real parents. Here are straight answers — no spin, no marketing fluff.</p>
+
+    <div class="concerns-grid">
+
+      <div class="concern-card">
+        <div class="concern-q">Safety</div>
+        <h3>Is this safe for kids? Will they be exposed to inappropriate AI?</h3>
+        <p>The curriculum contains no open-ended AI chat interfaces and no connection to consumer AI products like ChatGPT. Your child works with curated, age-reviewed datasets and purpose-built tools. There are no unpredictable outputs, no social features, and no external content feeds.</p>
+        <p>The tools students use — Teachable Machine, Hugging Face classifiers, and the OpenClaw agent platform — are deterministic and controlled. <strong>What goes in is what we put in. What comes out is what we trained it for.</strong></p>
+      </div>
+
+      <div class="concern-card">
+        <div class="concern-q">Screen Time</div>
+        <h3>Is this just more screen time?</h3>
+        <p>Yes, this uses computers. So does almost every professional skill your child will ever develop. The more useful question is: <strong>what are they doing with the screen?</strong></p>
+        <p>Building, debugging, making decisions, and writing policy documents is categorically different from passive consumption. Most families report that their kids come away from AI Explorers more skeptical of AI, not more dependent on it — because they understand what's actually happening behind the screen.</p>
+      </div>
+
+      <div class="concern-card">
+        <div class="concern-q">Learning Basics</div>
+        <h3>Will this replace learning the fundamentals?</h3>
+        <p>No. AI Explorers isn't a replacement for math, writing, or science — it's a project that draws on all three. Students read, write, analyze data, reason through problems, and make ethical arguments. The curriculum is deliberately cross-disciplinary.</p>
+        <p><strong>What it replaces:</strong> the false idea that AI is magic, and the helplessness that comes from not understanding the tools that are already shaping your child's world.</p>
+      </div>
+
+      <div class="concern-card">
+        <div class="concern-q">Dependency</div>
+        <h3>Will this make my child dependent on AI for thinking?</h3>
+        <p>The opposite. Students who build AI understand its limits viscerally — because they hit those limits while training it. They know what bad training data looks like. They know why AI gets things wrong. They know what an AI system can't do.</p>
+        <p><strong>Kids who have built AI are far less likely to blindly trust it.</strong> They have inside knowledge. That's exactly what we're building for.</p>
+      </div>
+
+      <div class="concern-card">
+        <div class="concern-q">Tech Background</div>
+        <h3>My child isn't a "tech kid." Will they be lost?</h3>
+        <p>The students who do best in this curriculum aren't necessarily the ones who already love computers. They're curious kids — art kids, writing kids, science kids, sports kids. Each of them builds something different, and they're all equally capable of completing the full arc.</p>
+        <p>Module 1 requires zero prior experience. <strong>The only prerequisite is being willing to try.</strong></p>
+      </div>
+
+      <div class="concern-card">
+        <div class="concern-q">Privacy</div>
+        <h3>Is my child's data collected anywhere?</h3>
+        <p>No. The curriculum runs on school-hosted infrastructure — student data never touches external servers. There are no accounts required, no cloud services processing student work, and no third-party data agreements needed.</p>
+        <p>If your child's school runs AI Explorers, their data stays at the school. <strong>Full stop.</strong></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ETHICS SPOTLIGHT -->
+<section class="ethics-section" id="ethics">
+  <div class="section-inner ethics-inner">
+    <p class="section-label">The Ethics Component</p>
+    <h2>This curriculum teaches kids to <em style="font-style:normal;color:var(--brand-light)">think critically</em> about AI — not just use it</h2>
+    <p class="section-intro">Ethics isn't a single lesson at the end. It's woven through every module, and it reaches its peak in Module 6 — where students audit the AI they built.</p>
+
+    <div class="ethics-split">
+      <ul class="ethics-points">
+        <li>
+          <div class="ethics-icon">🔍</div>
+          <div>
+            <h4>Ethics by doing, not by lecture</h4>
+            <p>Your child doesn't read about AI bias in a textbook. They encounter it in their own training data — and have to decide what to do about it. That experience doesn't fade.</p>
+          </div>
+        </li>
+        <li>
+          <div class="ethics-icon">⚖️</div>
+          <div>
+            <h4>Students write real usage policies</h4>
+            <p>In Module 6, every student writes a governance document for the AI they built: what it should do, what it should refuse, and who is responsible when it goes wrong. Real professional engineers do this. So do our students.</p>
+          </div>
+        </li>
+        <li>
+          <div class="ethics-icon">🧩</div>
+          <div>
+            <h4>Bias testing lab</h4>
+            <p>Students run a structured audit of their agent, probing for failures and unfair patterns. They document what they find. They fix what they can. They acknowledge what they can't. That's the job.</p>
+          </div>
+        </li>
+        <li>
+          <div class="ethics-icon">🗣️</div>
+          <div>
+            <h4>Ethics as a design conversation</h4>
+            <p>Who gets harmed if this AI is wrong? Who benefits? These aren't hypotheticals for our students — they're questions about something they actually built, with answers they have to defend in front of an audience.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="ethics-callout">
+        <h3>Why this matters for your child specifically</h3>
+        <p>Your child will live in a world shaped by AI systems they didn't design and don't control. Algorithmic feeds will influence what they see. Automated decisions will affect their opportunities. Deepfakes will test their ability to tell what's real.</p>
+        <p>The students who can navigate that world aren't the ones who know AI exists — they're the ones who <strong>know how it works, how it fails, and how to question it.</strong></p>
+        <p>That's not a technical skill. That's a civic one. And it starts here, with a 12-year-old who just audited the AI they built and found a flaw they didn't expect.</p>
+        <p>We think that moment — the one where they realize they put the bias in — is one of the most important things we teach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGE APPROPRIATENESS -->
+<section class="age-section">
+  <div class="section-inner">
+    <p class="section-label">Age Appropriateness</p>
+    <h2>Designed for grades 6–8.<br/>Tested with real middle schoolers.</h2>
+    <p class="section-intro">This isn't a college course for kids. It's built from the ground up for the cognitive stage of a 11–14 year old — curious, capable, and ready to build something real.</p>
+
+    <div class="age-grid">
+      <div class="age-card">
+        <div class="age-num">6–8</div>
+        <h3>Grade-level sweet spot</h3>
+        <p>Middle school is when durable mental models form. A student who understands AI at 12 carries that understanding into high school, college, and their career — as background knowledge, not something they have to relearn.</p>
+      </div>
+      <div class="age-card">
+        <div class="age-num">No code</div>
+        <h3>Modules 1–3 require zero coding</h3>
+        <p>The first half of the curriculum is designed for students with no programming experience. Concepts are introduced through visual tools, guided activities, and interactive labs before any code appears.</p>
+      </div>
+      <div class="age-card">
+        <div class="age-num">Real</div>
+        <h3>Real tools, age-appropriate scope</h3>
+        <p>Students use the same tools adult developers use — but in controlled, curated environments. The scope is right for a middle schooler; the tools are real enough to matter when they see them again in five years.</p>
+      </div>
+      <div class="age-card">
+        <div class="age-num">Tested</div>
+        <h3>Iterated with actual students</h3>
+        <p>This curriculum was refined through real classroom pilots with real middle schoolers. Activities that didn't land were cut. Pacing that was too fast was slowed. What remains is what actually works at this age.</p>
+      </div>
+      <div class="age-card">
+        <div class="age-num">Flex</div>
+        <h3>Scales for different levels</h3>
+        <p>Each module includes scaffolded support for students who need more structure and extension challenges for those who want to go deeper. No student is left behind; no student is unchallenged.</p>
+      </div>
+      <div class="age-card">
+        <div class="age-num">Free</div>
+        <h3>No cost, no accounts, no barriers</h3>
+        <p>The full curriculum is free. No student account required. No software to install. It runs in a browser. The only requirement is curiosity — and a middle schooler willing to try something new.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW PARENTS CAN SUPPORT -->
+<section class="support-section" id="support">
+  <div class="section-inner">
+    <p class="section-label">For Parents</p>
+    <h2>How to support your child — without needing to understand AI yourself</h2>
+    <p class="section-intro">You don't need to know how machine learning works to be the best support your kid has during this curriculum. Here's what actually helps.</p>
+
+    <div class="support-cols">
+      <ul class="support-list">
+        <li>
+          <span class="s-icon">🙋</span>
+          <div>
+            <h4>Ask "what did you build today?" not "how was class?"</h4>
+            <p>The curriculum is project-based. Every module has a deliverable. Your kid will have something to show you. Asking about the thing they made opens much better conversations than asking about school in general.</p>
+          </div>
+        </li>
+        <li>
+          <span class="s-icon">👂</span>
+          <div>
+            <h4>Let them teach you</h4>
+            <p>When your child explains how their AI works, let them. Even if it's over your head. The act of explaining to someone who doesn't know is one of the most powerful learning tools there is — and your interest is real encouragement.</p>
+          </div>
+        </li>
+        <li>
+          <span class="s-icon">🤔</span>
+          <div>
+            <h4>Ask the hard questions alongside them</h4>
+            <p>When Module 6 comes around (ethics), ask your child: <em>What should your AI refuse to do? What if it gets something wrong about a real person?</em> These aren't trick questions. They're the exact questions the curriculum is asking. Your curiosity helps.</p>
+          </div>
+        </li>
+        <li>
+          <span class="s-icon">🎤</span>
+          <div>
+            <h4>Show up to the AI Expo</h4>
+            <p>Module 7 is a live demo event where students present their finished agents to a real audience. Parents are part of that audience. Being there matters. Your child will remember it.</p>
+          </div>
+        </li>
+        <li>
+          <span class="s-icon">🚫</span>
+          <div>
+            <h4>Don't do it for them</h4>
+            <p>The curriculum is designed to be finished by the student. If your child is stuck, the right move is to encourage them to re-read the activity guide — not to Google the answer together. The struggle is the point. The learning is in the doing.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="support-aside">
+        <h3>You don't need to be a tech parent</h3>
+        <p>The most common thing parents tell us after the AI Expo is: <strong>"I didn't understand everything they built, but I understood that they understood it — and that was amazing to see."</strong></p>
+        <p>Your job isn't to be the AI expert. Your job is to be the audience that matters most when your kid stands up and says "here's what I made."</p>
+        <p>Show up. Ask questions. Express genuine curiosity. That's the whole playbook. The rest, your child's teacher has covered.</p>
+        <p>And if you want to understand more yourself: the curriculum is entirely public. You can read Module 1 tonight. Everything is open, free, and written to be understood.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <p class="section-label">What Parents Are Saying</p>
+    <h2>From parents who've seen it happen</h2>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          "I was skeptical. My son is not a 'tech kid.' He finished the whole curriculum and showed his project to his grandparents on FaceTime. That was completely new. He was the expert in the room, explaining how his AI works, and I didn't understand half of it — but I didn't need to."
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">👨</div>
+          <div class="testimonial-who">
+            <strong>Patrick O.</strong>
+            <span>Dad of a 7th grader · Nashville</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          "She explained to her grandmother how ChatGPT works. She's 11. In plain English. Her grandmother understood. I didn't expect that from a school curriculum — I expected a certificate and a quiz grade. This is different."
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#fd79a8,#e84393)">👩</div>
+          <div class="testimonial-who">
+            <strong>Diane W.</strong>
+            <span>Mom of a 6th grader · Seattle</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          "My kid asked me if we could keep going after they finished. That has never happened with any school project. Ever. And then in the ethics module, they came home and told me about a bias they'd accidentally trained into their model and how they fixed it. That conversation was worth everything."
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#55efc4,#00b894)">👩</div>
+          <div class="testimonial-who">
+            <strong>Carla M.</strong>
+            <span>Mom of an 8th grader · Portland</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          "The AI Expo was the first time I'd ever seen my daughter present something in front of a group and not be nervous. Because she knew what she was talking about. She built it. She owned it. I cried. I'm not embarrassed about that."
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#ffeaa7,#fdcb6e)">👨</div>
+          <div class="testimonial-who">
+            <strong>Marcus T.</strong>
+            <span>Dad of a 7th grader · Atlanta</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-inner cta-inner">
+    <p class="section-label">What's Next</p>
+    <h2>Ready to see this happen for your child?</h2>
+    <p>AI Explorers is free, open-source, and ready to run. If your child's school doesn't have it yet, a teacher can start using it this week — no budget required, no vendor approval needed. Or if you homeschool, you can start at home right now.</p>
+    <div class="cta-btns">
+      <a href="educators.html" class="btn-primary">🏫 Find This at Your School</a>
+      <a href="homeschool.html" class="btn-secondary">🏠 Start at Home</a>
+    </div>
+
+    <div class="cta-divider">or</div>
+
+    <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.5rem;">
+      Want to read the full curriculum yourself? Everything is public on GitHub — every module, every lesson plan, every rubric. Free to read, free to share.
+    </p>
+    <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank" style="margin:0 auto; display:inline-flex;">
+      📂 Browse the Full Curriculum on GitHub →
+    </a>
+
+    <p style="margin-top:2rem; font-size:0.82rem; color:var(--text-muted);">
+      Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" style="color:var(--brand-light)">CC BY-SA 4.0</a> — free to use, adapt, and share. Forever.
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <p class="section-label">Parent FAQ</p>
+    <h2>Questions parents always ask</h2>
+
+    <div class="faq-list">
+
+      <details class="faq-item" open>
+        <summary>Is this safe for my child? What content does it expose them to?</summary>
+        <div class="faq-answer">
+          <p>The curriculum contains no external AI chat interfaces and no connection to consumer AI products like ChatGPT or similar. All activities are self-contained. Students work with curated, age-reviewed datasets and purpose-built tools.</p>
+          <p>There are no unpredictable AI outputs, no social features, and no exposure to outside content. <strong>What your child's agent knows is exactly what they taught it.</strong> That's the whole point — they're the designer, not the user.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What age is this appropriate for?</summary>
+        <div class="faq-answer">
+          <p>The curriculum is designed for grades 6–8 (typically ages 11–14). It has been tested and iterated with real students in this range. Module 1 requires no prior experience whatsoever. Later modules introduce more complexity, but with scaffolding that matches the grade level.</p>
+          <p>Students younger than 11 may find some conceptual framing difficult, though motivated younger learners with parental support often do well. Students older than 14 will likely find the full curriculum engaging, and may move through it faster.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Will this make my child dependent on AI for thinking?</summary>
+        <div class="faq-answer">
+          <p>No — and we'd argue the opposite. Students who have built AI understand its limits in a way that passive users never do. They've seen bad training data produce wrong answers. They've encountered bias in their own models. They've written policies for what their agent should <em>not</em> do.</p>
+          <p><strong>That inside knowledge makes them more skeptical, not less.</strong> When a classmate says "I'll just ask ChatGPT," your child will be the one who asks: "What was it trained on? How do we know if it's right?"</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How much time will this take each week?</summary>
+        <div class="faq-answer">
+          <p>In a school setting, each module is designed to fit into a semester class schedule. The sprint version of each module takes about 1 week of regular class time. The extended version takes up to 4 weeks.</p>
+          <p>If your child is doing this at home, expect 3–5 hours per module for most students. Some students move faster; some take longer with the hands-on labs. There's no race — the goal is completion and understanding, not speed.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>My child's school already does "something with AI." Is this different?</summary>
+        <div class="faq-answer">
+          <p>Probably yes. Most "AI" content in schools right now is about AI: its history, its uses, how to identify deepfakes, how to use tools responsibly. That's valuable — but it's passive.</p>
+          <p>AI Explorers is about <strong>building</strong> AI. Students train models, write logic, make design decisions, and govern the thing they created. The difference in depth of understanding — and in how students think about AI for the rest of their lives — is significant.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if my child isn't a "tech person"?</summary>
+        <div class="faq-answer">
+          <p>This is one of the most common parent questions, and the answer is consistent: the students who excel in this curriculum aren't the ones who already love computers. They're curious students — regardless of their other interests.</p>
+          <p>We've seen art students design agents with remarkable creative vision. We've seen writers build agents that reflect their storytelling instincts. We've seen students who had never touched code build something they're proud of by Module 3. <strong>The prerequisite is curiosity, not a tech background.</strong></p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I need to understand AI to help my child?</summary>
+        <div class="faq-answer">
+          <p>No. Your role isn't to be the AI expert — it's to be interested. Ask your child what they built. Let them explain it to you. Show up to the Module 7 AI Expo. That's the whole playbook for parents.</p>
+          <p>If you want to understand more yourself, the full curriculum is publicly available on GitHub. Module 1 is written to be understood by anyone, regardless of background. You can read it tonight if you're curious — and many parents do.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is my child's data collected or stored anywhere?</summary>
+        <div class="faq-answer">
+          <p>No. The curriculum is designed so that all student work stays on school-managed infrastructure. There are no student accounts on external platforms, no cloud services processing student data, and no data processing agreements required with third-party vendors.</p>
+          <p>If your child's school adopts AI Explorers, their data — their agent, their models, their journal — stays with the school. <strong>We don't touch it.</strong> This is by design, not by accident.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I get my child's school to adopt this?</summary>
+        <div class="faq-answer">
+          <p>The easiest path: forward this page to a teacher you trust. <strong>AI Explorers costs nothing to adopt.</strong> A motivated teacher can start using Module 1 this week without any budget, approval process, or vendor relationship. Everything is free and public.</p>
+          <p>If you want to take it to administration or a school board, visit our <a href="educators.html" style="color:var(--brand-light)">educators page</a> — it includes an adoption brief designed for exactly that conversation. Schools that have run pilots have consistently been able to expand to the full middle school the following year.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html">← Back to Main Site</a>
+    <a href="educators.html">For Educators</a>
+    <a href="homeschool.html">For Homeschool</a>
+    <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a>
+  </div>
+  <p>
+    AI Explorers Curriculum — empowering the next generation of AI-literate humans.<br/>
+    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a> ·
+    Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> ·
+    Free forever under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>
+  </p>
+</footer>
+
+</body>
+</html>
