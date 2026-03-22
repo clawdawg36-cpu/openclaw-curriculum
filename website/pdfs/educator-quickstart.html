@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Explorers — Educator Quick-Start Guide</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand-purple: #6c3fc5;
+      --brand-teal:   #0ea5e9;
+      --brand-green:  #10b981;
+      --brand-amber:  #f59e0b;
+      --bg:           #f8f7ff;
+      --surface:      #ffffff;
+      --border:       #e5e7eb;
+      --text:         #1f2937;
+      --muted:        #6b7280;
+      --radius:       12px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ── Print CTA banner ── */
+    .print-bar {
+      background: var(--brand-purple);
+      color: #fff;
+      text-align: center;
+      padding: 0.65rem 1rem;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .print-bar a {
+      background: #fff;
+      color: var(--brand-purple);
+      padding: 0.3rem 1rem;
+      border-radius: 99px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .print-bar a:hover { opacity: 0.9; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--brand-purple) 0%, #4f46e5 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 3rem 2.5rem;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "🚀";
+      position: absolute;
+      font-size: 8rem;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.15;
+    }
+    .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .hero .tagline {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 540px;
+      line-height: 1.5;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 99px;
+      padding: 0.25rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Section cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.25rem 0 0.5rem;
+      color: var(--brand-purple);
+    }
+
+    /* ── Three-bullet overview ── */
+    .overview-bullets {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+    }
+    .overview-bullets li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .bullet-icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand-purple), #4f46e5);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* ── What you need grid ── */
+    .needs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .need-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      background: var(--bg);
+    }
+    .need-card .need-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .need-card .need-value { font-weight: 600; font-size: 0.95rem; }
+    .need-card .need-detail { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── Checklist ── */
+    .checklist { list-style: none; display: grid; gap: 0.6rem; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      padding: 0.65rem 0.85rem;
+      background: var(--bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    .checklist li .num {
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      background: var(--brand-purple);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Lesson table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin-top: 0.75rem;
+    }
+    th {
+      background: var(--brand-purple);
+      color: #fff;
+      text-align: left;
+      padding: 0.6rem 0.85rem;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    th:first-child { border-radius: 8px 0 0 0; }
+    th:last-child  { border-radius: 0 8px 0 0; }
+    td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--bg); }
+
+    /* ── Pacing cards ── */
+    .pacing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+    .pace-card {
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      text-align: center;
+      position: relative;
+    }
+    .pace-card.recommended { border-color: var(--brand-purple); }
+    .pace-card.recommended::after {
+      content: "✦ Recommended";
+      position: absolute;
+      top: -0.65rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--brand-purple);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.6rem;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+    .pace-card .pace-name { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.35rem; }
+    .pace-card .pace-duration {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--brand-purple);
+      line-height: 1;
+    }
+    .pace-card .pace-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+    .pace-card .pace-note { font-size: 0.82rem; margin-top: 0.75rem; color: var(--text); }
+
+    /* ── Q&A ── */
+    .qa-list { display: grid; gap: 1rem; }
+    .qa-item { border-left: 4px solid var(--brand-teal); padding-left: 1rem; }
+    .qa-item .q { font-weight: 700; margin-bottom: 0.3rem; }
+    .qa-item .a { font-size: 0.93rem; color: var(--text); }
+
+    /* ── File tree ── */
+    pre.filetree {
+      background: #1e1b4b;
+      color: #c4b5fd;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      font-family: "Fira Code", "Cascadia Code", monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+    pre.filetree .highlight { color: #fbbf24; font-weight: bold; }
+
+    /* ── Help table ── */
+    .help-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .help-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      align-items: center;
+      font-size: 0.93rem;
+    }
+    .help-row .help-label { font-weight: 700; }
+    .help-row a { color: var(--brand-purple); }
+
+    /* ── CTA footer ── */
+    .cta-card {
+      background: linear-gradient(135deg, #4f46e5, var(--brand-teal));
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .cta-card h2 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .cta-card p { opacity: 0.9; margin-bottom: 1.5rem; }
+    .cta-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .cta-step {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 99px;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #4f46e5;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 0.75rem 2rem;
+      border-radius: 99px;
+      text-decoration: none;
+    }
+    .cta-btn:hover { opacity: 0.92; }
+
+    /* ── Lab options ── */
+    .lab-options {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+    .lab-option {
+      background: #faf5ff;
+      border: 1px solid #ddd6fe;
+      border-radius: 8px;
+      padding: 0.65rem 1rem;
+      font-size: 0.93rem;
+    }
+    .lab-option strong { color: var(--brand-purple); }
+
+    /* ── Print styles ── */
+    @media print {
+      .print-bar { display: none; }
+      body { background: #fff; font-size: 13px; }
+      .hero { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .page { padding: 0; }
+      .card { break-inside: avoid; }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.6rem; }
+      .hero::after { display: none; }
+      .help-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Print bar -->
+  <div class="print-bar">
+    📄 Save this as a PDF — <a href="javascript:window.print()">Print / Save PDF</a>
+  </div>
+
+  <div class="page">
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>AI Explorers</h1>
+      <p class="tagline">Educator Quick-Start Guide — everything you need to teach Module 1 with confidence.</p>
+      <div class="badge">📚 No CS background required &nbsp;·&nbsp; ✅ Ready in &lt;30 min</div>
+    </div>
+
+    <!-- What is AI Explorers -->
+    <div class="card">
+      <h2>🤖 What Is AI Explorers?</h2>
+      <ul class="overview-bullets">
+        <li>
+          <div class="bullet-icon">1</div>
+          <div><strong>A hands-on AI curriculum</strong> for middle and high school students — they build, experiment, and reflect, not just read or watch.</div>
+        </li>
+        <li>
+          <div class="bullet-icon">2</div>
+          <div><strong>Powered by OpenClaw</strong>, a real AI agent students interact with directly — turning abstract concepts into something you can actually poke and prod.</div>
+        </li>
+        <li>
+          <div class="bullet-icon">3</div>
+          <div><strong>Structured in modules</strong> (~3 weeks each), covering how AI works, how to use it responsibly, and how to make it actually do things.</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- What You Need -->
+    <div class="card">
+      <h2>🧰 What You Need</h2>
+      <div class="needs-grid">
+        <div class="need-card">
+          <div class="need-label">Hardware</div>
+          <div class="need-value">Just a browser</div>
+          <div class="need-detail">No installs. No IT ticket. Works on any device with a modern browser.</div>
+        </div>
+        <div class="need-card">
+          <div class="need-label">Accounts</div>
+          <div class="need-value">GitHub + OpenClaw</div>
+          <div class="need-detail">GitHub: free, for lesson materials. OpenClaw: provided by your school or district.</div>
+        </div>
+        <div class="need-card">
+          <div class="need-label">Your Time</div>
+          <div class="need-value">~2 hrs before Day 1</div>
+          <div class="need-detail">Then ~30 min/week prep. 45–50 min class sessions, 3–5x per week.</div>
+        </div>
+        <div class="need-card">
+          <div class="need-label">Per Module</div>
+          <div class="need-value">~3 weeks</div>
+          <div class="need-detail">Standard pace. Sprint and extended options also available (see Pacing).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 1 Checklist -->
+    <div class="card">
+      <h2>✅ Day 1 Checklist</h2>
+      <p style="color: var(--muted); font-size:0.9rem; margin-bottom:1rem;">Do these 10 things before your first class.</p>
+      <ul class="checklist">
+        <li><div class="num">1</div><div>⭐ <strong>Star the repo</strong> → <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">github.com/clawdawg36-cpu/openclaw-curriculum</a> so you can find it fast</div></li>
+        <li><div class="num">2</div><div>📁 <strong>Browse the file structure</strong> — open <code>modules/module-01/</code> and see what's there</div></li>
+        <li><div class="num">3</div><div>📖 <strong>Read the Module 1 Teacher Guide</strong> — <code>modules/module-01/teacher-guide.md</code>, takes ~20 min</div></li>
+        <li><div class="num">4</div><div>🤖 <strong>Log into OpenClaw</strong> — confirm your credentials work before class day</div></li>
+        <li><div class="num">5</div><div>👩‍🎓 <strong>Create student accounts</strong> (or confirm IT has) — students need OpenClaw access on Day 1</div></li>
+        <li><div class="num">6</div><div>🖥️ <strong>Test OpenClaw in your browser</strong> — open it, type a message, see a response</div></li>
+        <li><div class="num">7</div><div>📝 <strong>Print or share the student handout</strong> — found in <code>modules/module-01/handouts/</code></div></li>
+        <li><div class="num">8</div><div>⏱️ <strong>Review the first lesson plan</strong> — <code>lessons/lesson-01.md</code> — estimate timing for your class length</div></li>
+        <li><div class="num">9</div><div>❓ <strong>Read the Top 5 Teacher Questions</strong> below in this guide</div></li>
+        <li><div class="num">10</div><div>💬 <strong>Join the community</strong> — post and say hi (link in the "Where to Get Help" section)</div></li>
+      </ul>
+    </div>
+
+    <!-- Module 1 at a Glance -->
+    <div class="card">
+      <h2>📋 Module 1 at a Glance</h2>
+      <p style="color: var(--muted); font-size:0.9rem; margin-bottom:1rem;"><em>Theme: What is AI, and how does it work?</em></p>
+
+      <h3>Lesson Sequence</h3>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Title</th><th>Key Activity</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td>What Is AI?</td><td>Students brainstorm where AI shows up in daily life</td></tr>
+          <tr><td><strong>2</strong></td><td>How AI Learns</td><td>Visual demo: training data and pattern recognition</td></tr>
+          <tr><td><strong>3</strong></td><td>Talk to an Agent</td><td>First OpenClaw session — students ask it questions</td></tr>
+          <tr><td><strong>4</strong></td><td>Prompting 101</td><td>Experiment: how does wording change the answer?</td></tr>
+          <tr><td><strong>5</strong></td><td>🔬 The Lab</td><td>Build a simple AI-powered task with OpenClaw</td></tr>
+          <tr><td><strong>6</strong></td><td>Reflect + Share</td><td>Groups present; class discussion on what they learned</td></tr>
+        </tbody>
+      </table>
+
+      <h3>The Lab (Lesson 5)</h3>
+      <p style="font-size:0.93rem; margin-bottom:0.6rem;">The lab is the centerpiece of Module 1. Students choose from scaffolded project options and use OpenClaw to complete them. Browser-based. No coding required for the base options.</p>
+      <div class="lab-options">
+        <div class="lab-option"><strong>Option A:</strong> Build a homework helper prompt</div>
+        <div class="lab-option"><strong>Option B:</strong> Create a Q&amp;A bot for a topic they care about</div>
+        <div class="lab-option"><strong>Option C:</strong> Design a "responsible AI" policy for a fake school app</div>
+      </div>
+    </div>
+
+    <!-- File Structure -->
+    <div class="card">
+      <h2>📂 How to Use the Materials</h2>
+      <h3>File Structure</h3>
+      <pre class="filetree">openclaw-curriculum/
+├── modules/
+│   ├── module-01/
+│   │   ├── <span class="highlight">teacher-guide.md</span>       ← Start here
+│   │   ├── lessons/
+│   │   │   ├── lesson-01.md
+│   │   │   ├── lesson-02.md
+│   │   │   └── ...
+│   │   ├── handouts/              ← Print or share digitally
+│   │   ├── lab/                   ← Lab instructions + rubric
+│   │   └── assessments/           ← Quizzes, reflection prompts
+│   └── module-02/ ...
+├── website/                       ← This site
+└── README.md                      ← Project overview</pre>
+
+      <h3>What's in Each Folder</h3>
+      <table>
+        <thead><tr><th>Folder / File</th><th>What It Contains</th></tr></thead>
+        <tbody>
+          <tr><td><code>teacher-guide.md</code></td><td>Full context, learning objectives, pacing notes, teaching tips</td></tr>
+          <tr><td><code>lessons/</code></td><td>Day-by-day plans with timing, discussion questions, slide notes</td></tr>
+          <tr><td><code>handouts/</code></td><td>Student-facing materials — printable or screen-friendly</td></tr>
+          <tr><td><code>lab/</code></td><td>Lab brief, scaffolded steps, extension challenges, rubric</td></tr>
+          <tr><td><code>assessments/</code></td><td>Low-stakes checks for understanding + end-of-module reflection</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pacing Options -->
+    <div class="card">
+      <h2>⏱️ Pacing Options</h2>
+      <p style="color: var(--muted); font-size:0.9rem; margin-bottom:1rem;">Pick what fits your schedule. All options cover the same core content.</p>
+      <div class="pacing-grid">
+        <div class="pace-card recommended">
+          <div class="pace-name">Standard</div>
+          <div class="pace-duration">3 wks</div>
+          <div class="pace-sub">3–4 sessions/week</div>
+          <div class="pace-note">Allows time for reflection, discussion, and iteration. Best for most classroom settings.</div>
+        </div>
+        <div class="pace-card">
+          <div class="pace-name">Sprint</div>
+          <div class="pace-duration">1 wk</div>
+          <div class="pace-sub">Daily (5 days)</div>
+          <div class="pace-note">Great for workshops, summer programs, or intensives. Focus on lessons 1, 3, 4, 5. Skip some extensions.</div>
+        </div>
+        <div class="pace-card">
+          <div class="pace-name">Extended</div>
+          <div class="pace-duration">4 wks</div>
+          <div class="pace-sub">2–3 sessions/week</div>
+          <div class="pace-note">Best for less frequent class schedules. Add discussion depth, let lab run two sessions, bring in guests.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top 5 Questions -->
+    <div class="card">
+      <h2>❓ Top 5 Teacher Questions</h2>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="q">"Do I need to know how to code?"</div>
+          <div class="a">Nope. Zero coding required to teach this curriculum. Extension challenges exist for students who want to go deeper, but you don't need to lead that.</div>
+        </div>
+        <div class="qa-item">
+          <div class="q">"What if OpenClaw gives a weird or wrong answer?"</div>
+          <div class="a">That's a teaching moment! AI makes mistakes. Part of the curriculum is learning to evaluate AI outputs critically. When it happens, lean in: <em>"Why do you think it said that? Is that right?"</em></div>
+        </div>
+        <div class="qa-item">
+          <div class="q">"How do I manage 30 students all using OpenClaw at once?"</div>
+          <div class="a">Each student has their own session — no shared state to worry about. For lab days, consider pair work (one account per pair) to make discussion richer and reduce simultaneous sessions.</div>
+        </div>
+        <div class="qa-item">
+          <div class="q">"What if a student asks OpenClaw something inappropriate?"</div>
+          <div class="a">OpenClaw has built-in safety filters. If something slips through, use it as a teaching moment about responsible AI — that's literally what this curriculum is about.</div>
+        </div>
+        <div class="qa-item">
+          <div class="q">"Can I skip a lesson if we're behind?"</div>
+          <div class="a">Yes, with care. Lessons 1, 3, and 5 (the Lab) are the backbone — don't skip those. Lessons 2, 4, and 6 can be shortened or combined. The teacher guide flags essential vs. enrichment sections.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Where to Get Help -->
+    <div class="card">
+      <h2>🆘 Where to Get Help</h2>
+      <div class="help-grid">
+        <div class="help-row">
+          <div class="help-label">📌 GitHub Issues</div>
+          <div>Report bugs, request clarifications, suggest improvements → <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/issues" target="_blank">github.com/clawdawg36-cpu/openclaw-curriculum/issues</a></div>
+        </div>
+        <div class="help-row">
+          <div class="help-label">💬 Discussions</div>
+          <div>Ask questions, share what worked, get feedback from other educators → GitHub Discussions tab on the repo</div>
+        </div>
+        <div class="help-row">
+          <div class="help-label">📖 README.md</div>
+          <div>Project overview, setup instructions, and contribution guide — always up to date</div>
+        </div>
+        <div class="help-row">
+          <div class="help-label">👥 Community</div>
+          <div><em>Teacher Slack/community coming soon — link will be added when it launches</em></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-card">
+      <h2>Ready? Let's Go. 🎉</h2>
+      <p>Three steps stand between you and your first AI Explorers class.</p>
+      <div class="cta-steps">
+        <div class="cta-step">⭐ Step 1 — Star the repo</div>
+        <div class="cta-step">📖 Step 2 — Read the teacher guide</div>
+        <div class="cta-step">✅ Step 3 — Complete your Day 1 checklist</div>
+      </div>
+      <a class="cta-btn" href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">
+        Open the Curriculum on GitHub →
+      </a>
+      <p style="margin-top:1.25rem; font-size:0.85rem; opacity:0.75;">
+        AI Explorers is open source. Contributions welcome. Made with ❤️ for educators figuring this out alongside their students.
+      </p>
+    </div>
+
+  </div><!-- /.page -->
+</body>
+</html>
