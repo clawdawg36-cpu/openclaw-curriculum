@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Explorers — Build Your AI Assistant, Piece by Piece</title>
+  <meta name="description" content="A hands-on, project-based AI curriculum for middle school students. 7 modules. One arc. Students build a real AI assistant from scratch — and present it to the world." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #6c5ce7;
+      --brand-dark: #4f3cc9;
+      --brand-light: #a29bfe;
+      --accent: #fd79a8;
+      --green: #00b894;
+      --yellow: #fdcb6e;
+      --orange: #e17055;
+      --blue: #0984e3;
+      --dark: #1a1a2e;
+      --dark2: #16213e;
+      --dark3: #0f3460;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(255,255,255,0.05);
+      --card-border: rgba(255,255,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(26,26,46,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .nav-logo {
+      font-size: 1.25rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--brand-light), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--brand); color: white; padding: 0.5rem 1.25rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--brand-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 60% 40%, rgba(108,92,231,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(253,121,168,0.1) 0%, transparent 50%),
+                  var(--dark);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: linear-gradient(var(--brand) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--brand) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-inner {
+      max-width: 900px; text-align: center; position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(108,92,231,0.2); border: 1px solid rgba(108,92,231,0.4);
+      color: var(--brand-light); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge span { font-size: 1rem; }
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--brand-light) 0%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--text-muted); max-width: 680px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-sub strong { color: var(--text); }
+    .hero-actions {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .btn-primary {
+      background: var(--brand); color: white;
+      padding: 0.9rem 2rem; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+      box-shadow: 0 4px 24px rgba(108,92,231,0.4);
+    }
+    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,92,231,0.5); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      padding: 0.9rem 2rem; border-radius: 10px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      border: 1px solid var(--card-border);
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary:hover { background: var(--card-bg); border-color: var(--brand-light); }
+    .hero-stats {
+      display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
+      padding-top: 2rem; border-top: 1px solid var(--card-border);
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--brand-light); display: block; }
+    .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brand-light); margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.2; margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .section-intro {
+      font-size: 1.15rem; color: var(--text-muted); max-width: 620px;
+      margin-bottom: 3rem; line-height: 1.7;
+    }
+
+    /* ── WHY NOW ── */
+    .why-now { background: var(--dark2); }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .why-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .why-card:hover { border-color: var(--brand-light); transform: translateY(-3px); }
+    .why-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .why-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .why-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+    /* ── THE ARC ── */
+    .arc-track {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 3rem; position: relative;
+    }
+    .arc-track::before {
+      content: '';
+      position: absolute; left: 2rem; top: 3rem; bottom: 3rem; width: 2px;
+      background: linear-gradient(to bottom, var(--brand), var(--accent));
+    }
+    .arc-module {
+      display: flex; gap: 2rem; align-items: flex-start;
+      padding: 1.5rem 0;
+    }
+    .arc-dot {
+      width: 4rem; height: 4rem; min-width: 4rem;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 900; position: relative; z-index: 1;
+      border: 3px solid var(--dark2);
+    }
+    .arc-content { flex: 1; padding-top: 0.5rem; }
+    .arc-module-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem;
+    }
+    .arc-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .arc-content p { color: var(--text-muted); font-size: 0.95rem; }
+    .arc-tag {
+      display: inline-block; margin-top: 0.5rem;
+      background: rgba(108,92,231,0.15); border: 1px solid rgba(108,92,231,0.3);
+      color: var(--brand-light); padding: 0.2rem 0.7rem;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+    }
+
+    /* ── OUTCOMES ── */
+    .outcomes { background: var(--dark2); }
+    .outcomes-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .outcome-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 1.75rem;
+    }
+    .outcome-num {
+      font-size: 2.5rem; font-weight: 900; color: var(--brand-light);
+      font-family: 'JetBrains Mono', monospace; line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .outcome-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .outcome-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      background: linear-gradient(135deg, rgba(108,92,231,0.15), rgba(253,121,168,0.1));
+      border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);
+    }
+    .quote-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    blockquote {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700; line-height: 1.4; margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    blockquote em {
+      font-style: normal; color: var(--brand-light);
+    }
+    .quote-attr { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* ── FOR EDUCATORS ── */
+    .educators-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: start; margin-top: 3rem;
+    }
+    @media (max-width: 768px) { .educators-grid { grid-template-columns: 1fr; } }
+    .edu-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .edu-list li {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 1.25rem;
+    }
+    .edu-icon { font-size: 1.4rem; min-width: 2rem; }
+    .edu-list li h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .edu-list li p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+    .edu-aside {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 2rem; position: sticky; top: 6rem;
+    }
+    .edu-aside h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.25rem; }
+    .req-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .req-list li { display: flex; gap: 0.75rem; align-items: center; font-size: 0.9rem; color: var(--text-muted); }
+    .req-list li::before { content: '✓'; color: var(--green); font-weight: 700; min-width: 1rem; }
+    .aside-divider { height: 1px; background: var(--card-border); margin: 1.5rem 0; }
+
+    /* ── PLATFORM ── */
+    .platform { background: var(--dark2); }
+    .platform-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem; margin-top: 3rem;
+    }
+    .plat-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .plat-icon { font-size: 1.5rem; min-width: 2rem; }
+    .plat-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .plat-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark3), var(--dark2));
+      text-align: center;
+    }
+    .cta-inner { max-width: 700px; margin: 0 auto; }
+    .cta-section h2 { margin-bottom: 1rem; }
+    .cta-section p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.7; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .license-note {
+      margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted);
+    }
+    .license-note a { color: var(--brand-light); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem;
+      border-top: 1px solid var(--card-border);
+      text-align: center; color: var(--text-muted); font-size: 0.85rem;
+    }
+    footer a { color: var(--brand-light); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .arc-track::before { display: none; }
+      section { padding: 4rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🤖 AI Explorers</div>
+  <ul class="nav-links">
+    <li><a href="#why">Why Now</a></li>
+    <li><a href="#arc">The Arc</a></li>
+    <li><a href="#outcomes">Outcomes</a></li>
+    <li><a href="#educators">For Educators</a></li>
+  </ul>
+  <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="nav-cta" target="_blank">Get the Curriculum →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span>🚀</span> Free &amp; Open Source — CC BY-SA 4.0</div>
+    <h1>The AI Curriculum<br/>Students Actually <em>Build</em></h1>
+    <p class="hero-sub">
+      <strong>AI Explorers</strong> is a 7-module, project-based curriculum for grades 6–8.
+      Students don't just learn about AI — they build their own personal AI assistant,
+      one capability at a time, from day one through the final AI Expo.
+    </p>
+    <div class="hero-actions">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary" target="_blank">
+        📚 Explore the Curriculum
+      </a>
+      <a href="#arc" class="btn-secondary">
+        See the 7-Module Arc ↓
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">7</span>
+        <span class="stat-label">Modules</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">6–8</span>
+        <span class="stat-label">Grade Level</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Semester Arc</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">Free</span>
+        <span class="stat-label">Always &amp; Forever</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="why-now" id="why">
+  <div class="section-inner">
+    <p class="section-label">The Case for This Curriculum</p>
+    <h2>AI is reshaping everything.<br/>Students deserve to be <em style="font-style:normal;color:var(--brand-light)">builders</em>, not bystanders.</h2>
+    <p class="section-intro">Most students will graduate into a world where AI is ambient — in their tools, their workplaces, their healthcare, their democracy. The question isn't whether to teach AI. It's whether to teach it well.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>The pace is accelerating</h3>
+        <p>AI capabilities are doubling faster than any previous technology wave. Every year we delay is a cohort of students entering adulthood without the foundational literacy they need.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎓</div>
+        <h3>Knowing about AI isn't enough</h3>
+        <p>Reading about AI doesn't build intuition. Building with AI does. Students who have trained a model, encountered its bias, and governed its behavior are prepared in a fundamentally different way.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚖️</div>
+        <h3>Ethics must be earned, not lectured</h3>
+        <p>When a student has built an agent themselves, the ethics module isn't abstract philosophy — it's a direct confrontation with the thing they created. That's when it sticks.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌍</div>
+        <h3>The gap is widening</h3>
+        <p>Students with access to AI literacy will have compounding advantages. Schools that act now are investing in equity — giving every student a fair shot at the AI economy, not just those with tech-adjacent families.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔬</div>
+        <h3>Middle school is the moment</h3>
+        <p>Grades 6–8 are when students form durable mental models of how the world works. An AI-literate middle schooler becomes an AI-confident high schooler, college student, and adult.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛠️</div>
+        <h3>Real tools, real skills</h3>
+        <p>The OpenClaw platform students learn on is the same platform used by adult developers. Students aren't using a toy version — they're learning real, transferable skills on real infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="section-inner quote-inner">
+    <blockquote>
+      "Every module, your students ask the same question:<br/>
+      <em>What can my agent do now that it couldn't do before?</em>"
+    </blockquote>
+    <p class="quote-attr">— AI Explorers Curriculum Vision, 2026</p>
+  </div>
+</section>
+
+<!-- THE ARC -->
+<section id="arc">
+  <div class="section-inner">
+    <p class="section-label">The 7-Module Arc</p>
+    <h2>One agent. Seven capability unlocks.<br/>A semester-long story.</h2>
+    <p class="section-intro">Students follow a single through-line: they are building their own personal AI assistant. Each module adds one new power. By Module 7, it's real — and they built it.</p>
+
+    <div class="arc-track">
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">🐣</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 1 — Identity</div>
+          <h3>What Is AI? — Deploy Your Agent</h3>
+          <p>Students get their first look at AI, explore its history and vocabulary, then deploy their own OpenClaw instance. They name their agent, write its personality, and take their first steps as AI creators.</p>
+          <span class="arc-tag">Capability Unlock: Identity</span>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#74b9ff,#0984e3)">👁️</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 2 — Perception</div>
+          <h3>Give Your Agent Vision</h3>
+          <p>How do computers see? Students explore image recognition, train a Teachable Machine classifier, connect Hugging Face models to OpenClaw, and give their agent the ability to perceive the world.</p>
+          <span class="arc-tag">Capability Unlock: Vision &amp; Hearing</span>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#55efc4,#00b894)">🧠</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 3 — Knowledge</div>
+          <h3>Give Your Agent a Knowledge Base</h3>
+          <p>Students dive into decision trees, pattern recognition, and reasoning. They build a custom OpenClaw skill — giving their agent domain knowledge and logic they wrote themselves.</p>
+          <span class="arc-tag">Capability Unlock: Reasoning &amp; Knowledge</span>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#ffeaa7,#fdcb6e)">📚</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 4 — Learning</div>
+          <h3>Give Your Agent the Ability to Learn</h3>
+          <p>What is machine learning, really? Students explore training data, supervised learning, and overfitting — then train a real sentiment classifier and integrate their trained model directly into their agent.</p>
+          <span class="arc-tag">Capability Unlock: Machine Learning</span>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#fd79a8,#e84393)">🎙️</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 5 — Voice</div>
+          <h3>Give Your Agent a Voice</h3>
+          <p>LLMs, prompt engineering, and how language models actually work. Students connect their agent to a live channel — Discord, iMessage, or a webhook — so it can speak to the real world.</p>
+          <span class="arc-tag">Capability Unlock: Communication</span>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#e17055,#d63031)">⚖️</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 6 — Ethics</div>
+          <h3>Make Your Agent Ethical</h3>
+          <p>Students audit the agent they built. What biases crept in? What should it refuse? They write guardrails, conduct a bias testing lab, and create a real usage policy — governing the thing they made.</p>
+          <span class="arc-tag">Capability Unlock: Responsibility</span>
+        </div>
+      </div>
+
+      <div class="arc-module">
+        <div class="arc-dot" style="background:linear-gradient(135deg,#a29bfe,#fd79a8)">🎓</div>
+        <div class="arc-content">
+          <div class="arc-module-label">Module 7 — Synthesis</div>
+          <h3>Capstone: The AI Expo</h3>
+          <p>Students present their fully built, named, governed AI agent to a real audience — peers, teachers, parents, community members. Not a test. A demonstration of something real they created.</p>
+          <span class="arc-tag">Capability Unlock: Synthesis &amp; Presentation</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="outcomes" id="outcomes">
+  <div class="section-inner">
+    <p class="section-label">Student Outcomes</p>
+    <h2>What students walk away with</h2>
+    <p class="section-intro">Not just knowledge. Tangible artifacts, durable skills, and the lived experience of having built something real.</p>
+
+    <div class="outcomes-grid">
+      <div class="outcome-card">
+        <div class="outcome-num">01</div>
+        <h3>A Working AI Agent</h3>
+        <p>Deployed, named, personalized, connected to the world, and governed by policies the student wrote themselves.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">02</div>
+        <h3>Real Technical Literacy</h3>
+        <p>How ML models work, what training data is, what bias looks like in practice, and what an agentic AI system actually does.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">03</div>
+        <h3>Ethical Awareness</h3>
+        <p>Not as a lecture — as a lived design decision. Students who governed their own agent understand AI ethics from the inside.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">04</div>
+        <h3>Presentation Confidence</h3>
+        <p>The ability to explain a complex technical system to a non-technical audience. A skill that transfers everywhere.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">05</div>
+        <h3>An Agent Design Journal</h3>
+        <p>A portfolio artifact spanning all 7 modules — a documented record of every decision, reflection, and capability unlock.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">06</div>
+        <h3>Agency</h3>
+        <p>The experience of having made something that didn't exist before. That's not a bullet point — it's a change in identity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR EDUCATORS -->
+<section id="educators">
+  <div class="section-inner">
+    <p class="section-label">For Teachers &amp; Administrators</p>
+    <h2>Built for real classrooms</h2>
+    <p class="section-intro">Every module includes teacher guides, pacing options, assessment packs, and differentiation support. This curriculum is designed to be picked up and taught — not assembled.</p>
+
+    <div class="educators-grid">
+      <ul class="edu-list">
+        <li>
+          <span class="edu-icon">📋</span>
+          <div>
+            <h4>Complete lesson materials</h4>
+            <p>Every module includes lesson plans, slide outlines, activity handouts, lab guides, and teacher facilitation notes. Nothing left as an exercise.</p>
+          </div>
+        </li>
+        <li>
+          <span class="edu-icon">⏱️</span>
+          <div>
+            <h4>Flexible pacing</h4>
+            <p>Each module comes in a 1-week sprint and a 4-week extended version. A student who completes only M1–M3 still leaves with a named agent with vision and custom knowledge.</p>
+          </div>
+        </li>
+        <li>
+          <span class="edu-icon">📊</span>
+          <div>
+            <h4>Authentic assessment</h4>
+            <p>Exit tickets, lab rubrics, the Agent Design Journal portfolio, and the Module 7 AI Expo. Assessment that reflects real capability, not test-taking.</p>
+          </div>
+        </li>
+        <li>
+          <span class="edu-icon">🔁</span>
+          <div>
+            <h4>Spiral ethics threading</h4>
+            <p>Ethics isn't a standalone module — it's woven into every lesson. Students first encounter bias in M1, revisit it when training data in M4, and confront it directly in M6.</p>
+          </div>
+        </li>
+        <li>
+          <span class="edu-icon">♿</span>
+          <div>
+            <h4>Differentiation built in</h4>
+            <p>Each module includes scaffolded support for English learners and students with IEPs, plus extension challenges for advanced learners. No student left behind.</p>
+          </div>
+        </li>
+        <li>
+          <span class="edu-icon">🎪</span>
+          <div>
+            <h4>The AI Expo is a school event</h4>
+            <p>Module 7 is designed to be a community showcase, not a classroom quiz. Invite parents, community members, local tech professionals. Students rise to real audiences.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="edu-aside">
+        <h3>📦 What's included</h3>
+        <ul class="req-list">
+          <li>7 fully scaffolded modules</li>
+          <li>Lesson plans &amp; slide decks for every lesson</li>
+          <li>Hands-on labs using OpenClaw &amp; Hugging Face</li>
+          <li>Teachable Machine activities (no setup required)</li>
+          <li>Teacher guides with pacing &amp; answer keys</li>
+          <li>Assessment packs: formative + summative</li>
+          <li>Agent Design Journal student portfolio</li>
+          <li>AI Expo planning guide &amp; rubrics</li>
+          <li>Companion textbook chapters (student-readable)</li>
+          <li>Cross-curriculum glossary &amp; standards alignment</li>
+          <li>Interactive browser tools &amp; simulators</li>
+          <li>Teacher PD program materials</li>
+        </ul>
+
+        <div class="aside-divider"></div>
+
+        <h3>💻 Tech requirements</h3>
+        <ul class="req-list">
+          <li>Modern web browser (any device)</li>
+          <li>OpenClaw instance (self-hosted or shared)</li>
+          <li>Free Hugging Face account</li>
+          <li>No prior coding experience for M1–M3</li>
+          <li>Python familiarity helpful for M4 (not required)</li>
+          <li>Student data never leaves your infrastructure</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="platform">
+  <div class="section-inner">
+    <p class="section-label">Built on OpenClaw</p>
+    <h2>Real tools. Not a simulation.</h2>
+    <p class="section-intro">OpenClaw is the same open-source AI agent runtime used by adult developers. Students learn real tools, build real skills, and keep real ownership of what they create.</p>
+
+    <div class="platform-grid">
+      <div class="plat-card">
+        <span class="plat-icon">🆓</span>
+        <div>
+          <h4>Free &amp; self-hostable</h4>
+          <p>No per-student licenses. No vendor lock-in. Deploy once for the whole school.</p>
+        </div>
+      </div>
+      <div class="plat-card">
+        <span class="plat-icon">🔒</span>
+        <div>
+          <h4>Privacy by design</h4>
+          <p>Student data stays on your infrastructure. No cloud dependency, no data broker, no fine print.</p>
+        </div>
+      </div>
+      <div class="plat-card">
+        <span class="plat-icon">🧩</span>
+        <div>
+          <h4>Designed for extension</h4>
+          <p>The skills students write in M3 are real OpenClaw skills. The agents they deploy are real agents. Nothing is simulated.</p>
+        </div>
+      </div>
+      <div class="plat-card">
+        <span class="plat-icon">🌐</span>
+        <div>
+          <h4>Used in production</h4>
+          <p>OpenClaw is actively developed and used by adult professionals — which means students are learning tools with staying power.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-inner cta-inner">
+    <p class="section-label">Get Started</p>
+    <h2>Your students could be building<br/>their agent this semester.</h2>
+    <p>The full curriculum is free, open source, and ready to teach. Start with the vision doc, walk through Module 1, and have students deploy their first agent by the end of week two.</p>
+    <div class="cta-btns">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary" target="_blank">
+        📂 Browse the Full Curriculum
+      </a>
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/CURRICULUM_VISION.md" class="btn-secondary" target="_blank">
+        📄 Read the Curriculum Vision
+      </a>
+    </div>
+    <p class="license-note">
+      Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> —
+      free to use, adapt, and share. Forever.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    AI Explorers Curriculum — empowering the next generation of AI-literate humans.<br/>
+    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a> ·
+    Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> ·
+    Version 2.0 — March 2026
+  </p>
+</footer>
+
+</body>
+</html>
