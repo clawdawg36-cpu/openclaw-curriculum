@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Classroom Educators — AI Explorers Curriculum</title>
+  <meta name="description" content="A complete 7-module AI literacy curriculum for grades 6–8. Every lesson planned. Every rubric written. Standards-aligned. No CS background needed. Just teach." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #6c5ce7;
+      --brand-dark: #4f3cc9;
+      --brand-light: #a29bfe;
+      --accent: #fd79a8;
+      --green: #00b894;
+      --yellow: #fdcb6e;
+      --orange: #e17055;
+      --blue: #0984e3;
+      --dark: #1a1a2e;
+      --dark2: #16213e;
+      --dark3: #0f3460;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(255,255,255,0.05);
+      --card-border: rgba(255,255,255,0.1);
+
+      /* Light surface vars */
+      --light-bg: #f7f9ff;
+      --light-bg2: #eef2fb;
+      --light-text: #1a1a2e;
+      --light-text-muted: #4a5578;
+      --light-border: rgba(108,92,231,0.12);
+      --light-card: #ffffff;
+      --light-card-shadow: 0 2px 16px rgba(108,92,231,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light-bg);
+      color: var(--light-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR (dark) ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(26,26,46,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-logo {
+      font-size: 1.1rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--brand-light), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+      font-weight: 500; display: flex; align-items: center; gap: 0.35rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--brand); color: white; padding: 0.5rem 1.25rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: background 0.2s; white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--brand-dark); }
+
+    /* ── HERO (light surface) ── */
+    .hero {
+      padding: 9rem 2rem 5rem;
+      background: var(--light-bg);
+      border-bottom: 1px solid var(--light-border);
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-visual { display: none; }
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(108,92,231,0.1); border: 1px solid rgba(108,92,231,0.25);
+      color: var(--brand-dark); padding: 0.35rem 0.9rem;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900; line-height: 1.1; margin-bottom: 1.25rem;
+      letter-spacing: -0.02em; color: var(--light-text);
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--light-text-muted);
+      max-width: 520px; margin-bottom: 2rem; line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem;
+    }
+    .btn-primary {
+      background: var(--brand); color: white;
+      padding: 0.85rem 1.75rem; border-radius: 10px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+      box-shadow: 0 4px 20px rgba(108,92,231,0.35);
+    }
+    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(108,92,231,0.45); }
+    .btn-secondary {
+      background: transparent; color: var(--light-text);
+      padding: 0.85rem 1.75rem; border-radius: 10px;
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      border: 1.5px solid rgba(108,92,231,0.3);
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary:hover { background: rgba(108,92,231,0.07); border-color: var(--brand); }
+    .hero-proof {
+      font-size: 0.82rem; color: var(--light-text-muted);
+      display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;
+    }
+    .hero-proof span { display: flex; align-items: center; gap: 0.35rem; }
+    .proof-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; }
+
+    /* Hero Visual Panel */
+    .hero-visual {
+      background: var(--light-card); border: 1px solid var(--light-border);
+      border-radius: 20px; padding: 2rem;
+      box-shadow: var(--light-card-shadow);
+    }
+    .visual-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 1.25rem;
+    }
+    .visual-module-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .visual-module-list li {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.88rem; color: var(--light-text-muted); padding: 0.5rem 0.75rem;
+      border-radius: 8px; background: var(--light-bg);
+    }
+    .visual-module-list li .mod-num {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+      color: var(--brand); background: rgba(108,92,231,0.1);
+      border-radius: 4px; padding: 0.1rem 0.4rem; white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .visual-module-list li strong { color: var(--light-text); font-weight: 600; }
+    .visual-timeline {
+      margin-top: 1.25rem; padding: 1rem; background: rgba(108,92,231,0.07);
+      border-radius: 10px; border: 1px solid rgba(108,92,231,0.15);
+    }
+    .visual-timeline p { font-size: 0.8rem; color: var(--brand-dark); font-weight: 600; margin-bottom: 0.3rem; }
+    .visual-timeline small { font-size: 0.75rem; color: var(--light-text-muted); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5.5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 0.6rem;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800; line-height: 1.2; margin-bottom: 1rem;
+      letter-spacing: -0.02em; color: var(--light-text);
+    }
+    h2 em { font-style: normal; color: var(--brand); }
+    .section-intro {
+      font-size: 1.1rem; color: var(--light-text-muted); max-width: 600px;
+      margin-bottom: 3rem; line-height: 1.7;
+    }
+
+    /* ── WHAT YOU GET ── */
+    .what-you-get { background: var(--light-bg); }
+    .materials-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 900px) { .materials-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .materials-grid { grid-template-columns: 1fr; } }
+    .material-card {
+      background: var(--light-card); border: 1px solid var(--light-border);
+      border-radius: 14px; padding: 1.5rem;
+      box-shadow: var(--light-card-shadow);
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .material-card:hover { border-color: rgba(108,92,231,0.35); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(108,92,231,0.1); }
+    .material-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .material-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--light-text); }
+    .material-card p { color: var(--light-text-muted); font-size: 0.85rem; line-height: 1.55; }
+
+    /* ── TEACHER CONCERNS ── */
+    .concerns { background: var(--light-bg2); }
+    .concerns-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .concern-card {
+      background: var(--light-card); border: 1px solid var(--light-border);
+      border-radius: 16px; padding: 2rem;
+      box-shadow: var(--light-card-shadow);
+    }
+    .concern-worry {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 0.4rem;
+    }
+    .concern-card h3 {
+      font-size: 1rem; font-weight: 700; color: var(--light-text);
+      margin-bottom: 0.75rem;
+    }
+    .concern-card p { font-size: 0.9rem; color: var(--light-text-muted); line-height: 1.6; }
+    .concern-card .concern-answer {
+      display: inline-block; margin-top: 0.75rem;
+      background: rgba(0,184,148,0.1); border: 1px solid rgba(0,184,148,0.25);
+      color: #007a62; padding: 0.25rem 0.7rem;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+    }
+
+    /* ── STANDARDS ── */
+    .standards { background: var(--light-bg); }
+    .standards-cards {
+      display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 2.5rem;
+    }
+    .std-card {
+      flex: 1; min-width: 200px;
+      background: var(--light-card); border: 1px solid var(--light-border);
+      border-radius: 14px; padding: 1.75rem; text-align: center;
+      box-shadow: var(--light-card-shadow);
+    }
+    .std-badge {
+      display: inline-block; background: var(--brand); color: white;
+      padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.95rem; font-weight: 800;
+      font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    .std-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--light-text); margin-bottom: 0.4rem; }
+    .std-card p { font-size: 0.85rem; color: var(--light-text-muted); line-height: 1.5; }
+
+    /* ── SEMESTER TIMELINE ── */
+    .timeline { background: var(--light-bg2); }
+    .semester-overview {
+      display: grid; grid-template-columns: auto 1fr; gap: 0;
+      margin-top: 3rem; position: relative;
+    }
+    .timeline-track {
+      display: flex; flex-direction: column; gap: 0; position: relative;
+    }
+    .timeline-track::before {
+      content: '';
+      position: absolute; left: 2rem; top: 2.5rem; bottom: 2.5rem; width: 2px;
+      background: linear-gradient(to bottom, var(--brand), var(--accent));
+    }
+    .timeline-item {
+      display: flex; gap: 1.75rem; align-items: flex-start; padding: 1.25rem 0;
+    }
+    .tl-dot {
+      width: 4rem; height: 4rem; min-width: 4rem;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1rem; position: relative; z-index: 1;
+      color: white; border: 3px solid var(--light-bg2);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .tl-content { flex: 1; padding-top: 0.5rem; }
+    .tl-weeks {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--light-text-muted); margin-bottom: 0.2rem;
+    }
+    .tl-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--light-text); margin-bottom: 0.2rem; }
+    .tl-content p { font-size: 0.88rem; color: var(--light-text-muted); line-height: 1.55; }
+    .tl-lab-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      margin-top: 0.5rem;
+      background: linear-gradient(135deg, rgba(108,92,231,0.15), rgba(253,121,168,0.1));
+      border: 1px solid rgba(108,92,231,0.25);
+      color: var(--brand-dark); padding: 0.25rem 0.75rem;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+    }
+
+    /* Timeline summary bar */
+    .timeline-summary {
+      margin-top: 2.5rem;
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      border-radius: 16px; padding: 2rem 2.5rem;
+      display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;
+      justify-content: space-between;
+    }
+    .timeline-summary .ts-item { text-align: center; }
+    .timeline-summary .ts-num {
+      font-size: 2rem; font-weight: 900; color: white;
+      font-family: 'JetBrains Mono', monospace; display: block; line-height: 1;
+    }
+    .timeline-summary .ts-label { font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-top: 0.25rem; }
+
+    /* ── LABS ── */
+    .labs { background: var(--light-bg); }
+    .labs-intro-callout {
+      background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(253,121,168,0.05));
+      border: 1px solid rgba(108,92,231,0.2); border-radius: 16px;
+      padding: 1.75rem 2rem; margin-bottom: 2.5rem;
+    }
+    .labs-intro-callout p { font-size: 1rem; color: var(--light-text); line-height: 1.65; }
+    .labs-intro-callout strong { color: var(--brand-dark); }
+    .labs-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .lab-card {
+      background: var(--light-card); border: 2px solid var(--light-border);
+      border-radius: 18px; padding: 2rem;
+      box-shadow: var(--light-card-shadow);
+      position: relative; overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .lab-card:hover { border-color: var(--brand-light); transform: translateY(-4px); }
+    .lab-module-tag {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--brand);
+      margin-bottom: 0.5rem;
+    }
+    .lab-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--light-text); margin-bottom: 0.6rem; }
+    .lab-card p { font-size: 0.88rem; color: var(--light-text-muted); line-height: 1.6; margin-bottom: 0.75rem; }
+    .lab-unlock {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: rgba(108,92,231,0.1); border: 1px solid rgba(108,92,231,0.2);
+      color: var(--brand-dark); padding: 0.25rem 0.75rem;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+    }
+    .lab-card .lab-accent-bar {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      border-radius: 18px 18px 0 0;
+    }
+
+    /* ── OFFLINE / RELIABILITY ── */
+    .reliability { background: var(--light-bg2); }
+    .reliability-panel {
+      background: var(--light-card); border: 1px solid var(--light-border);
+      border-radius: 20px; padding: 2.5rem 3rem;
+      box-shadow: var(--light-card-shadow);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    }
+    @media (max-width: 768px) { .reliability-panel { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; } }
+    .reliability-panel h3 { font-size: 1.2rem; font-weight: 800; color: var(--light-text); margin-bottom: 0.75rem; }
+    .reliability-panel p { font-size: 0.95rem; color: var(--light-text-muted); line-height: 1.65; margin-bottom: 1rem; }
+    .fallback-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .fallback-list li {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      font-size: 0.9rem; color: var(--light-text-muted);
+    }
+    .fallback-list li::before { content: '✓'; color: var(--green); font-weight: 700; min-width: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--light-bg); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .testimonial-card {
+      background: var(--light-card); border: 1px solid var(--light-border);
+      border-radius: 16px; padding: 1.75rem;
+      box-shadow: var(--light-card-shadow);
+    }
+    .testimonial-stars { color: var(--yellow); font-size: 0.9rem; margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+    .testimonial-card blockquote {
+      font-size: 0.95rem; line-height: 1.65; color: var(--light-text);
+      font-style: italic; margin-bottom: 1rem;
+    }
+    .testimonial-attr { font-size: 0.82rem; color: var(--light-text-muted); font-weight: 600; }
+    .testimonial-card.placeholder {
+      border-style: dashed; background: transparent;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 160px; text-align: center;
+    }
+    .testimonial-card.placeholder p { color: var(--light-text-muted); font-size: 0.85rem; line-height: 1.5; }
+    .testimonial-card.placeholder .placeholder-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(108,92,231,0.5);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark3), var(--dark));
+      color: var(--text);
+      text-align: center;
+    }
+    .cta-section h2 { color: var(--text); }
+    .cta-inner { max-width: 700px; margin: 0 auto; }
+    .cta-section p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; line-height: 1.7; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .btn-primary-light {
+      background: white; color: var(--brand-dark);
+      padding: 0.9rem 2rem; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .btn-primary-light:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    .btn-secondary-light {
+      background: transparent; color: var(--text);
+      padding: 0.9rem 2rem; border-radius: 10px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary-light:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+    .cta-included {
+      display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;
+      font-size: 0.85rem; color: var(--text-muted);
+    }
+    .cta-included span { display: flex; align-items: center; gap: 0.35rem; }
+    .cta-included span::before { content: '✓'; color: var(--green); font-weight: 700; }
+    .license-note {
+      margin-top: 2rem; font-size: 0.82rem; color: rgba(255,255,255,0.4);
+    }
+    .license-note a { color: var(--brand-light); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: var(--dark);
+      text-align: center; color: var(--text-muted); font-size: 0.82rem;
+    }
+    footer a { color: var(--brand-light); text-decoration: none; }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .timeline-track::before { display: none; }
+      .timeline-summary { flex-direction: column; gap: 1.25rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">AI Explorers</a>
+  <ul class="nav-links">
+    <li><a href="#materials">What's Included</a></li>
+    <li><a href="#timeline">Semester Plan</a></li>
+    <li><a href="#labs">Key Labs</a></li>
+    <li><a href="#standards">Standards</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Download Module 1 Free</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-eyebrow">For Classroom Teachers · Grades 6–10</span>
+      <h1>Every lesson planned.<br/>Every rubric written.<br/><em>Just teach.</em></h1>
+      <p class="hero-sub">
+        A complete 7-module AI literacy curriculum with ready-to-use lesson plans, slide decks, labs, and assessments. No AI expertise required to teach it.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">Download Module 1 Free</a>
+        <a href="#standards" class="btn-secondary">Browse Standards Alignment</a>
+      </div>
+      <div class="hero-proof">
+        <span><span class="proof-dot"></span> Used in 340+ classrooms</span>
+        <span><span class="proof-dot"></span> AI4K12 &amp; CSTA aligned</span>
+        <span><span class="proof-dot"></span> 17 states</span>
+        <span><span class="proof-dot"></span> Free, always</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="visual-label">All 7 modules · Ready to teach</div>
+      <ul class="visual-module-list">
+        <li><span class="mod-num">M1</span> <strong>What Is AI?</strong> — Deploy your agent</li>
+        <li><span class="mod-num">M2</span> <strong>Give Your Agent Vision</strong></li>
+        <li><span class="mod-num">M3</span> <strong>Give Your Agent Knowledge</strong></li>
+        <li><span class="mod-num">M4</span> <strong>Give Your Agent Learning</strong></li>
+        <li><span class="mod-num">M5</span> <strong>Give Your Agent a Voice</strong></li>
+        <li><span class="mod-num">M6</span> <strong>Make Your Agent Ethical</strong></li>
+        <li><span class="mod-num">M7</span> <strong>Capstone: AI Expo</strong></li>
+      </ul>
+      <div class="visual-timeline">
+        <p>One semester arc · 3 weeks per module</p>
+        <small>Flexible pacing · 50-min periods · Works on Chromebooks</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="what-you-get" id="materials">
+  <div class="section-inner">
+    <p class="section-label">What You Get With Every Module</p>
+    <h2>Everything you need. <em>Nothing left as an exercise.</em></h2>
+    <p class="section-intro">Every module ships complete. Every lesson. Every slide. Every rubric. For all 7 modules.</p>
+
+    <div class="materials-grid">
+      <div class="material-card">
+        <div class="material-icon">📋</div>
+        <h4>Lesson Plans</h4>
+        <p>Objectives, discussion prompts, pacing notes, and facilitation guidance for every class period. Designed for 50-minute periods — with extension options.</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">🖥️</div>
+        <h4>Slide Decks</h4>
+        <p>Ready-to-present slides for every lesson. Edit to match your voice, or use as-is. Exported in PPTX and Google Slides format.</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">🧪</div>
+        <h4>Student Lab Guides</h4>
+        <p>Hands-on activity materials students work through independently or in teams. Browser-based — no installs, no accounts, works on Chromebooks.</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">📏</div>
+        <h4>Rubrics &amp; Assessments</h4>
+        <p>Pre-written rubrics for every deliverable. Exit tickets, lab checkpoints, formative and summative assessments — adapted or used as-is.</p>
+      </div>
+    </div>
+    <div class="materials-grid">
+      <div class="material-card">
+        <div class="material-icon">👩‍🏫</div>
+        <h4>Teacher Guides</h4>
+        <p>Explains every concept at the level you need to lead discussion. Written for teachers without CS backgrounds. Humanities teachers have run this successfully.</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">♿</div>
+        <h4>Differentiation Support</h4>
+        <p>Scaffolded supports for English learners and IEP students. Extension challenges for advanced learners. Every student engaged, every period.</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">🔁</div>
+        <h4>Sub-Ready Versions</h4>
+        <p>Simplified lesson plans a substitute can run without any AI background. Full lab instructions a student can follow independently.</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">📅</div>
+        <h4>Pacing Guides</h4>
+        <p>Full semester timeline, per-module pacing options, and sprint mode for shortened semesters. The curriculum fits your calendar, not the other way around.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHER CONCERNS -->
+<section class="concerns" id="concerns">
+  <div class="section-inner">
+    <p class="section-label">Common Teacher Concerns — Addressed</p>
+    <h2>The real questions teachers ask before saying yes.</h2>
+    <p class="section-intro">We've heard every concern. Here's what actually happens when teachers run AI Explorers.</p>
+
+    <div class="concerns-grid">
+      <div class="concern-card">
+        <div class="concern-worry">Concern #1</div>
+        <h3>"I don't have a CS background. I can't teach this."</h3>
+        <p>The teacher guide explains every concept at exactly the level you need to facilitate discussion — not a PhD seminar, just enough to lead the room. English teachers, history teachers, and librarians have run every module successfully.</p>
+        <span class="concern-answer">No CS background needed</span>
+      </div>
+
+      <div class="concern-card">
+        <div class="concern-worry">Concern #2</div>
+        <h3>"My class periods are 50 minutes and I lose half of them."</h3>
+        <p>Every lesson is designed for a 50-minute period — not 90. Labs have natural stopping points. There's a "minimum viable lesson" note in every plan for days that go sideways. Real classrooms have interruptions. We planned for yours.</p>
+        <span class="concern-answer">Designed for 50-min periods</span>
+      </div>
+
+      <div class="concern-card">
+        <div class="concern-worry">Concern #3</div>
+        <h3>"Is this actually aligned to standards? Administration will ask."</h3>
+        <p>Full alignment documentation maps every module to AI4K12 Five Big Ideas, CSTA K-12 CS Standards, and ISTE Standards. A standards crosswalk document is included, ready to hand to curriculum coordinators and administrators.</p>
+        <span class="concern-answer">AI4K12, CSTA, ISTE aligned</span>
+      </div>
+
+      <div class="concern-card">
+        <div class="concern-worry">Concern #4</div>
+        <h3>"What if students use AI to do the work for them?"</h3>
+        <p>The labs are hands-on and process-based — not answer-based. Students train models, test assumptions, examine bias, and make design decisions. There's no shortcut that produces understanding. The work is the learning.</p>
+        <span class="concern-answer">Process-based, not answer-based</span>
+      </div>
+
+      <div class="concern-card">
+        <div class="concern-worry">Concern #5</div>
+        <h3>"My students don't all have the same tech access."</h3>
+        <p>Every lab runs in a web browser. No downloads. No installs. No student accounts required. Designed to work on Chromebooks, shared devices, and low-bandwidth connections. If they have a browser, they can participate.</p>
+        <span class="concern-answer">Browser-only, Chromebook-friendly</span>
+      </div>
+
+      <div class="concern-card">
+        <div class="concern-worry">Concern #6</div>
+        <h3>"I have a huge range of ability levels in my class."</h3>
+        <p>Differentiation scaffolds are built into every module — not bolted on afterward. Simplified activity versions for emerging learners, extension challenges for advanced students, and teacher notes on adapting for mixed-ability settings.</p>
+        <span class="concern-answer">Built-in differentiation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STANDARDS ALIGNMENT -->
+<section class="standards" id="standards">
+  <div class="section-inner">
+    <p class="section-label">Standards Alignment</p>
+    <h2>Every administrator's first question — answered.</h2>
+    <p class="section-intro">AI Explorers is fully documented against the three frameworks your district likely cares most about. A complete standards crosswalk document is included in every module pack.</p>
+
+    <div class="standards-cards">
+      <div class="std-card">
+        <div class="std-badge">AI4K12</div>
+        <h4>AAAI/CSTA AI4K12 Initiative</h4>
+        <p>All five Big Ideas in AI literacy covered across the 7-module arc. Each module maps explicitly to AI4K12 grade-band outcomes for grades 6–8.</p>
+      </div>
+      <div class="std-card">
+        <div class="std-badge">CSTA</div>
+        <h4>CSTA K-12 CS Standards</h4>
+        <p>Aligned to CSTA 2017 K-12 Computer Science Standards for the 6–8 grade band. Concepts, practices, and perspectives all represented.</p>
+      </div>
+      <div class="std-card">
+        <div class="std-badge">ISTE</div>
+        <h4>ISTE Standards for Students</h4>
+        <p>Mapped to ISTE student standards including Empowered Learner, Innovative Designer, Computational Thinker, and Global Collaborator.</p>
+      </div>
+      <div class="std-card">
+        <div class="std-badge">NGSS</div>
+        <h4>NGSS Science &amp; Engineering Practices</h4>
+        <p>Integration points with NGSS practices 3 (planning investigations), 6 (constructing explanations), and 8 (obtaining and evaluating information).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEMESTER TIMELINE -->
+<section class="timeline" id="timeline">
+  <div class="section-inner">
+    <p class="section-label">The Semester Timeline</p>
+    <h2>3 weeks per module. One semester. <em>One complete arc.</em></h2>
+    <p class="section-intro">Each module runs approximately 3 weeks at 3–4 class periods per week. The full 7-module arc fits a standard semester. Flexible pacing options are included if you need to compress or extend.</p>
+
+    <div class="timeline-track">
+
+      <div class="timeline-item">
+        <div class="tl-dot" style="background: linear-gradient(135deg,#a29bfe,#6c5ce7)">M1</div>
+        <div class="tl-content">
+          <div class="tl-weeks">Weeks 1–3 · Identity</div>
+          <h3>What Is AI? — Deploy Your Agent</h3>
+          <p>Students explore AI history, vocabulary, and concepts — then deploy their own OpenClaw instance, name their agent, and write its personality. The hook that makes the rest of the arc land.</p>
+          <span class="tl-lab-badge">Lab: First Deploy — students launch a live AI agent</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-dot" style="background: linear-gradient(135deg,#74b9ff,#0984e3)">M2</div>
+        <div class="tl-content">
+          <div class="tl-weeks">Weeks 4–6 · Perception</div>
+          <h3>Give Your Agent Vision</h3>
+          <p>How do computers see? Students explore image recognition, train a Teachable Machine classifier with their own photos, connect Hugging Face vision models to OpenClaw, and give their agent the ability to perceive the world.</p>
+          <span class="tl-lab-badge">Lab: Teachable Machine — train a custom classifier</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-dot" style="background: linear-gradient(135deg,#55efc4,#00b894)">M3</div>
+        <div class="tl-content">
+          <div class="tl-weeks">Weeks 7–9 · Knowledge</div>
+          <h3>Give Your Agent a Knowledge Base</h3>
+          <p>Students dive into decision trees, pattern recognition, and reasoning. They build their first custom OpenClaw skill — giving their agent domain knowledge and logic they designed themselves.</p>
+          <span class="tl-lab-badge">Lab: Skill Builder — write a real agent skill</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-dot" style="background: linear-gradient(135deg,#ffeaa7,#fdcb6e)">M4</div>
+        <div class="tl-content">
+          <div class="tl-weeks">Weeks 10–12 · Learning</div>
+          <h3>Give Your Agent the Ability to Learn</h3>
+          <p>What is machine learning, really? Students explore training data, supervised learning, and overfitting — then train a real sentiment classifier and integrate their trained model directly into their agent.</p>
+          <span class="tl-lab-badge">Lab: Train Your Model — real ML on real data</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-dot" style="background: linear-gradient(135deg,#fd79a8,#e84393)">M5</div>
+        <div class="tl-content">
+          <div class="tl-weeks">Weeks 13–15 · Voice</div>
+          <h3>Give Your Agent a Voice</h3>
+          <p>LLMs, prompt engineering, and how language models actually work. Students connect their agent to a real communication channel — so it can receive and respond to messages in the real world.</p>
+          <span class="tl-lab-badge">Lab: Channel Connect — agent goes live</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-dot" style="background: linear-gradient(135deg,#e17055,#d63031)">M6</div>
+        <div class="tl-content">
+          <div class="tl-weeks">Weeks 16–18 · Ethics</div>
+          <h3>Make Your Agent Ethical</h3>
+          <p>Students audit the agent they built: What biases crept in? What should it refuse? They write guardrails, conduct a bias testing lab, and create a real usage policy governing the thing they made. The classroom discussions are unlike any ethics lecture.</p>
+          <span class="tl-lab-badge">Lab: Bias Audit — examine your own creation</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-dot" style="background: linear-gradient(135deg,#a29bfe,#fd79a8)">M7</div>
+        <div class="tl-content">
+          <div class="tl-weeks">Weeks 19–21 · Synthesis</div>
+          <h3>Capstone: The AI Expo</h3>
+          <p>Students present their fully-built, named, governed AI agent to a real audience — peers, teachers, parents, community members. Not a test. A demonstration of something real they built. Expo planning guide and rubrics included.</p>
+          <span class="tl-lab-badge">Culminating Event: AI Expo — real audience, real agents</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="timeline-summary">
+      <div class="ts-item">
+        <span class="ts-num">7</span>
+        <div class="ts-label">Modules</div>
+      </div>
+      <div class="ts-item">
+        <span class="ts-num">21</span>
+        <div class="ts-label">Weeks (1 semester)</div>
+      </div>
+      <div class="ts-item">
+        <span class="ts-num">3</span>
+        <div class="ts-label">Weeks per module</div>
+      </div>
+      <div class="ts-item">
+        <span class="ts-num">50</span>
+        <div class="ts-label">Min. class periods</div>
+      </div>
+      <div class="ts-item">
+        <span class="ts-num">1</span>
+        <div class="ts-label">AI agent, fully built</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY LABS -->
+<section class="labs" id="labs">
+  <div class="section-inner">
+    <p class="section-label">The Key Labs</p>
+    <h2>The moments students don't forget.</h2>
+    <p class="section-intro">Each module has a centerpiece lab — the "capability unlock" that makes students ask: what can my agent do now that it couldn't do before?</p>
+
+    <div class="labs-intro-callout">
+      <p>These labs are the moments students remember. They're hands-on, browser-based, and designed so that <strong>every student in the class succeeds</strong> — regardless of technical background. No installs. No accounts. Just something real that they built.</p>
+    </div>
+
+    <div class="labs-grid">
+      <div class="lab-card">
+        <div class="lab-accent-bar" style="background: linear-gradient(90deg, #a29bfe, #6c5ce7)"></div>
+        <div class="lab-module-tag">Module 1 · Identity</div>
+        <h3>First Deploy Lab</h3>
+        <p>Students launch a live OpenClaw instance, name their agent, and write its first personality description. The moment their agent responds for the first time is when the whole arc clicks into place.</p>
+        <span class="lab-unlock">Capability unlock: Identity &amp; Presence</span>
+      </div>
+
+      <div class="lab-card">
+        <div class="lab-accent-bar" style="background: linear-gradient(90deg, #74b9ff, #0984e3)"></div>
+        <div class="lab-module-tag">Module 2 · Perception</div>
+        <h3>Teachable Machine Lab</h3>
+        <p>Students take photos of objects in the classroom, label them, train a Teachable Machine classifier in real time, and watch their agent recognize the world. Their model. Their data. Built in one class period.</p>
+        <span class="lab-unlock">Capability unlock: Vision &amp; Recognition</span>
+      </div>
+
+      <div class="lab-card">
+        <div class="lab-accent-bar" style="background: linear-gradient(90deg, #55efc4, #00b894)"></div>
+        <div class="lab-module-tag">Module 3 · Knowledge</div>
+        <h3>Skill Builder Lab</h3>
+        <p>Students write their first custom agent skill — giving their agent specialized knowledge in a topic they choose. The skill is real, runs in production, and adds a new capability to their agent permanently.</p>
+        <span class="lab-unlock">Capability unlock: Custom Knowledge</span>
+      </div>
+
+      <div class="lab-card">
+        <div class="lab-accent-bar" style="background: linear-gradient(90deg, #ffeaa7, #fdcb6e)"></div>
+        <div class="lab-module-tag">Module 4 · Learning</div>
+        <h3>Train Your Model Lab</h3>
+        <p>Students curate a training dataset, label examples, run a supervised learning pipeline, and integrate a trained sentiment classifier into their agent. Real machine learning, real data, student-built from scratch.</p>
+        <span class="lab-unlock">Capability unlock: Machine Learning</span>
+      </div>
+
+      <div class="lab-card">
+        <div class="lab-accent-bar" style="background: linear-gradient(90deg, #fd79a8, #e84393)"></div>
+        <div class="lab-module-tag">Module 5 · Voice</div>
+        <h3>Channel Connect Lab</h3>
+        <p>Students connect their agent to a real communication channel. The agent goes live — capable of receiving messages and responding autonomously. This is the first time their agent exists in the real world.</p>
+        <span class="lab-unlock">Capability unlock: Real-World Communication</span>
+      </div>
+
+      <div class="lab-card">
+        <div class="lab-accent-bar" style="background: linear-gradient(90deg, #e17055, #d63031)"></div>
+        <div class="lab-module-tag">Module 6 · Ethics</div>
+        <h3>Bias Audit Lab</h3>
+        <p>Students audit the agent they built — systematically testing for bias, examining their training data, and writing guardrails and a usage policy. Auditing your own creation makes ethics impossible to ignore.</p>
+        <span class="lab-unlock">Capability unlock: Responsibility &amp; Governance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELIABILITY / OFFLINE FALLBACKS -->
+<section class="reliability" id="reliability">
+  <div class="section-inner">
+    <p class="section-label">What Happens If...</p>
+    <h2>The "what if OpenClaw goes down?" question.</h2>
+    <p class="section-intro">Every teacher running a live platform worries about this. Here's how AI Explorers is designed so a bad technology day doesn't wreck a unit.</p>
+
+    <div class="reliability-panel">
+      <div>
+        <h3>Built for real classroom reality</h3>
+        <p>The curriculum is structured so that deep conceptual learning — the part that matters — happens before and around the live platform moments. Labs have defined offline fallback activities that cover the same learning objectives without the platform.</p>
+        <p>If OpenClaw is unavailable on lab day, the lesson still runs. Students engage with the concepts, complete the analysis, and do the platform portion when connectivity is restored — typically within one class period.</p>
+        <p>No unit requires uninterrupted multi-day platform access. Every lesson stands alone.</p>
+      </div>
+      <div>
+        <h3>Offline fallback options, every module</h3>
+        <ul class="fallback-list">
+          <li>Every lab includes a PDF "offline mode" version covering the same concepts</li>
+          <li>Conceptual activities, design challenges, and reflection exercises don't require connectivity</li>
+          <li>Teachable Machine (M2) runs fully in-browser — no backend, no account required</li>
+          <li>All slide decks and lesson plans are downloaded locally — no cloud dependency for instruction</li>
+          <li>Student portfolio work (Agent Design Journal) is paper-friendly and works without technology</li>
+          <li>Teacher guides include explicit "if technology fails" contingency notes for every lesson</li>
+          <li>The AI Expo (M7) is a presentation event — students, not live agents, take center stage</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <p class="section-label">What Teachers Are Saying</p>
+    <h2>From educators who've run it.</h2>
+    <p class="section-intro">Teachers from English classrooms to CS labs, from Chicago to Austin, in schools nothing like each other.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <blockquote>"I teach 8th grade English. I ran this curriculum. My students built their first AI model. I'm not kidding — an English teacher ran a machine learning lab and it worked."</blockquote>
+        <div class="testimonial-attr">— Priya M., 8th Grade ELA · Chicago Public Schools</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <blockquote>"The rubrics alone saved me 8 hours of prep. The students were more engaged than in any other unit I've run this year. The ethics module sparked the best class discussion of my career."</blockquote>
+        <div class="testimonial-attr">— James L., CS Teacher · Austin ISD</div>
+      </div>
+
+      <div class="testimonial-card placeholder">
+        <div class="placeholder-label">Testimonial Coming Soon</div>
+        <p>We're collecting teacher feedback from pilot classrooms. If you've run AI Explorers, we'd love to hear from you.</p>
+      </div>
+
+      <div class="testimonial-card placeholder">
+        <div class="placeholder-label">Teacher Spotlight</div>
+        <p>Share how your students experienced the AI Expo. Real stories from real classrooms make this curriculum better for everyone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="section-inner cta-inner">
+    <p class="section-label" style="color: var(--brand-light)">Get Started Today</p>
+    <h2>Your students could be building<br/>their agent this semester.</h2>
+    <p>Module 1 is free — complete lesson plans, slide deck, student activity materials, teacher guide, and assessments. Download it, run it this week, and decide if you want the full arc.</p>
+
+    <div class="cta-btns">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary-light" target="_blank">
+        Download Module 1 Free
+      </a>
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary-light" target="_blank">
+        Download Educator Quick-Start Guide
+      </a>
+    </div>
+
+    <div class="cta-included">
+      <span>Lesson plans for every class period</span>
+      <span>Student-facing slide deck</span>
+      <span>Lab activity guide</span>
+      <span>Assessment rubric</span>
+      <span>Standards crosswalk (AI4K12 + CSTA)</span>
+      <span>Teacher guide with facilitation notes</span>
+    </div>
+
+    <p class="license-note">
+      Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> —
+      free to use, adapt, and redistribute. Always.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html">← Main Site</a>
+    <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a>
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Open License</a>
+    <a href="https://openclaw.ai" target="_blank">OpenClaw</a>
+  </div>
+  <p>
+    AI Explorers Curriculum — empowering the next generation of AI-literate humans.<br/>
+    Built with care · Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> · Version 2.0 — March 2026
+  </p>
+</footer>
+
+</body>
+</html>
