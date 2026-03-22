@@ -1,128 +1,158 @@
 # Hosting Setup — GitHub Pages Deployment Pipeline
 
-**Project:** OpenClaw AI Curriculum for Middle School  
-**Decision Date:** 2026-03-22  
+**Project:** AI Explorers Marketing Site  
+**Updated:** 2026-03-22  
 **Status:** Finalized ✅  
-**Tech Stack:** Eleventy (11ty) → GitHub Pages via GitHub Actions
+**Tech Stack:** Plain HTML/CSS/JS → GitHub Pages via GitHub Actions
 
 ---
 
 ## Overview
 
-The AI Explorers marketing site is a static site built with **Eleventy (11ty)** and deployed automatically to **GitHub Pages** via **GitHub Actions** on every push to `main`. No manual deploys, no FTP, no build servers — push code, site updates.
+The AI Explorers marketing site is a **plain HTML/CSS site** deployed automatically to **GitHub Pages** via **GitHub Actions** on every push to `main`. No build step, no bundler, no static site generator — the HTML files in `website/` are served directly.
+
+Live URL (until custom domain): `https://clawdawg36-cpu.github.io/openclaw-curriculum/`
 
 ---
 
-## 1. Repository Structure for GitHub Pages
-
-We use the **GitHub Actions → `gh-pages` branch** approach rather than the `docs/` folder. This keeps the build output completely separate from source files.
+## 1. Repository & Website Folder Structure
 
 ```
-openclaw-curriculum/               ← repo root
+openclaw-curriculum/                ← repo root
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml             ← GitHub Actions workflow (auto-deploy)
-├── src/                           ← source files (what you edit)
-│   ├── _includes/
-│   │   ├── base.njk               ← shared layout (nav + footer)
-│   │   └── page.njk               ← content wrapper
-│   ├── _data/
-│   │   └── nav.json               ← nav links (single source of truth)
+│       └── deploy.yml              ← GitHub Actions workflow (auto-deploy)
+├── website/                        ← ALL site source files live here
+│   ├── index.html                  ← Homepage (/)
+│   ├── educators.html              ← /educators
+│   ├── homeschool.html             ← /homeschool
+│   ├── parents.html                ← /parents
+│   ├── schools.html                ← /schools (school boards/admins)
+│   ├── distance-ed.html            ← /distance-ed
+│   ├── policy.html                 ← /policy
 │   ├── assets/
-│   │   ├── style.css              ← global stylesheet
-│   │   ├── js/                    ← optional JS (analytics, etc.)
-│   │   └── images/                ← site images
-│   ├── downloads/                 ← PDFs (passthrough copy)
-│   │   └── syllabus.pdf
-│   ├── index.njk                  ← Homepage (/)
-│   ├── educators.njk              ← /educators
-│   ├── homeschool.njk             ← /homeschool
-│   ├── school-boards.njk          ← /school-boards
-│   ├── policy.njk                 ← /policy
-│   ├── curriculum.njk             ← /curriculum
-│   ├── about.njk                  ← /about
-│   └── get-started.njk            ← /get-started
-├── .eleventy.js                   ← Eleventy config
-├── .gitignore
-├── package.json
-└── package-lock.json
-
-# Generated (gitignored):
-_site/                             ← Eleventy build output (never commit)
-node_modules/                      ← npm packages (never commit)
-
-# Auto-managed by GitHub Actions:
-gh-pages branch                    ← live site (what GitHub Pages serves)
+│   │   ├── hero-graphic.svg        ← SVG hero illustration
+│   │   └── icons/                  ← icon assets
+│   ├── og-images/                  ← Open Graph / social sharing images
+│   ├── pdfs/                       ← downloadable guides (PDFs)
+│   ├── og-meta-template.html       ← dev reference (not served as a page)
+│   └── hosting-setup.md            ← this file
+├── curriculum/                     ← curriculum content (not served)
+├── module1/ … module7/             ← module materials (not served)
+└── README.md
 ```
 
-### Why `gh-pages` Branch vs `docs/` Folder
+### How GitHub Pages Serves `website/`
 
-| Approach | Verdict | Reason |
-|---|---|---|
-| `docs/` folder on `main` | ❌ Skip | Mixes build artifacts with source; messy PRs |
-| `gh-pages` branch | ✅ Chosen | Clean separation; Actions manages it; `main` stays pristine |
-| GitHub Actions (Pages artifact) | ✅ Also valid | Newer approach; no extra branch; slightly more config |
+GitHub Pages does **not** natively serve a subfolder. We use GitHub Actions to copy the `website/` contents into the `gh-pages` branch root, and GitHub Pages serves from that branch.
 
-**We use `gh-pages` branch via `peaceiris/actions-gh-pages@v4`** — battle-tested, simple, widely used.
+| Source | Served at |
+|---|---|
+| `website/index.html` | `/` |
+| `website/educators.html` | `/educators.html` |
+| `website/assets/hero-graphic.svg` | `/assets/hero-graphic.svg` |
+| `website/og-images/og-default.svg` | `/og-images/og-default.svg` |
+| `website/pdfs/educator-quickstart.pdf` | `/pdfs/educator-quickstart.pdf` |
 
 ---
 
-## 2. GitHub Actions Workflow for Auto-Deploy
+## 2. GitHub Actions Workflow
 
-The workflow at `.github/workflows/deploy.yml` triggers on every push to `main` and:
+Create `.github/workflows/deploy.yml` in the repo root:
 
-1. Checks out the code
-2. Installs Node.js dependencies
-3. Runs the Eleventy build
-4. Pushes `_site/` to the `gh-pages` branch
+```yaml
+name: Deploy to GitHub Pages
 
-See the full workflow file at `.github/workflows/deploy.yml`.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'website/**'
 
-### Required GitHub Repository Settings
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
 
-1. Go to **Settings → Pages** in the GitHub repo
-2. Set **Source** to `Deploy from a branch`
-3. Set **Branch** to `gh-pages`, folder to `/ (root)`
-4. Save — GitHub Pages will serve from the `gh-pages` branch
+permissions:
+  contents: write
 
-### Workflow Permissions
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-The workflow uses `GITHUB_TOKEN` (auto-provided by GitHub Actions, no manual secret needed). Make sure the repo has write permissions enabled:
+      - name: Deploy website/ to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website
+          publish_branch: gh-pages
+          # Preserve files on gh-pages not present in website/ (set false to clean slate)
+          keep_files: false
+          # Optional: add a .nojekyll file to disable Jekyll processing
+          enable_jekyll: false
+```
 
-- **Settings → Actions → General → Workflow permissions**: set to **Read and write permissions**
+**What this does:**
+1. Triggers on any push to `main` that touches files inside `website/`
+2. Copies everything in `website/` to the `gh-pages` branch root
+3. GitHub Pages serves from `gh-pages` branch
+
+### Required Repository Permissions
+
+The workflow uses `GITHUB_TOKEN` — no manual secret needed. Enable write permissions:
+
+- **Settings → Actions → General → Workflow permissions** → **Read and write permissions** → Save
 
 ---
 
-## 3. Custom Domain Setup
+## 3. Enabling GitHub Pages in Repo Settings
 
-If we add a custom domain (e.g., `curriculum.openclaw.ai` or `aiexplorers.education`):
+1. Go to the repo: `https://github.com/clawdawg36-cpu/openclaw-curriculum`
+2. Click **Settings → Pages**
+3. Under **Source**, select:
+   - **Deploy from a branch**
+   - Branch: `gh-pages`
+   - Folder: `/ (root)`
+4. Click **Save**
 
-### Step 1: Add CNAME File to Source
+After the first successful Actions run (which creates the `gh-pages` branch), GitHub Pages will activate and show:
 
-Create `src/CNAME` with the domain (no protocol):
+> Your site is published at `https://clawdawg36-cpu.github.io/openclaw-curriculum/`
+
+**Note:** The `gh-pages` branch is created automatically by the Actions workflow on first push. You don't need to create it manually.
+
+---
+
+## 4. Custom Domain Setup (Placeholder — Future)
+
+If we add a custom domain (e.g., `aiexplorers.io` or `curriculum.openclaw.ai`):
+
+### Step 1: Add CNAME File
+
+Create `website/CNAME` with just the domain (no protocol, no trailing slash):
 
 ```
-curriculum.openclaw.ai
+aiexplorers.io
 ```
 
-Eleventy will passthrough-copy this to `_site/CNAME` so it survives every deploy.
-
-Add to `.eleventy.js`:
-
-```js
-eleventyConfig.addPassthroughCopy("src/CNAME");
-```
+Commit and push. The Actions workflow will copy it to the `gh-pages` branch root, where GitHub Pages expects it.
 
 ### Step 2: DNS Configuration
 
 At your DNS provider, add:
 
 ```
-# For apex domain (openclaw.ai):
+# For apex domain (aiexplorers.io):
 A     @    185.199.108.153
 A     @    185.199.109.153
 A     @    185.199.110.153
 A     @    185.199.111.153
+
+# For www subdomain:
+CNAME www  clawdawg36-cpu.github.io.
 
 # For subdomain (curriculum.openclaw.ai):
 CNAME curriculum  clawdawg36-cpu.github.io.
@@ -131,350 +161,256 @@ CNAME curriculum  clawdawg36-cpu.github.io.
 ### Step 3: GitHub Pages Settings
 
 - **Settings → Pages → Custom domain**: enter your domain
-- Check **Enforce HTTPS** (available after DNS propagates, usually 24–48h)
+- Check **Enforce HTTPS** (available after DNS propagates, typically 24–48h)
 
-### Step 4: Update Base URL
+### Step 4: Update Absolute URLs in HTML
 
-In `.eleventy.js`, set the base URL for production:
+All HTML files currently reference `https://aiexplorers.io/` in OG meta tags. If you change the domain, update:
 
-```js
-module.exports = function(eleventyConfig) {
-  // ...
-  return {
-    pathPrefix: "/"  // "/" for custom domain; "/openclaw-curriculum/" for github.io subdirectory
-  };
-};
+- `og:url` meta tag in each `.html` file
+- `og:image` URLs
+- Any hardcoded canonical links
+
+A quick find-and-replace works:
+
+```bash
+cd website
+grep -r "aiexplorers.io" --include="*.html" -l
+# then sed replace, or use VS Code global find/replace
 ```
 
 ---
 
-## 4. Build Process (Eleventy)
+## 5. Testing Locally Before Pushing
 
-### Prerequisites
+No build step needed — the HTML files are ready to open. Two ways to test:
 
-```bash
-node -v  # needs Node 18+
-```
-
-### Initial Setup
+### Quick: Open File Directly in Browser
 
 ```bash
-cd /Users/mike/Projects/kanban/curriculum
-npm install  # installs @11ty/eleventy and any other deps
+open /Users/mike/Projects/openclaw-curriculum/website/index.html
 ```
 
-### Eleventy Config (`.eleventy.js`)
+Works fine for checking layout and content. **Limitation:** relative paths work, but `fetch()` calls and some browser security policies may block file:// resources.
 
-```js
-module.exports = function(eleventyConfig) {
-  // Pass through static assets unchanged
-  eleventyConfig.addPassthroughCopy("src/assets");
-  eleventyConfig.addPassthroughCopy("src/downloads");
-  // eleventyConfig.addPassthroughCopy("src/CNAME");  // uncomment for custom domain
-
-  return {
-    dir: {
-      input: "src",
-      output: "_site",
-      includes: "_includes",
-      data: "_data"
-    },
-    templateFormats: ["njk", "md", "html"],
-    htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk"
-  };
-};
-```
-
-### `package.json` Scripts
-
-```json
-{
-  "scripts": {
-    "build": "eleventy",
-    "start": "eleventy --serve",
-    "dev": "eleventy --serve --watch"
-  }
-}
-```
-
-### Build Output
-
-Eleventy compiles `src/` → `_site/`:
-
-```
-src/index.njk          →  _site/index.html
-src/educators.njk      →  _site/educators/index.html   (clean URL: /educators/)
-src/homeschool.njk     →  _site/homeschool/index.html
-src/assets/style.css   →  _site/assets/style.css       (passthrough)
-src/downloads/*.pdf    →  _site/downloads/*.pdf         (passthrough)
-```
-
----
-
-## 5. Environment Considerations (Dev vs. Prod)
-
-### Dev (Local)
-
-- **URL:** `http://localhost:8080`
-- **Live reload:** built into Eleventy's `--serve` mode
-- **No HTTPS:** use plain http locally
-- **Assets:** served from `/assets/` (relative paths work fine)
-
-### Prod (GitHub Pages)
-
-- **URL:** `https://clawdawg36-cpu.github.io/openclaw-curriculum/` (until custom domain set)
-- **With custom domain:** `https://curriculum.openclaw.ai/`
-- **HTTPS:** enforced by GitHub Pages
-- **Base path:** if no custom domain, URLs need a path prefix (see below)
-
-### Handling the Path Prefix Problem
-
-Without a custom domain, GitHub Pages serves the site at `/openclaw-curriculum/` (the repo name), not `/`. Absolute paths like `/assets/style.css` break.
-
-**Solution — use Eleventy's `pathPrefix`:**
-
-```js
-// .eleventy.js
-const isProd = process.env.ELEVENTY_ENV === "production";
-
-return {
-  pathPrefix: isProd ? "/openclaw-curriculum/" : "/"
-};
-```
-
-In the workflow, set:
-
-```yaml
-- run: ELEVENTY_ENV=production npm run build
-```
-
-Or better: set up a custom domain and set `pathPrefix: "/"` always.
-
-### Environment-Specific Data
-
-Use `src/_data/site.js` for environment-aware values:
-
-```js
-// src/_data/site.js
-module.exports = {
-  url: process.env.ELEVENTY_ENV === "production"
-    ? "https://curriculum.openclaw.ai"
-    : "http://localhost:8080",
-  title: "OpenClaw AI Curriculum",
-  description: "AI literacy curriculum for middle school"
-};
-```
-
-Use in templates: `{{ site.url }}`, `{{ site.title }}`
-
----
-
-## 6. Testing Locally Before Deploying
-
-### Quick Start
+### Better: Local HTTP Server
 
 ```bash
-cd /Users/mike/Projects/kanban/curriculum
-
-# Install deps (first time or after npm changes)
-npm install
-
-# Start dev server with live reload
-npm start
-# → Site available at http://localhost:8080
-# → Saves trigger auto-rebuild + browser refresh
+cd /Users/mike/Projects/openclaw-curriculum/website
+python3 -m http.server 8080
+# Visit: http://localhost:8080
 ```
 
-### Pre-Deploy Checklist
+This accurately simulates how GitHub Pages serves the files.
 
-Before pushing to `main`:
+Or with Node.js:
 
 ```bash
-# 1. Run a clean production build (catches template errors)
-npm run build
-
-# 2. Check _site/ output exists and looks right
-ls _site/
-open _site/index.html  # spot-check in browser (note: no dev server, paths may differ)
-
-# 3. Check for broken links (optional but recommended)
-npx broken-link-checker http://localhost:8080 --recursive --exclude-external
-
-# 4. Validate HTML (optional)
-npx html-validate _site/**/*.html
+npx serve .
+# Visit: http://localhost:3000
 ```
 
-### Testing with Prod-Like URL Prefix
+### Pre-Push Checklist
 
-If testing path prefix behavior without a custom domain:
+Before merging/pushing changes to `main`:
 
 ```bash
-ELEVENTY_ENV=production npm run build
-cd _site && python3 -m http.server 8080
-# Visit http://localhost:8080/openclaw-curriculum/ (manually adjust)
+# 1. Start local server
+cd /Users/mike/Projects/openclaw-curriculum/website
+python3 -m http.server 8080
+
+# 2. Check all pages load without errors
+open http://localhost:8080/index.html
+open http://localhost:8080/educators.html
+open http://localhost:8080/homeschool.html
+open http://localhost:8080/parents.html
+open http://localhost:8080/schools.html
+open http://localhost:8080/distance-ed.html
+open http://localhost:8080/policy.html
+
+# 3. Verify PDF downloads work
+open http://localhost:8080/pdfs/
+
+# 4. Check browser console for JS errors (F12 → Console)
+
+# 5. Test on mobile viewport (Chrome DevTools → Toggle device toolbar)
 ```
 
 ### Browser Testing Matrix
 
 Test in at minimum:
 - Chrome (latest)
-- Safari (latest — primary for mobile)
+- Safari (latest — primary for iOS users)
 - Firefox (latest)
-- Mobile Safari (iOS, via simulator or real device)
-- Chrome for Android
+- Mobile Safari (iOS — resize Chrome DevTools viewport to 375×812)
+
+---
+
+## 6. Deploy Workflow (Day-to-Day)
+
+### Automatic Deploy (Normal Flow)
+
+1. Edit HTML files in `website/`
+2. Commit and push to `main`:
+   ```bash
+   cd /Users/mike/Projects/openclaw-curriculum
+   git add website/
+   git commit -m "feat: [Website] <description>"
+   git push origin main
+   ```
+3. GitHub Actions runs automatically (~1–2 minutes)
+4. Site is live at `https://clawdawg36-cpu.github.io/openclaw-curriculum/`
+
+### Manual Trigger
+
+If you need to redeploy without a code change (e.g., after changing a secret or updating the workflow):
+
+1. Go to **Actions tab** in the repo
+2. Click **Deploy to GitHub Pages** workflow
+3. Click **Run workflow** → **Run workflow**
+
+### Monitoring Deploys
+
+- **Actions tab** → shows each run's status (✅ success / ❌ failed)
+- Click a run to see step-by-step logs
+- Failed deploy = the live site remains unchanged (no broken deploys go live)
 
 ---
 
 ## 7. Rollback Procedure
 
-GitHub Pages serves from the `gh-pages` branch. Rolling back means pointing that branch to a previous commit.
+Rolling back means reverting the source on `main` and letting Actions re-deploy.
 
 ### Option A — Revert the Source Commit (Recommended)
 
 ```bash
-# On main branch
-git log --oneline -10  # find the bad commit hash
+cd /Users/mike/Projects/openclaw-curriculum
+git log --oneline -10            # find the bad commit hash
 
-# Revert (creates a new commit, preserves history)
-git revert <bad-commit-hash>
+git revert <bad-commit-hash>     # creates a new revert commit
 git push origin main
-# → GitHub Actions triggers, rebuilds from reverted source, redeploys
+# → Actions triggers, redeploys the reverted site
 ```
 
 **Pros:** Clean history, traceable, no force pushes.
 
-### Option B — Reset to Previous Deploy on `gh-pages`
+### Option B — Reset `gh-pages` Branch Directly
 
-If the Actions workflow itself is broken and can't rebuild:
+If Actions is broken and can't rebuild:
 
 ```bash
-# Check recent commits on gh-pages
 git fetch origin gh-pages
-git log --oneline origin/gh-pages -10
+git log --oneline origin/gh-pages -10   # find a known-good commit
 
-# Reset gh-pages to a known-good commit
 git checkout gh-pages
 git reset --hard <known-good-commit-hash>
 git push origin gh-pages --force
 ```
 
-**Note:** This bypasses the Actions workflow. The next push to `main` will overwrite with a fresh build.
+**Note:** Next push to `main` will overwrite this with a fresh deploy.
 
-### Option C — Re-trigger the Last Good Workflow
+### Option C — Re-run Last Good Workflow
 
-In GitHub UI:
-1. **Actions tab** → find the last successful workflow run
+1. **Actions tab** → find the last successful run
 2. Click **Re-run jobs** → **Re-run all jobs**
-3. GitHub redeploys from that run's build artifacts
-
-### Rollback Decision Tree
-
-```
-Deploy broke the site?
-  ├── Source code bug?           → git revert + push main
-  ├── Actions workflow broke?    → fix workflow + push main
-  ├── Need instant recovery?     → Option B (force-reset gh-pages)
-  └── Build artifact issue?      → Option C (re-run last good workflow)
-```
 
 ---
 
-## 8. Performance Considerations
+## 8. Performance Notes
 
-### Asset Optimization
+The site is plain HTML/CSS — no JS frameworks, no build step. It's fast by default.
 
-#### CSS
+### Image Optimization
 
-- Minify CSS in CI before deploy. Add to workflow:
-
-```bash
-npm install --save-dev clean-css-cli
-npx cleancss -o _site/assets/style.min.css _site/assets/style.css
-```
-
-Or use a PostCSS pipeline with cssnano:
-
-```bash
-npm install --save-dev postcss postcss-cli cssnano autoprefixer
-```
-
-- Prefer a single bundled CSS file over multiple imports (fewer HTTP requests)
-- Keep unused CSS out — don't pull in full Bootstrap if you only need a grid
-
-#### Images
-
-- Use WebP with JPEG/PNG fallback:
-  ```html
-  <picture>
-    <source srcset="/assets/images/hero.webp" type="image/webp">
-    <img src="/assets/images/hero.jpg" alt="AI Explorers hero">
-  </picture>
-  ```
-- Optimize images before committing: use [Squoosh](https://squoosh.app/), `imagemin`, or `sharp`
-- Lazy-load below-fold images: `<img loading="lazy">`
-- Set explicit `width` and `height` to prevent layout shift (Core Web Vitals)
-
-#### JavaScript
-
-- Eleventy outputs zero JS by default — keep it that way unless needed
-- If adding analytics (Fathom, Plausible), use their async scripts with `defer`
-- Avoid loading third-party scripts synchronously in `<head>`
+- Hero graphic and OG images are SVG — already optimized, scales infinitely
+- If adding raster images (photos, etc.), compress before committing:
+  - Use [Squoosh](https://squoosh.app/) or `imagemin` for JPEG/PNG
+  - Target < 200KB per image for above-fold content
+  - Use `<img loading="lazy">` for below-fold images
+  - Always set `width` and `height` attributes (prevents layout shift)
 
 ### CDN
 
-GitHub Pages automatically serves through **Fastly's CDN**. No manual CDN config needed — global edge caching is included.
+GitHub Pages automatically serves through **Fastly's CDN** — global edge caching is built in. No manual CDN setup needed.
 
-For additional edge coverage or if GitHub Pages CDN isn't sufficient:
-- **Cloudflare** (free tier, put in front of GitHub Pages): add Cloudflare nameservers, set DNS to GitHub's IPs, enable proxying
-- Benefits: Cloudflare adds HTTP/2, Brotli compression, edge caching rules, DDoS protection, and analytics
-
-### Caching Headers
-
-GitHub Pages sets `Cache-Control: max-age=600` (10 minutes) by default. You can't configure this without Cloudflare or a different host.
-
-**With Cloudflare:** Set page rules or Cache Rules for:
-- `/assets/*` → cache for 30 days (cache-busting via filename hashing)
-- `/` and HTML pages → cache for 5 minutes (or bypass — they're small)
-
-### Eleventy Performance Plugins
-
-For larger sites (20+ pages), add:
-
-```bash
-npm install --save-dev @11ty/eleventy-img
-```
-
-Auto-optimizes images at build time — generates WebP, resizes, and updates `<img>` tags.
+For additional control (custom cache rules, HTTP/2 Push, DDoS protection):
+- Add **Cloudflare** (free tier) in front of GitHub Pages
+- Point DNS to Cloudflare; Cloudflare proxies to GitHub Pages IPs
 
 ### Core Web Vitals Targets
 
-| Metric | Target | How |
+| Metric | Target | Status |
 |---|---|---|
-| LCP (Largest Contentful Paint) | < 2.5s | Optimize hero image; preload critical CSS |
-| FID / INP (Interaction) | < 200ms | Minimal JS; no heavy frameworks |
-| CLS (Cumulative Layout Shift) | < 0.1 | Set image dimensions; avoid injected content |
+| LCP (Largest Contentful Paint) | < 2.5s | ✅ SVG hero loads instantly |
+| INP (Interaction to Next Paint) | < 200ms | ✅ Minimal JS |
+| CLS (Cumulative Layout Shift) | < 0.1 | Set img dimensions to confirm |
 
-### Monitoring
+Run [PageSpeed Insights](https://pagespeed.web.dev/) on the live URL after each major change.
 
-- **Google Search Console** — Core Web Vitals report (requires domain verification)
-- **PageSpeed Insights** — run on live URL after each major change: `https://pagespeed.web.dev/`
-- **Lighthouse** in Chrome DevTools — run locally before deploying
+---
+
+## 9. Troubleshooting
+
+### Site Not Updating After Push
+
+1. Check **Actions tab** — did the workflow run? Did it pass?
+2. If workflow skipped: check `paths:` filter in `deploy.yml` — changes must be inside `website/`
+3. If workflow passed but site unchanged: GitHub Pages has a ~1–2 min propagation delay — wait and hard-refresh (`Cmd+Shift+R`)
+4. If still stuck: manually trigger the workflow (see Section 6)
+
+### 404 on All Pages
+
+- GitHub Pages isn't configured yet → follow Section 3
+- `gh-pages` branch doesn't exist yet → push a change to `website/` to trigger first deploy
+- Wrong branch/folder in Pages settings → check **Settings → Pages**
+
+### 404 on Specific Pages
+
+- File doesn't exist in `website/` or is misnamed
+- URL case sensitivity: GitHub Pages is case-sensitive — `Educators.html` ≠ `educators.html`
+- Check that the file was committed: `git ls-files website/`
+
+### Images / PDFs Not Loading
+
+- Verify the file is committed and in the right path: `git ls-files website/assets/` or `website/pdfs/`
+- Check the URL path in the HTML matches the actual file path (case-sensitive)
+- If using absolute URLs (e.g., `https://aiexplorers.io/assets/...`), test on the live site, not locally
+
+### OG Tags / Social Preview Not Working
+
+- OG image URLs must be absolute (`https://...`), not relative (`/og-images/...`)
+- Use [OpenGraph.xyz](https://www.opengraph.xyz/) or [Meta Tags](https://metatags.io/) to preview
+- Social networks cache OG data — use their debug tools to force refresh:
+  - Facebook: [Sharing Debugger](https://developers.facebook.com/tools/debug/)
+  - Twitter/X: [Card Validator](https://cards-dev.twitter.com/validator)
+
+### GitHub Actions Workflow Fails
+
+- Check the error in the **Actions tab** → click the failed job → expand the failing step
+- Common issue: `GITHUB_TOKEN` lacks write permissions → **Settings → Actions → General → Read and write permissions**
+- Common issue: `publish_dir: ./website` path doesn't exist → confirm the folder name is exactly `website`
+
+### Custom Domain: Site Shows Insecure or Wrong Domain
+
+- DNS hasn't propagated yet (wait 24–48h after changing DNS)
+- CNAME file missing or wrong content → check `website/CNAME` has only the domain, no protocol
+- **Enforce HTTPS** not checked in Pages settings → enable it after DNS propagates
 
 ---
 
 ## Quick Reference
 
-| Task | Command |
+| Task | Command / Location |
 |---|---|
-| Dev server | `npm start` |
-| Production build | `npm run build` |
+| Start local server | `cd website && python3 -m http.server 8080` |
 | Deploy (auto) | `git push origin main` |
+| Manual deploy trigger | Repo → Actions → Deploy → Run workflow |
 | Rollback | `git revert <hash> && git push` |
 | Check live site | `https://clawdawg36-cpu.github.io/openclaw-curriculum/` |
 | GitHub Pages settings | Repo → Settings → Pages |
 | Actions status | Repo → Actions tab |
+| PageSpeed test | https://pagespeed.web.dev/ |
 
 ---
 
-*Authored by ClawDawg | Phase 2 — Structure track*
+*Authored by ClawDawg | Phase 2 — Structure track | Updated 2026-03-22*
