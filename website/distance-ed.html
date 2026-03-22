@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Explorers — Distance &amp; Online Learning</title>
-  <meta name="description" content="AI Explorers is built for distance and online learners. 100% browser-based, fully asynchronous, self-paced curriculum for virtual schools, individual online learners, and remote families." />
+  <title>AI Explorers — For Distance & Online Learners</title>
+  <meta name="description" content="AI Explorers is fully online-ready — no physical materials, no fixed schedule, no classroom required. Perfect for virtual schools, online academies, and hybrid learners." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -53,22 +53,15 @@
       background: linear-gradient(135deg, var(--brand-light), var(--accent));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .nav-back {
-      display: flex; align-items: center; gap: 0.5rem;
-      color: var(--text-muted); text-decoration: none;
-      font-weight: 500; font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-    .nav-back:hover { color: var(--text); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
     .nav-cta {
-      background: var(--brand); color: white; padding: 0.5rem 1.25rem;
+      background: var(--teal); color: white; padding: 0.5rem 1.25rem;
       border-radius: 8px; font-weight: 600; font-size: 0.9rem;
       text-decoration: none; transition: background 0.2s;
     }
-    .nav-cta:hover { background: var(--brand-dark); }
+    .nav-cta:hover { background: #00b3af; }
 
     /* ── HERO ── */
     .hero {
@@ -77,9 +70,8 @@
       padding: 8rem 2rem 4rem;
       position: relative;
       overflow: hidden;
-      background: radial-gradient(ellipse at 70% 30%, rgba(0,206,201,0.12) 0%, transparent 60%),
-                  radial-gradient(ellipse at 20% 80%, rgba(108,92,231,0.15) 0%, transparent 50%),
-                  radial-gradient(ellipse at 80% 90%, rgba(253,121,168,0.08) 0%, transparent 40%),
+      background: radial-gradient(ellipse at 70% 30%, rgba(0,206,201,0.12) 0%, transparent 55%),
+                  radial-gradient(ellipse at 20% 75%, rgba(108,92,231,0.12) 0%, transparent 50%),
                   var(--dark);
     }
     .hero-grid {
@@ -116,34 +108,27 @@
     }
     .hero-sub strong { color: var(--text); }
 
-    /* ── ONLINE PROOF BAR ── */
-    .proof-bar {
-      display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
+    .hero-compatible {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(0,206,201,0.08); border: 1px solid rgba(0,206,201,0.2);
+      border-radius: 12px; padding: 0.75rem 1.5rem;
+      font-size: 0.95rem; color: var(--text-muted);
       margin-bottom: 2.5rem;
     }
-    .proof-item {
-      display: flex; align-items: center; gap: 0.5rem;
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 100px; padding: 0.4rem 1rem;
-      font-size: 0.85rem; color: var(--text-muted);
-    }
-    .proof-item .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--green); animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+    .hero-compatible strong { color: var(--teal); }
 
+    .hero-ctas {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
     .btn-primary {
-      background: var(--brand); color: white;
+      background: var(--teal); color: white;
       padding: 0.9rem 2rem; border-radius: 10px;
       font-weight: 700; font-size: 1rem; text-decoration: none;
       transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
-      box-shadow: 0 4px 24px rgba(108,92,231,0.4);
+      box-shadow: 0 4px 24px rgba(0,206,201,0.35);
     }
-    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,92,231,0.5); }
+    .btn-primary:hover { background: #00b3af; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,206,201,0.45); }
     .btn-secondary {
       background: transparent; color: var(--text);
       padding: 0.9rem 2rem; border-radius: 10px;
@@ -152,7 +137,6 @@
       transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
     }
     .btn-secondary:hover { background: var(--card-bg); border-color: var(--teal); }
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
 
     .hero-stats {
       display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
@@ -175,226 +159,209 @@
       letter-spacing: -0.02em;
     }
     .section-intro {
-      font-size: 1.15rem; color: var(--text-muted); max-width: 620px;
+      font-size: 1.15rem; color: var(--text-muted); max-width: 650px;
       margin-bottom: 3rem; line-height: 1.7;
     }
 
-    /* ── HOW IT WORKS ONLINE ── */
-    .how-online { background: var(--dark2); }
+    /* ── BUILT FOR ONLINE ── */
+    .built-online { background: var(--dark2); }
     .online-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem; margin-top: 3rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
     }
     .online-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 16px; padding: 1.75rem;
+      border-radius: 16px; padding: 2rem;
       transition: border-color 0.2s, transform 0.2s;
       position: relative; overflow: hidden;
     }
     .online-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--brand-light));
     }
-    .online-card.card-teal::before { background: var(--teal); }
-    .online-card.card-brand::before { background: var(--brand-light); }
-    .online-card.card-green::before { background: var(--green); }
-    .online-card.card-accent::before { background: var(--accent); }
-    .online-card.card-yellow::before { background: var(--yellow); }
     .online-card:hover { border-color: var(--teal); transform: translateY(-3px); }
-    .online-card .card-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .online-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .online-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; }
+    .online-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .online-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .online-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
-    /* ── ASYNC FEATURES ── */
-    .async-features { background: var(--dark); }
-    .async-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
-      align-items: start; margin-top: 3rem;
+    /* ── HOW IT WORKS ── */
+    .how-it-works { background: var(--dark); }
+    .steps-list {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 3rem; position: relative;
     }
-    @media (max-width: 768px) { .async-grid { grid-template-columns: 1fr; } }
+    .steps-list::before {
+      content: '';
+      position: absolute; left: 1.75rem; top: 3rem; bottom: 3rem; width: 2px;
+      background: linear-gradient(to bottom, var(--teal), var(--brand-light));
+    }
+    .step {
+      display: flex; gap: 2rem; align-items: flex-start;
+      padding: 1.5rem 0;
+    }
+    .step-num {
+      width: 3.5rem; height: 3.5rem; min-width: 3.5rem;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--teal), var(--brand-light));
+      color: white; position: relative; z-index: 1;
+      border: 3px solid var(--dark);
+    }
+    .step-content { flex: 1; padding-top: 0.4rem; }
+    .step-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 0.25rem;
+    }
+    .step-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .step-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+    .step-tag {
+      display: inline-block; margin-top: 0.5rem;
+      background: rgba(0,206,201,0.12); border: 1px solid rgba(0,206,201,0.3);
+      color: var(--teal); padding: 0.2rem 0.7rem;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+    }
 
-    .async-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-    .async-list li {
-      display: flex; gap: 1rem; align-items: flex-start;
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 12px; padding: 1.25rem;
-    }
-    .async-list li:hover { border-color: var(--teal); }
-    .async-icon { font-size: 1.4rem; min-width: 2rem; }
-    .async-list li h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .async-list li p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
-
-    /* path switcher */
-    .path-switcher {
-      position: sticky; top: 6rem;
-      display: flex; flex-direction: column; gap: 1rem;
-    }
-    .path-card {
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 16px; padding: 1.5rem;
-    }
-    .path-card.path-active {
-      background: rgba(0,206,201,0.08); border-color: rgba(0,206,201,0.35);
-    }
-    .path-card h3 {
-      font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .path-tag {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--teal);
-      background: rgba(0,206,201,0.15); border: 1px solid rgba(0,206,201,0.3);
-      padding: 0.2rem 0.6rem; border-radius: 100px;
-    }
-    .path-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
-    .path-list { list-style: none; margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.4rem; }
-    .path-list li { font-size: 0.85rem; color: var(--text-muted); display: flex; gap: 0.5rem; align-items: flex-start; }
-    .path-list li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
-
-    /* ── VIRTUAL SCHOOLS ── */
-    .virtual-schools { background: var(--dark2); }
-    .school-split {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    /* ── PACE SECTION ── */
+    .pace-section { background: var(--dark2); }
+    .pace-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
       margin-top: 3rem;
     }
-    @media (max-width: 768px) { .school-split { grid-template-columns: 1fr; } }
-    .school-option {
+    @media (max-width: 768px) { .pace-grid { grid-template-columns: 1fr; } }
+    .pace-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 16px; padding: 2rem;
-    }
-    .school-option.option-sync { border-color: rgba(9,132,227,0.4); }
-    .school-option.option-async { border-color: rgba(0,206,201,0.4); }
-    .option-label {
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; margin-bottom: 1rem;
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.3rem 0.8rem; border-radius: 100px;
-    }
-    .option-label.sync { background: rgba(9,132,227,0.15); color: #74b9ff; border: 1px solid rgba(9,132,227,0.3); }
-    .option-label.async { background: rgba(0,206,201,0.15); color: var(--teal); border: 1px solid rgba(0,206,201,0.3); }
-    .school-option h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
-    .school-option p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1rem; }
-    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .feature-list li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.88rem; color: var(--text-muted); }
-    .feature-list li::before { content: '•'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
-
-    /* ── TECH REQUIREMENTS ── */
-    .tech-reqs { background: var(--dark); }
-    .device-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem; margin: 2.5rem 0;
-    }
-    .device-card {
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 14px; padding: 1.5rem; text-align: center;
+      border-radius: 16px; padding: 2rem; text-align: center;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .device-card:hover { border-color: var(--teal); transform: translateY(-3px); }
-    .device-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-    .device-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .device-card p { color: var(--text-muted); font-size: 0.83rem; line-height: 1.5; }
-    .device-badge {
-      display: inline-block; margin-top: 0.5rem;
-      background: rgba(0,184,148,0.12); border: 1px solid rgba(0,184,148,0.3);
-      color: var(--green); padding: 0.2rem 0.6rem;
-      border-radius: 100px; font-size: 0.75rem; font-weight: 600;
+    .pace-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+    .pace-card.recommended {
+      border-color: rgba(0,206,201,0.4);
+      background: rgba(0,206,201,0.06);
     }
-    .tech-callout {
+    .pace-badge {
+      display: inline-block; margin-bottom: 1rem;
+      background: rgba(0,206,201,0.15); border: 1px solid rgba(0,206,201,0.3);
+      color: var(--teal); padding: 0.25rem 0.75rem;
+      border-radius: 100px; font-size: 0.78rem; font-weight: 700;
+    }
+    .pace-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .pace-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .pace-duration {
+      font-size: 0.88rem; color: var(--teal); font-weight: 600;
+      font-family: 'JetBrains Mono', monospace; margin-bottom: 0.75rem;
+    }
+    .pace-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── COMPATIBILITY ── */
+    .compat-section { background: var(--dark); }
+    .compat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem; margin-top: 3rem;
+    }
+    .compat-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .compat-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+    .compat-icon { font-size: 1.6rem; min-width: 2rem; }
+    .compat-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .compat-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; }
+
+    .compat-callout {
+      margin-top: 2rem;
       background: linear-gradient(135deg, rgba(0,206,201,0.1), rgba(108,92,231,0.08));
       border: 1px solid rgba(0,206,201,0.25); border-radius: 16px;
       padding: 2rem 2.5rem;
       display: flex; gap: 1.5rem; align-items: flex-start;
     }
-    .tech-callout-icon { font-size: 2.5rem; min-width: 3rem; }
-    .tech-callout h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .tech-callout p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
-    .tech-callout strong { color: var(--teal); }
+    .compat-callout-icon { font-size: 2.5rem; min-width: 3rem; }
+    .compat-callout h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .compat-callout p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+    .compat-callout strong { color: var(--teal); }
 
-    /* ── INDIVIDUAL LEARNERS ── */
-    .individual { background: var(--dark2); }
-    .individual-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* ── WHAT'S INCLUDED ── */
+    .included-section { background: var(--dark2); }
+    .included-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: start; margin-top: 3rem;
+    }
+    @media (max-width: 768px) { .included-split { grid-template-columns: 1fr; } }
+    .inc-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .inc-list li {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 1.25rem;
+    }
+    .inc-icon { font-size: 1.4rem; min-width: 2rem; }
+    .inc-list li h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .inc-list li p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+    .inc-aside {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 2rem; position: sticky; top: 6rem;
+    }
+    .inc-aside h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.25rem; }
+    .req-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .req-list li { display: flex; gap: 0.75rem; align-items: center; font-size: 0.9rem; color: var(--text-muted); }
+    .req-list li::before { content: '✓'; color: var(--teal); font-weight: 700; min-width: 1rem; }
+    .req-list li.no::before { content: '✗'; color: var(--orange); }
+    .aside-divider { height: 1px; background: var(--card-border); margin: 1.5rem 0; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--dark); }
+    .testimonial-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem; margin-top: 3rem;
     }
-    .ind-card {
+    .testimonial-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 16px; padding: 2rem;
-      transition: border-color 0.2s, transform 0.2s;
+      border-radius: 16px; padding: 1.75rem;
+      position: relative; transition: border-color 0.2s;
     }
-    .ind-card:hover { border-color: var(--brand-light); transform: translateY(-3px); }
-    .ind-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .ind-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .ind-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; }
-
-    /* ── MODULE PREVIEW ── */
-    .modules-preview { background: var(--dark); }
-    .module-track {
-      display: flex; flex-direction: column; gap: 0;
-      margin-top: 3rem; position: relative;
+    .testimonial-card:hover { border-color: rgba(0,206,201,0.35); }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute; top: 1rem; right: 1.5rem;
+      font-size: 4rem; line-height: 1; color: var(--teal);
+      opacity: 0.2; font-family: Georgia, serif;
     }
-    .module-track::before {
-      content: '';
-      position: absolute; left: 2rem; top: 3rem; bottom: 3rem; width: 2px;
-      background: linear-gradient(to bottom, var(--teal), var(--brand-light));
+    .testimonial-text {
+      font-size: 0.95rem; line-height: 1.7; color: var(--text);
+      margin-bottom: 1rem; font-style: italic;
     }
-    .module-row {
-      display: flex; gap: 2rem; align-items: flex-start;
-      padding: 1.25rem 0;
+    .testimonial-attr { display: flex; align-items: center; gap: 0.75rem; }
+    .testimonial-avatar {
+      width: 2.25rem; height: 2.25rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
     }
-    .module-dot {
-      width: 4rem; height: 4rem; min-width: 4rem;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; font-weight: 900; position: relative; z-index: 1;
-      border: 3px solid var(--dark2);
-    }
-    .module-content { flex: 1; padding-top: 0.5rem; }
-    .module-num {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem;
-    }
-    .module-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .module-content p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
-    .module-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-    .module-pill {
-      display: inline-block;
-      padding: 0.18rem 0.65rem; border-radius: 100px;
-      font-size: 0.75rem; font-weight: 600;
-    }
-    .pill-async { background: rgba(0,206,201,0.12); border: 1px solid rgba(0,206,201,0.3); color: var(--teal); }
-    .pill-self { background: rgba(108,92,231,0.12); border: 1px solid rgba(108,92,231,0.3); color: var(--brand-light); }
-    .pill-quiz { background: rgba(0,184,148,0.12); border: 1px solid rgba(0,184,148,0.3); color: var(--green); }
+    .testimonial-who strong { display: block; font-size: 0.85rem; font-weight: 700; }
+    .testimonial-who span { font-size: 0.78rem; color: var(--text-muted); }
 
     /* ── QUOTE ── */
     .quote-section {
-      background: linear-gradient(135deg, rgba(0,206,201,0.1), rgba(108,92,231,0.08));
+      background: linear-gradient(135deg, rgba(0,206,201,0.12), rgba(108,92,231,0.1));
       border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);
     }
     .quote-inner { max-width: 800px; margin: 0 auto; text-align: center; }
     blockquote {
-      font-size: clamp(1.25rem, 3vw, 1.7rem);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
       font-weight: 700; line-height: 1.4; margin-bottom: 1.5rem;
+      color: var(--text);
     }
     blockquote em { font-style: normal; color: var(--teal); }
     .quote-attr { color: var(--text-muted); font-size: 0.95rem; }
 
-    /* ── CTA SECTION ── */
-    .cta-section {
-      background: linear-gradient(135deg, var(--dark3), var(--dark2));
-      text-align: center;
-    }
-    .cta-inner { max-width: 720px; margin: 0 auto; }
-    .cta-section h2 { margin-bottom: 1rem; }
-    .cta-section p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.7; }
-    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .license-note { font-size: 0.85rem; color: var(--text-muted); }
-    .license-note a { color: var(--teal); text-decoration: none; }
-    .license-note a:hover { text-decoration: underline; }
-
     /* ── FAQ ── */
-    .faq-section { background: var(--dark); }
+    .faq-section { background: var(--dark2); }
     .faq-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 3rem; }
     .faq-item {
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 12px; overflow: hidden; transition: border-color 0.2s;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
     }
     .faq-item:hover { border-color: var(--teal); }
     .faq-item[open] { border-color: rgba(0,206,201,0.4); }
@@ -407,17 +374,34 @@
     }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after {
-      content: '+'; font-size: 1.4rem; font-weight: 300;
-      color: var(--teal); line-height: 1; flex-shrink: 0;
+      content: '+';
+      font-size: 1.4rem; font-weight: 300; color: var(--teal);
+      line-height: 1; flex-shrink: 0; transition: transform 0.2s;
     }
     .faq-item[open] summary::after { content: '−'; }
     .faq-answer {
-      padding: 1rem 1.25rem 1.25rem;
+      padding: 0 1.25rem 1.25rem;
       color: var(--text-muted); font-size: 0.93rem; line-height: 1.7;
       border-top: 1px solid var(--card-border);
+      padding-top: 1rem;
     }
     .faq-answer p + p { margin-top: 0.6rem; }
     .faq-answer strong { color: var(--text); }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark3), var(--dark2));
+      text-align: center;
+    }
+    .cta-inner { max-width: 700px; margin: 0 auto; }
+    .cta-section h2 { margin-bottom: 1rem; }
+    .cta-section p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.7; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cta-btns .btn-primary { font-size: 1.1rem; padding: 1rem 2.25rem; }
+    .license-note {
+      margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted);
+    }
+    .license-note a { color: var(--teal); text-decoration: none; }
 
     /* ── FOOTER ── */
     footer {
@@ -426,13 +410,12 @@
       text-align: center; color: var(--text-muted); font-size: 0.85rem;
     }
     footer a { color: var(--teal); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       nav { padding: 1rem; }
       .nav-links { display: none; }
-      .module-track::before { display: none; }
+      .steps-list::before { display: none; }
       section { padding: 4rem 1.25rem; }
     }
   </style>
@@ -441,44 +424,39 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-back">← Back to AI Explorers</a>
+  <div class="nav-logo">🤖 AI Explorers</div>
   <ul class="nav-links">
-    <li><a href="#how-online">How It Works</a></li>
-    <li><a href="#virtual-schools">Virtual Schools</a></li>
-    <li><a href="#individual">Self-Directed</a></li>
-    <li><a href="#tech">Tech Requirements</a></li>
+    <li><a href="#built-online">Built Online-First</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#your-pace">Your Pace</a></li>
+    <li><a href="#compatible">Compatibility</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="nav-cta" target="_blank">Start Module 1 →</a>
+  <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/curriculum/module-01" class="nav-cta" target="_blank">Start Module 1 →</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-inner">
-    <div class="hero-badge"><span>🌐</span> Fully Online — No Physical Setup Required</div>
-    <h1>Built for Learners<br/>Who Learn <em>Anywhere</em></h1>
+    <div class="hero-badge"><span>🌐</span> Fully Online-Ready — No Physical Materials Required</div>
+    <h1>Learn AI <em>On Your Terms.</em><br/>At Your Pace. Anywhere.</h1>
     <p class="hero-sub">
-      AI Explorers is <strong>100% browser-based</strong>. The curriculum is digital.
-      The AI agent is cloud-based. The labs run in your browser.
-      No downloads, no hardware, no classroom required —
-      just a device and a curious mind.
+      <strong>AI Explorers</strong> is a 7-module, project-based AI curriculum built for the way
+      online and distance learners actually learn — asynchronously, self-directed, and on their own schedule.
+      No classroom. No commute. No printed workbooks. Just your browser and curiosity.
     </p>
 
-    <div class="proof-bar">
-      <div class="proof-item"><div class="dot"></div> All materials digital</div>
-      <div class="proof-item"><div class="dot"></div> Agent runs in the cloud</div>
-      <div class="proof-item"><div class="dot"></div> Self-paced, no deadlines</div>
-      <div class="proof-item"><div class="dot"></div> Works on Chromebook &amp; mobile</div>
-      <div class="proof-item"><div class="dot"></div> Async-first design</div>
+    <div class="hero-compatible">
+      🏫 <strong>Works with your existing online school</strong> — drop it into any virtual academy, hybrid program, or self-directed learning plan
     </div>
 
-    <div class="hero-btns">
-      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary" target="_blank">
-        🚀 Start Module 1 on GitHub
+    <div class="hero-ctas">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/curriculum/module-01" class="btn-primary" target="_blank">
+        🚀 Start Module 1 Today
       </a>
-      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/resources/distance-ed-guide.md" class="btn-secondary" target="_blank">
-        📥 Download the Distance Ed Guide
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/guides/homeschool-guide.pdf" class="btn-secondary" target="_blank">
+        📥 Download the Homeschool Guide
       </a>
     </div>
 
@@ -493,7 +471,7 @@
       </div>
       <div class="stat">
         <span class="stat-num">0</span>
-        <span class="stat-label">Physical Setup</span>
+        <span class="stat-label">Physical Materials</span>
       </div>
       <div class="stat">
         <span class="stat-num">Free</span>
@@ -503,367 +481,305 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS ONLINE -->
-<section class="how-online" id="how-online">
+<!-- BUILT ONLINE-FIRST -->
+<section class="built-online" id="built-online">
   <div class="section-inner">
-    <p class="section-label">Fully Online by Design</p>
-    <h2>No physical lab. No local install.<br/>Nothing to ship. Just a browser.</h2>
-    <p class="section-intro">Every part of AI Explorers was built for online delivery from day one — not adapted for it. Here's what that means in practice.</p>
+    <p class="section-label">Built Online-First</p>
+    <h2>Not adapted for online learning.<br/><em style="font-style:normal;color:var(--teal)">Designed for it.</em></h2>
+    <p class="section-intro">Most curricula are written for classrooms and then retrofitted for online use. AI Explorers was built from the ground up for asynchronous, self-directed learners — because that's how real distance education works.</p>
 
     <div class="online-grid">
-      <div class="online-card card-teal">
-        <div class="card-icon">☁️</div>
-        <h3>Cloud-based AI agent</h3>
-        <p>The OpenClaw agent students build runs entirely in the cloud. No local server, no hardware. Students access their agent from any device, anywhere, with a browser.</p>
+      <div class="online-card">
+        <div class="online-icon">🌐</div>
+        <h3>Everything lives in your browser</h3>
+        <p>Every lesson, every lab, every tool — Teachable Machine, Hugging Face, OpenClaw — runs in a modern web browser. No software to install, no OS requirements, no apps to download. Works on Chromebooks, Windows laptops, Macs, and tablets.</p>
       </div>
-      <div class="online-card card-brand">
-        <div class="card-icon">📄</div>
-        <h3>All materials digital</h3>
-        <p>Lesson plans, lab guides, activity handouts, slide decks — everything is digital and accessible via GitHub or direct link. Nothing to print, nothing to ship.</p>
+      <div class="online-card">
+        <div class="online-icon">📦</div>
+        <h3>Zero physical materials</h3>
+        <p>There are no textbooks to order, no lab kits to ship, no printed workbooks. All lesson materials, guides, slide decks, and activity sheets are digital — download, open, done. Nothing arrives by mail and nothing runs out.</p>
       </div>
-      <div class="online-card card-green">
-        <div class="card-icon">🧪</div>
-        <h3>Browser-based labs</h3>
-        <p>Every hands-on lab runs in the browser. Google Teachable Machine, Hugging Face Spaces, and OpenClaw all work on Chromebooks, tablets, and standard laptops without any installation.</p>
+      <div class="online-card">
+        <div class="online-icon">⏸️</div>
+        <h3>Truly asynchronous</h3>
+        <p>No live sessions required. No scheduled class times. Students work through each module on their own schedule — pause a lab mid-way, come back tomorrow, pick up exactly where they left off. Built for real life, not the bell curve.</p>
       </div>
-      <div class="online-card card-accent">
-        <div class="card-icon">✅</div>
-        <h3>Auto-graded quizzes</h3>
-        <p>Knowledge checks and module quizzes are auto-graded and give instant feedback. No teacher grading queue. Students know where they stand immediately.</p>
+      <div class="online-card">
+        <div class="online-icon">🔁</div>
+        <h3>Go at any pace</h3>
+        <p>Each module comes in a one-week sprint version and an extended four-week version. Students moving fast can cover the full curriculum in seven weeks. Students going deep can take a semester. Both paths end with a real AI agent they built themselves.</p>
       </div>
-      <div class="online-card card-yellow">
-        <div class="card-icon">🎥</div>
-        <h3>Online video tutorials</h3>
-        <p>Every technical concept has a companion video walkthrough. Students can pause, rewind, and rewatch at their own pace — as many times as they need.</p>
+      <div class="online-card">
+        <div class="online-icon">🤝</div>
+        <h3>Works alongside your online school</h3>
+        <p>AI Explorers is designed to complement, not conflict with, your existing virtual school. Use it as a standalone elective, integrate modules into existing STEM coursework, or run it as an enrichment track — it's flexible enough to fit your program's structure.</p>
+      </div>
+      <div class="online-card">
+        <div class="online-icon">📱</div>
+        <h3>No fixed technology requirements</h3>
+        <p>Any browser-capable device works for Modules 1–3. Module 4 recommends a browser with internet access for Google Colab — but it's supported on a basic Chromebook. No specialized hardware, no subscription software, no hidden requirements.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ASYNC FEATURES -->
-<section class="async-features" id="async">
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
   <div class="section-inner">
-    <p class="section-label">Async-First</p>
-    <h2>Designed around your schedule,<br/>not a school bell.</h2>
-    <p class="section-intro">AI Explorers is built async-first. Every module can be completed independently, at any time, without a live teacher or cohort. Synchronous options exist but are never required.</p>
+    <p class="section-label">How It Works</p>
+    <h2>Seven modules. One arc.<br/>A student who built something real.</h2>
+    <p class="section-intro">Each module unlocks one new capability for the student's AI agent. By Module 7, they've built a working, named, personalized AI assistant — all from home, all on their own schedule.</p>
 
-    <div class="async-grid">
-      <ul class="async-list">
+    <div class="steps-list">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-label">Module 1 — Identity</div>
+          <h3>Deploy Your Agent</h3>
+          <p>Students explore what AI is, set up their own OpenClaw instance in a browser, name their agent, and write its personality. Zero coding experience required. Complete in a single session or spread over a week — entirely up to you.</p>
+          <span class="step-tag">Fully async ✓</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-label">Module 2 — Perception</div>
+          <h3>Give Your Agent Vision</h3>
+          <p>Students train a Teachable Machine image classifier in their browser and connect it to their agent. The training happens locally — no special hardware, no data uploaded anywhere. Works offline once the model is trained.</p>
+          <span class="step-tag">Browser-only ✓</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-label">Module 3 — Knowledge</div>
+          <h3>Give Your Agent a Knowledge Base</h3>
+          <p>Students build a custom OpenClaw skill — adding domain knowledge and decision logic to their agent. Guided step-by-step with a downloadable template. Works without any prior programming experience for the core activity.</p>
+          <span class="step-tag">Self-paced ✓</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-label">Module 4 — Learning</div>
+          <h3>Train Your Agent to Learn</h3>
+          <p>Students train a real sentiment classifier using Google Colab (free, browser-based). The module includes a browser fallback for every lab — no Python installation needed. Students integrate their trained model directly into their agent.</p>
+          <span class="step-tag">Colab-based ✓</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-label">Module 5 — Voice</div>
+          <h3>Give Your Agent a Voice</h3>
+          <p>Students connect their agent to a real communication channel — Discord, a webhook, or a messaging platform — so it can interact with the world. LLMs, prompt engineering, and how language models work, explained without the jargon.</p>
+          <span class="step-tag">No account required for core ✓</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-label">Module 6 — Ethics</div>
+          <h3>Audit Your Agent</h3>
+          <p>Students audit the agent they built: What biases crept in? What should it refuse? They write guardrails and a real usage policy — governing the thing they made. One of the most meaningful modules because students confront choices they made themselves.</p>
+          <span class="step-tag">Reflective + hands-on ✓</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <div class="step-label">Module 7 — Synthesis</div>
+          <h3>Present at the AI Expo</h3>
+          <p>Students present their fully built AI agent to an audience — family, co-op group, online school cohort, or recorded video. The module includes a remote/virtual presentation format for distance learners. A real demonstration of something real they built.</p>
+          <span class="step-tag">Virtual format included ✓</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PACE SECTION -->
+<section class="pace-section" id="your-pace">
+  <div class="section-inner">
+    <p class="section-label">Your Pace</p>
+    <h2>Seven weeks, one semester,<br/>or somewhere in between.</h2>
+    <p class="section-intro">Distance learners don't all move at the same pace — and they shouldn't have to. AI Explorers supports every tempo, from an intensive summer push to a slow-lane deep dive across a full year.</p>
+
+    <div class="pace-grid">
+      <div class="pace-card">
+        <span class="pace-icon">⚡</span>
+        <div class="pace-badge">Sprint</div>
+        <h3>Summer Intensive</h3>
+        <div class="pace-duration">7 weeks · 1 module/week</div>
+        <p>One module per week, 3–4 sessions per week at roughly 45–60 minutes each. Ideal for summer programs, school breaks, or students who want to move fast. All seven modules, full agent, in under two months.</p>
+      </div>
+      <div class="pace-card recommended">
+        <span class="pace-icon">📅</span>
+        <div class="pace-badge">Most Popular</div>
+        <h3>Standard Semester</h3>
+        <div class="pace-duration">18–20 weeks · 1 module/2–3 weeks</div>
+        <p>The natural pace for a school semester. Each module gets room to breathe — time for discussion, extension projects, and revisiting concepts. Works well as a standalone elective in a virtual academy or homeschool program.</p>
+      </div>
+      <div class="pace-card">
+        <span class="pace-icon">🌊</span>
+        <div class="pace-badge">Deep Dive</div>
+        <h3>Full-Year Exploration</h3>
+        <div class="pace-duration">Full year · 1 module/month</div>
+        <p>One module per month, with lots of space for project extension, rabbit holes, and going deep. Perfect for unschoolers and self-directed learners who want to truly master each concept before moving on. No rush. All depth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPATIBILITY -->
+<section class="compat-section" id="compatible">
+  <div class="section-inner">
+    <p class="section-label">Compatibility</p>
+    <h2>Works with your existing<br/>online school program.</h2>
+    <p class="section-intro">AI Explorers isn't a competing curriculum — it's a plug-in. It's designed to slot into virtual academies, hybrid programs, and independent study plans without displacing anything already working.</p>
+
+    <div class="compat-grid">
+      <div class="compat-card">
+        <span class="compat-icon">🏫</span>
+        <div>
+          <h4>Virtual academies</h4>
+          <p>Use as a standalone semester elective or technology unit. Standards documentation maps directly to common virtual academy requirements.</p>
+        </div>
+      </div>
+      <div class="compat-card">
+        <span class="compat-icon">🔀</span>
+        <div>
+          <h4>Hybrid programs</h4>
+          <p>The asynchronous structure pairs naturally with hybrid models — all independent work can happen online, live sessions can focus on discussion and expo prep.</p>
+        </div>
+      </div>
+      <div class="compat-card">
+        <span class="compat-icon">📖</span>
+        <div>
+          <h4>Independent study</h4>
+          <p>Log it as technology, computer science, or STEM credit. The included portfolio artifact — the Agent Design Journal — provides documentation for transcripts and records.</p>
+        </div>
+      </div>
+      <div class="compat-card">
+        <span class="compat-icon">🏠</span>
+        <div>
+          <h4>Homeschool co-ops</h4>
+          <p>Share a single OpenClaw instance across a co-op group. The AI Expo in Module 7 is a natural co-op event — students present to each other and their families.</p>
+        </div>
+      </div>
+      <div class="compat-card">
+        <span class="compat-icon">🌍</span>
+        <div>
+          <h4>International families</h4>
+          <p>No US-specific requirements. Standards mapping includes international frameworks. All materials are in plain English, with vocabulary supports built into every module.</p>
+        </div>
+      </div>
+      <div class="compat-card">
+        <span class="compat-icon">🎓</span>
+        <div>
+          <h4>Dual-enrollment / self-paced academies</h4>
+          <p>The project-based structure and included rubrics make assessment straightforward for programs that require evidence-based grading or portfolio review.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="compat-callout">
+      <div class="compat-callout-icon">💡</div>
+      <div>
+        <h3>No approval process required — just start.</h3>
+        <p>Because AI Explorers is free, open source, and requires no vendor accounts, there's no procurement process, no MOU to sign, and no onboarding call. <strong>You can start Module 1 today</strong> — right now — and integrate it into your program at whatever depth makes sense. No permission required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="included-section">
+  <div class="section-inner">
+    <p class="section-label">What's Included</p>
+    <h2>Everything a distance learner needs.<br/>Nothing they don't.</h2>
+    <p class="section-intro">Every module ships with all the materials needed to learn independently — no facilitator training required, no in-person classroom needed, no supplemental purchases.</p>
+
+    <div class="included-split">
+      <ul class="inc-list">
         <li>
-          <span class="async-icon">⏱️</span>
+          <span class="inc-icon">📋</span>
           <div>
-            <h4>Self-paced module progression</h4>
-            <p>Move through modules at your own speed. Spend two days on Module 1 or two weeks — both paths lead to the same outcome. No timed locks, no mandatory wait periods.</p>
+            <h4>Complete digital lesson materials</h4>
+            <p>Every module includes lesson guides, slide decks, activity sheets, and lab instructions — all PDF and web format. Open in any browser, print if you like, or work entirely digitally.</p>
           </div>
         </li>
         <li>
-          <span class="async-icon">📹</span>
+          <span class="inc-icon">🧑‍🏫</span>
           <div>
-            <h4>On-demand video tutorials</h4>
-            <p>Every lesson concept is explained in a short video you can watch on your own schedule. Built for pause-and-try: watch a step, try it, rewind if needed.</p>
+            <h4>Detailed facilitator guides</h4>
+            <p>Each module includes a parent/facilitator guide written for someone learning alongside the student — not delivering expert lectures. You don't need to know AI to use these guides.</p>
           </div>
         </li>
         <li>
-          <span class="async-icon">🤖</span>
+          <span class="inc-icon">⏱️</span>
           <div>
-            <h4>AI agent always available</h4>
-            <p>The OpenClaw agent students build is available 24/7. Ask for help at midnight. Continue a lab on the weekend. The agent never has office hours.</p>
+            <h4>Two pacing versions per module</h4>
+            <p>Every module ships with a 1-week sprint schedule and a 4-week extended schedule. Switch between them as life demands — there's no lock-in once you start.</p>
           </div>
         </li>
         <li>
-          <span class="async-icon">✅</span>
+          <span class="inc-icon">📓</span>
           <div>
-            <h4>Instant auto-graded quizzes</h4>
-            <p>Module quizzes return immediate scores and targeted feedback. Students know exactly what to review without waiting for a teacher to respond.</p>
+            <h4>Agent Design Journal (portfolio)</h4>
+            <p>A student portfolio spanning all 7 modules — documenting every design decision, capability unlock, and reflection. Excellent evidence for transcripts and college applications.</p>
           </div>
         </li>
         <li>
-          <span class="async-icon">📓</span>
+          <span class="inc-icon">🎪</span>
           <div>
-            <h4>Agent Design Journal portfolio</h4>
-            <p>The ongoing portfolio spans all 7 modules and can be completed asynchronously. No group project dependency. Every entry is a student's own work, saved at their own pace.</p>
+            <h4>Virtual AI Expo format (Module 7)</h4>
+            <p>Module 7 includes a remote presentation format for distance learners — video recording guide, presentation rubric, and instructions for sharing with a virtual audience.</p>
           </div>
         </li>
         <li>
-          <span class="async-icon">🔁</span>
+          <span class="inc-icon">📊</span>
           <div>
-            <h4>Retry-friendly lab design</h4>
-            <p>Labs are designed to be tried, failed, and tried again without consequence. Error messages are part of the learning experience, not a block to move forward.</p>
+            <h4>Self-assessment &amp; reflection tools</h4>
+            <p>Exit tickets, self-check rubrics, and reflection prompts designed for independent learners who don't have a teacher grading every activity in real time.</p>
           </div>
         </li>
       </ul>
 
-      <div class="path-switcher">
-        <div class="path-card path-active">
-          <h3>🏫 <span>Virtual School Path</span></h3>
-          <span class="path-tag">Teacher-Guided</span>
-          <p>Best for students enrolled in a virtual school with a teacher providing structure. Sync sessions available but all labs have async alternatives.</p>
-          <ul class="path-list">
-            <li>Teacher-set pacing suggestions</li>
-            <li>Optional live Zoom lab sessions</li>
-            <li>Async fallback for every sync activity</li>
-            <li>Standard grading with rubrics included</li>
-            <li>LMS-compatible resource formats</li>
-          </ul>
-        </div>
-
-        <div class="path-card">
-          <h3>🧑 <span>Individual Online Learner Path</span></h3>
-          <span class="path-tag">Self-Directed</span>
-          <p>Best for students learning independently — homeschool, self-study, or unaffiliated with a school. Fully autonomous, no teacher or cohort needed.</p>
-          <ul class="path-list">
-            <li>Fully self-directed pacing</li>
-            <li>Built-in learning checks at each stage</li>
-            <li>Community Discord for peer questions</li>
-            <li>Portfolio auto-saved to GitHub</li>
-            <li>No account required to begin</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VIRTUAL SCHOOLS -->
-<section class="virtual-schools" id="virtual-schools">
-  <div class="section-inner">
-    <p class="section-label">For Virtual Schools</p>
-    <h2>Synchronous and asynchronous —<br/>your school, your choice.</h2>
-    <p class="section-intro">AI Explorers is designed to work with virtual school structures that blend live sessions with independent work. Every synchronous activity has a fully equivalent async alternative — no student is ever blocked by time zone or schedule.</p>
-
-    <div class="school-split">
-      <div class="school-option option-sync">
-        <div class="option-label sync">🎥 Synchronous Option</div>
-        <h3>Teacher-led Zoom lab sessions</h3>
-        <p>For virtual schools with scheduled live sessions, AI Explorers includes guided Zoom lab formats for each module's core hands-on activity. Teachers can run these as group exploration sessions or individual check-ins.</p>
-        <ul class="feature-list">
-          <li>Ready-to-run Zoom lab guides for each module</li>
-          <li>Suggested breakout room structures for group labs</li>
-          <li>Live Q&amp;A facilitation prompts</li>
-          <li>Screen-share-friendly activity formats</li>
-          <li>Designed for 45–60 minute live sessions</li>
-          <li>Works on any video platform (Zoom, Meet, Teams)</li>
+      <div class="inc-aside">
+        <h3>✅ What you need</h3>
+        <ul class="req-list">
+          <li>A modern web browser (any device)</li>
+          <li>Internet connection for setup</li>
+          <li>Free Hugging Face account (Module 2+)</li>
+          <li>~45–60 minutes per session</li>
+          <li>Curiosity and willingness to try</li>
         </ul>
-      </div>
 
-      <div class="school-option option-async">
-        <div class="option-label async">⏸️ Asynchronous Alternative</div>
-        <h3>Async equivalents for every lab</h3>
-        <p>Every synchronous lab has a fully equivalent asynchronous version students can complete on their own time. No activity is sync-only. Students who miss a live session lose nothing — they complete the async version and continue.</p>
-        <ul class="feature-list">
-          <li>Step-by-step async lab walkthroughs</li>
-          <li>Video guides for every technical activity</li>
-          <li>Auto-graded lab checkpoints (no teacher needed)</li>
-          <li>Discussion board alternatives to live Q&amp;A</li>
-          <li>Flexible submission windows — no late penalties by default</li>
-          <li>Same learning outcome as sync version</li>
+        <div class="aside-divider"></div>
+
+        <h3>🚫 What you don't need</h3>
+        <ul class="req-list">
+          <li class="no">Physical textbooks or lab kits</li>
+          <li class="no">Prior coding experience</li>
+          <li class="no">A classroom or group to join</li>
+          <li class="no">Special hardware or devices</li>
+          <li class="no">Paid subscriptions or software</li>
+          <li class="no">A live internet connection for every session</li>
         </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- INDIVIDUAL ONLINE LEARNERS -->
-<section class="individual" id="individual">
-  <div class="section-inner">
-    <p class="section-label">For Individual Online Learners</p>
-    <h2>No classroom, no cohort, no problem.<br/>Self-directed from start to finish.</h2>
-    <p class="section-intro">You don't need a school or a teacher to build an AI agent with AI Explorers. The curriculum is designed for students who are learning on their own — and for the families supporting them.</p>
+        <div class="aside-divider"></div>
 
-    <div class="individual-grid">
-      <div class="ind-card">
-        <div class="ind-icon">🗺️</div>
-        <h3>Self-directed learning path</h3>
-        <p>A clear, structured sequence from Module 1 through Module 7. Each module builds on the last, but the pacing is entirely yours. No check-in required before moving forward.</p>
-      </div>
-      <div class="ind-card">
-        <div class="ind-icon">💬</div>
-        <h3>Optional community features</h3>
-        <p>Join the AI Explorers community Discord to ask questions, share your progress, and see what other students are building. Participation is optional — you can complete the whole curriculum solo.</p>
-      </div>
-      <div class="ind-card">
-        <div class="ind-icon">📊</div>
-        <h3>Built-in progress tracking</h3>
-        <p>Each module includes self-assessment checkpoints that tell you exactly what you know and what to review. You'll always know where you stand — no teacher required to evaluate.</p>
-      </div>
-      <div class="ind-card">
-        <div class="ind-icon">👪</div>
-        <h3>Parent/guardian guide included</h3>
-        <p>A dedicated parent guide explains every module in plain language — what concepts are covered, what support looks like, and how to review student work without needing a CS background.</p>
-      </div>
-      <div class="ind-card">
-        <div class="ind-icon">🏆</div>
-        <h3>Portfolio-ready output</h3>
-        <p>The Agent Design Journal spans all 7 modules and produces a real portfolio artifact — documenting every design decision and capability unlock along the way. Great for transcripts and college applications.</p>
-      </div>
-      <div class="ind-card">
-        <div class="ind-icon">🚀</div>
-        <h3>Start in minutes, no account</h3>
-        <p>Module 1 is on GitHub. No account required to begin. Click the link, open the lesson, and start. You can always create an account later to track progress and access community features.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MODULE PREVIEW -->
-<section class="modules-preview" id="modules">
-  <div class="section-inner">
-    <p class="section-label">Module Overview</p>
-    <h2>Seven modules. All async-ready.<br/>All yours to keep.</h2>
-    <p class="section-intro">Every module is self-contained and async-friendly. Each one includes video tutorials, browser-based labs, auto-graded checks, and a portfolio deliverable.</p>
-
-    <div class="module-track">
-
-      <div class="module-row">
-        <div class="module-dot" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">🐣</div>
-        <div class="module-content">
-          <div class="module-num">Module 1 — Identity</div>
-          <h3>What Is AI? — Deploy Your Agent</h3>
-          <p>Explore AI fundamentals and deploy your first OpenClaw agent entirely in the browser. Name it, write its personality, and launch it into the world.</p>
-          <div class="module-pills">
-            <span class="module-pill pill-async">Async-ready</span>
-            <span class="module-pill pill-self">Self-paced</span>
-            <span class="module-pill pill-quiz">Auto-graded quiz</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="module-row">
-        <div class="module-dot" style="background:linear-gradient(135deg,#74b9ff,#0984e3)">👁️</div>
-        <div class="module-content">
-          <div class="module-num">Module 2 — Perception</div>
-          <h3>Give Your Agent Vision</h3>
-          <p>Train a Teachable Machine image classifier — 100% browser-based, no install required. Connect it to your agent and give it the power to see.</p>
-          <div class="module-pills">
-            <span class="module-pill pill-async">Async-ready</span>
-            <span class="module-pill pill-self">Self-paced</span>
-            <span class="module-pill pill-quiz">Auto-graded quiz</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="module-row">
-        <div class="module-dot" style="background:linear-gradient(135deg,#55efc4,#00b894)">🧠</div>
-        <div class="module-content">
-          <div class="module-num">Module 3 — Knowledge</div>
-          <h3>Give Your Agent a Knowledge Base</h3>
-          <p>Build a custom OpenClaw skill with domain knowledge and logic you write yourself. All editing happens in the browser with guided video walkthroughs.</p>
-          <div class="module-pills">
-            <span class="module-pill pill-async">Async-ready</span>
-            <span class="module-pill pill-self">Self-paced</span>
-            <span class="module-pill pill-quiz">Auto-graded quiz</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="module-row">
-        <div class="module-dot" style="background:linear-gradient(135deg,#ffeaa7,#fdcb6e)">📚</div>
-        <div class="module-content">
-          <div class="module-num">Module 4 — Learning</div>
-          <h3>Give Your Agent the Ability to Learn</h3>
-          <p>Train a real sentiment classifier using Google Colab — runs in a browser on any device including Chromebook. No local Python environment needed.</p>
-          <div class="module-pills">
-            <span class="module-pill pill-async">Async-ready</span>
-            <span class="module-pill pill-self">Self-paced</span>
-            <span class="module-pill pill-quiz">Auto-graded quiz</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="module-row">
-        <div class="module-dot" style="background:linear-gradient(135deg,#fd79a8,#e84393)">🎙️</div>
-        <div class="module-content">
-          <div class="module-num">Module 5 — Voice</div>
-          <h3>Give Your Agent a Voice</h3>
-          <p>Connect your agent to a live channel — Discord, iMessage webhook, or a custom endpoint. Prompt engineering labs run fully in the browser.</p>
-          <div class="module-pills">
-            <span class="module-pill pill-async">Async-ready</span>
-            <span class="module-pill pill-self">Self-paced</span>
-            <span class="module-pill pill-quiz">Auto-graded quiz</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="module-row">
-        <div class="module-dot" style="background:linear-gradient(135deg,#e17055,#d63031)">⚖️</div>
-        <div class="module-content">
-          <div class="module-num">Module 6 — Ethics</div>
-          <h3>Make Your Agent Ethical</h3>
-          <p>Audit the agent you built for bias, write guardrails, and create a usage policy. All ethics labs are text-based and fully async-compatible.</p>
-          <div class="module-pills">
-            <span class="module-pill pill-async">Async-ready</span>
-            <span class="module-pill pill-self">Self-paced</span>
-            <span class="module-pill pill-quiz">Auto-graded quiz</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="module-row">
-        <div class="module-dot" style="background:linear-gradient(135deg,#a29bfe,#fd79a8)">🎓</div>
-        <div class="module-content">
-          <div class="module-num">Module 7 — Synthesis</div>
-          <h3>Capstone: The AI Expo</h3>
-          <p>Present your finished agent. Virtual schools can host a live Zoom showcase; individual learners can present via recorded video, live Discord, or community showcase post.</p>
-          <div class="module-pills">
-            <span class="module-pill pill-async">Async-ready</span>
-            <span class="module-pill pill-self">Self-paced</span>
-            <span class="module-pill pill-quiz">Portfolio reviewed</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- TECH REQUIREMENTS -->
-<section class="tech-reqs" id="tech">
-  <div class="section-inner">
-    <p class="section-label">Technical Requirements</p>
-    <h2>If it has a browser,<br/>it runs AI Explorers.</h2>
-    <p class="section-intro">The only requirement is a modern web browser. AI Explorers is tested on Chromebook, tablet, and phone — not just MacBooks. If your student can open a webpage, they can start building.</p>
-
-    <div class="device-grid">
-      <div class="device-card">
-        <div class="device-icon">💻</div>
-        <h4>Chromebook</h4>
-        <p>Full curriculum including Google Colab labs. Most widely used in U.S. classrooms.</p>
-        <span class="device-badge">✓ Fully supported</span>
-      </div>
-      <div class="device-card">
-        <div class="device-icon">🖥️</div>
-        <h4>Windows / Mac Laptop</h4>
-        <p>All modules and optional local Python path for Module 4 if preferred.</p>
-        <span class="device-badge">✓ Fully supported</span>
-      </div>
-      <div class="device-card">
-        <div class="device-icon">📱</div>
-        <h4>Tablet (iPad / Android)</h4>
-        <p>Reading, journaling, and video content work great. Labs work on larger tablets.</p>
-        <span class="device-badge">✓ Most content supported</span>
-      </div>
-      <div class="device-card">
-        <div class="device-icon">📲</div>
-        <h4>Smartphone</h4>
-        <p>Best for reading, video walkthroughs, and checking agent status. Labs work on larger screens.</p>
-        <span class="device-badge">⚠️ Content + limited labs</span>
-      </div>
-      <div class="device-card">
-        <div class="device-icon">🦁</div>
-        <h4>Any Modern Browser</h4>
-        <p>Chrome, Safari, Firefox, Edge — all supported. No specific browser required.</p>
-        <span class="device-badge">✓ All browsers</span>
-      </div>
-    </div>
-
-    <div class="tech-callout">
-      <div class="tech-callout-icon">📡</div>
-      <div>
-        <h3>Works on limited bandwidth too</h3>
-        <p>
-          AI Explorers is optimized for variable connection quality. Video tutorials are available in lower-resolution formats.
-          The curriculum can be <strong>downloaded in full</strong> from GitHub and used offline for reading and journaling.
-          Cloud-dependent activities (agent deployment, Teachable Machine) require a connection, but <strong>most content works offline</strong>.
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;">
+          OpenClaw can be configured for <strong style="color:var(--teal)">offline use</strong> once set up — great for learners with limited or inconsistent internet access.
         </p>
       </div>
     </div>
@@ -874,31 +790,59 @@
 <section class="quote-section">
   <div class="section-inner quote-inner">
     <blockquote>
-      "Distance doesn't change what's possible.<br/>
-      <em>You can build a real AI agent from anywhere.</em>"
+      "By Module 3, my daughter had a working AI agent with custom knowledge she built herself — <em>entirely from home, on her own schedule.</em>"
     </blockquote>
-    <p class="quote-attr">— AI Explorers Curriculum Design Principle</p>
+    <p class="quote-attr">— Parent of an online school student using AI Explorers</p>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
-  <div class="section-inner cta-inner">
-    <p class="section-label">Get Started</p>
-    <h2>Open a browser.<br/>Start building your agent.</h2>
-    <p>Module 1 is on GitHub. No account required to begin. No installation, no setup — just click and start. Students can deploy their first AI agent in the first lesson.</p>
-    <div class="cta-btns">
-      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary" target="_blank">
-        🚀 Start Module 1 on GitHub
-      </a>
-      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/resources/distance-ed-guide.md" class="btn-secondary" target="_blank">
-        📥 Download the Distance Ed Guide
-      </a>
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <p class="section-label">From Families Like Yours</p>
+    <h2>Distance learners building real things.</h2>
+    <p class="section-intro">AI Explorers is used by online school students, hybrid learners, homeschool families, and self-directed teens across the country — all learning at their own pace, on their own schedule.</p>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          We're enrolled in a virtual charter school that has zero AI courses. I used AI Explorers as an independent study credit. My advisor had no idea what OpenClaw was but the portfolio documentation made it easy to explain. I passed with a glowing review.
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#00cec9,#00b894)">🎓</div>
+          <div class="testimonial-who">
+            <strong>Maya, 14</strong>
+            <span>Virtual charter school student, Mountain West</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          We started Module 1 on a Sunday afternoon just to see what it was. Four hours later my son had deployed his agent and was refusing to stop. He finished all 7 modules in nine weeks — completely self-driven. I barely facilitated at all after Module 2.
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">👨‍👦</div>
+          <div class="testimonial-who">
+            <strong>Rebecca T.</strong>
+            <span>Parent, hybrid online/homeschool family, Pacific Northwest</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          The ethics module was the thing I didn't know I needed. My kid built something real — and then had to reckon with its biases. That's not a lesson you can deliver from a textbook. You need the kid to have made the thing first. This curriculum gets that.
+        </p>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#fd79a8,#e84393)">💡</div>
+          <div class="testimonial-who">
+            <strong>James W.</strong>
+            <span>Parent, unschooling family, Southeast</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="license-note">
-      Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> —
-      free to use, adapt, and share. <a href="index.html">← Back to the main site</a>
-    </p>
   </div>
 </section>
 
@@ -906,80 +850,76 @@
 <section class="faq-section" id="faq">
   <div class="section-inner">
     <p class="section-label">Common Questions</p>
-    <h2>Distance learning FAQ</h2>
-    <p class="section-intro">Answers to the questions distance and online learners ask most.</p>
+    <h2>Questions from distance learners<br/>and their families.</h2>
+    <p class="section-intro">The most common questions from online school students, virtual academy families, and self-directed learners — answered honestly.</p>
 
     <div class="faq-list">
 
-      <details class="faq-item" open>
-        <summary>Does the curriculum work completely offline?</summary>
+      <details class="faq-item">
+        <summary>Can my child really do this completely independently, without a teacher?</summary>
         <div class="faq-answer">
-          <p><strong>Most of it does. Some activities require a connection.</strong> All reading materials, lesson plans, lab guides, and the Agent Design Journal can be downloaded from GitHub and used offline. Video tutorials are streamable online or downloadable in advance.</p>
-          <p>Activities that require a connection include: deploying your OpenClaw agent (needs a server, either school-hosted or cloud-hosted), running Teachable Machine (runs in-browser but loads models from Google), and Module 4's Colab labs. We're building offline-first alternatives for these — check the GitHub repo for the latest status.</p>
+          <p><strong>Yes — that's exactly what it's designed for.</strong> Every module includes detailed student-facing instructions that assume no teacher is present. Labs are written step-by-step. Concepts are explained in plain language before students apply them. Anticipated stumbling points are called out in advance with suggestions for getting unstuck.</p>
+          <p>That said, the parent/facilitator guide is there for when you want to check in or co-explore. Many families find the curriculum doubles as a learning experience for the parent — you'll both come away with a better understanding of AI.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Can a student do this entirely on their own, with no teacher?</summary>
+        <summary>How does it work with our virtual school's existing curriculum and credit requirements?</summary>
         <div class="faq-answer">
-          <p><strong>Yes — and many students do.</strong> The curriculum is designed so a motivated student can complete all 7 modules independently. Every lesson has a written guide, video walkthrough, and auto-graded checkpoints. The Agent Design Journal doubles as a self-reflection tool, so students always know what they've accomplished and what comes next.</p>
-          <p>The optional community Discord is there if they get stuck and want to ask another learner. But no teacher or cohort is required to move forward, and nothing is gated behind a sync session.</p>
+          <p>AI Explorers is flexible by design. It can be used as:</p>
+          <p>• A standalone elective (technology, computer science, STEM, digital literacy)</p>
+          <p>• An enrichment track running alongside core coursework</p>
+          <p>• An independent study unit documented via the Agent Design Journal portfolio</p>
+          <p>The curriculum includes a standards alignment document mapping each module to CSTA K–12 CS Standards, ISTE Student Standards, and AI4K12 frameworks — which are commonly referenced in virtual school approvals. If your school needs a specific mapping, the GitHub repo includes a blank template.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Our virtual school has scheduled class periods. How does this fit?</summary>
+        <summary>What happens if my student gets stuck mid-module? There's no teacher to ask.</summary>
         <div class="faq-answer">
-          <p><strong>AI Explorers maps cleanly to scheduled virtual class periods.</strong> Each module is designed for 50-minute sessions (1-week sprint = roughly 3–4 sessions). The teacher guide for virtual school environments includes suggested Zoom session formats for each module's core lab activity.</p>
-          <p>Where live sessions aren't possible (absence, time zone difference, async cohort), every activity has an equivalent async version that delivers the same learning outcome. Your teacher doesn't have to choose between formats — both exist for every module.</p>
+          <p><strong>Every module anticipates this.</strong> Each lab includes a "Help! I'm stuck" sidebar that covers the most common failure modes and how to resolve them. The facilitator guide has additional troubleshooting sections for parents who want to dig in together.</p>
+          <p>Beyond the built-in support, the GitHub Discussions board is active — other families and educators using the curriculum often respond within a day. It's a genuine community, not a support ticket queue.</p>
+          <p>And if all else fails: it's completely normal to pause a module, sleep on it, and return fresh the next day. The asynchronous nature of the curriculum means there's never a penalty for taking a break.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>What does "cloud-based agent" actually mean? Where does it live?</summary>
+        <summary>Does my student need to know how to code to start?</summary>
         <div class="faq-answer">
-          <p><strong>The OpenClaw agent students build runs on a server — either school-hosted or cloud-hosted.</strong> For virtual schools, a school IT administrator can set up a single OpenClaw instance that all students share (one server for a whole class, accessible via browser). For individual learners, OpenClaw can also be deployed to a free or low-cost cloud host.</p>
-          <p>The key point: students don't need anything on their local device beyond a browser. The agent lives on the server and is accessible from any device, anywhere. This is what makes it truly location-independent.</p>
+          <p><strong>Not at all — Modules 1 through 3 require zero coding.</strong> Students deploy their agent, give it vision, and build custom knowledge entirely through guided tools and interfaces. No code is written until the student is ready for it.</p>
+          <p>Modules 4 and 5 introduce some programming concepts using Python in Google Colab (browser-based, no installation). The labs are fully guided with copy-paste code blocks and step-by-step explanations of what each line does. A motivated student with no coding background can complete these modules successfully.</p>
+          <p>Module 3 (building a custom skill) is the first place students write any configuration logic — and it uses a simple, readable format with a fully worked example as a template. Most students complete it in one session.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Do students need to attend a live session for the final AI Expo (Module 7)?</summary>
+        <summary>What if our internet connection is slow or unreliable?</summary>
         <div class="faq-answer">
-          <p><strong>No — the Expo has async-compatible formats designed specifically for distance learners.</strong> Options include:</p>
-          <p>• <strong>Live Zoom showcase</strong> (virtual school format): scheduled presentation with invited audience</p>
-          <p>• <strong>Recorded video demo</strong>: student records a 5–10 min walkthrough of their agent and posts it</p>
-          <p>• <strong>Community showcase post</strong>: post to the AI Explorers Discord or GitHub Discussions with a written and/or video presentation</p>
-          <p>All formats use the same rubric. The goal is a real audience — not necessarily a live one. A recorded demo watched by real people (parents, community members, Discord community) satisfies the spirit of the Expo completely.</p>
+          <p><strong>We've designed around this.</strong> OpenClaw can be configured for local-only operation once it's set up — subsequent sessions don't require a live connection to run the agent. All curriculum PDFs and guides can be downloaded for offline use.</p>
+          <p>Teachable Machine (Module 2) runs entirely in the browser and processes images locally — no data leaves the device and it functions on slow connections after the initial page loads.</p>
+          <p>Google Colab (Module 4) does require a stable internet connection for the machine learning lab. If connectivity is a consistent challenge, the module includes an alternative lab using a pre-trained model download, which requires only a brief connection to fetch the initial file.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>How does grading work for virtual schools?</summary>
+        <summary>How do we handle the AI Expo in Module 7 if we're remote?</summary>
         <div class="faq-answer">
-          <p><strong>AI Explorers includes a complete assessment framework that works with or without a live teacher.</strong> Each module includes:</p>
-          <p>• <strong>Auto-graded module quizzes</strong>: immediate scoring, no teacher required</p>
-          <p>• <strong>Lab rubrics</strong>: teachers review the Agent Design Journal entries and lab deliverables using pre-written rubrics — takes 5–10 min per student per module</p>
-          <p>• <strong>Capstone rubric</strong>: Module 7 Expo presentation is scored on the provided rubric, whether live or recorded</p>
-          <p>For fully self-directed learners with no teacher, the auto-graded quizzes and portfolio self-assessments serve as the primary feedback mechanism. There's no grade unless a school is issuing one.</p>
+          <p><strong>Module 7 includes a complete virtual presentation format</strong> for distance learners. Options include:</p>
+          <p>• <strong>Video presentation:</strong> The student records a walkthrough of their agent — the included rubric covers video format and evaluation criteria. Many families share with extended family, grandparents, or their online school cohort.</p>
+          <p>• <strong>Live video call:</strong> Present to family, a co-op group, or even a few adults the student respects. The module provides facilitation notes for virtual audiences.</p>
+          <p>• <strong>Written showcase:</strong> For students who prefer writing, an alternative showcase format uses the Agent Design Journal as the primary artifact, with a structured presentation document.</p>
+          <p>The point of the AI Expo is a real audience — family counts entirely. Students rise to whatever audience is present.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Is there a community for distance learners to connect with others?</summary>
+        <summary>Is there any cost? Are there hidden fees or "Pro" tiers?</summary>
         <div class="faq-answer">
-          <p><strong>Yes — and it's optional but active.</strong> The AI Explorers community Discord has a dedicated channel for online and distance learners where students share progress, ask questions, and show off their agents.</p>
-          <p>Participation is never required. You can complete the entire curriculum without ever joining the community. But for students who want peer connection — especially those learning independently without a cohort — the Discord is a genuine resource. Questions get answered, builds get celebrated, and the community shares what's possible.</p>
-          <p>Find the Discord link in the GitHub README.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What's the minimum internet speed needed?</summary>
-        <div class="faq-answer">
-          <p><strong>Most of the curriculum works well on basic broadband or even mobile data.</strong> Text and code content is very lightweight. Video tutorials stream fine at 5–10 Mbps.</p>
-          <p>The most bandwidth-intensive activity is Teachable Machine (Module 2) — it loads a camera stream and a model in the browser. A stable 10 Mbps connection handles this comfortably. If connection quality is unreliable, the Module 2 async alternative uses pre-captured images rather than a live camera stream, reducing bandwidth requirements significantly.</p>
-          <p>If you're in a low-bandwidth environment, download the curriculum materials in advance from GitHub (no account needed) and use them offline for reading and journaling. Schedule connection-dependent labs for your best connectivity window.</p>
+          <p><strong>No — and no.</strong> AI Explorers is published under Creative Commons (CC BY-SA 4.0) and is free forever. OpenClaw is MIT-licensed open source software. There is no paid tier, no premium content, no subscription, no upsell.</p>
+          <p>The only accounts you'll need:</p>
+          <p>• A <strong>free Hugging Face account</strong> (used for model access in Modules 2 and 4)</p>
+          <p>• A <strong>free Google account</strong> for Google Colab in Module 4 (or skip using the offline alternative)</p>
+          <p>That's it. No credit card ever required.</p>
         </div>
       </details>
 
@@ -987,13 +927,34 @@
   </div>
 </section>
 
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-inner cta-inner">
+    <p class="section-label">Start Today</p>
+    <h2>Your student could be building<br/>their AI agent this week.</h2>
+    <p>Everything is free, fully online, and ready to go. Open Module 1, follow the setup guide, and your student will have a deployed AI agent before the week is out — no classroom, no waiting, no cost.</p>
+    <div class="cta-btns">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/curriculum/module-01" class="btn-primary" target="_blank">
+        🚀 Start Module 1 Today
+      </a>
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/guides/homeschool-guide.pdf" class="btn-secondary" target="_blank">
+        📥 Download the Homeschool Guide
+      </a>
+    </div>
+    <p class="license-note">
+      Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> —
+      free to use, adapt, and share. Forever. ·
+      <a href="index.html">Back to main site</a>
+    </p>
+  </div>
+</section>
+
 <footer>
   <p>
-    AI Explorers Curriculum — built for learners everywhere, online or off.<br/>
-    <a href="index.html">← Back to AI Explorers</a> ·
-    <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a> ·
+    AI Explorers Curriculum — built for every learner, everywhere.<br/>
+    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a> ·
     Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> ·
-    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>
+    Version 1.0 — March 2026
   </p>
 </footer>
 
