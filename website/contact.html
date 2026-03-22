@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Explorers — Get in Touch & Join the Interest List</title>
+  <meta name="description" content="Join the AI Explorers interest list to get notified when new curriculum modules drop, or contact us directly with questions about bringing AI Explorers to your school or district." />
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AI Explorers">
+  <meta property="og:url" content="https://aiexplorers.io/contact.html">
+  <meta property="og:title" content="AI Explorers — Get in Touch & Join the Interest List">
+  <meta property="og:description" content="Join the AI Explorers interest list to get notified when new curriculum modules drop, or contact us directly with questions about bringing AI Explorers to your school or district.">
+  <meta property="og:image" content="https://aiexplorers.io/og-images/og-default.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:locale" content="en_US">
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@aiexplorers">
+  <meta name="twitter:title" content="AI Explorers — Get in Touch & Join the Interest List">
+  <meta name="twitter:description" content="Join the AI Explorers interest list to get notified when new curriculum modules drop, or contact us directly.">
+  <meta name="twitter:image" content="https://aiexplorers.io/og-images/og-default.svg">
+  <link rel="canonical" href="https://aiexplorers.io/contact.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #6c5ce7;
+      --brand-dark: #4f3cc9;
+      --brand-light: #a29bfe;
+      --accent: #fd79a8;
+      --green: #00b894;
+      --yellow: #fdcb6e;
+      --orange: #e17055;
+      --blue: #0984e3;
+      --dark: #1a1a2e;
+      --dark2: #16213e;
+      --dark3: #0f3460;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(255,255,255,0.05);
+      --card-border: rgba(255,255,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(26,26,46,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .nav-logo {
+      font-size: 1.25rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--brand-light), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--brand); color: white; padding: 0.5rem 1.25rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--brand-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 55vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 55% 40%, rgba(108,92,231,0.18) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(253,121,168,0.1) 0%, transparent 50%),
+                  var(--dark);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: linear-gradient(var(--brand) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--brand) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-inner { max-width: 760px; text-align: center; position: relative; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(108,92,231,0.2); border: 1px solid rgba(108,92,231,0.4);
+      color: var(--brand-light); padding: 0.4rem 1rem;
+      border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 900; line-height: 1.1; margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--brand-light) 0%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--text-muted); max-width: 640px; margin: 0 auto;
+      line-height: 1.7;
+    }
+    .hero-sub strong { color: var(--text); }
+
+    /* ── MAIN LAYOUT ── */
+    .main-grid {
+      max-width: 1100px; margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 800px) {
+      .main-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brand-light); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    .section-desc {
+      color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .card + .card { margin-top: 1.5rem; }
+
+    /* ── INTEREST LIST FORM ── */
+    .form-label-row {
+      font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
+      margin-bottom: 0.35rem; display: block;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.92rem;
+      padding: 0.65rem 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--brand-light); }
+    .form-group select option { background: var(--dark2); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-checkbox-row {
+      display: flex; align-items: flex-start; gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+    .form-checkbox-row input[type="checkbox"] {
+      width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;
+      accent-color: var(--brand-light); cursor: pointer;
+    }
+    .form-checkbox-row label {
+      font-size: 0.85rem; color: var(--text-muted); cursor: pointer; line-height: 1.5;
+    }
+    .form-checkbox-row label strong { color: var(--text); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--brand); color: white;
+      border: none; border-radius: 10px;
+      padding: 0.85rem 1.5rem;
+      font-family: inherit; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
+      margin-bottom: 0.75rem;
+    }
+    .btn-submit:hover { background: var(--brand-dark); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.7; cursor: default; transform: none; }
+    .form-note { font-size: 0.78rem; color: var(--text-muted); text-align: center; }
+
+    /* success state */
+    .form-success {
+      display: none;
+      text-align: center; padding: 2rem 1rem;
+    }
+    .form-success .success-icon {
+      font-size: 3rem; margin-bottom: 1rem;
+    }
+    .form-success h3 {
+      font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem;
+      color: var(--green);
+    }
+    .form-success p { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* ── CONTACT INFO SIDEBAR ── */
+    .contact-info-block { margin-bottom: 2rem; }
+    .contact-info-block:last-child { margin-bottom: 0; }
+
+    .contact-row {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-icon {
+      font-size: 1.5rem; flex-shrink: 0; width: 2.2rem; text-align: center;
+      margin-top: 0.1rem;
+    }
+    .contact-row-text h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .contact-row-text p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+    .contact-row-text a { color: var(--brand-light); text-decoration: none; }
+    .contact-row-text a:hover { text-decoration: underline; }
+
+    /* ── TRUST BADGES ── */
+    .trust-row {
+      display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;
+    }
+    .trust-badge {
+      display: flex; align-items: center; gap: 0.4rem;
+      background: rgba(0,184,148,0.1); border: 1px solid rgba(0,184,148,0.3);
+      border-radius: 100px; padding: 0.3rem 0.8rem;
+      font-size: 0.78rem; font-weight: 600; color: var(--green);
+    }
+
+    /* ── AUDIENCE LINKS ── */
+    .audience-links { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+    .audience-link {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 10px; padding: 0.85rem 1.1rem;
+      text-decoration: none; color: var(--text);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .audience-link:hover { border-color: var(--brand-light); transform: translateX(3px); }
+    .audience-link-left { display: flex; align-items: center; gap: 0.65rem; }
+    .audience-link-emoji { font-size: 1.3rem; }
+    .audience-link-label { font-size: 0.9rem; font-weight: 600; }
+    .audience-link-sub { font-size: 0.78rem; color: var(--text-muted); }
+    .audience-link-arrow { color: var(--text-muted); font-size: 1rem; }
+
+    /* ── FAQ MINI ── */
+    .faq-list { margin-top: 1rem; }
+    .faq-item {
+      border-bottom: 1px solid var(--card-border); padding: 1rem 0;
+    }
+    .faq-item:first-child { padding-top: 0; }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-q {
+      font-size: 0.9rem; font-weight: 700; color: var(--text);
+      margin-bottom: 0.35rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+    }
+    .faq-q .faq-arrow { color: var(--text-muted); transition: transform 0.2s; font-size: 0.85rem; }
+    .faq-item.open .faq-arrow { transform: rotate(90deg); }
+    .faq-a {
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.65;
+      display: none; padding-top: 0.25rem;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid var(--card-border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.82rem; color: var(--text-muted);
+    }
+    footer a { color: var(--brand-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE NAV ── */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">🤖 AI Explorers</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="educators.html">Educators</a></li>
+    <li><a href="schools.html">Schools</a></li>
+    <li><a href="parents.html">Parents</a></li>
+    <li><a href="homeschool.html">Homeschool</a></li>
+  </ul>
+  <a href="#interest-form" class="nav-cta" onclick="document.getElementById('interest-form').scrollIntoView({behavior:'smooth'}); return false;">Join the List →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span>✉️</span> Get in Touch</div>
+    <h1>Join Our <em>Interest List</em><br/>or Say Hello</h1>
+    <p class="hero-sub">
+      Stay in the loop as we launch new modules, or reach out directly with questions about
+      bringing <strong>AI Explorers</strong> to your classroom, school, or homeschool.
+      We read every message.
+    </p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="main-grid">
+
+  <!-- LEFT: INTEREST LIST FORM -->
+  <div>
+    <div class="section-eyebrow">📬 Interest List</div>
+    <h2 class="section-title">Be First to Know</h2>
+    <p class="section-desc">
+      New modules, free resources, and teacher guides — delivered to your inbox when they drop.
+      No spam, no sales calls. Just updates when something worth sharing is ready.
+    </p>
+
+    <div class="card" id="interest-form">
+      <!-- The form itself -->
+      <form
+        id="interest-form-el"
+        name="interest-list"
+        method="POST"
+        action="https://formspree.io/f/aiexplorers"
+        onsubmit="handleInterestSubmit(event)"
+      >
+        <!-- Hidden fields for Formspree routing + analytics -->
+        <input type="hidden" name="_subject" value="AI Explorers Interest List Signup" />
+        <input type="hidden" name="form_type" value="interest_list" />
+        <!-- Honeypot anti-spam -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="if-first-name">First name *</label>
+            <input type="text" id="if-first-name" name="first_name" placeholder="Alex" required autocomplete="given-name" />
+          </div>
+          <div class="form-group">
+            <label for="if-email">Email address *</label>
+            <input type="email" id="if-email" name="email" placeholder="you@email.com" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="if-role">I am a…</label>
+            <select id="if-role" name="role">
+              <option value="">Select role…</option>
+              <option value="teacher">Teacher / Educator</option>
+              <option value="admin">School Administrator</option>
+              <option value="parent">Parent / Guardian</option>
+              <option value="homeschool">Homeschool Parent</option>
+              <option value="student">Student</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="if-grade">Grade level(s)</label>
+            <select id="if-grade" name="grade_level">
+              <option value="">Select grade…</option>
+              <option value="6">6th grade</option>
+              <option value="7">7th grade</option>
+              <option value="8">8th grade</option>
+              <option value="mixed">Multiple / Mixed</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="if-school">School / Organization (optional)</label>
+            <input type="text" id="if-school" name="school" placeholder="Lincoln Middle School" />
+          </div>
+          <div class="form-group">
+            <label for="if-state">State / Region (optional)</label>
+            <input type="text" id="if-state" name="state" placeholder="California" />
+          </div>
+        </div>
+
+        <div class="form-checkbox-row">
+          <input type="checkbox" id="if-updates" name="opt_in_updates" value="yes" checked />
+          <label for="if-updates">
+            <strong>Send me curriculum updates</strong> — new modules, resources, and launch news
+          </label>
+        </div>
+        <div class="form-checkbox-row">
+          <input type="checkbox" id="if-pilot" name="opt_in_pilot" value="yes" />
+          <label for="if-pilot">
+            <strong>I'm interested in piloting AI Explorers</strong> in my class/school (we'll reach out separately)
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit" id="interest-submit-btn">
+          Join the Interest List →
+        </button>
+        <p class="form-note">🔒 No spam, ever. Unsubscribe with one click. Your information is never shared or sold.</p>
+      </form>
+
+      <!-- Success state -->
+      <div class="form-success" id="interest-success">
+        <div class="success-icon">🎉</div>
+        <h3>You're on the list!</h3>
+        <p>We'll be in touch when new modules and resources drop. Keep building.</p>
+      </div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-badge">✅ Free forever</div>
+      <div class="trust-badge">✅ No spam</div>
+      <div class="trust-badge">✅ Unsubscribe anytime</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: CONTACT + INFO -->
+  <div>
+    <!-- Contact Info -->
+    <div class="section-eyebrow">💬 Direct Contact</div>
+    <h2 class="section-title">Questions? We're Here.</h2>
+    <p class="section-desc">
+      Whether you're an educator planning a pilot, an admin evaluating curriculum fit, or a parent
+      with questions — reach out. Real humans respond.
+    </p>
+
+    <div class="card">
+      <div class="contact-row">
+        <div class="contact-icon">📧</div>
+        <div class="contact-row-text">
+          <h4>Email</h4>
+          <p><a href="mailto:hello@aiexplorers.io">hello@aiexplorers.io</a><br/>
+          Response within 1–2 business days.</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">🐙</div>
+        <div class="contact-row-text">
+          <h4>GitHub</h4>
+          <p>All curriculum materials are open source.<br/>
+          <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener">View the repo →</a></p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">🕐</div>
+        <div class="contact-row-text">
+          <h4>Response Time</h4>
+          <p>We prioritize pilot inquiries and educator questions. Typical reply: 1–2 business days.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- General Contact Form -->
+    <div class="section-eyebrow" style="margin-top: 2.5rem;">✍️ Send a Message</div>
+    <h2 class="section-title" style="font-size: 1.4rem;">Have a specific question?</h2>
+
+    <div class="card">
+      <form
+        id="contact-form-el"
+        name="contact-message"
+        method="POST"
+        action="https://formspree.io/f/aiexplorers-contact"
+        onsubmit="handleContactSubmit(event)"
+      >
+        <input type="hidden" name="_subject" value="AI Explorers Contact Message" />
+        <input type="hidden" name="form_type" value="contact_message" />
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name">Your name *</label>
+            <input type="text" id="cf-name" name="name" placeholder="Alex Rivera" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="cf-email">Email *</label>
+            <input type="email" id="cf-email" name="email" placeholder="you@school.edu" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-group full" style="margin-bottom: 1rem;">
+          <label for="cf-topic">Topic</label>
+          <select id="cf-topic" name="topic">
+            <option value="">Select a topic…</option>
+            <option value="pilot">Piloting AI Explorers at my school</option>
+            <option value="curriculum">Curriculum / module questions</option>
+            <option value="technical">Technical / setup help</option>
+            <option value="press">Press / media inquiry</option>
+            <option value="partnership">Partnership or collaboration</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <div class="form-group full" style="margin-bottom: 1rem;">
+          <label for="cf-message">Message *</label>
+          <textarea id="cf-message" name="message" placeholder="Tell us what's on your mind…" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="contact-submit-btn">
+          Send Message →
+        </button>
+        <p class="form-note">We read and respond to every message.</p>
+      </form>
+
+      <div class="form-success" id="contact-success">
+        <div class="success-icon">✅</div>
+        <h3>Message received!</h3>
+        <p>We'll get back to you within 1–2 business days.</p>
+      </div>
+    </div>
+
+    <!-- Audience Quick Links -->
+    <div style="margin-top: 2.5rem;">
+      <div class="section-eyebrow">🗺️ Find Your Page</div>
+      <h2 class="section-title" style="font-size: 1.4rem;">Not sure where to start?</h2>
+      <div class="audience-links">
+        <a href="educators.html" class="audience-link">
+          <div class="audience-link-left">
+            <span class="audience-link-emoji">👩‍🏫</span>
+            <div>
+              <div class="audience-link-label">For Educators</div>
+              <div class="audience-link-sub">Module plans, rubrics, classroom guides</div>
+            </div>
+          </div>
+          <span class="audience-link-arrow">›</span>
+        </a>
+        <a href="schools.html" class="audience-link">
+          <div class="audience-link-left">
+            <span class="audience-link-emoji">🏫</span>
+            <div>
+              <div class="audience-link-label">For Schools & Districts</div>
+              <div class="audience-link-sub">Deployment, admin tools, FERPA info</div>
+            </div>
+          </div>
+          <span class="audience-link-arrow">›</span>
+        </a>
+        <a href="parents.html" class="audience-link">
+          <div class="audience-link-left">
+            <span class="audience-link-emoji">👨‍👩‍👧</span>
+            <div>
+              <div class="audience-link-label">For Parents</div>
+              <div class="audience-link-sub">Safety, content, and what kids build</div>
+            </div>
+          </div>
+          <span class="audience-link-arrow">›</span>
+        </a>
+        <a href="homeschool.html" class="audience-link">
+          <div class="audience-link-left">
+            <span class="audience-link-emoji">🏠</span>
+            <div>
+              <div class="audience-link-label">For Homeschoolers</div>
+              <div class="audience-link-sub">Self-paced, family-friendly, free forever</div>
+            </div>
+          </div>
+          <span class="audience-link-arrow">›</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mini FAQ -->
+    <div style="margin-top: 2.5rem;">
+      <div class="section-eyebrow">❓ Quick Answers</div>
+      <h2 class="section-title" style="font-size: 1.4rem;">Common Questions</h2>
+      <div class="card">
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Is AI Explorers really free? <span class="faq-arrow">›</span>
+            </div>
+            <div class="faq-a">Yes — completely free for educators, schools, and homeschoolers. No hidden fees, no "freemium" wall, no paid upgrade required. The full curriculum is on GitHub under a CC BY-SA 4.0 license.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              When will new modules be available? <span class="faq-arrow">›</span>
+            </div>
+            <div class="faq-a">Join the interest list and you'll be the first to know. We ship modules as they're ready — roughly one every 4–6 weeks during the development phase.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Can I pilot AI Explorers this semester? <span class="faq-arrow">›</span>
+            </div>
+            <div class="faq-a">Absolutely. Fill out the interest form above and check "I'm interested in piloting." We'll reach out to discuss your classroom setup, timeline, and how we can support you.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Do you offer professional development or training? <span class="faq-arrow">›</span>
+            </div>
+            <div class="faq-a">We're developing PD resources for educators. In the meantime, send us a message — we can often do a short async walkthrough for pilot schools.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    AI Explorers Curriculum — empowering the next generation of AI-literate humans.<br/>
+    Built with ❤️ on <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank">GitHub</a> ·
+    Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> ·
+    Licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> ·
+    <a href="index.html">Home</a> · Version 1.0 — March 2026
+  </p>
+</footer>
+
+<script>
+  /* ── Interest list form submit ── */
+  function handleInterestSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('interest-form-el');
+    const btn = document.getElementById('interest-submit-btn');
+    btn.textContent = 'Submitting…';
+    btn.disabled = true;
+
+    // GA4 event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'form_submit', {
+        form_name: 'interest_list',
+        source_page: 'contact'
+      });
+    }
+
+    // Submit to Formspree (or swap with your own endpoint)
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(res => {
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('interest-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+        btn.style.background = 'var(--orange)';
+      }
+    }).catch(() => {
+      // Fallback: show success anyway (avoids blocking UX if fetch fails in school firewalls)
+      form.style.display = 'none';
+      document.getElementById('interest-success').style.display = 'block';
+    });
+  }
+
+  /* ── Contact message form submit ── */
+  function handleContactSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contact-form-el');
+    const btn = document.getElementById('contact-submit-btn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'form_submit', {
+        form_name: 'contact_message',
+        source_page: 'contact'
+      });
+    }
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(res => {
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('contact-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+        btn.style.background = 'var(--orange)';
+      }
+    }).catch(() => {
+      form.style.display = 'none';
+      document.getElementById('contact-success').style.display = 'block';
+    });
+  }
+
+  /* ── FAQ accordion ── */
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+
+  /* ── Smooth scroll for nav CTA ── */
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add contact link to index nav if needed
+    // (handled inline above)
+  });
+</script>
+
+<!-- Analytics stubs (replace with actual GA4 / Plausible init) -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+
+</body>
+</html>
