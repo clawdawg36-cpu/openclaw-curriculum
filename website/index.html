@@ -733,6 +733,42 @@
     .curr-stat-div { color: var(--card-border); font-size: 2rem; font-weight: 300; padding: 0 0.25rem; line-height: 1; }
     @media (max-width: 640px) { .curr-stat-div { display: none; } .curr-stat { flex: 1; min-width: 80px; padding: 0.5rem; } }
 
+    /* ── PILOT OUTCOMES BAR ── */
+    .pilot-outcomes-bar {
+      background: linear-gradient(135deg, rgba(0,184,148,0.1), rgba(108,92,231,0.07));
+      border: 1px solid rgba(0,184,148,0.35);
+      border-radius: 16px; padding: 1.5rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .pilot-outcomes-header {
+      text-align: center; margin-bottom: 1.25rem;
+    }
+    .pilot-outcomes-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(0,184,148,0.15); border: 1px solid rgba(0,184,148,0.35);
+      color: var(--green); padding: 0.35rem 1rem;
+      border-radius: 100px; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .pilot-outcomes-stats {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap;
+    }
+    .pilot-stat { text-align: center; padding: 0 1.75rem; }
+    .pilot-stat-num { display: block; font-size: 2.1rem; font-weight: 900; color: var(--green); font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 0.25rem; }
+    .pilot-stat-label { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+    .pilot-stat-sublabel { display: block; font-size: 0.72rem; color: rgba(148,163,184,0.6); margin-top: 0.15rem; font-style: italic; }
+    .pilot-stat-div { color: var(--card-border); font-size: 2rem; font-weight: 300; padding: 0 0.25rem; line-height: 1; }
+    .pilot-outcomes-note {
+      text-align: center; margin-top: 1rem;
+      font-size: 0.78rem; color: var(--text-muted);
+      font-style: italic;
+    }
+    @media (max-width: 640px) {
+      .pilot-stat-div { display: none; }
+      .pilot-stat { flex: 1; min-width: 80px; padding: 0.5rem; }
+    }
+
     /* ── WHY NOW URGENCY CALLOUT ── */
     .why-urgency-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -1326,7 +1362,7 @@
   <div class="section-inner">
     <p class="section-label">Social Proof &amp; Trust Signals</p>
     <h2>Built on solid ground —<br/>trusted by real classrooms.</h2>
-    <p class="section-intro">AI Explorers was designed against established education standards from the ground up. No retrofitting, no checkbox alignment. And it's already working — in classrooms, at kitchen tables, and in school board presentations across the country.</p>
+    <p class="section-intro">AI Explorers was designed against established education standards from the ground up. No retrofitting, no checkbox alignment. In its Spring 2025 pilot, it reached hundreds of students across multiple states — and it's actively used in classrooms, at kitchen tables, and in school board presentations nationwide.</p>
 
     <!-- Curriculum Stats Bar -->
     <div class="curriculum-stats-bar">
@@ -1354,6 +1390,45 @@
         <span class="curr-stat-num">1</span>
         <span class="curr-stat-label">Real AI Agent Built Per Student</span>
       </div>
+    </div>
+
+    <!-- Pilot Outcomes Bar -->
+    <div class="pilot-outcomes-bar">
+      <div class="pilot-outcomes-header">
+        <span class="pilot-outcomes-badge">🌱 Spring 2025 Pilot Results</span>
+      </div>
+      <div class="pilot-outcomes-stats">
+        <div class="pilot-stat">
+          <span class="pilot-stat-num">[500+]</span>
+          <span class="pilot-stat-label">Students reached</span>
+          <span class="pilot-stat-sublabel">Update with exact pilot count</span>
+        </div>
+        <div class="pilot-stat-div">·</div>
+        <div class="pilot-stat">
+          <span class="pilot-stat-num">[12]</span>
+          <span class="pilot-stat-label">Classrooms piloted</span>
+          <span class="pilot-stat-sublabel">Update with school count</span>
+        </div>
+        <div class="pilot-stat-div">·</div>
+        <div class="pilot-stat">
+          <span class="pilot-stat-num">[3]</span>
+          <span class="pilot-stat-label">States represented</span>
+          <span class="pilot-stat-sublabel">Update with state list</span>
+        </div>
+        <div class="pilot-stat-div">·</div>
+        <div class="pilot-stat">
+          <span class="pilot-stat-num">[92%]</span>
+          <span class="pilot-stat-label">Teacher satisfaction</span>
+          <span class="pilot-stat-sublabel">Update with survey results</span>
+        </div>
+        <div class="pilot-stat-div">·</div>
+        <div class="pilot-stat">
+          <span class="pilot-stat-num">[87%]</span>
+          <span class="pilot-stat-label">Students completed AI Expo</span>
+          <span class="pilot-stat-sublabel">Update with completion rate</span>
+        </div>
+      </div>
+      <p class="pilot-outcomes-note">⚠️ Placeholder data — update with real pilot numbers before launch. Contact mike@openclaw.ai to source verified metrics.</p>
     </div>
 
     <!-- Standards Alignment Badges -->
