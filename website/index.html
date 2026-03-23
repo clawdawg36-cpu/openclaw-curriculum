@@ -472,6 +472,267 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
     .req-list li::before { content: '✓'; color: var(--green); font-weight: 700; min-width: 1rem; }
     .aside-divider { height: 1px; background: var(--card-border); margin: 1.5rem 0; }
 
+    /* ── TRY IT NOW ── */
+    .try-it-section {
+      background: linear-gradient(160deg, var(--dark2) 0%, var(--dark) 100%);
+      padding: 5rem 2rem;
+    }
+    .try-it-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 2.5rem;
+      transition: box-shadow 0.3s ease;
+    }
+    .try-it-card:hover {
+      box-shadow: 0 8px 40px rgba(108,92,231,0.15);
+    }
+    .try-it-card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .try-it-card-header:hover { background: rgba(255,255,255,0.03); }
+    .try-it-card-header[aria-expanded="true"] {
+      border-bottom-color: var(--card-border);
+      background: rgba(108,92,231,0.06);
+    }
+    .try-it-card-meta {
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .lesson-badge {
+      background: rgba(108,92,231,0.2);
+      border: 1px solid rgba(108,92,231,0.4);
+      color: var(--brand-light);
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .lesson-title-preview {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .lesson-meta-tags {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .meta-tag {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .try-it-expand-btn {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.25rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .try-it-expand-btn:hover { background: var(--brand-dark); transform: translateY(-1px); }
+    .expand-icon {
+      display: inline-block;
+      transition: transform 0.3s ease;
+      font-size: 0.7rem;
+    }
+    .try-it-card-header[aria-expanded="true"] .expand-icon { transform: rotate(180deg); }
+    .try-it-body {
+      padding: 2rem;
+    }
+    .try-it-body[hidden] { display: none; }
+    .lesson-preview-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .lesson-section {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+    .lesson-section h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+      display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .time-badge {
+      background: rgba(253,203,110,0.15);
+      border: 1px solid rgba(253,203,110,0.3);
+      color: var(--yellow);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 10px;
+      margin-left: 0.25rem;
+    }
+    .lesson-section ol, .lesson-section ul {
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .lesson-section p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .activity-block {
+      background: rgba(108,92,231,0.06);
+      border: 1px solid rgba(108,92,231,0.2);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .activity-type {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--brand-light);
+      margin-bottom: 0.5rem !important;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .teacher-tip {
+      background: rgba(0,184,148,0.08);
+      border-left: 3px solid var(--green);
+      padding: 0.75rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 0.75rem !important;
+      font-size: 0.85rem !important;
+      color: var(--text-muted);
+    }
+    .timeline-table {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+    }
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 70px 1fr 1fr;
+      gap: 1rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      align-items: center;
+      color: var(--text-muted);
+    }
+    .timeline-row.header-row {
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .timeline-row:not(.header-row):hover { background: rgba(255,255,255,0.04); }
+    .year-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--brand-light);
+    }
+    .big-ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+    .big-idea-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .big-idea-num {
+      width: 28px; height: 28px;
+      background: var(--brand);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .big-idea-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .big-idea-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .exit-ticket-block {
+      background: rgba(253,121,168,0.07);
+      border: 1px solid rgba(253,121,168,0.25);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+    }
+    .exit-ticket-prompt {
+      font-size: 1rem !important;
+      font-style: italic;
+      color: var(--text) !important;
+      line-height: 1.7 !important;
+    }
+    .lesson-preview-footer {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    .lesson-preview-footer p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .preview-footer-actions {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    }
+    .try-it-cta {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .try-it-cta p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .btn-large {
+      padding: 0.9rem 2.5rem !important;
+      font-size: 1.05rem !important;
+    }
+    @media (max-width: 640px) {
+      .timeline-row { grid-template-columns: 60px 1fr; }
+      .timeline-row .header-row span:last-child,
+      .timeline-row span:last-child { display: none; }
+      .try-it-card-header { flex-direction: column; align-items: flex-start; }
+      .try-it-body { padding: 1.25rem; }
+    }
+
     /* ── TRUST / SOCIAL PROOF ── */
     .trust-section { background: var(--dark); }
     .standards-row {
@@ -586,10 +847,74 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
 
     /* ── FAQ ── */
     .faq-section { background: var(--dark); }
-    .faq-audiences {
-      display: flex; flex-direction: column; gap: 3rem; margin-top: 3rem;
+
+    /* Top Questions (always visible) */
+    .faq-top-questions {
+      margin-top: 2.5rem; margin-bottom: 2rem;
     }
-    .faq-group {}
+    .faq-top-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--brand-light);
+      margin-bottom: 0.9rem;
+    }
+    .faq-top-list {
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .faq-top-item {
+      background: rgba(108,92,231,0.08);
+      border: 1px solid rgba(108,92,231,0.25);
+      border-radius: 12px; overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-top-item:hover { border-color: rgba(108,92,231,0.5); }
+    .faq-top-item[open] { border-color: rgba(108,92,231,0.6); background: rgba(108,92,231,0.12); }
+    .faq-top-item summary {
+      padding: 1rem 1.25rem;
+      font-size: 0.97rem; font-weight: 600; color: var(--text);
+      cursor: pointer; list-style: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      user-select: none; min-height: 52px;
+    }
+    .faq-top-item summary::-webkit-details-marker { display: none; }
+    .faq-top-item summary::before {
+      content: '⭐';
+      font-size: 0.85rem; flex-shrink: 0; margin-right: 0.25rem;
+    }
+    .faq-top-item summary::after {
+      content: '+';
+      font-size: 1.4rem; font-weight: 300; color: var(--brand-light);
+      line-height: 1; flex-shrink: 0; transition: transform 0.2s;
+    }
+    .faq-top-item[open] summary::after { content: '−'; }
+
+    /* Tab Filter Bar */
+    .faq-tabs {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .faq-tab {
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--card-border);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; transition: all 0.18s;
+      white-space: nowrap; min-height: 40px;
+      display: flex; align-items: center; gap: 0.35rem;
+    }
+    .faq-tab:hover { border-color: var(--brand-light); color: var(--brand-light); }
+    .faq-tab.active {
+      background: var(--brand); border-color: var(--brand);
+      color: #fff;
+    }
+
+    /* Group visibility */
+    .faq-audiences {
+      display: flex; flex-direction: column; gap: 2.5rem;
+    }
+    .faq-group { transition: opacity 0.15s; }
+    .faq-group.hidden { display: none; }
     .faq-group-header {
       display: flex; align-items: center; gap: 0.75rem;
       margin-bottom: 1.25rem;
@@ -618,7 +943,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       font-size: 0.97rem; font-weight: 600; color: var(--text);
       cursor: pointer; list-style: none;
       display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-      user-select: none;
+      user-select: none; min-height: 52px;
     }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after {
@@ -645,6 +970,12 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       background: rgba(108,92,231,0.15); border: 1px solid rgba(108,92,231,0.3);
       color: var(--brand-light); padding: 0.2rem 0.7rem;
       border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .faq-tab { padding: 0.55rem 0.9rem; font-size: 0.83rem; min-height: 44px; }
+      .faq-item summary, .faq-top-item summary { min-height: 56px; padding: 1rem; }
+      .faq-tabs { gap: 0.4rem; }
     }
 
     /* ── WHO BUILT THIS ── */
@@ -1322,6 +1653,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
     <li><a href="#curriculum">Curriculum</a></li>
     <li><a href="#families">For Families</a></li>
     <li><a href="#educators">For Educators</a></li>
+    <li><a href="#teacher-pd">Teacher PD</a></li>
     <li><a href="#admins-content">For Admins</a></li>
     <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -1344,6 +1676,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
     <li><a href="#curriculum" class="nav-drawer-link">Curriculum</a></li>
     <li><a href="#families" class="nav-drawer-link">For Families</a></li>
     <li><a href="#educators" class="nav-drawer-link">For Educators</a></li>
+    <li><a href="#teacher-pd" class="nav-drawer-link">Teacher PD</a></li>
     <li><a href="#admins-content" class="nav-drawer-link">For Admins</a></li>
     <li><a href="#testimonials" class="nav-drawer-link">Testimonials</a></li>
     <li><a href="#faq" class="nav-drawer-link">FAQ</a></li>
@@ -1436,10 +1769,11 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
               <li>&#x2713; Aligned to CSTA, ISTE, and AI4K12 Big Ideas frameworks</li>
               <li>&#x2713; Ethics threaded through every module &mdash; not just Module 6</li>
               <li>&#x2713; Rubrics, formative assessments, and AI Expo planning guide included</li>
+              <li>&#x2713; Free 4-hour self-paced teacher PD program — be classroom-ready in a weekend</li>
             </ul>
             <div class="aud-panel-ctas">
               <a href="educators.html" class="btn-primary" style="background:var(--green);box-shadow:0 4px 18px rgba(0,184,148,0.35)">Explore for Educators &rarr;</a>
-              <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/curriculum/module-01/TEACHER_GUIDE.md" class="btn-secondary" target="_blank" rel="noopener noreferrer">Download Module 1 Free</a>
+              <a href="#teacher-pd" class="btn-secondary">Start the Free PD Program</a>
             </div>
             <a href="#educators" class="aud-jump-link">&#x2193; Jump to the Educators section</a>
           </div>
@@ -1596,7 +1930,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
     window.addEventListener('scroll', onScroll, { passive: true });
 
     // Active link highlight based on scroll position
-    var sectionIds = ['overview','curriculum','families-content','educators','admins-content','testimonials','faq','get-started'];
+    var sectionIds = ['overview','curriculum','families-content','educators','teacher-pd','admins-content','testimonials','faq','get-started'];
     function updateActiveLink() {
       var scrollY = window.scrollY + 100;
       var current = sectionIds[0];
@@ -2159,7 +2493,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
           <li>Companion textbook chapters (student-readable)</li>
           <li>Cross-curriculum glossary &amp; standards alignment</li>
           <li>Interactive browser tools &amp; simulators</li>
-          <li>Teacher PD program materials</li>
+          <li><a href="#teacher-pd" style="color:var(--green);font-weight:600;">Teacher PD program</a> — 4 hrs, self-paced, free</li>
         </ul>
 
         <div class="aside-divider"></div>
@@ -2180,6 +2514,160 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     TEACHER PROFESSIONAL DEVELOPMENT SECTION
+     ══════════════════════════════════════════ -->
+<span id="teacher-pd" style="position:relative;top:-80px;display:block;visibility:hidden;" aria-hidden="true"></span>
+<section style="background:linear-gradient(135deg,rgba(0,184,148,0.08),rgba(108,92,231,0.07));border-top:1px solid rgba(0,184,148,0.2);border-bottom:1px solid rgba(0,184,148,0.2);padding:5rem 2rem;" class="persona-block" data-persona-block="educators">
+  <div class="section-inner">
+    <span class="audience-badge educators">&#x1F469;&#x200D;&#x1F3EB; For Educators</span>
+    <p class="section-label">Teacher Professional Development</p>
+    <h2>Be classroom-ready —<br/><em style="font-style:normal;color:var(--green)">in about a weekend.</em></h2>
+    <p class="section-intro">You don't need to be an AI expert to teach this curriculum. The free, self-paced teacher PD program gives you everything you need to walk into your first lesson with confidence.</p>
+
+    <!-- PD Hero Stats Row -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;background:rgba(0,184,148,0.1);border:1px solid rgba(0,184,148,0.3);border-radius:16px;padding:1.5rem 2rem;margin-bottom:3rem;">
+      <div style="text-align:center;padding:0 2rem;">
+        <span style="display:block;font-size:2.5rem;font-weight:900;color:var(--green);font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:0.25rem;">4</span>
+        <span style="font-size:0.85rem;color:var(--text-muted);">Hours total</span>
+      </div>
+      <div style="color:var(--card-border);font-size:2rem;font-weight:300;padding:0 0.25rem;line-height:1;">·</div>
+      <div style="text-align:center;padding:0 2rem;">
+        <span style="display:block;font-size:2.5rem;font-weight:900;color:var(--green);font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:0.25rem;">$0</span>
+        <span style="font-size:0.85rem;color:var(--text-muted);">Always free</span>
+      </div>
+      <div style="color:var(--card-border);font-size:2rem;font-weight:300;padding:0 0.25rem;line-height:1;">·</div>
+      <div style="text-align:center;padding:0 2rem;">
+        <span style="display:block;font-size:2.5rem;font-weight:900;color:var(--green);font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:0.25rem;">Self&#x2011;paced</span>
+        <span style="font-size:0.85rem;color:var(--text-muted);">Go at your own speed</span>
+      </div>
+      <div style="color:var(--card-border);font-size:2rem;font-weight:300;padding:0 0.25rem;line-height:1;">·</div>
+      <div style="text-align:center;padding:0 2rem;">
+        <span style="display:block;font-size:2.5rem;font-weight:900;color:var(--green);font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:0.25rem;">0</span>
+        <span style="font-size:0.85rem;color:var(--text-muted);">CS background required</span>
+      </div>
+    </div>
+
+    <!-- PD Program Content Grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+
+      <!-- Left: What it covers -->
+      <div>
+        <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:1.25rem;color:var(--text);">What the PD program covers</h3>
+        <div style="display:flex;flex-direction:column;gap:0.85rem;">
+
+          <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.1rem 1.25rem;">
+            <span style="font-size:1.3rem;min-width:2rem;">🏗️</span>
+            <div>
+              <h4 style="font-size:0.93rem;font-weight:700;margin-bottom:0.25rem;">Module 1: Setup &amp; Orientation (~45 min)</h4>
+              <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.5;">Walk through the full OpenClaw setup as a student would. Deploy your own agent, name it, give it a personality. Understand what your students will experience before they experience it.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.1rem 1.25rem;">
+            <span style="font-size:1.3rem;min-width:2rem;">🧠</span>
+            <div>
+              <h4 style="font-size:0.93rem;font-weight:700;margin-bottom:0.25rem;">Module 2: Core AI Concepts for Non-Technical Teachers (~60 min)</h4>
+              <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.5;">Plain-language explanations of machine learning, neural networks, training data, and bias — enough to answer student questions confidently and facilitate honest discussion.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.1rem 1.25rem;">
+            <span style="font-size:1.3rem;min-width:2rem;">📋</span>
+            <div>
+              <h4 style="font-size:0.93rem;font-weight:700;margin-bottom:0.25rem;">Module 3: Pedagogy &amp; Facilitation (~45 min)</h4>
+              <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.5;">How to run the lab sessions, manage common stumbling points, differentiate for your classroom's range, and use the assessment tools — rubrics, exit tickets, and the Agent Design Journal.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.1rem 1.25rem;">
+            <span style="font-size:1.3rem;min-width:2rem;">⚖️</span>
+            <div>
+              <h4 style="font-size:0.93rem;font-weight:700;margin-bottom:0.25rem;">Module 4: Teaching AI Ethics (~45 min)</h4>
+              <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.5;">How to facilitate the ethics conversations in Modules 1 and 6 — including how to hold space for difficult discussions about bias, fairness, and power without needing a philosophy degree.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.1rem 1.25rem;">
+            <span style="font-size:1.3rem;min-width:2rem;">🎪</span>
+            <div>
+              <h4 style="font-size:0.93rem;font-weight:700;margin-bottom:0.25rem;">Module 5: Running the AI Expo (~45 min)</h4>
+              <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.5;">Everything you need to plan and run Module 7's community showcase — from how to invite community members to how to coach students on their presentations to how to use the event rubric.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: CTA card + testimonial -->
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+        <!-- CTA Card -->
+        <div style="background:linear-gradient(135deg,rgba(0,184,148,0.15),rgba(108,92,231,0.1));border:1px solid rgba(0,184,148,0.4);border-radius:20px;padding:2.25rem;text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:0.75rem;">🎓</div>
+          <h3 style="font-size:1.25rem;font-weight:800;margin-bottom:0.75rem;">Start the Free PD Program</h3>
+          <p style="color:var(--text-muted);font-size:0.93rem;line-height:1.6;margin-bottom:1.75rem;">Everything you need to be classroom-ready — included in the curriculum repo. No sign-up, no platform, no cost. Just open the folder and start.</p>
+          <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/teacher-pd" class="btn-primary" target="_blank" rel="noopener noreferrer" style="background:var(--green);box-shadow:0 4px 20px rgba(0,184,148,0.4);display:inline-flex;align-items:center;gap:0.5rem;font-size:1rem;padding:1rem 2rem;">
+            Start the free PD program &rarr;
+          </a>
+          <p style="margin-top:1.25rem;font-size:0.8rem;color:var(--text-muted);">Included in the GitHub repo · No account required · CC BY-SA 4.0</p>
+        </div>
+
+        <!-- Who it's for callout -->
+        <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:1.75rem;">
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Designed for</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.65rem;">
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.88rem;color:var(--text-muted);">
+              <span style="color:var(--green);font-weight:700;min-width:1rem;">✓</span>
+              <span><strong style="color:var(--text);">Non-CS teachers</strong> picking up this curriculum for the first time</span>
+            </li>
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.88rem;color:var(--text-muted);">
+              <span style="color:var(--green);font-weight:700;min-width:1rem;">✓</span>
+              <span><strong style="color:var(--text);">STEM, science, and math teachers</strong> integrating AI into an existing elective</span>
+            </li>
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.88rem;color:var(--text-muted);">
+              <span style="color:var(--green);font-weight:700;min-width:1rem;">✓</span>
+              <span><strong style="color:var(--text);">Humanities and ELA teachers</strong> co-teaching with a tech colleague</span>
+            </li>
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.88rem;color:var(--text-muted);">
+              <span style="color:var(--green);font-weight:700;min-width:1rem;">✓</span>
+              <span><strong style="color:var(--text);">Instructional coaches and curriculum coordinators</strong> evaluating adoption</span>
+            </li>
+            <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.88rem;color:var(--text-muted);">
+              <span style="color:var(--green);font-weight:700;min-width:1rem;">✓</span>
+              <span><strong style="color:var(--text);">CS teachers</strong> who want to understand the platform before their students do</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Teacher quote -->
+        <div style="background:var(--card-bg);border:1px solid var(--card-border);border-left:3px solid var(--green);border-radius:0 12px 12px 0;padding:1.5rem 1.75rem;position:relative;">
+          <p style="font-style:italic;font-size:0.95rem;line-height:1.7;color:var(--text);margin-bottom:1rem;">"I did the PD over a Saturday morning. By Sunday I had the whole first module ready to teach. The setup guide alone saved me an afternoon of googling. Having the teacher's perspective of what my students would experience was genuinely invaluable."</p>
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <div style="width:2.25rem;height:2.25rem;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--blue));display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:800;color:white;flex-shrink:0;">DL</div>
+            <div>
+              <strong style="display:block;font-size:0.85rem;font-weight:700;">David Lara</strong>
+              <span style="font-size:0.78rem;color:var(--text-muted);">6th Grade STEM Teacher · Horizon STEM Academy, Kansas City, MO</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- END PD GRID -->
+
+    <!-- Bottom CTA strip -->
+    <div style="margin-top:3rem;background:rgba(0,184,148,0.06);border:1px solid rgba(0,184,148,0.2);border-radius:14px;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+      <div>
+        <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.3rem;">Want facilitated PD for your whole staff?</h4>
+        <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.5;">We offer optional in-person and virtual PD workshops for schools and districts. Contact us to discuss rates and availability.</p>
+      </div>
+      <a href="mailto:mike@openclaw.ai" class="btn-secondary" style="white-space:nowrap;flex-shrink:0;">✉️ Contact for District PD</a>
+    </div>
+
   </div>
 </section>
 
@@ -2219,6 +2707,149 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
     <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
       <a href="schools.html" class="btn-primary" style="background:var(--blue);box-shadow:0 4px 18px rgba(9,132,227,0.3);">Get the Adoption Brief &#x2192;</a>
       <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank" rel="noopener noreferrer">Review the Full Repo on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRY IT NOW — SAMPLE LESSON PREVIEW -->
+<section class="try-it-section" id="try-it">
+  <div class="section-inner">
+    <p class="section-label">See It In Action</p>
+    <h2>Try a real lesson — right now.</h2>
+    <p class="section-intro">Don't take our word for it. Here's Lesson 1.1: <em>What Is AI?</em> — a complete, classroom-ready lesson from Module 1. Same format, same depth, same quality as every lesson in the curriculum.</p>
+
+    <div class="try-it-card" id="try-it-card">
+      <div class="try-it-card-header" id="try-it-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="try-it-body">
+        <div class="try-it-card-meta">
+          <span class="lesson-badge">📄 Lesson 1.1</span>
+          <span class="lesson-title-preview">What Is AI?</span>
+          <span class="lesson-meta-tags">
+            <span class="meta-tag">⏱ 50–60 min</span>
+            <span class="meta-tag">🎓 Grades 6–8</span>
+            <span class="meta-tag">📐 CSTA Aligned</span>
+          </span>
+        </div>
+        <button class="try-it-expand-btn" aria-label="Expand lesson preview">
+          <span class="expand-text">Preview Lesson</span>
+          <span class="expand-icon">▼</span>
+        </button>
+      </div>
+
+      <div class="try-it-body" id="try-it-body" hidden>
+        <div class="lesson-preview-content">
+
+          <div class="lesson-section">
+            <h3>🎯 Learning Objectives</h3>
+            <p>By the end of this lesson, students will be able to:</p>
+            <ol>
+              <li>Define Artificial Intelligence in their own words.</li>
+              <li>Describe at least three historical milestones in AI development (Turing, Deep Blue, AlphaGo, ChatGPT).</li>
+              <li>Identify the 5 Big Ideas in AI (AI4K12 framework) and give one example of each.</li>
+              <li>Articulate how AI differs from human intelligence.</li>
+            </ol>
+          </div>
+
+          <div class="lesson-section">
+            <h3>🔥 Warm-Up: What Makes Something Intelligent? <span class="time-badge">10 min</span></h3>
+            <div class="activity-block">
+              <p class="activity-type">💬 Think-Pair-Share</p>
+              <p>Post this question on the board: <strong>"What makes something intelligent?"</strong></p>
+              <ul>
+                <li>Students write down 3 examples of "intelligent" things — human, animal, <em>or</em> machine. (2 min)</li>
+                <li>Turn and talk with a partner. (2 min)</li>
+                <li>Share out — chart responses into two columns: <strong>Humans/Animals</strong> | <strong>Machines/Systems</strong></li>
+              </ul>
+              <p class="teacher-tip">💡 <strong>Teacher tip:</strong> Students often confuse AI with sci-fi robots. Gently redirect early — but let the misconceptions surface first, they're great discussion fuel.</p>
+            </div>
+          </div>
+
+          <div class="lesson-section">
+            <h3>📖 Direct Instruction: A Brief History of AI <span class="time-badge">15 min</span></h3>
+            <div class="timeline-table">
+              <div class="timeline-row header-row">
+                <span>Year</span><span>Milestone</span><span>Why It Matters</span>
+              </div>
+              <div class="timeline-row">
+                <span class="year-badge">1950</span>
+                <span><strong>Alan Turing</strong> — "Computing Machinery and Intelligence"</span>
+                <span>First formal question: <em>Can machines think?</em></span>
+              </div>
+              <div class="timeline-row">
+                <span class="year-badge">1956</span>
+                <span><strong>Dartmouth Conference</strong> — term "Artificial Intelligence" coined</span>
+                <span>Birth of the field</span>
+              </div>
+              <div class="timeline-row">
+                <span class="year-badge">1997</span>
+                <span><strong>Deep Blue</strong> defeats Garry Kasparov at chess</span>
+                <span>AI beats humans at complex strategy</span>
+              </div>
+              <div class="timeline-row">
+                <span class="year-badge">2016</span>
+                <span><strong>AlphaGo</strong> defeats Lee Sedol at Go</span>
+                <span>AI masters intuition-heavy games once thought "impossible"</span>
+              </div>
+              <div class="timeline-row">
+                <span class="year-badge">2022</span>
+                <span><strong>ChatGPT</strong> launches</span>
+                <span>Generative AI becomes mainstream — your students already know this one</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lesson-section">
+            <h3>🧠 The 5 Big Ideas in AI <span class="time-badge">10 min</span></h3>
+            <div class="big-ideas-grid">
+              <div class="big-idea-card">
+                <span class="big-idea-num">1</span>
+                <span class="big-idea-name">Perception</span>
+                <span class="big-idea-desc">AI senses the world through cameras, microphones, and sensors</span>
+              </div>
+              <div class="big-idea-card">
+                <span class="big-idea-num">2</span>
+                <span class="big-idea-name">Representation &amp; Reasoning</span>
+                <span class="big-idea-desc">AI stores and processes knowledge like a structured library</span>
+              </div>
+              <div class="big-idea-card">
+                <span class="big-idea-num">3</span>
+                <span class="big-idea-name">Learning</span>
+                <span class="big-idea-desc">AI improves from data and experience — no one codes every answer</span>
+              </div>
+              <div class="big-idea-card">
+                <span class="big-idea-num">4</span>
+                <span class="big-idea-name">Natural Interaction</span>
+                <span class="big-idea-desc">AI communicates with humans in natural language and images</span>
+              </div>
+              <div class="big-idea-card">
+                <span class="big-idea-num">5</span>
+                <span class="big-idea-name">Societal Impact</span>
+                <span class="big-idea-desc">AI affects jobs, fairness, and the future — your students will inherit this</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lesson-section">
+            <h3>📝 Exit Ticket <span class="time-badge">10 min</span></h3>
+            <div class="exit-ticket-block">
+              <p class="exit-ticket-prompt">"In your own words: What is AI? Give one example from history and one from your own life. What's one question you still have?"</p>
+            </div>
+          </div>
+
+          <div class="lesson-preview-footer">
+            <p>This is <strong>Lesson 1.1</strong> of 40+. Each lesson comes with a slide deck outline, teacher guide, student handouts, differentiation strategies, and formative assessments.</p>
+            <div class="preview-footer-actions">
+              <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/module1/lesson-1-1-what-is-ai" class="btn-primary" target="_blank" rel="noopener noreferrer">View Full Lesson on GitHub →</a>
+              <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/module1" class="btn-secondary" target="_blank" rel="noopener noreferrer">Explore All of Module 1</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="try-it-cta">
+      <p>This is just one of <strong>40+ lessons</strong>. Every module includes the same depth — lesson plans, slide decks, assessments, teacher guides, and hands-on labs.</p>
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary btn-large" target="_blank" rel="noopener noreferrer" aria-label="Get the full AI Explorers curriculum on GitHub (opens in new tab)">Get the Full Curriculum →</a>
     </div>
   </div>
 </section>
@@ -2692,10 +3323,58 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
     <h2>The real questions, answered honestly.</h2>
     <p class="section-intro">We hear the same concerns from different audiences. Here's what homeschool families, classroom educators, school administrators, and parents actually ask — and the honest answers.</p>
 
+    <!-- TOP QUESTIONS: always visible -->
+    <div class="faq-top-questions">
+      <div class="faq-top-label">⭐ Most Asked Questions</div>
+      <div class="faq-top-list">
+
+        <details class="faq-top-item">
+          <summary>Is this too advanced for my kid? My child has never coded before.</summary>
+          <div class="faq-answer">
+            <p><strong>Probably not — that's exactly what we obsessed over when designing this.</strong> AI Explorers is built for grades 6–8, and Module 1 starts with zero assumptions: no coding background, no math beyond middle school, no prior tech experience of any kind.</p>
+            <p>Students begin by exploring what AI actually is (versus what movies say it is), then take their first steps deploying a simple agent — guided step-by-step, with screenshots and video walkthroughs. Each module scaffolds on the previous one, so concepts build naturally rather than appearing out of nowhere.</p>
+            <p>If your child is curious and persistent, they can do this. Every module includes a "slow lane" pacing option if you need to linger, and extension challenges if they fly through the core content. We designed for the full range of the 6–8 grade band.</p>
+          </div>
+        </details>
+
+        <details class="faq-top-item">
+          <summary>What is the total cost — infrastructure, licensing, professional development?</summary>
+          <div class="faq-answer">
+            <p><strong>The curriculum is free. That's not a trial or a limited tier — it's the whole thing.</strong> CC BY-SA 4.0, no licensing fees, no per-student costs, no renewal. Here's what realistic implementation actually costs:</p>
+            <p>• <strong>Curriculum materials:</strong> $0. Download from GitHub.</p>
+            <p>• <strong>Infrastructure:</strong> A single modest server runs OpenClaw for an entire school. Many districts use a repurposed desktop or a ~$200 mini-PC. Cost range: $0 (existing hardware) to $300–$500 one-time.</p>
+            <p>• <strong>Teacher professional development:</strong> The self-paced PD program (4 hours) is included in the repo. If your district wants facilitated in-person PD, we offer that separately — contact us for district rates.</p>
+            <p>• <strong>Devices:</strong> No new devices required. Any browser-capable device — including Chromebooks — works for the full curriculum.</p>
+            <p>Total cost of a classroom deployment using existing hardware with self-paced PD: effectively zero. This is not a budget conversation — it's a decision conversation.</p>
+          </div>
+        </details>
+
+        <details class="faq-top-item">
+          <summary>How does student data privacy work? Is this COPPA and FERPA compliant?</summary>
+          <div class="faq-answer">
+            <p><strong>Student data never leaves your infrastructure.</strong> OpenClaw is self-hosted — you deploy it on your own server, inside your own network. No student data is transmitted to us, to any third-party cloud, or to any analytics service. There is no external data processor to add to your vendor list.</p>
+            <p>Teachable Machine (used in Module 2) processes image data locally in the student's browser — images are never uploaded to Google's servers during training. Hugging Face model inference can be run locally or through the free API; local inference is fully documented and supported for maximum privacy.</p>
+            <p>For COPPA: students never create accounts with external services requiring personal information. OpenClaw accounts are managed by the school. The curriculum's Data Privacy Guide details every data touch point across all 7 modules with recommended privacy-maximizing configurations.</p>
+            <p>For FERPA: student work lives on school-controlled infrastructure. No third-party data sharing agreements are required for basic use. We recommend your district IT team review the Data Privacy Guide before deployment — it's written specifically to answer board and legal team questions.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <!-- TAB FILTER BAR -->
+    <div class="faq-tabs" role="tablist" aria-label="Filter FAQ by audience">
+      <button class="faq-tab active" data-group="all" role="tab" aria-selected="true">All Questions</button>
+      <button class="faq-tab" data-group="families" role="tab" aria-selected="false">🏠 Families</button>
+      <button class="faq-tab" data-group="teachers" role="tab" aria-selected="false">🍎 Teachers</button>
+      <button class="faq-tab" data-group="admins" role="tab" aria-selected="false">🏫 Administrators</button>
+      <button class="faq-tab" data-group="parents" role="tab" aria-selected="false">👨‍👩‍👧 Parents</button>
+    </div>
+
     <div class="faq-audiences">
 
       <!-- HOMESCHOOL FAMILIES -->
-      <div class="faq-group">
+      <div class="faq-group" data-group="families">
         <div class="faq-group-header">
           <span class="faq-group-icon">🏠</span>
           <div>
@@ -2747,7 +3426,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       </div>
 
       <!-- CLASSROOM EDUCATORS -->
-      <div class="faq-group">
+      <div class="faq-group" data-group="teachers">
         <div class="faq-group-header">
           <span class="faq-group-icon">🍎</span>
           <div>
@@ -2779,7 +3458,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
             <summary>Is there teacher support? What if I run into something I don't understand?</summary>
             <div class="faq-answer">
               <p><strong>Yes — and you won't be alone.</strong> Every module ships with a detailed facilitator guide covering each lesson from the teacher's perspective: anticipated student questions, common stumbling points, suggested responses, and technical troubleshooting steps for the most common setup issues.</p>
-              <p>A self-paced teacher professional development program (roughly 4 hours total) is included in the curriculum repo. It covers the full technical setup, the pedagogical philosophy behind the agent arc, and gives you a "student's eye view" of Modules 1 and 2 before you teach them.</p>
+              <p>A <a href="#teacher-pd" style="color:var(--green);font-weight:600;">self-paced teacher PD program</a> (roughly 4 hours total) is included in the curriculum repo. It covers the full technical setup, the pedagogical philosophy behind the agent arc, and gives you a "student's eye view" of Modules 1 and 2 before you teach them. It's designed to get you classroom-ready in a weekend.</p>
               <p>Beyond the included materials, a growing community of educators using this curriculum is active on GitHub Discussions. When you have a specific question mid-lesson, someone who has taught the same module will respond — often within a few hours. We're also building a dedicated educators' Slack community.</p>
             </div>
           </details>
@@ -2797,7 +3476,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       </div>
 
       <!-- SCHOOL BOARDS / ADMINS -->
-      <div class="faq-group">
+      <div class="faq-group" data-group="admins">
         <div class="faq-group-header">
           <span class="faq-group-icon">🏫</span>
           <div>
@@ -2851,7 +3530,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       </div>
 
       <!-- PARENTS -->
-      <div class="faq-group">
+      <div class="faq-group" data-group="parents">
         <div class="faq-group-header">
           <span class="faq-group-icon">👨‍👩‍👧</span>
           <div>
@@ -3026,5 +3705,39 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
 </footer>
 
 <script src="analytics.js" defer></script>
+<script>
+  // FAQ Tab Filter
+  (function () {
+    var tabs = document.querySelectorAll('.faq-tab');
+    var groups = document.querySelectorAll('.faq-group');
+    if (!tabs.length || !groups.length) return;
+
+    function setActiveTab(tab) {
+      tabs.forEach(function (t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+    }
+
+    function filterGroups(groupKey) {
+      groups.forEach(function (g) {
+        if (groupKey === 'all' || g.getAttribute('data-group') === groupKey) {
+          g.classList.remove('hidden');
+        } else {
+          g.classList.add('hidden');
+        }
+      });
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        setActiveTab(tab);
+        filterGroups(tab.getAttribute('data-group'));
+      });
+    });
+  })();
+</script>
 </body>
 </html>
