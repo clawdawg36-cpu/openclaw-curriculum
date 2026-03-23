@@ -791,6 +791,23 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       section { padding: 4rem 1.25rem; }
     }
 
+    /* ── HERO CTA ROW ── */
+    .hero-cta-row {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .btn-hero-primary {
+      padding: 1rem 2.25rem; font-size: 1.05rem;
+      box-shadow: 0 6px 30px rgba(108,92,231,0.5);
+    }
+    .btn-hero-primary:hover {
+      box-shadow: 0 10px 40px rgba(108,92,231,0.6);
+      transform: translateY(-3px);
+    }
+    .btn-hero-secondary {
+      padding: 1rem 2rem; font-size: 1rem;
+    }
+
     /* ── AUDIENCE TABS (Hero) ── */
     .audience-tabs-container { margin-bottom: 2.5rem; }
     .audience-tab-bar {
@@ -2726,13 +2743,16 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
   <div class="section-inner cta-inner">
     <p class="section-label">Get Started</p>
     <h2>Your students could be building<br/>their agent this semester.</h2>
-    <p>The full curriculum is free, open source, and ready to teach. Start with the vision doc, walk through Module 1, and have students deploy their first agent by the end of week two.</p>
+    <p>The full curriculum is free, open source, and ready to teach. Start with the <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/CURRICULUM_VISION.md" target="_blank" rel="noopener noreferrer" style="color:var(--brand-light);text-decoration:underline;">curriculum vision doc</a>, walk through <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/module1" target="_blank" rel="noopener noreferrer" style="color:var(--brand-light);text-decoration:underline;">Module 1</a>, and have students deploy their first agent by the end of week two.</p>
     <div class="cta-btns">
       <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Browse the Full Curriculum on GitHub (opens in new tab)">
         📂 Browse the Full Curriculum
       </a>
       <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/CURRICULUM_VISION.md" class="btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Read the Curriculum Vision on GitHub (opens in new tab)">
         📄 Read the Curriculum Vision
+      </a>
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/module1" class="btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Walk through Module 1 on GitHub (opens in new tab)">
+        🧩 Walk Through Module 1
       </a>
     </div>
     <p class="license-note">
