@@ -1946,8 +1946,6 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
         document.body.removeAttribute('data-persona');
       }
 
-      // Persist selection in sessionStorage
-      try { sessionStorage.setItem('ai-explorers-persona', panelId); } catch(e) {}
     }
 
     tabs.forEach(function(tab) {
@@ -1958,15 +1956,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       });
     });
 
-    // Restore saved persona on load
-    try {
-      var saved = sessionStorage.getItem('ai-explorers-persona');
-      if (saved && document.getElementById(saved)) {
-        var savedTab = document.querySelector('[data-panel="' + saved + '"]');
-        var savedAudience = savedTab ? savedTab.getAttribute('data-audience') : null;
-        activatePersona(savedAudience, saved);
-      }
-    } catch(e) {}
+
   })();
 
   // ── STICKY NAV: scroll shrink + active section highlighting ──
