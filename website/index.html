@@ -1342,20 +1342,15 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
     }
 
     /* ── PERSONA PAGE FILTERING ── */
-    /* When a persona is active, dim other audience-specific blocks */
-    .persona-block { transition: opacity 0.35s ease, filter 0.35s ease; }
-    body[data-persona="families"] .persona-block[data-persona-block="educators"],
-    body[data-persona="families"] .persona-block[data-persona-block="admins"],
-    body[data-persona="educators"] .persona-block[data-persona-block="families"],
-    body[data-persona="educators"] .persona-block[data-persona-block="admins"],
-    body[data-persona="admins"] .persona-block[data-persona-block="families"],
-    body[data-persona="admins"] .persona-block[data-persona-block="educators"] {
-      opacity: 0.45; filter: saturate(0.4);
-    }
+    /* No dimming — all sections remain fully visible at all times.
+       Persona tabs are navigation aids only, not content filters.
+       Active section gets a subtle left-border accent highlight only. */
+    .persona-block { opacity: 1; filter: none; }
     body[data-persona="families"] .persona-block[data-persona-block="families"],
     body[data-persona="educators"] .persona-block[data-persona-block="educators"],
     body[data-persona="admins"] .persona-block[data-persona-block="admins"] {
-      opacity: 1; filter: none;
+      border-left: 3px solid var(--brand-light);
+      padding-left: 0.5rem;
     }
 
     /* Mobile tab stacking */
