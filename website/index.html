@@ -810,26 +810,55 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
 
     /* ── AUDIENCE TABS (Hero) ── */
     .audience-tabs-container { margin-bottom: 2.5rem; }
+
+    /* Tab intro label */
+    .persona-intro-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.5rem; justify-content: center;
+    }
+    .persona-intro-label::before, .persona-intro-label::after {
+      content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--card-border);
+    }
+
+    /* Tab bar — horizontal scroll on mobile */
     .audience-tab-bar {
-      display: flex; gap: 0.375rem; flex-wrap: wrap; justify-content: center;
+      display: flex; gap: 0.375rem; flex-wrap: nowrap;
+      overflow-x: auto; scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      justify-content: center;
       padding: 0.375rem;
       background: rgba(255,255,255,0.04);
       border: 1px solid var(--card-border);
       border-radius: 14px;
       margin-bottom: 1.5rem;
     }
+    .audience-tab-bar::-webkit-scrollbar { display: none; }
+
     .aud-tab {
       background: transparent; border: none; cursor: pointer;
-      color: var(--text-muted); padding: 0.6rem 1rem;
-      border-radius: 10px; font-size: 0.85rem; font-weight: 600;
+      color: var(--text-muted); padding: 0.65rem 1.25rem;
+      border-radius: 10px; font-size: 0.9rem; font-weight: 600;
       font-family: 'Inter', sans-serif;
-      transition: all 0.2s; white-space: nowrap;
+      transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
+      display: flex; align-items: center; gap: 0.4rem;
     }
     .aud-tab:hover { color: var(--text); background: rgba(255,255,255,0.06); }
-    .aud-tab.active {
-      background: var(--brand); color: white;
-      box-shadow: 0 2px 12px rgba(108,92,231,0.4);
+    /* Per-audience active colors */
+    .aud-tab[data-audience="families"].active {
+      background: var(--accent); color: white;
+      box-shadow: 0 2px 12px rgba(253,121,168,0.4);
     }
+    .aud-tab[data-audience="educators"].active {
+      background: var(--green); color: white;
+      box-shadow: 0 2px 12px rgba(0,184,148,0.4);
+    }
+    .aud-tab[data-audience="admins"].active {
+      background: var(--blue); color: white;
+      box-shadow: 0 2px 12px rgba(9,132,227,0.4);
+    }
+
+    /* Panels */
     .aud-panel { display: none; }
     .aud-panel.active { display: block; animation: audFadeIn 0.25s ease; }
     @keyframes audFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
@@ -838,24 +867,107 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       gap: 2.5rem; align-items: start;
       background: var(--card-bg); border: 1px solid var(--card-border);
       border-radius: 16px; padding: 2rem 2.5rem;
-      text-align: left;
+      text-align: left; position: relative; overflow: hidden;
     }
+    /* Colored top border per audience */
+    .aud-panel[data-audience="families"] .aud-panel-inner { border-top: 3px solid var(--accent); }
+    .aud-panel[data-audience="educators"] .aud-panel-inner { border-top: 3px solid var(--green); }
+    .aud-panel[data-audience="admins"] .aud-panel-inner { border-top: 3px solid var(--blue); }
+
     @media (max-width: 768px) { .aud-panel-inner { grid-template-columns: 1fr; } }
     .aud-panel-copy h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.75rem; line-height: 1.3; }
     .aud-panel-copy > p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
     .aud-benefits { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; }
     .aud-benefits li { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
-    .aud-panel-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .aud-panel-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
     .aud-panel-ctas .btn-primary { padding: 0.75rem 1.35rem; font-size: 0.9rem; }
     .aud-panel-ctas .btn-secondary { padding: 0.75rem 1.35rem; font-size: 0.9rem; }
+    /* Section jump link */
+    .aud-jump-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
+      text-decoration: none; transition: color 0.2s;
+      margin-top: 0.75rem; padding-top: 0.75rem;
+      border-top: 1px solid var(--card-border);
+    }
+    .aud-jump-link:hover { color: var(--text); }
     .aud-panel-stats { display: flex; flex-direction: column; gap: 1rem; }
     .aud-stat {
       text-align: center;
-      background: rgba(108,92,231,0.1); border: 1px solid rgba(108,92,231,0.25);
       border-radius: 12px; padding: 1rem 1.25rem;
     }
-    .aud-stat-num { display: block; font-size: 1.65rem; font-weight: 900; color: var(--brand-light); font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 0.25rem; }
+    .aud-panel[data-audience="families"] .aud-stat {
+      background: rgba(253,121,168,0.1); border: 1px solid rgba(253,121,168,0.25);
+    }
+    .aud-panel[data-audience="families"] .aud-stat-num { color: var(--accent); }
+    .aud-panel[data-audience="educators"] .aud-stat {
+      background: rgba(0,184,148,0.1); border: 1px solid rgba(0,184,148,0.25);
+    }
+    .aud-panel[data-audience="educators"] .aud-stat-num { color: var(--green); }
+    .aud-panel[data-audience="admins"] .aud-stat {
+      background: rgba(9,132,227,0.1); border: 1px solid rgba(9,132,227,0.25);
+    }
+    .aud-panel[data-audience="admins"] .aud-stat-num { color: #74b9ff; }
+    .aud-stat-num { display: block; font-size: 1.65rem; font-weight: 900; font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 0.25rem; }
     .aud-stat-label { font-size: 0.72rem; color: var(--text-muted); line-height: 1.3; }
+
+    /* ── AUDIENCE SECTION BADGES (used throughout the page) ── */
+    .audience-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.3rem 0.85rem; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 0.85rem; border: 1px solid;
+      width: fit-content;
+    }
+    .audience-badge.families {
+      background: rgba(253,121,168,0.12); border-color: rgba(253,121,168,0.4);
+      color: var(--accent);
+    }
+    .audience-badge.educators {
+      background: rgba(0,184,148,0.12); border-color: rgba(0,184,148,0.4);
+      color: var(--green);
+    }
+    .audience-badge.administrators {
+      background: rgba(9,132,227,0.12); border-color: rgba(9,132,227,0.4);
+      color: #74b9ff;
+    }
+
+    /* ── AUDIENCE SECTION DIVIDERS ── */
+    .audience-section-divider {
+      height: 3px; border: none; margin: 0 0 0 0;
+    }
+    .audience-section-divider.families {
+      background: linear-gradient(90deg, var(--accent) 0%, transparent 80%);
+    }
+    .audience-section-divider.educators {
+      background: linear-gradient(90deg, var(--green) 0%, transparent 80%);
+    }
+    .audience-section-divider.administrators {
+      background: linear-gradient(90deg, var(--blue) 0%, transparent 80%);
+    }
+
+    /* ── PERSONA PAGE FILTERING ── */
+    /* When a persona is active, dim other audience-specific blocks */
+    .persona-block { transition: opacity 0.35s ease, filter 0.35s ease; }
+    body[data-persona="families"] .persona-block[data-persona-block="educators"],
+    body[data-persona="families"] .persona-block[data-persona-block="admins"],
+    body[data-persona="educators"] .persona-block[data-persona-block="families"],
+    body[data-persona="educators"] .persona-block[data-persona-block="admins"],
+    body[data-persona="admins"] .persona-block[data-persona-block="families"],
+    body[data-persona="admins"] .persona-block[data-persona-block="educators"] {
+      opacity: 0.45; filter: saturate(0.4);
+    }
+    body[data-persona="families"] .persona-block[data-persona-block="families"],
+    body[data-persona="educators"] .persona-block[data-persona-block="educators"],
+    body[data-persona="admins"] .persona-block[data-persona-block="admins"] {
+      opacity: 1; filter: none;
+    }
+
+    /* Mobile tab stacking */
+    @media (max-width: 500px) {
+      .audience-tab-bar { justify-content: flex-start; }
+      .aud-tab { padding: 0.55rem 0.9rem; font-size: 0.82rem; }
+    }
 
     /* ── CURRICULUM STATS BAR (Social Proof / Trust) ── */
     .curriculum-stats-bar {
@@ -1210,7 +1322,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
     <li><a href="#curriculum">Curriculum</a></li>
     <li><a href="#families">For Families</a></li>
     <li><a href="#educators">For Educators</a></li>
-    <li><a href="#admins">For Admins</a></li>
+    <li><a href="#admins-content">For Admins</a></li>
     <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#get-started">Get Started</a></li>
@@ -1232,7 +1344,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
     <li><a href="#curriculum" class="nav-drawer-link">Curriculum</a></li>
     <li><a href="#families" class="nav-drawer-link">For Families</a></li>
     <li><a href="#educators" class="nav-drawer-link">For Educators</a></li>
-    <li><a href="#admins" class="nav-drawer-link">For Admins</a></li>
+    <li><a href="#admins-content" class="nav-drawer-link">For Admins</a></li>
     <li><a href="#testimonials" class="nav-drawer-link">Testimonials</a></li>
     <li><a href="#faq" class="nav-drawer-link">FAQ</a></li>
     <li><a href="#get-started" class="nav-drawer-link">Get Started</a></li>
@@ -1267,32 +1379,32 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
 
     <!-- MULTI-AUDIENCE TAB SELECTOR -->
     <div class="audience-tabs-container">
-      <p class="audience-hook-label">Who are you? See what matters most to you →</p>
-      <div class="audience-tab-bar" role="tablist" aria-label="Audience selector">
-        <button class="aud-tab active" role="tab" data-panel="tab-homeschool" aria-selected="true" aria-controls="tab-homeschool" id="tab-btn-homeschool">🏠 Homeschool Families</button>
-        <button class="aud-tab" role="tab" data-panel="tab-educators" aria-selected="false" aria-controls="tab-educators" id="tab-btn-educators">🍎 Educators</button>
-        <button class="aud-tab" role="tab" data-panel="tab-admins" aria-selected="false" aria-controls="tab-admins" id="tab-btn-admins">🏫 School Admins</button>
-        <button class="aud-tab" role="tab" data-panel="tab-policy" aria-selected="false" aria-controls="tab-policy" id="tab-btn-policy">🏛️ Policy Makers</button>
-        <button class="aud-tab" role="tab" data-panel="tab-parents" aria-selected="false" aria-controls="tab-parents" id="tab-btn-parents">👨‍👩‍👧 Parents</button>
+      <p class="persona-intro-label">I am a&hellip;</p>
+      <div class="audience-tab-bar" role="tablist" aria-label="Select your audience to see what matters most to you">
+        <button class="aud-tab active" role="tab" data-panel="tab-families" data-audience="families" aria-selected="true" aria-controls="tab-families" id="tab-btn-families">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467; Families</button>
+        <button class="aud-tab" role="tab" data-panel="tab-educators" data-audience="educators" aria-selected="false" aria-controls="tab-educators" id="tab-btn-educators">&#x1F469;&#x200D;&#x1F3EB; Educators</button>
+        <button class="aud-tab" role="tab" data-panel="tab-admins" data-audience="admins" aria-selected="false" aria-controls="tab-admins" id="tab-btn-admins">&#x1F3EB; Administrators</button>
       </div>
 
-      <!-- Homeschool Families -->
-      <div id="tab-homeschool" class="aud-panel active" role="tabpanel" aria-labelledby="tab-btn-homeschool">
+      <!-- Families (Homeschool + Parents) -->
+      <div id="tab-families" class="aud-panel active" data-audience="families" role="tabpanel" aria-labelledby="tab-btn-families">
         <div class="aud-panel-inner">
           <div class="aud-panel-copy">
+            <span class="audience-badge families">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467; For Families</span>
             <h3>A semester your kid will actually finish.</h3>
-            <p>AI Explorers is self-paced, structured, and built around a single through-line: your child builds their own AI assistant, module by module. No prior coding required. No classroom, no schedule, no gatekeeping — just a real project that grows in capability every week.</p>
+            <p>AI Explorers is self-paced, structured, and built around a single through-line: your child builds their own AI assistant, module by module. No prior coding required. No classroom, no schedule, no gatekeeping &mdash; just a real project that grows in capability every week.</p>
             <ul class="aud-benefits">
-              <li>✓ Self-paced — run it on your schedule, not ours</li>
-              <li>✓ Every module ends with something tangible to show</li>
-              <li>✓ Complete facilitator guides — no CS background needed</li>
-              <li>✓ Works on any device, including Chromebooks and tablets</li>
-              <li>✓ Free to download — no account, no credit card, ever</li>
+              <li>&#x2713; Self-paced &mdash; run it on your schedule, not ours</li>
+              <li>&#x2713; Every module ends with something tangible to show</li>
+              <li>&#x2713; Complete facilitator guides &mdash; no CS background needed</li>
+              <li>&#x2713; Works on any device, including Chromebooks and tablets</li>
+              <li>&#x2713; Free to download &mdash; no account, no credit card, ever</li>
             </ul>
             <div class="aud-panel-ctas">
-              <a href="homeschool.html" class="btn-primary">See the Homeschool Guide →</a>
+              <a href="homeschool.html" class="btn-primary" style="background:var(--accent);box-shadow:0 4px 18px rgba(253,121,168,0.35)">See the Family Guide &rarr;</a>
               <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank" rel="noopener noreferrer">Browse the Curriculum</a>
             </div>
+            <a href="#families" class="aud-jump-link">&#x2193; Jump to the Families section</a>
           </div>
           <div class="aud-panel-stats">
             <div class="aud-stat">
@@ -1312,22 +1424,24 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       </div>
 
       <!-- Educators -->
-      <div id="tab-educators" class="aud-panel" role="tabpanel" aria-labelledby="tab-btn-educators">
+      <div id="tab-educators" class="aud-panel" data-audience="educators" role="tabpanel" aria-labelledby="tab-btn-educators">
         <div class="aud-panel-inner">
           <div class="aud-panel-copy">
+            <span class="audience-badge educators">&#x1F469;&#x200D;&#x1F3EB; For Educators</span>
             <h3>Every lesson planned. Every rubric written.</h3>
-            <p>AI Explorers is designed to be picked up, not assembled. Every module ships with lesson plans, slide outlines, lab guides, rubrics, exit tickets, and differentiation support — for teachers with zero AI or coding background. You can be ready for Monday without a weekend of prep.</p>
+            <p>AI Explorers is designed to be picked up, not assembled. Every module ships with lesson plans, slide outlines, lab guides, rubrics, exit tickets, and differentiation support &mdash; for teachers with zero AI or coding background. You can be ready for Monday without a weekend of prep.</p>
             <ul class="aud-benefits">
-              <li>✓ No CS degree or coding experience required to teach</li>
-              <li>✓ Fits 50-minute class periods with flexible 1-week or 4-week module pacing</li>
-              <li>✓ Aligned to CSTA, ISTE, and AI4K12 Big Ideas frameworks</li>
-              <li>✓ Ethics threaded through every module — not just Module 6</li>
-              <li>✓ Rubrics, formative assessments, and AI Expo planning guide included</li>
+              <li>&#x2713; No CS degree or coding experience required to teach</li>
+              <li>&#x2713; Fits 50-minute class periods with flexible 1-week or 4-week module pacing</li>
+              <li>&#x2713; Aligned to CSTA, ISTE, and AI4K12 Big Ideas frameworks</li>
+              <li>&#x2713; Ethics threaded through every module &mdash; not just Module 6</li>
+              <li>&#x2713; Rubrics, formative assessments, and AI Expo planning guide included</li>
             </ul>
             <div class="aud-panel-ctas">
-              <a href="educators.html" class="btn-primary">Explore for Educators →</a>
+              <a href="educators.html" class="btn-primary" style="background:var(--green);box-shadow:0 4px 18px rgba(0,184,148,0.35)">Explore for Educators &rarr;</a>
               <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/curriculum/module-01/TEACHER_GUIDE.md" class="btn-secondary" target="_blank" rel="noopener noreferrer">Download Module 1 Free</a>
             </div>
+            <a href="#educators" class="aud-jump-link">&#x2193; Jump to the Educators section</a>
           </div>
           <div class="aud-panel-stats">
             <div class="aud-stat">
@@ -1346,106 +1460,38 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
         </div>
       </div>
 
-      <!-- School Admins -->
-      <div id="tab-admins" class="aud-panel" role="tabpanel" aria-labelledby="tab-btn-admins">
+      <!-- Administrators -->
+      <div id="tab-admins" class="aud-panel" data-audience="admins" role="tabpanel" aria-labelledby="tab-btn-admins">
         <div class="aud-panel-inner">
           <div class="aud-panel-copy">
+            <span class="audience-badge administrators">&#x1F3EB; For Administrators</span>
             <h3>Standards-aligned. Free forever. No vendor lock-in.</h3>
-            <p>AI Explorers is open curriculum — CC BY-SA licensed, publicly auditable, and deployable on your district's own infrastructure. No per-seat fees, no subscription renewals, no vendor to negotiate with next year. Your IT team can read every line of code. Your legal team can read every license. The curriculum is a download, not a contract.</p>
+            <p>AI Explorers is open curriculum &mdash; CC BY-SA licensed, publicly auditable, and deployable on your district&rsquo;s own infrastructure. No per-seat fees, no subscription renewals, no vendor to negotiate with next year. Your IT team can read every line of code. The curriculum is a download, not a contract.</p>
             <ul class="aud-benefits">
-              <li>✓ Zero per-seat cost — free for every student in your district</li>
-              <li>✓ Student data never leaves your infrastructure (self-hosted)</li>
-              <li>✓ COPPA-aware, FERPA-friendly — Data Privacy Guide included</li>
-              <li>✓ Works on Chromebooks and existing school hardware</li>
-              <li>✓ One-page adoption brief ready for your next board meeting</li>
+              <li>&#x2713; Zero per-seat cost &mdash; free for every student in your district</li>
+              <li>&#x2713; Student data never leaves your infrastructure (self-hosted)</li>
+              <li>&#x2713; COPPA-aware, FERPA-friendly &mdash; Data Privacy Guide included</li>
+              <li>&#x2713; Works on Chromebooks and existing school hardware</li>
+              <li>&#x2713; One-page adoption brief ready for your next board meeting</li>
             </ul>
             <div class="aud-panel-ctas">
-              <a href="schools.html" class="btn-primary">Get the Adoption Brief →</a>
+              <a href="schools.html" class="btn-primary" style="background:var(--blue);box-shadow:0 4px 18px rgba(9,132,227,0.35)">Get the Adoption Brief &rarr;</a>
               <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank" rel="noopener noreferrer">Review the Full Repo</a>
             </div>
+            <a href="#admins-content" class="aud-jump-link">&#x2193; Jump to the Administrators section</a>
           </div>
           <div class="aud-panel-stats">
             <div class="aud-stat">
               <span class="aud-stat-num">$0</span>
               <span class="aud-stat-label">Per-seat cost</span>
             </div>
-            <div class="aud-stat" title="Curriculum content: CC BY-SA 4.0 · Platform code: MIT">
+            <div class="aud-stat" title="Curriculum content: CC BY-SA 4.0 &middot; Platform code: MIT">
               <span class="aud-stat-num" style="font-size:1.1rem;">CC BY-SA</span>
               <span class="aud-stat-label">Curriculum license</span>
             </div>
             <div class="aud-stat">
               <span class="aud-stat-num">0</span>
               <span class="aud-stat-label">Vendor dependencies</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Policy Makers -->
-      <div id="tab-policy" class="aud-panel" role="tabpanel" aria-labelledby="tab-btn-policy">
-        <div class="aud-panel-inner">
-          <div class="aud-panel-copy">
-            <h3>Equity-first AI literacy — before the gap widens.</h3>
-            <p>The AI skills gap is already compounding. Students in well-resourced schools and families with tech-sector parents are getting a head start that will be difficult to close later. AI Explorers was designed specifically for the regular school day, in regular classrooms, with zero cost — so equity isn't a goal, it's the structure. Free, open, device-agnostic, and built for under-resourced contexts.</p>
-            <ul class="aud-benefits">
-              <li>✓ Built for Title I schools — zero cost at every level</li>
-              <li>✓ Device-agnostic — works on Chromebooks, tablets, older hardware</li>
-              <li>✓ Offline-capable for schools with limited internet access</li>
-              <li>✓ Evidence-based design, aligned to AI4K12 Big Ideas framework</li>
-              <li>✓ Policy brief with equity framing and workforce data available</li>
-            </ul>
-            <div class="aud-panel-ctas">
-              <a href="policy.html" class="btn-primary">Read the Policy Brief →</a>
-              <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank" rel="noopener noreferrer">Review Open Source Repo</a>
-            </div>
-          </div>
-          <div class="aud-panel-stats">
-            <div class="aud-stat">
-              <span class="aud-stat-num">97M</span>
-              <span class="aud-stat-label">New AI roles by 2030 (WEF)</span>
-            </div>
-            <div class="aud-stat">
-              <span class="aud-stat-num">40%</span>
-              <span class="aud-stat-label">U.S. schools with CS access</span>
-            </div>
-            <div class="aud-stat">
-              <span class="aud-stat-num">Free</span>
-              <span class="aud-stat-label">For every school, always</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Parents -->
-      <div id="tab-parents" class="aud-panel" role="tabpanel" aria-labelledby="tab-btn-parents">
-        <div class="aud-panel-inner">
-          <div class="aud-panel-copy">
-            <h3>Give your child the head start that lasts.</h3>
-            <p>Every year that passes without AI education is a compounding disadvantage. Students in well-resourced schools — and in other countries — are already learning to build with AI, not just use it. AI Explorers gives middle schoolers real, hands-on experience building AI before they enter high school. Not a trend. A durable skill they'll carry into every career path.</p>
-            <ul class="aud-benefits">
-              <li>✓ Your child builds a real AI agent — not a toy, not a simulation</li>
-              <li>✓ Grades 6–8 is the window where it sticks for life</li>
-              <li>✓ Safe, school-controlled environment — no public AI chat exposure</li>
-              <li>✓ They'll be able to explain AI to adults by the end of Module 3</li>
-              <li>✓ Share this with your child's teacher — they can start for free today</li>
-            </ul>
-            <div class="aud-panel-ctas">
-              <a href="#why" class="btn-primary">Why AI Literacy Now →</a>
-              <a href="#faq" class="btn-secondary">Parent FAQ</a>
-            </div>
-          </div>
-          <div class="aud-panel-stats">
-            <div class="aud-stat">
-              <span class="aud-stat-num">6–8</span>
-              <span class="aud-stat-label">Grade window — when it sticks</span>
-            </div>
-            <div class="aud-stat">
-              <span class="aud-stat-num">1</span>
-              <span class="aud-stat-label">Semester to build an AI</span>
-            </div>
-            <div class="aud-stat">
-              <span class="aud-stat-num">$0</span>
-              <span class="aud-stat-label">Cost to your family</span>
             </div>
           </div>
         </div>
@@ -1475,22 +1521,59 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
 </section>
 
 <script>
-  // Audience tab switcher
+  // ── PERSONA TAB SWITCHER + PAGE FILTERING ──
   (function() {
     var tabs = document.querySelectorAll('.aud-tab');
+
+    function activatePersona(audience, panelId) {
+      // Tabs
+      tabs.forEach(function(t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      // Panels
+      document.querySelectorAll('.aud-panel').forEach(function(p) { p.classList.remove('active'); });
+
+      // Find and activate the matching tab
+      tabs.forEach(function(t) {
+        if (t.getAttribute('data-panel') === panelId) {
+          t.classList.add('active');
+          t.setAttribute('aria-selected', 'true');
+        }
+      });
+
+      // Activate the panel
+      var panel = document.getElementById(panelId);
+      if (panel) panel.classList.add('active');
+
+      // Apply persona to body for CSS content filtering
+      if (audience) {
+        document.body.setAttribute('data-persona', audience);
+      } else {
+        document.body.removeAttribute('data-persona');
+      }
+
+      // Persist selection in sessionStorage
+      try { sessionStorage.setItem('ai-explorers-persona', panelId); } catch(e) {}
+    }
+
     tabs.forEach(function(tab) {
       tab.addEventListener('click', function() {
         var panelId = this.getAttribute('data-panel');
-        // Deactivate all
-        tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-        document.querySelectorAll('.aud-panel').forEach(function(p) { p.classList.remove('active'); });
-        // Activate clicked
-        this.classList.add('active');
-        this.setAttribute('aria-selected', 'true');
-        var panel = document.getElementById(panelId);
-        if (panel) panel.classList.add('active');
+        var audience = this.getAttribute('data-audience');
+        activatePersona(audience, panelId);
       });
     });
+
+    // Restore saved persona on load
+    try {
+      var saved = sessionStorage.getItem('ai-explorers-persona');
+      if (saved && document.getElementById(saved)) {
+        var savedTab = document.querySelector('[data-panel="' + saved + '"]');
+        var savedAudience = savedTab ? savedTab.getAttribute('data-audience') : null;
+        activatePersona(savedAudience, saved);
+      }
+    } catch(e) {}
   })();
 
   // ── STICKY NAV: scroll shrink + active section highlighting ──
@@ -1513,7 +1596,7 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
     window.addEventListener('scroll', onScroll, { passive: true });
 
     // Active link highlight based on scroll position
-    var sectionIds = ['overview','curriculum','families','educators','admins','testimonials','faq','get-started'];
+    var sectionIds = ['overview','curriculum','families-content','educators','admins-content','testimonials','faq','get-started'];
     function updateActiveLink() {
       var scrollY = window.scrollY + 100;
       var current = sectionIds[0];
@@ -1762,17 +1845,17 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
 
     <!-- Audience-specific urgency cards -->
     <div class="why-audience-row">
-      <div class="why-audience-card parents">
+      <div class="why-audience-card parents persona-block" data-persona-block="families">
         <div class="why-audience-label">👨‍👩‍👧 For Parents &amp; Homeschool Families</div>
         <h3>AI fluency isn't being taught — it's being inherited.</h3>
         <p>Right now, children of tech-sector parents are learning to build with AI at home — casually, constantly. That's a structural advantage that compounds year over year. AI Explorers levels the playing field by giving every student the same hands-on, project-based AI education — for free. Your child doesn't need to know anyone in tech. They just need this curriculum.</p>
       </div>
-      <div class="why-audience-card educators">
+      <div class="why-audience-card educators persona-block" data-persona-block="educators">
         <div class="why-audience-label">🍎 For Educators &amp; School Leaders</div>
         <h3>AI literacy isn't a new subject. It's connective tissue.</h3>
         <p>AI literacy links writing, data reasoning, ethics, and critical thinking into a single project students actually care about. It doesn't replace what you already teach — it gives students a context where those skills suddenly matter. AI Explorers provides the scaffolding to teach it without a CS degree, without a tech budget, and without a weekend of prep.</p>
       </div>
-      <div class="why-audience-card policy">
+      <div class="why-audience-card policy persona-block" data-persona-block="admins">
         <div class="why-audience-label">🏛️ For Policy Makers &amp; Administrators</div>
         <h3>The workforce gap is already opening. Schools are the lever.</h3>
         <p>U.S. employers report a severe and growing shortage of workers with practical AI skills. The fastest path to closing that gap runs through K–12 education — not retraining programs that catch adults after the fact. AI Explorers is free, open-source, equity-first, and deployable in any district today. The cost of waiting compounds every year.</p>
@@ -1964,8 +2047,54 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
 <!-- FOR EDUCATORS / HOMESCHOOL ANCHOR -->
 <div id="homeschool"></div>
 <span id="families" style="position:relative;top:-80px;display:block;visibility:hidden;" aria-hidden="true"></span>
-<section id="educators">
+
+<!-- ══════════════════════════════════════════
+     FAMILIES SECTION
+     ══════════════════════════════════════════ -->
+<hr class="audience-section-divider families" aria-hidden="true">
+<section id="families-content" class="persona-block" data-persona-block="families">
   <div class="section-inner">
+    <span class="audience-badge families">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467; For Families &amp; Homeschoolers</span>
+    <h2>Your home. Your schedule.<br/>Their real AI agent.</h2>
+    <p class="section-intro">AI Explorers is built for the kitchen table. Self-paced, facilitator-friendly, and designed to produce something real — a working AI assistant your child built from scratch, with their own name and personality.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:2rem;">
+      <div style="background:rgba(253,121,168,0.08);border:1px solid rgba(253,121,168,0.25);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">&#x1F4C5;</div>
+        <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">Go at your own pace</h4>
+        <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">Run one module over a week or stretch it over a month. The curriculum doesn't expire and it doesn't judge your schedule.</p>
+      </div>
+      <div style="background:rgba(253,121,168,0.08);border:1px solid rgba(253,121,168,0.25);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">&#x1F4DA;</div>
+        <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">No CS background needed</h4>
+        <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">Every module includes a detailed facilitator guide written for the parent who is learning alongside their student — not delivering expert lectures.</p>
+      </div>
+      <div style="background:rgba(253,121,168,0.08);border:1px solid rgba(253,121,168,0.25);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">&#x1F3AF;</div>
+        <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">Real outcomes, not busywork</h4>
+        <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">Each module ends with a capability your child's agent didn't have before. By Module 7, they present a working AI at their own AI Expo.</p>
+      </div>
+      <div style="background:rgba(253,121,168,0.08);border:1px solid rgba(253,121,168,0.25);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">&#x1F4BB;</div>
+        <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">Any device works</h4>
+        <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">Chromebooks, tablets, older laptops — the curriculum runs in a browser. No special hardware, no app store, no setup hell.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="homeschool.html" class="btn-primary" style="background:var(--accent);box-shadow:0 4px 18px rgba(253,121,168,0.3);">See the Full Homeschool Guide &#x2192;</a>
+      <a href="parents.html" class="btn-secondary">For Parents: Why This Matters Now</a>
+    </div>
+  </div>
+</section>
+
+<hr class="audience-section-divider educators" aria-hidden="true">
+<!-- ══════════════════════════════════════════
+     EDUCATORS SECTION
+     ══════════════════════════════════════════ -->
+<section id="educators" class="persona-block" data-persona-block="educators">
+  <div class="section-inner">
+    <span class="audience-badge educators">&#x1F469;&#x200D;&#x1F3EB; For Educators</span>
     <p class="section-label">For Teachers &amp; Administrators</p>
     <h2>Built for real classrooms</h2>
     <p class="section-intro">Every module includes teacher guides, pacing options, assessment packs, and differentiation support. This curriculum is designed to be picked up and taught — not assembled.</p>
@@ -2036,7 +2165,11 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
         <div class="aside-divider"></div>
 
         <span id="admins" style="position:relative;top:-80px;display:block;visibility:hidden;" aria-hidden="true"></span>
-        <h3>💻 Tech requirements</h3>
+        <!-- ADMINS BADGE: visible sub-anchor -->
+        <div style="margin-bottom:1rem;padding-top:0.5rem;">
+          <span class="audience-badge administrators">&#x1F3EB; For Administrators &amp; Districts</span>
+        </div>
+        <h3>💻 Tech requirements &amp; district deployment</h3>
         <ul class="req-list">
           <li>Modern web browser (any device)</li>
           <li>OpenClaw instance (self-hosted or shared)</li>
@@ -2046,6 +2179,46 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
           <li>Student data never leaves your infrastructure</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<hr class="audience-section-divider administrators" aria-hidden="true">
+<!-- ══════════════════════════════════════════
+     ADMINISTRATORS SECTION
+     ══════════════════════════════════════════ -->
+<section id="admins-content" class="persona-block" data-persona-block="admins" style="background:var(--dark2);padding:4rem 2rem;">
+  <div class="section-inner">
+    <span class="audience-badge administrators">&#x1F3EB; For School Administrators &amp; Districts</span>
+    <h2>Free, open, no vendor lock-in.<br/>Ready for your board meeting.</h2>
+    <p class="section-intro">AI Explorers is open curriculum — CC BY-SA licensed, publicly auditable, and deployable on your district's own infrastructure. No per-seat fees. No subscription renewals. No vendor to negotiate with next year. The curriculum is a download, not a contract.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:2rem;">
+      <div style="background:rgba(9,132,227,0.08);border:1px solid rgba(9,132,227,0.25);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">&#x1F4B0;</div>
+        <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">$0 per seat, forever</h4>
+        <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">No per-student licensing. No renewal. Free for every student in your district, under the CC BY-SA 4.0 open license.</p>
+      </div>
+      <div style="background:rgba(9,132,227,0.08);border:1px solid rgba(9,132,227,0.25);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">&#x1F512;</div>
+        <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">Student data stays on your server</h4>
+        <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">OpenClaw is self-hosted. No cloud dependency, no third-party data processors, no COPPA/FERPA landmines. Data Privacy Guide included.</p>
+      </div>
+      <div style="background:rgba(9,132,227,0.08);border:1px solid rgba(9,132,227,0.25);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">&#x1F4CB;</div>
+        <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">Adoption brief ready</h4>
+        <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">One-page board presentation document, standards alignment map, and district pilot framework — all included. Start the conversation Monday.</p>
+      </div>
+      <div style="background:rgba(9,132,227,0.08);border:1px solid rgba(9,132,227,0.25);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">&#x1F50D;</div>
+        <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem;">Fully auditable — open source</h4>
+        <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">Every line of platform code and every page of curriculum is on GitHub. Your IT team, legal team, and skeptical department chair can review everything before approval.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="schools.html" class="btn-primary" style="background:var(--blue);box-shadow:0 4px 18px rgba(9,132,227,0.3);">Get the Adoption Brief &#x2192;</a>
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-secondary" target="_blank" rel="noopener noreferrer">Review the Full Repo on GitHub</a>
     </div>
   </div>
 </section>
