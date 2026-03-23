@@ -891,6 +891,83 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       .pilot-stat { flex: 1; min-width: 80px; padding: 0.5rem; }
     }
 
+    /* ── STANDARDS ENDORSEMENT SECTION ── */
+    .standards-endorsement-section {
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--card-border);
+    }
+    .standards-endorsement-header {
+      text-align: center; margin-bottom: 2rem;
+    }
+    .standards-endorsement-eyebrow {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brand-light);
+      margin-bottom: 0.6rem;
+    }
+    .standards-endorsement-header h3 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 800;
+      margin-bottom: 0.75rem; letter-spacing: -0.01em;
+    }
+    .standards-endorsement-desc {
+      color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;
+      max-width: 640px; margin: 0 auto;
+    }
+    .standards-body-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .standards-body-card {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 1.25rem 1.5rem;
+      text-decoration: none; color: var(--text);
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+      position: relative;
+    }
+    .standards-body-card:hover {
+      border-color: var(--brand-light);
+      background: rgba(108,92,231,0.07);
+      transform: translateY(-2px);
+    }
+    .standards-body-icon {
+      font-size: 1.5rem; min-width: 2rem; padding-top: 0.1rem;
+    }
+    .standards-body-info {
+      display: flex; flex-direction: column; gap: 0.25rem; flex: 1;
+    }
+    .standards-body-align-tag {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--green);
+    }
+    .standards-body-name {
+      font-size: 0.97rem; font-weight: 700; color: var(--text);
+    }
+    .standards-body-desc {
+      font-size: 0.8rem; color: var(--brand-light); font-weight: 600;
+    }
+    .standards-body-detail {
+      font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin-top: 0.2rem;
+    }
+    .standards-body-arrow {
+      color: var(--brand-light); font-size: 1rem; align-self: center; opacity: 0.6;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .standards-body-card:hover .standards-body-arrow {
+      opacity: 1; transform: translateX(3px);
+    }
+    .standards-alignment-note {
+      text-align: center; font-size: 0.88rem; color: var(--text-muted);
+      background: rgba(255,255,255,0.03); border: 1px solid var(--card-border);
+      border-radius: 10px; padding: 0.9rem 1.5rem;
+    }
+    .standards-alignment-note strong { color: var(--text); }
+    .standards-alignment-note a {
+      color: var(--brand-light); text-decoration: none; font-weight: 600;
+    }
+    .standards-alignment-note a:hover { text-decoration: underline; }
+
     /* ── OPENCLAW INTRO STRIP ── */
     .openclaw-strip {
       background: linear-gradient(135deg, rgba(108,92,231,0.18), rgba(0,184,148,0.1));
@@ -1160,6 +1237,16 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
       Seven modules. One arc. Students build a real AI assistant from scratch —
       and present it to the world at the end-of-semester AI Expo.
     </p>
+
+    <!-- HERO PRIMARY CTA -->
+    <div class="hero-cta-row">
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="btn-primary btn-hero-primary" target="_blank" rel="noopener noreferrer" aria-label="Explore the full AI Explorers curriculum on GitHub (opens in new tab)">
+        Explore the Curriculum →
+      </a>
+      <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/tree/main/module1" class="btn-secondary btn-hero-secondary" target="_blank" rel="noopener noreferrer" aria-label="See Module 1 — free on GitHub (opens in new tab)">
+        📖 See Module 1 Free
+      </a>
+    </div>
 
     <!-- MULTI-AUDIENCE TAB SELECTOR -->
     <div class="audience-tabs-container">
@@ -2276,6 +2363,94 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
 
       </div>
     </div>
+
+    <!-- STANDARDS BODY ENDORSEMENTS / ALIGNMENT BAR (below testimonials) -->
+    <div class="standards-endorsement-section" id="standards">
+      <div class="standards-endorsement-header">
+        <p class="standards-endorsement-eyebrow">Standards Alignment &amp; Educator Credibility</p>
+        <h3>Aligned with the frameworks educators and districts already trust.</h3>
+        <p class="standards-endorsement-desc">
+          Any curriculum can claim standards alignment. We link directly to the frameworks so you can verify it yourself. Every module maps to published standards — no retrofitting, no checkbox compliance.
+        </p>
+      </div>
+
+      <div class="standards-body-row">
+
+        <a class="standards-body-card" href="https://ai4k12.org/" target="_blank" rel="noopener noreferrer" aria-label="AI4K12 Initiative — 5 Big Ideas in AI (opens in new tab)">
+          <div class="standards-body-icon">🤖</div>
+          <div class="standards-body-info">
+            <span class="standards-body-align-tag">✓ Aligned with</span>
+            <span class="standards-body-name">AI4K12 Initiative</span>
+            <span class="standards-body-desc">5 Big Ideas in AI — Grades 6–8</span>
+            <span class="standards-body-detail">The nationally recognized AI literacy framework developed by Google and CSTA. Every module explicitly maps to one or more of the 5 Big Ideas.</span>
+          </div>
+          <span class="standards-body-arrow">→</span>
+        </a>
+
+        <a class="standards-body-card" href="https://www.csteachers.org/page/standards" target="_blank" rel="noopener noreferrer" aria-label="CSTA K–12 CS Standards (opens in new tab)">
+          <div class="standards-body-icon">💻</div>
+          <div class="standards-body-info">
+            <span class="standards-body-align-tag">✓ Aligned with</span>
+            <span class="standards-body-name">CSTA K–12 CS Standards</span>
+            <span class="standards-body-desc">Practices &amp; Concepts, Level 2 (Grades 6–8)</span>
+            <span class="standards-body-detail">The Computer Science Teachers Association's core standards framework. Alignment covers 2-AP (Algorithms), 2-IC (Impacts &amp; Culture), and 2-CS (Computing Systems).</span>
+          </div>
+          <span class="standards-body-arrow">→</span>
+        </a>
+
+        <a class="standards-body-card" href="https://www.iste.org/standards/students" target="_blank" rel="noopener noreferrer" aria-label="ISTE Standards for Students (opens in new tab)">
+          <div class="standards-body-icon">🌐</div>
+          <div class="standards-body-info">
+            <span class="standards-body-align-tag">✓ Aligned with</span>
+            <span class="standards-body-name">ISTE Standards for Students</span>
+            <span class="standards-body-desc">Empowered Learner · Computational Thinker · Innovative Designer</span>
+            <span class="standards-body-detail">The International Society for Technology in Education student standards. Most directly addressed in Modules 1, 5, and 7 (AI Expo).</span>
+          </div>
+          <span class="standards-body-arrow">→</span>
+        </a>
+
+        <a class="standards-body-card" href="https://www.commonsense.org/education/digital-citizenship" target="_blank" rel="noopener noreferrer" aria-label="Common Sense Education — Digital Citizenship (opens in new tab)">
+          <div class="standards-body-icon">🛡️</div>
+          <div class="standards-body-info">
+            <span class="standards-body-align-tag">✓ Aligned with</span>
+            <span class="standards-body-name">Common Sense Education</span>
+            <span class="standards-body-desc">Digital Citizenship Curriculum — Media &amp; Privacy Literacy</span>
+            <span class="standards-body-detail">Module 6 (Ethics) and Module 3 (Knowledge) align directly with Common Sense's digital citizenship scope and sequence for grades 6–8.</span>
+          </div>
+          <span class="standards-body-arrow">→</span>
+        </a>
+
+        <a class="standards-body-card" href="https://ai4k12.org/resources/national-ai-literacy-framework/" target="_blank" rel="noopener noreferrer" aria-label="National AI Literacy Framework (opens in new tab)">
+          <div class="standards-body-icon">📚</div>
+          <div class="standards-body-info">
+            <span class="standards-body-align-tag">✓ Aligned with</span>
+            <span class="standards-body-name">National AI Literacy Framework</span>
+            <span class="standards-body-desc">Awareness · Comprehension · Application — All 3 Tiers</span>
+            <span class="standards-body-detail">Students progress from AI awareness (M1) through conceptual comprehension (M2–M4) to hands-on application (M5–M7) — hitting all three tiers of the framework in a single semester.</span>
+          </div>
+          <span class="standards-body-arrow">→</span>
+        </a>
+
+        <a class="standards-body-card" href="https://github.com/clawdawg36-cpu/openclaw-curriculum/blob/main/curriculum/standards-alignment.md" target="_blank" rel="noopener noreferrer" aria-label="Full Standards Alignment Document on GitHub (opens in new tab)">
+          <div class="standards-body-icon">📋</div>
+          <div class="standards-body-info">
+            <span class="standards-body-align-tag">📂 Full Mapping</span>
+            <span class="standards-body-name">Complete Alignment Document</span>
+            <span class="standards-body-desc">Module-by-module standards crosswalk — downloadable &amp; linkable</span>
+            <span class="standards-body-detail">Every module mapped to CSTA, ISTE, AI4K12, and state frameworks. Includes blank template for custom district mappings.</span>
+          </div>
+          <span class="standards-body-arrow">→</span>
+        </a>
+
+      </div>
+
+      <div class="standards-alignment-note">
+        <strong>No formal endorsement claimed.</strong> AI Explorers is independently developed and self-certifies alignment to the published frameworks above. We link directly to each standards body so you can verify the alignment yourself.
+        Questions? <a href="mailto:mike@openclaw.ai">Email us</a> or open an issue on
+        <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum/issues" target="_blank" rel="noopener noreferrer">GitHub →</a>
+      </div>
+    </div>
+    <!-- END STANDARDS ENDORSEMENTS -->
 
   </div>
 </section>
