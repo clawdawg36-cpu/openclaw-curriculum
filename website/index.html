@@ -3706,6 +3706,38 @@ Navigation order: Overview → Curriculum → Families → Educators → Admins 
 
 <script src="analytics.js" defer></script>
 <script>
+  // Try It Now — expand/collapse lesson preview
+  (function () {
+    var toggle = document.getElementById('try-it-toggle');
+    var body = document.getElementById('try-it-body');
+    var expandText = toggle ? toggle.querySelector('.expand-text') : null;
+    if (!toggle || !body) return;
+
+    function setExpanded(expanded) {
+      toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      if (expanded) {
+        body.removeAttribute('hidden');
+        if (expandText) expandText.textContent = 'Close Preview';
+      } else {
+        body.setAttribute('hidden', '');
+        if (expandText) expandText.textContent = 'Preview Lesson';
+      }
+    }
+
+    toggle.addEventListener('click', function () {
+      var isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      setExpanded(!isExpanded);
+    });
+
+    toggle.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        var isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        setExpanded(!isExpanded);
+      }
+    });
+  })();
+
   // FAQ Tab Filter
   (function () {
     var tabs = document.querySelectorAll('.faq-tab');
