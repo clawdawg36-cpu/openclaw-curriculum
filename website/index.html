@@ -1,4 +1,24 @@
 <!DOCTYPE html>
+<!--
+=============================================================================
+SECTION IDs — CANONICAL REFERENCE FOR ALL AGENTS WORKING ON THIS PAGE
+=============================================================================
+Use these IDs exactly as listed when adding features, persona selectors,
+jump links, or any element that references page sections.
+
+  #overview       → Hero / intro section (.hero)
+  #curriculum     → The 7-Module Arc section (#arc alias)
+  #arc            → Same as #curriculum (original ID kept for backwards compat)
+  #families       → For Homeschool Families section (was #homeschool)
+  #educators      → For Teachers & Administrators section
+  #admins         → For School Admins & Districts (sub-anchor in #educators)
+  #testimonials   → Testimonials / social proof (within .trust-section)
+  #faq            → Frequently Asked Questions section
+  #get-started    → Get Started CTA section
+
+Navigation order: Overview → Curriculum → Families → Educators → Admins → Testimonials → FAQ → Get Started
+=============================================================================
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -60,27 +80,95 @@
 
     /* ── NAVBAR ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       padding: 1rem 2rem;
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(26,26,46,0.9);
-      backdrop-filter: blur(12px);
+      background: rgba(26,26,46,0.92);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--card-border);
+      transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      gap: 1rem;
+    }
+    nav.scrolled {
+      padding: 0.55rem 2rem;
+      background: rgba(15,15,30,0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
     }
     .nav-logo {
-      font-size: 1.25rem; font-weight: 800;
+      font-size: 1.25rem; font-weight: 800; flex-shrink: 0;
       background: linear-gradient(135deg, var(--brand-light), var(--accent));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      transition: font-size 0.3s ease;
+      text-decoration: none;
     }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
+    nav.scrolled .nav-logo { font-size: 1.05rem; }
+
+    /* Jump links */
+    .nav-jump {
+      display: flex; gap: 0; list-style: none;
+      flex: 1; justify-content: center; flex-wrap: nowrap;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .nav-jump::-webkit-scrollbar { display: none; }
+    .nav-jump a {
+      color: var(--text-muted); text-decoration: none; font-weight: 500;
+      font-size: 0.82rem; transition: color 0.2s;
+      padding: 0.35rem 0.65rem; border-radius: 6px; white-space: nowrap;
+    }
+    .nav-jump a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    .nav-jump a.active { color: var(--brand-light); }
+    nav.scrolled .nav-jump a { font-size: 0.78rem; }
+
+    /* Legacy .nav-links still used for the old 3-item desktop list */
+    .nav-links { display: none; }
+
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
     .nav-cta {
       background: var(--brand); color: white; padding: 0.5rem 1.25rem;
-      border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-      text-decoration: none; transition: background 0.2s;
+      border-radius: 8px; font-weight: 600; font-size: 0.85rem;
+      text-decoration: none; transition: background 0.2s, padding 0.3s;
+      white-space: nowrap;
     }
     .nav-cta:hover { background: var(--brand-dark); }
+    nav.scrolled .nav-cta { padding: 0.4rem 1rem; font-size: 0.8rem; }
+
+    /* Hamburger (mobile) */
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 4px;
+      background: none; border: none; cursor: pointer;
+      padding: 4px; z-index: 1001;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav-mobile-drawer {
+      display: none; position: fixed; top: 0; left: 0; right: 0;
+      z-index: 999; padding-top: 64px;
+      background: rgba(15,15,30,0.98); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      transform: translateY(-100%); transition: transform 0.3s ease;
+    }
+    .nav-mobile-drawer.open { transform: translateY(0); }
+    .nav-mobile-drawer ul {
+      list-style: none; padding: 1.25rem 1.5rem 1.75rem;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .nav-mobile-drawer ul li a {
+      display: block; padding: 0.75rem 0.5rem;
+      color: var(--text-muted); text-decoration: none;
+      font-weight: 500; font-size: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s;
+    }
+    .nav-mobile-drawer ul li:last-child a { border-bottom: none; }
+    .nav-mobile-drawer ul li a:hover { color: var(--brand-light); }
 
     /* ── HERO ── */
     .hero {
@@ -690,9 +778,15 @@
     }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-jump { display: none; }
+    }
     @media (max-width: 640px) {
-      nav { padding: 1rem; }
+      nav { padding: 0.85rem 1rem; }
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile-drawer { display: block; }
+      .nav-cta { display: none; }
       .arc-track::before { display: none; }
       section { padding: 4rem 1.25rem; }
     }
@@ -1013,25 +1107,49 @@
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- NAV -->
-<nav aria-label="Main navigation">
+<nav id="main-nav" aria-label="Main navigation">
   <a href="index.html" class="nav-logo" aria-label="AI Explorers — Home">🤖 AI Explorers</a>
-  <ul class="nav-links">
-    <li><a href="#why">Why Now</a></li>
-    <li><a href="#compare">Why Different</a></li>
-    <li><a href="#arc">The Arc</a></li>
-    <li><a href="#outcomes">Outcomes</a></li>
+
+  <!-- Jump links — desktop (hidden <900px, hamburger takes over on mobile) -->
+  <ul class="nav-jump" aria-label="Page sections">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#families">For Families</a></li>
     <li><a href="#educators">For Educators</a></li>
-    <li><a href="#trust">Trust &amp; Standards</a></li>
+    <li><a href="#admins">For Admins</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="#get-started">Get Started</a></li>
   </ul>
-  <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="nav-cta" target="_blank" rel="noopener noreferrer" aria-label="Get the Curriculum on GitHub (opens in new tab)">Get the Curriculum →</a>
+
+  <div class="nav-right">
+    <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="nav-cta" target="_blank" rel="noopener noreferrer" aria-label="Get the Curriculum on GitHub (opens in new tab)">Get the Curriculum →</a>
+    <!-- Hamburger (mobile only) -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-mobile-drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- Mobile navigation drawer -->
+<div class="nav-mobile-drawer" id="nav-mobile-drawer" aria-hidden="true">
+  <ul>
+    <li><a href="#overview" class="nav-drawer-link">Overview</a></li>
+    <li><a href="#curriculum" class="nav-drawer-link">Curriculum</a></li>
+    <li><a href="#families" class="nav-drawer-link">For Families</a></li>
+    <li><a href="#educators" class="nav-drawer-link">For Educators</a></li>
+    <li><a href="#admins" class="nav-drawer-link">For Admins</a></li>
+    <li><a href="#testimonials" class="nav-drawer-link">Testimonials</a></li>
+    <li><a href="#faq" class="nav-drawer-link">FAQ</a></li>
+    <li><a href="#get-started" class="nav-drawer-link">Get Started</a></li>
+    <li><a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" target="_blank" rel="noopener noreferrer">Get the Curriculum →</a></li>
+  </ul>
+</div>
 
 <main id="main-content">
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="overview">
   <div class="hero-grid"></div>
   <div class="hero-inner">
     <div class="hero-badge"><span>🚀</span> Free &amp; Open Source — CC BY-SA 4.0</div>
@@ -1269,6 +1387,77 @@
         if (panel) panel.classList.add('active');
       });
     });
+  })();
+
+  // ── STICKY NAV: scroll shrink + active section highlighting ──
+  (function() {
+    var nav = document.getElementById('main-nav');
+    var hamburger = document.getElementById('nav-hamburger');
+    var drawer = document.getElementById('nav-mobile-drawer');
+    var jumpLinks = document.querySelectorAll('.nav-jump a');
+    var drawerLinks = document.querySelectorAll('.nav-drawer-link');
+
+    // Scroll shrink
+    function onScroll() {
+      if (window.scrollY > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+      updateActiveLink();
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Active link highlight based on scroll position
+    var sectionIds = ['overview','curriculum','families','educators','admins','testimonials','faq','get-started'];
+    function updateActiveLink() {
+      var scrollY = window.scrollY + 100;
+      var current = sectionIds[0];
+      sectionIds.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
+          current = id;
+        }
+      });
+      jumpLinks.forEach(function(link) {
+        var href = link.getAttribute('href').replace('#','');
+        link.classList.toggle('active', href === current);
+      });
+    }
+
+    // Hamburger toggle
+    if (hamburger && drawer) {
+      hamburger.addEventListener('click', function() {
+        var isOpen = drawer.classList.contains('open');
+        drawer.classList.toggle('open', !isOpen);
+        hamburger.classList.toggle('open', !isOpen);
+        hamburger.setAttribute('aria-expanded', String(!isOpen));
+        drawer.setAttribute('aria-hidden', String(isOpen));
+      });
+
+      // Close drawer on link click
+      drawerLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          drawer.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+        });
+      });
+
+      // Close drawer on outside click
+      document.addEventListener('click', function(e) {
+        if (drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger.contains(e.target)) {
+          drawer.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+
+    // Run once on load
+    onScroll();
   })();
 </script>
 
@@ -1543,6 +1732,7 @@
 </section>
 
 <!-- THE ARC -->
+<span id="curriculum" style="position:relative;top:-80px;display:block;visibility:hidden;" aria-hidden="true"></span>
 <section id="arc">
   <div class="section-inner">
     <p class="section-label">The 7-Module Arc</p>
@@ -1669,6 +1859,7 @@
 
 <!-- FOR EDUCATORS / HOMESCHOOL ANCHOR -->
 <div id="homeschool"></div>
+<span id="families" style="position:relative;top:-80px;display:block;visibility:hidden;" aria-hidden="true"></span>
 <section id="educators">
   <div class="section-inner">
     <p class="section-label">For Teachers &amp; Administrators</p>
@@ -1740,6 +1931,7 @@
 
         <div class="aside-divider"></div>
 
+        <span id="admins" style="position:relative;top:-80px;display:block;visibility:hidden;" aria-hidden="true"></span>
         <h3>💻 Tech requirements</h3>
         <ul class="req-list">
           <li>Modern web browser (any device)</li>
@@ -1878,6 +2070,7 @@
 
       <!-- Testimonials -->
       <div>
+        <span id="testimonials" style="position:relative;top:-80px;display:block;visibility:hidden;" aria-hidden="true"></span>
         <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;">What educators and families are saying</h3>
         <div class="testimonial-stack">
 
@@ -2354,7 +2547,7 @@
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
+<section class="cta-section" id="get-started">
   <div class="section-inner cta-inner">
     <p class="section-label">Get Started</p>
     <h2>Your students could be building<br/>their agent this semester.</h2>
