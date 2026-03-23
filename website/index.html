@@ -4,14 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Explorers — Build Your AI Assistant, Piece by Piece</title>
-  <meta name="description" content="A hands-on, project-based AI curriculum for middle school students. 7 modules. One arc. Students build a real AI assistant from scratch — and present it to the world." />
+  <meta name="description" content="Free, open-source AI curriculum for grades 6–8. Hands-on project-based learning aligned with CSTA standards. Students build a real AI agent using OpenClaw." />
+  <meta name="keywords" content="AI curriculum, middle school AI, AI literacy, grades 6-8, CSTA, teach AI, artificial intelligence education" />
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="AI Explorers">
-  <meta property="og:url" content="https://aiexplorers.io/">
+  <meta property="og:url" content="https://clawdawg36-cpu.github.io/openclaw-curriculum/">
   <meta property="og:title" content="AI Explorers — Build Your AI Assistant, Piece by Piece">
-  <meta property="og:description" content="A hands-on, project-based AI curriculum for middle school students. 7 modules. One arc. Students build a real AI assistant from scratch — and present it to the world.">
-  <meta property="og:image" content="https://aiexplorers.io/og-images/og-default.svg">
+  <meta property="og:description" content="Free, open-source AI curriculum for grades 6–8. Hands-on project-based learning aligned with CSTA standards. Students build a real AI agent using OpenClaw.">
+  <meta property="og:image" content="https://clawdawg36-cpu.github.io/openclaw-curriculum/og-images/og-default.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/svg+xml">
@@ -558,6 +559,77 @@
       border-radius: 100px; font-size: 0.78rem; font-weight: 600;
     }
 
+    /* ── WHO BUILT THIS ── */
+    .about-section { background: var(--dark2); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: start; margin-top: 3rem;
+    }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-author-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 2.25rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
+    }
+    .about-author-header {
+      display: flex; gap: 1.25rem; align-items: center;
+    }
+    .about-avatar {
+      width: 4.5rem; height: 4.5rem; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      border: 3px solid rgba(108,92,231,0.4);
+    }
+    .about-author-meta strong {
+      display: block; font-size: 1.2rem; font-weight: 800; margin-bottom: 0.2rem;
+    }
+    .about-author-meta span {
+      font-size: 0.88rem; color: var(--brand-light); font-weight: 600;
+    }
+    .about-bio {
+      color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;
+    }
+    .about-creds {
+      display: flex; flex-direction: column; gap: 0.6rem;
+      padding-top: 0.5rem; border-top: 1px solid var(--card-border);
+    }
+    .about-cred {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      font-size: 0.88rem; color: var(--text-muted);
+    }
+    .about-cred-icon { font-size: 1rem; min-width: 1.25rem; }
+    .about-contact-panel {
+      display: flex; flex-direction: column; gap: 1.25rem;
+    }
+    .about-contact-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 1.75rem;
+    }
+    .about-contact-card h3 {
+      font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .about-contact-card p {
+      color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;
+    }
+    .about-contact-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(108,92,231,0.15); border: 1px solid rgba(108,92,231,0.3);
+      color: var(--brand-light); padding: 0.55rem 1.1rem;
+      border-radius: 8px; font-size: 0.88rem; font-weight: 600;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .about-contact-link:hover {
+      background: rgba(108,92,231,0.25); border-color: var(--brand-light);
+    }
+    .about-mission-callout {
+      background: linear-gradient(135deg, rgba(108,92,231,0.12), rgba(0,184,148,0.08));
+      border: 1px solid rgba(108,92,231,0.3); border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+    }
+    .about-mission-callout h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .about-mission-callout p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; }
+
     /* ── FOOTER ── */
     footer {
       padding: 2rem;
@@ -685,6 +757,7 @@
     <li><a href="#educators">For Educators</a></li>
     <li><a href="#trust">Trust &amp; Standards</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="#about">About</a></li>
   </ul>
   <a href="https://github.com/clawdawg36-cpu/openclaw-curriculum" class="nav-cta" target="_blank" rel="noopener noreferrer" aria-label="Get the Curriculum on GitHub (opens in new tab)">Get the Curriculum →</a>
 </nav>
@@ -807,9 +880,9 @@
               <span class="aud-stat-num">$0</span>
               <span class="aud-stat-label">Per-seat cost</span>
             </div>
-            <div class="aud-stat">
-              <span class="aud-stat-num">MIT</span>
-              <span class="aud-stat-label">Open license</span>
+            <div class="aud-stat" title="Curriculum content: CC BY-SA 4.0 · Platform code: MIT">
+              <span class="aud-stat-num" style="font-size:1.1rem;">CC BY-SA</span>
+              <span class="aud-stat-label">Curriculum license</span>
             </div>
             <div class="aud-stat">
               <span class="aud-stat-num">0</span>
@@ -1482,9 +1555,9 @@
             <span class="gh-stat-num">7</span>
             <div class="gh-stat-label">Complete Modules</div>
           </div>
-          <div class="gh-stat">
-            <span class="gh-stat-num">MIT</span>
-            <div class="gh-stat-label">Open License</div>
+          <div class="gh-stat" title="Curriculum content: CC BY-SA 4.0 · Platform code: MIT">
+            <span class="gh-stat-num" style="font-size:1.1rem;">CC BY-SA</span>
+            <div class="gh-stat-label">Curriculum License</div>
           </div>
           <div class="gh-stat">
             <span class="gh-stat-num">$0</span>
